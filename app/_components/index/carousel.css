@@ -1,0 +1,16 @@
+@keyframes infiniteloop {
+	from {
+		translate: 0;
+	}
+	to {
+		translate: -100%;
+	}
+}
+
+.animation {
+	animation: infiniteloop 60s infinite linear;
+}
+
+/* .card{
+	flex:
+} */

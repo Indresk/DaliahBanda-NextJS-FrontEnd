@@ -1,0 +1,12 @@
+.main-header {
+	anchor-name: --main-header;
+}
+
+.header-dropdown {
+	position: fixed;
+	position-anchor: --main-header;
+	top: anchor(bottom);
+	left: anchor(left);
+	width: 100vw;
+	height: 100vh;
+}
