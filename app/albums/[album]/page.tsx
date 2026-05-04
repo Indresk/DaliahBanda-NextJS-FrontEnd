@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import PlayButton from '../../_components/global/AudioPlayer/PlayButton';
-import { tracks } from '@/lib/tracks';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import PlayButton from "../../_components/global/AudioPlayer/PlayButton";
+import { tracks } from "@/lib/tracks";
 
 type RouteParams = {
-	album: string;
+  album: string;
 };
 
 // type AlbumListItem = {
@@ -12,7 +12,7 @@ type RouteParams = {
 // };
 
 type PageProps = {
-	params: Promise<RouteParams>;
+  params: Promise<RouteParams>;
 };
 
 // type AlbumResponse = {
@@ -105,29 +105,53 @@ type PageProps = {
 // }
 
 const albumPlaceholder = {
-	name: 'test01',
+  name: "test01",
 };
 
 export default async function AlbumPage({ params }: PageProps) {
-	const { album } = await params;
-	// const albumData = await getAlbum(album);
+  const { album } = await params;
+  // const albumData = await getAlbum(album);
 
-	// if (!albumData) notFound();
+  // if (!albumData) notFound();
 
-	return (
-		<main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-			{/* <h1>{albumData.title}</h1>
+  return (
+    <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* <h1>{albumData.title}</h1>
 			<p>{albumData.description}</p> */}
-			<h1>{album}</h1>
+      <h1>{album}</h1>
 
-			<section>
-				{/* {tracks.map((track) => (
+      <section>
+        <div className="albumContainer min-h-screen">
+          <div className="albumSongs text-2xl font-semibold">
+            Escucha el album aqui y donde prefieras
+            <hr className="my-6 " />
+            <div className="songItem  bg-darkgray grid grid-cols-[1fr_10fr]  items-center  ">
+              {/* columna 1 */}
+              <div>
+                <div>
+                  <span className="text-2xl font-bold ">#1</span>
+                </div>
+              </div>
+              {/* columna 2 */}
+              <div>
+                <small className="text-sm  font-light">
+                  {albumPlaceholder.date ?? "abril 4, 2026"}
+                </small>
+                <h3 className="text-lg font-semibold">
+                  {albumPlaceholder.name}
+                </h3>
+              </div>
+              <hr className="my-6 border-lightgray w-full col-span-2 m-0" />
+            </div>
+          </div>
+        </div>
+        {/* {tracks.map((track) => (
 					<div key={track.id}>
 						<span>{track.title}</span>
 						<PlayButton track={track} queue={tracks} />
 					</div>
 				))} */}
-			</section>
-		</main>
-	);
+      </section>
+    </main>
+  );
 }
