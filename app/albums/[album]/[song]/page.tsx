@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import PlayButton from '../../_components/global/AudioPlayer/PlayButton';
+import PlayButton from '../../../_components/global/AudioPlayer/PlayButton';
 import { tracks } from '@/lib/tracks';
 
 type RouteParams = {
-	album: string;
+	song: string;
 };
 
-// type AlbumListItem = {
+// type SongListItem = {
 // 	id: string;
 // };
 
@@ -15,7 +15,7 @@ type PageProps = {
 	params: Promise<RouteParams>;
 };
 
-// type AlbumResponse = {
+// type SongResponse = {
 // 	id: string;
 // 	title: string;
 // 	description?: string;
@@ -27,8 +27,8 @@ type PageProps = {
 // Retirar dinamyc params en vistas dinamicas
 // export const dynamicParams = false;
 
-// async function getAlbum(id: string): Promise<AlbumResponse | null> {
-// 	const res = await fetch(`${process.env.BACK_URL}/albums/${id}`, {
+// async function getAlbum(id: string): Promise<SongResponse | null> {
+// 	const res = await fetch(`${process.env.BACK_URL}/songs/${id}`, {
 // 		cache: 'force-cache',
 // 		next: { revalidate: 3600 },
 // 	});
@@ -41,8 +41,8 @@ type PageProps = {
 // }
 
 //especifico para vistas build rendered
-// async function getAlbumIds(): Promise<AlbumListItem[]> {
-// 	const res = await fetch(`${process.env.BACK_URL}/albums`, {
+// async function getSongIds(): Promise<SongListItem[]> {
+// 	const res = await fetch(`${process.env.BACK_URL}/songs`, {
 // 		cache: 'force-cache',
 // 		next: { revalidate: 3600 },
 // 	});
@@ -54,10 +54,10 @@ type PageProps = {
 
 // especifico para vistas build rendered
 // export async function generateStaticParams() {
-// 	const albums = await getAlbumIds();
+// 	const songs = await getSongIds();
 
-// 	return albums.map((item) => ({
-// 		album: item.id,
+// 	return songs.map((item) => ({
+// 		song: item.id,
 // 	}));
 // }
 
@@ -104,21 +104,17 @@ type PageProps = {
 // 	};
 // }
 
-const albumPlaceholder = {
-	name: 'test01',
-};
+export default async function SongPage({ params }: PageProps) {
+	const { song } = await params;
+	// const songData = await getAlbum(song);
 
-export default async function AlbumPage({ params }: PageProps) {
-	const { album } = await params;
-	// const albumData = await getAlbum(album);
-
-	// if (!albumData) notFound();
+	// if (!songData) notFound();
 
 	return (
 		<main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-			{/* <h1>{albumData.title}</h1>
-			<p>{albumData.description}</p> */}
-			<h1>{album}</h1>
+			{/* <h1>{songData.title}</h1> */}
+			{/* <p>{songData.description}</p> */}
+			<h1>{song}</h1>
 
 			<section>
 				{/* {tracks.map((track) => (
