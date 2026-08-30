@@ -3,7 +3,7 @@ import { ERROR_CODES } from '../../shared/errors/error.codes';
 import { ENVIRONMENT } from '../../shared/constants';
 import config from '../config/index';
 
-export function errorHandler(err) {
+export function errorMiddleware(err) {
 	const statusCode = err.statusCode || 500;
 	const errorCode = err.code || ERROR_CODES.INTERNAL_SERVER_ERROR;
 

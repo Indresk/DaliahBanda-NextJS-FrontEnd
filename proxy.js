@@ -1,18 +1,12 @@
+import { auth } from '@/back/config/auth';
+import authMiddleware from './src/backend/middlewares/auth.middleware';
+import middlewareIterator from './src/backend/utils/middlewareIterator';
 import { NextResponse } from 'next/server';
 
-import { auth } from '@/back/config/auth';
+const pipeline = middlewareIterator([authMiddleware]);
 
-const proxy = auth((request) => {
-	const session = request.auth;
-
-	if (!session?.user) {
-		return NextResponse.redirect(new URL('/login', request.url));
-	}
-
-	// duplicar redirect para session.user.role ||
-	// Podemos usar pathname.startsWith para verificar acceso a rutas concretas dentro de las rutas que declaramos en config
-
-	return NextResponse.next();
+const proxy = auth((request, event) => {
+	return pipeline(request, event);
 });
 
 export const config = {
