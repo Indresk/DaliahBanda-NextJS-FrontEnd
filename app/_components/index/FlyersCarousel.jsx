@@ -78,12 +78,11 @@ export default function FlyersCarousel() {
 			<h2 className='tracking-tighter font-headline uppercase font-bold text-3xl md:text-5xl'>
 				Trayectoria y <span className='text-primary-light'>presentaciones</span>
 			</h2>
-			<div className='w-full relative no-scrollbar overflow-hidden'>
-				<div className='wrapper flex'>
+			<div className='w-full relative no-scrollbar overflow-hidden '>
+				<div className='wrapper flex mask-[linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]'>
 					<FlyerGroup />
 					<FlyerGroup isHidden />
 				</div>
-				<div className='absolute top-0 left-0 w-full h-full bg-linear-[90deg,black_0%,transparent_10%,transparent_90%,black_100%]'></div>
 			</div>
 			<div className='text-[12px]'>
 				<p className='mb-4 md:mb-0'>

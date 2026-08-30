@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap'); */
 
 @import 'tailwindcss';
 
 @theme {
-	--font-pixelify: 'Pixelify Sans', ui-sans-serif, system-ui, sans-serif;
-	--font-doto: 'Doto', ui-sans-serif, system-ui, sans-serif;
+	/* --font-pixelify: 'Pixelify Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-doto: 'Doto', ui-sans-serif, system-ui, sans-serif; */
 	--font-headline: 'Space Grotesk', sans-serif;
 	--color-darkgray: #1e1e1e;
 	--color-lightgray: #737373;
@@ -15,7 +13,7 @@
 }
 
 :root {
-	font-family: 'Manrope', ui-sans-serif, sans-serif, system-ui;
+	font-family: var(--font-body), ui-sans-serif, sans-serif, system-ui;
 	line-height: 1.5;
 	font-weight: 400;
 
@@ -30,10 +28,29 @@
 	-webkit-text-size-adjust: 100%;
 }
 
+.material-symbols-outlined {
+	font-family: var(--font-material-symbols);
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+}
+
 img {
 	display: inline-block;
 	object-fit: cover;
 	vertical-align: middle;
+}
+
+strong {
+	color: var(--color-primary-light);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -43,10 +60,6 @@ img {
 .no-scrollbar {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-}
-
-strong {
-	color: var(--color-primary-light);
 }
 
 @supports (not selector(::-webkit-scrollbar)) {

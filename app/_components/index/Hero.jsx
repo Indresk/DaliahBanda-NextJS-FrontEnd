@@ -34,7 +34,7 @@ export default function Hero() {
 							unoptimized
 							className='invert w-40 md:w-60 h-auto [grid-area:1/1]'
 							src='https://assets.daliahbanda.com/brand/logos/full/logo-daliah-vector-black-v1.webp'
-							alt='Daliah Banda tocando en vivo en escenario de rock alternativo en Bogotá'
+							alt='Logo principal de Daliah Banda en blanco con fondo transparente'
 						/>
 						<div className='[grid-area:1/1]'>
 							<h1 className='text-white uppercase text-[8px] md:text-[11px] pl-[90px] md:pl-[135px] pt-[57px] md:pt-[86px]'>
@@ -49,6 +49,7 @@ export default function Hero() {
 						{...rest}
 						srcSet={mobile}
 						style={{ width: '100%', height: 'auto' }}
+						alt='Daliah Banda tocando en vivo en escenario de rock alternativo en Bogotá'
 					/>
 				</picture>
 			</div>

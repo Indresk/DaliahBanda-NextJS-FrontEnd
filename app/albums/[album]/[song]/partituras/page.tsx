@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Button from '@/components/buttons/GeneralButton';
+import Button from '@/frontend/components/buttons/GeneralButton';
 
 export default function Partituras() {
 	return (

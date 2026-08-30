@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
-import { usePlayerStore } from '@/stores/playerStore';
+import { usePlayerStore } from '@/frontend/stores/playerStore';
 
 function formatTime(value) {
 	if (!Number.isFinite(value)) return '0:00';
@@ -117,14 +117,14 @@ export default function AudioPlayer() {
 
 	if (!currentTrack) {
 		return (
-			<>
+			<div className='fixed bottom-0 left-0 right-0'>
 				<audio ref={audioRef} preload='metadata' />
 				<div className='player-shell'>
 					<div className='player-empty'>
-						<span>No hay audio reproduciéndose.</span>
+						{/* <span>No hay audio reproduciéndose.</span> */}
 					</div>
 				</div>
-			</>
+			</div>
 		);
 	}
 

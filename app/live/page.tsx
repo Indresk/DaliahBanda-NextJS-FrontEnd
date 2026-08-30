@@ -7,7 +7,7 @@ import {
 	getStreamingStart,
 	getStreamingEnd,
 	DateToESString,
-} from '@/utils/dates.js';
+} from '@/shared/utils/dates.js';
 
 const UTCDateStart = getStreamingStart();
 const UTCDateEnd = getStreamingEnd();

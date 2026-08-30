@@ -1,5 +1,5 @@
-import NavLink from '@/components/util/NavLink';
-import Button from '@/components/buttons/GeneralButton';
+import NavLink from '@/frontend/components/util/NavLink';
+import Button from '@/frontend/components/buttons/GeneralButton';
 import Link from 'next/link';
 import Image from 'next/image';
 import NavLinkHeader from './NavLinkHeader';

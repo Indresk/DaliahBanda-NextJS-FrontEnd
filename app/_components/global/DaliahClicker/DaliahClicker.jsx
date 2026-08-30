@@ -21,7 +21,7 @@ function DaliahClicker() {
 
 	return (
 		<div
-			className={`fixed z-10 top-[0px] right-[0px] flex items-center font-doto h-full text-white transition-translate duration-300 ease-in-out${cookieSideBar ? `` : ` translate-x-[85vw] lg:translate-x-[30vw]`}`}>
+			className={`fixed z-10 top-0 right-0 flex items-center font-doto h-full text-white transition-translate duration-300 ease-in-out${cookieSideBar ? `` : ` translate-x-[85vw] lg:translate-x-[30vw]`}`}>
 			<div
 				id='cookie-bookmark'
 				onClick={() => setCookieSideBar((prev) => !prev)}>
@@ -42,7 +42,7 @@ function DaliahClicker() {
 				</div>
 				<div className='full-clicker-window flex flex-col justify-center items-center gap-4'>
 					<button
-						className='cookie-button w-[100px] flex justify-center items-center'
+						className='cookie-button w-25 flex justify-center items-center'
 						onClick={() => {
 							setDaliahCookieCount(daliahCookieCount + 1);
 						}}>

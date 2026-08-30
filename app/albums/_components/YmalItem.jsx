@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import SongOptions from '@/components/buttons/SongOptions';
+import SongOptions from '@/frontend/components/buttons/SongOptions';
 
 export default function YmalItem({ song }) {
 	const navigate = useRouter();

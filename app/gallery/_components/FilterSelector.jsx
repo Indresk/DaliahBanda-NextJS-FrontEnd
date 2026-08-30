@@ -1,6 +1,6 @@
 'use client';
-import Button from '@/components/buttons/GeneralButton';
-import NavLink from '@/components/util/NavLink';
+import Button from '@/frontend/components/buttons/GeneralButton';
+import NavLink from '@/frontend/components/util/NavLink';
 
 export default function FilterSelector() {
 	const filters = [

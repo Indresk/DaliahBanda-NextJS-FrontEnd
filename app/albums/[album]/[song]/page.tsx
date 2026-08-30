@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PlayButton from '../../../_components/global/AudioPlayer/PlayButton';
-import { tracks } from '@/lib/tracks';
+import { tracks } from '@/shared/lib/tracks';
 
 type RouteParams = {
 	song: string;

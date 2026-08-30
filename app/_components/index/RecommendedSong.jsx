@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import Button from '@/components/buttons/GeneralButton';
+import Button from '@/frontend/components/buttons/GeneralButton';
 import YmalItem from '../../albums/_components/YmalItem';
-import BigPlayButton from '@/svg/BigPlayButton';
+import BigPlayButton from '@/frontend/assets/svg/BigPlayButton';
 import Image from 'next/image';
 
 const fetch = {
@@ -96,6 +96,7 @@ export default function RecommendedSong() {
 						width={song.cover.width}
 						height={song.cover.height}
 						src={song.cover.img}
+						loading='lazy'
 						className='aspect-square'
 						alt={'Portada oficial de ' + song.name + '.'}
 					/>

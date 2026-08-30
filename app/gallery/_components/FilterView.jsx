@@ -1,5 +1,5 @@
 'use client';
-import { useParams, useLocation, useNavigate } from 'react-router';
+
 import { useEffect, useState } from 'react';
 import {
 	getImagesByEvents,
@@ -7,11 +7,12 @@ import {
 	getBackstageImages,
 } from '../../../services/firebase';
 import Image from 'next/image';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 
 export default function FilterView() {
 	const { filter } = useParams();
-	const location = useLocation();
-	const navigation = useNavigate();
+	const location = usePathname();
+	const navigation = useRouter();
 	const [assets, setAssets] = useState([]);
 	const [noAssetsFlag, setNoAssetsFlag] = useState(false);
 	const [loading, setLoading] = useState(true);
@@ -24,7 +25,7 @@ export default function FilterView() {
 	function noAssets() {
 		setNoAssetsFlag(true);
 		setTimeout(() => {
-			navigation(-1);
+			navigation.back();
 		}, 5000);
 	}
 
@@ -42,10 +43,10 @@ export default function FilterView() {
 	useEffect(() => {
 		setLoading(true);
 		setNoAssetsFlag(false);
-		if (location.pathname.includes('gallery/event')) {
+		if (location.includes('gallery/event')) {
 			searchFlag = 'event';
 		}
-		if (location.pathname.includes('gallery/backstage')) {
+		if (location.includes('gallery/backstage')) {
 			searchFlag = 'backstage';
 		}
 

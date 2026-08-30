@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 export default function LiveBanner() {
 	return (
 		<section
@@ -17,7 +16,7 @@ export default function LiveBanner() {
 					</p>
 				</div>
 				<Link
-					to='/live'
+					href='/live'
 					title='Entrar al streaming en vivo de Daliah Banda'
 					className='live-banner-button underline'>
 					Ver transmisión ahora
