@@ -2,21 +2,24 @@ import 'server-only';
 import { Sequelize } from 'sequelize';
 import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
+import pg from 'pg';
+import config from '.';
 
 const dbConfig = {
-	host,
-	username,
-	password,
-	database,
-	dialect,
-	dialectModule,
+	host: config.DB_HOST,
+	port: config.DB_PORT,
+	username: config.DB_USER,
+	password: config.DB_PASSWORD,
+	database: config.DB_DATABASE,
+	dialect: 'postgres',
+	dialectModule: pg,
 	benchmark: true,
 	logging: console.log,
 };
 
 const sequelize = new Sequelize(dbConfig);
 
-export async function connectDB() {
+async function connectDB() {
 	try {
 		await sequelize.authenticate();
 		console.log('Base de datos conectada exitosamente');
@@ -26,5 +29,6 @@ export async function connectDB() {
 		throw new AppError(ERROR_CODES.DATABASE_ERROR, error);
 	}
 }
+connectDB();
 
 export default sequelize;

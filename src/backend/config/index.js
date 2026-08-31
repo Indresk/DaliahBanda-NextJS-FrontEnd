@@ -5,7 +5,10 @@ const requiredEnvs = [
 	'NODE_ENV',
 	'AUTH_GOOGLE_ID',
 	'AUTH_GOOGLE_SECRET',
-	'DB_NAME',
+	'DB_HOST',
+	'DB_PORT',
+	'DB_USER',
+	'DB_PASSWORD',
 	'DB_DATABASE',
 ];
 

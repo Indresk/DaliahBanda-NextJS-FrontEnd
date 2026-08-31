@@ -6,18 +6,18 @@ import {
 } from '../../../backend/actions/auth.action';
 import { SubmitButton } from './GeneralButton';
 
-export function SignInButton({ children = 'Iniciar sesión' }) {
+export function SignInButton({ children = 'Iniciar sesión', ...props }) {
 	return (
 		<form action={signInAction} className='contents'>
-			<SubmitButton variant='invert'>{children}</SubmitButton>
+			<SubmitButton {...props}>{children}</SubmitButton>
 		</form>
 	);
 }
 
-export function SignOutButton({ children = 'Cerrar sesión' }) {
+export function SignOutButton({ children = 'Cerrar sesión', ...props }) {
 	return (
 		<form action={signOutAction} className='contents'>
-			<SubmitButton>{children}</SubmitButton>
+			<SubmitButton {...props}>{children}</SubmitButton>
 		</form>
 	);
 }

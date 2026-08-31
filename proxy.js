@@ -1,7 +1,6 @@
 import { auth } from '@/back/config/auth';
 import authMiddleware from './src/backend/middlewares/auth.middleware';
 import middlewareIterator from './src/backend/utils/middlewareIterator';
-import { NextResponse } from 'next/server';
 
 const pipeline = middlewareIterator([authMiddleware]);
 
