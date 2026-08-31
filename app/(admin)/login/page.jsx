@@ -1,6 +1,8 @@
 import { auth } from '@/back/config/auth';
-import SignIn from '@/front/components/buttons/SignIn';
-import SignOut from '@/front/components/buttons/SignOut';
+import {
+	SignInButton,
+	SignOutButton,
+} from '@/front/components/buttons/AuthButtons';
 
 export default async function Login() {
 	const session = await auth();
@@ -10,7 +12,7 @@ export default async function Login() {
 			<div>
 				<h1>Login view</h1>
 				<h1>No has iniciado sesión</h1>
-				<SignIn />
+				<SignInButton />
 			</div>
 		);
 	}
@@ -28,7 +30,7 @@ export default async function Login() {
 					height={48}
 				/>
 			)}
-			<SignOut />
+			<SignOutButton />
 		</div>
 	);
 }

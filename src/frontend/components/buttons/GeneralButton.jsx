@@ -1,3 +1,6 @@
+'use client';
+import { useFormStatus } from 'react-dom';
+
 const variants = {
 	primary: {
 		button: 'bg-primary text-white hover:text-primary',
@@ -20,6 +23,10 @@ const variants = {
 		button: 'bg-transparent text-primary hover:text-white',
 		fill: 'bg-primary',
 	},
+	disabled: {
+		button: 'bg-zinc-400 text-zinc-700 ',
+		fill: 'bg-transparent',
+	},
 };
 
 const sizes = {
@@ -41,7 +48,7 @@ export default function Button({
 	const current = variants[variant];
 
 	const classes = [
-		'group relative isolate flex items-center justify-center gap-4 font-headline font-bold uppercase cursor-pointer transition-all duration-300',
+		`group relative isolate flex items-center justify-center gap-4 font-headline font-bold uppercase transition-all duration-300 ${variant != 'disabled' ? 'cursor-pointer' : 'cursor-not-allowed'}`,
 		sizes[size],
 		current.button,
 		fullWidth ? 'w-full' : '',
@@ -53,6 +60,7 @@ export default function Button({
 	return (
 		<button
 			className={`${classes} ${variant !== 'textLink' && 'overflow-hidden'}`}
+			disabled={variant === 'disabled'}
 			{...props}>
 			<span
 				className={[
@@ -70,5 +78,15 @@ export default function Button({
 				)}
 			</span>
 		</button>
+	);
+}
+
+export function SubmitButton({ children, variant, ...props }) {
+	const { pending } = useFormStatus();
+
+	return (
+		<Button type='submit' variant={pending ? 'disabled' : variant} {...props}>
+			{children}
+		</Button>
 	);
 }
