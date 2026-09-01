@@ -10,6 +10,7 @@ const requiredEnvs = [
 	'DB_USER',
 	'DB_PASSWORD',
 	'DB_DATABASE',
+	'API_KEY',
 ];
 
 for (const envVar of Object.values(requiredEnvs)) {

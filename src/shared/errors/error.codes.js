@@ -12,6 +12,11 @@ export const ERROR_CODES = {
 	FILE_TOO_LARGE: 'file_too_large',
 	INVALID_DOCUMENT_TYPE: 'invalid_document_type',
 	UPLOAD_ERROR: 'upload_error',
+	UNAUTHORIZED: 'unauthorized',
+	MISSING_AUTH_HEADER: 'missing_auth_header',
+	INVALID_AUTH_HEADER: 'invalid_auth_header',
+	FORBIDDEN: 'forbidden',
+	INSUFFICIENT_PERMISSIONS: 'insufficient_permissions',
 };
 
 Object.freeze(ERROR_CODES);

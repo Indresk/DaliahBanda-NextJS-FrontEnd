@@ -9,4 +9,19 @@ export const USER_ROLES = {
 	USER: 'user',
 };
 
-[(ENVIRONMENT, USER_ROLES)].forEach(Object.freeze);
+export const USER_QUERY_FIELDS = {
+	UUID: 'id',
+	GOOGLEID: 'googleId',
+	EMAIL: 'email',
+};
+
+export const USER_UPDATABLE_FIELDS = {
+	email: 'email',
+	googleId: 'googleId',
+	role: 'role',
+	name: 'name',
+};
+
+[(ENVIRONMENT, USER_ROLES, USER_QUERY_FIELDS, USER_UPDATABLE_FIELDS)].forEach(
+	Object.freeze,
+);

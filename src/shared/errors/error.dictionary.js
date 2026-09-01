@@ -53,4 +53,24 @@ export const errorsDictionary = {
 		statusCode: 500,
 		message: 'Ocurrió un error al intentar subir el archivo',
 	},
+	[ERROR_CODES.UNAUTHORIZED]: {
+		statusCode: 401,
+		message: 'No autorizado. Por favor inicia sesión',
+	},
+	[ERROR_CODES.MISSING_AUTH_HEADER]: {
+		statusCode: 401,
+		message: 'Header de autorización requerido',
+	},
+	[ERROR_CODES.INVALID_AUTH_HEADER]: {
+		statusCode: 401,
+		message: 'Formato de autorización inválido',
+	},
+	[ERROR_CODES.FORBIDDEN]: {
+		statusCode: 403,
+		message: 'Acceso denegado',
+	},
+	[ERROR_CODES.INSUFFICIENT_PERMISSIONS]: {
+		statusCode: 403,
+		message: 'No tienes permisos suficientes para realizar esta acción',
+	},
 };

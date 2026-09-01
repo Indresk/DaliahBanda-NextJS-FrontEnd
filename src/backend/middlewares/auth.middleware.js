@@ -1,10 +1,18 @@
 import { NextResponse } from 'next/server';
+import UserService from '../services/user.service';
+import {
+	USER_QUERY_FIELDS,
+	USER_ROLES,
+	USER_UPDATABLE_FIELDS,
+} from '../../shared/constants';
 
 export default function authMiddleware(middleware) {
 	return async (request, event) => {
-		const session = request.auth;
-		console.log(request.auth);
+		if (!pathname.startsWith('/dashboard')) {
+			return NextResponse.next();
+		}
 
+		const session = request.auth;
 		if (!session?.user) {
 			return NextResponse.redirect(new URL('/login', request.url));
 		}
@@ -24,9 +32,24 @@ export const callbacks = {
 	},
 	jwt: async ({ token, user }) => {
 		if (user) {
-			// Logica de consulta de rol a DB
-			const dbUser = { role: null };
-			token.role = dbUser.role || 'user'; // cambiar por string de Constants
+			const dbUser = await UserService.findOneBy(
+				USER_QUERY_FIELDS.EMAIL,
+				user.email,
+			);
+
+			if (!dbUser) {
+				await UserService.create(user.email, USER_ROLES.USER);
+			}
+
+			if (dbUser && dbUser.googleId === null) {
+				await UserService.update(
+					dbUser.id,
+					USER_UPDATABLE_FIELDS.googleId,
+					user.id,
+				);
+			}
+
+			token.role = dbUser.role || USER_ROLES.USER;
 		}
 		return token;
 	},

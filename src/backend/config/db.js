@@ -14,7 +14,7 @@ const dbConfig = {
 	dialect: 'postgres',
 	dialectModule: pg,
 	benchmark: true,
-	logging: console.log,
+	logging: false, //console.log,
 };
 
 const sequelize = new Sequelize(dbConfig);
