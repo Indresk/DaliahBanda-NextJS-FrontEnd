@@ -1,9 +1,7 @@
 import 'server-only';
 import { Sequelize } from 'sequelize';
-import AppError from '../errors/app.error';
-import { ERROR_CODES } from '../../shared/errors/error.codes';
 import pg from 'pg';
-import config from '.';
+import config from './index';
 
 const dbConfig = {
 	host: config.DB_HOST,
@@ -18,17 +16,5 @@ const dbConfig = {
 };
 
 const sequelize = new Sequelize(dbConfig);
-
-export async function connectDB() {
-	try {
-		await sequelize.authenticate();
-		console.log('Base de datos conectada exitosamente');
-
-		//await sequelize.sync({ alter: true });
-	} catch (error) {
-		throw new AppError(ERROR_CODES.DATABASE_ERROR, error);
-	}
-}
-//connectDB();
 
 export default sequelize;
