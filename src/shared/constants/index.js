@@ -10,16 +10,16 @@ export const USER_ROLES = {
 };
 
 export const USER_QUERY_FIELDS = {
-	UUID: 'id',
+	ID: 'id',
 	GOOGLEID: 'googleId',
 	EMAIL: 'email',
 };
 
 export const USER_UPDATABLE_FIELDS = {
-	email: 'email',
-	googleId: 'googleId',
-	role: 'role',
-	name: 'name',
+	EMAIL: 'email',
+	GOOGLEID: 'googleId',
+	ROLE: 'role',
+	NAME: 'name',
 };
 
 [(ENVIRONMENT, USER_ROLES, USER_QUERY_FIELDS, USER_UPDATABLE_FIELDS)].forEach(

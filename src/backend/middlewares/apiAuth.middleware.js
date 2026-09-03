@@ -11,19 +11,16 @@ export default async function apiAuthMiddleware(request, event) {
 	}
 
 	const apiKey = config.API_KEY;
-
 	if (!apiKey) {
 		throw new AppError(ERROR_CODES.INTERNAL_SERVER_ERROR);
 	}
 
 	const authHeader = request.headers.get('authorization');
-
 	if (!authHeader) {
 		throw new AppError(ERROR_CODES.MISSING_AUTH_HEADER);
 	}
 
 	const [scheme, token] = authHeader.split(' ');
-
 	if (scheme !== 'Bearer' || !token) {
 		throw new AppError(ERROR_CODES.INVALID_AUTH_HEADER);
 	}

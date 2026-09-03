@@ -14,7 +14,11 @@ class UserRepository {
 	}
 
 	static async update(uid, field, value) {
-		return await User.update({ [field]: value }, { where: { id: uid } });
+		const [affectedCount, affectedRows] = await User.update(
+			{ [field]: value },
+			{ where: { id: uid }, returning: true },
+		);
+		return [affectedCount, affectedRows];
 	}
 
 	static async delete(id) {

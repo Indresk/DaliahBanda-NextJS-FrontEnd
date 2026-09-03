@@ -19,16 +19,16 @@ const dbConfig = {
 
 const sequelize = new Sequelize(dbConfig);
 
-async function connectDB() {
+export async function connectDB() {
 	try {
 		await sequelize.authenticate();
 		console.log('Base de datos conectada exitosamente');
 
-		await sequelize.sync({ alter: true });
+		//await sequelize.sync({ alter: true });
 	} catch (error) {
 		throw new AppError(ERROR_CODES.DATABASE_ERROR, error);
 	}
 }
-connectDB();
+//connectDB();
 
 export default sequelize;
