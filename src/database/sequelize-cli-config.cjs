@@ -1,6 +1,6 @@
 if (process.env.NODE_ENV !== 'production') {
 	try {
-		require('dotenv').config();
+		require('dotenv').config({ path: './.env.development.local' });
 	} catch (e) {}
 }
 

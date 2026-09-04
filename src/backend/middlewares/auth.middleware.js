@@ -5,6 +5,8 @@ import {
 	USER_ROLES,
 	USER_UPDATABLE_FIELDS,
 } from '../../shared/constants';
+import { internalRequestWrapper } from '../utils/internalRequestWrapper';
+import AllowedEmailsService from '../services/allowedEmails.service';
 
 export default function authMiddleware(middleware) {
 	return async (request, event) => {
@@ -26,27 +28,33 @@ export default function authMiddleware(middleware) {
 
 export const callbacks = {
 	signIn: async ({ user, profile }) => {
-		if (!profile.email) return false;
-		// logica de comparación de correos admitidos por logear (si no estan admitidos retorna false)
-		return true;
+		const emailValidated = await internalRequestWrapper(
+			AllowedEmailsService.verifyEmail,
+			[profile.email],
+		);
+
+		return emailValidated === true;
 	},
 	jwt: async ({ token, user }) => {
 		if (user) {
-			const dbUser = await UserService.findOneBy(
+			const dbUser = await internalRequestWrapper(UserService.findOneBy, [
 				USER_QUERY_FIELDS.EMAIL,
 				user.email,
-			);
+			]);
 
 			if (!dbUser) {
-				await UserService.create(user.email, USER_ROLES.USER);
+				await internalRequestWrapper(UserService.create, [
+					user.email,
+					USER_ROLES.USER,
+				]);
 			}
 
 			if (dbUser && dbUser.googleId === null) {
-				await UserService.update(
+				await internalRequestWrapper(UserService.update, [
 					dbUser.id,
-					USER_UPDATABLE_FIELDS.googleId,
+					USER_UPDATABLE_FIELDS.GOOGLEID,
 					user.id,
-				);
+				]);
 			}
 
 			token.role = dbUser.role || USER_ROLES.USER;

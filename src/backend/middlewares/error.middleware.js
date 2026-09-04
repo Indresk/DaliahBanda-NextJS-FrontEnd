@@ -3,7 +3,7 @@ import { ERROR_CODES } from '../../shared/errors/error.codes';
 import { ENVIRONMENT } from '../../shared/constants';
 import config from '../config/index';
 
-export function errorMiddleware(err) {
+export function errorMiddleware(err, internalFlag = false) {
 	const statusCode = err.statusCode || 500;
 	const errorCode = err.code || ERROR_CODES.INTERNAL_SERVER_ERROR;
 
@@ -26,6 +26,10 @@ export function errorMiddleware(err) {
 		console.warn(loggerMessage, {
 			metadata: { statusCode, ...loggerData },
 		});
+	}
+
+	if (internalFlag) {
+		return JSON.stringify(response);
 	}
 
 	return NextResponse.json(response, { status: statusCode });

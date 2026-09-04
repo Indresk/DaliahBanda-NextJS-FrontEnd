@@ -2,7 +2,18 @@ import AllowedEmails from '../models/allowedEmails.model';
 
 class AllowedEmailsRepository {
 	static async findAll() {
-		return await AllowedEmails.findAll();
+		return await AllowedEmails.findAll({
+			attributes: ['email'],
+			raw: true,
+		});
+	}
+
+	static async findByEmail(userEmail) {
+		return await AllowedEmails.findOne({
+			where: { email: userEmail },
+			attributes: ['email'],
+			raw: true,
+		});
 	}
 
 	static async create(email) {
