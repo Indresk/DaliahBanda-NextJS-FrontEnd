@@ -1,4 +1,5 @@
 import 'server-only';
+
 import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 const requiredEnvs = [

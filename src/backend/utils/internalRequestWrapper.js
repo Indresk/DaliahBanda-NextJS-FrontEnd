@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { errorMiddleware } from '../middlewares/error.middleware';
 
 export async function internalRequestWrapper(service, args = []) {

@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { NextResponse } from 'next/server';
 
 // Itera por cada función en el array para aplicar los middlewares necesarios en proxy.js

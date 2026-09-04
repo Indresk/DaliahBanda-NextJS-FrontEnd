@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db';
 import { USER_ROLES } from '../../shared/constants';

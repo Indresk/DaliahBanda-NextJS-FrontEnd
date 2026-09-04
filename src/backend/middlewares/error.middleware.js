@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { NextResponse } from 'next/server';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import { ENVIRONMENT } from '../../shared/constants';
@@ -29,7 +31,7 @@ export function errorMiddleware(err, internalFlag = false) {
 	}
 
 	if (internalFlag) {
-		return JSON.stringify(response);
+		return response;
 	}
 
 	return NextResponse.json(response, { status: statusCode });

@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import AppError from '../errors/app.error';
 import AllowedEmailsRepository from '../repositories/allowedEmails.reposity';

@@ -1,3 +1,5 @@
+import 'server-only';
+
 import AllowedEmails from '../models/allowedEmails.model';
 
 class AllowedEmailsRepository {

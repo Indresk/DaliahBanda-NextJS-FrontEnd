@@ -1,3 +1,5 @@
+import 'server-only';
+
 import {
 	USER_QUERY_FIELDS,
 	USER_ROLES,
@@ -29,7 +31,7 @@ class UserService {
 		if (!email || !role) throw new AppError(ERROR_CODES.BAD_REQUEST);
 
 		const createdUser = await UserRepository.create(email, role);
-		return createdUser;
+		return createdUser.toJSON();
 	}
 
 	static async update(uid, field, value) {

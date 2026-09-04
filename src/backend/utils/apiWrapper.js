@@ -1,3 +1,5 @@
+import 'server-only';
+
 import apiAuthMiddleware from '../middlewares/apiAuth.middleware';
 import { errorMiddleware } from '../middlewares/error.middleware';
 

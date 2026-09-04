@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { NextResponse } from 'next/server';
 import config from '../config/index';
 import AppError from '../errors/app.error';
