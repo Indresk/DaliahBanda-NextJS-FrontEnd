@@ -34,6 +34,7 @@ export const callbacks = {
 		);
 
 		return emailValidated === true;
+		// return true;
 	},
 	jwt: async ({ token, user }) => {
 		if (user) {
@@ -57,7 +58,7 @@ export const callbacks = {
 				]);
 			}
 
-			token.role = dbUser.role || USER_ROLES.USER;
+			token.role = dbUser?.role || USER_ROLES.USER;
 		}
 		return token;
 	},
