@@ -8,6 +8,7 @@ import {
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import AppError from '../errors/app.error';
 import UserRepository from '../repositories/user.reposity';
+import successResponseWrapper from '@/back/utils/successResponseWrapper';
 
 class UserService {
 	static async findAll() {
@@ -31,7 +32,10 @@ class UserService {
 		if (!email || !role) throw new AppError(ERROR_CODES.BAD_REQUEST);
 
 		const createdUser = await UserRepository.create(email, role);
-		return createdUser.toJSON();
+		return successResponseWrapper(
+			createdUser.toJSON(),
+			'Usuario creado exitosamente',
+		);
 	}
 
 	static async update(uid, field, value) {

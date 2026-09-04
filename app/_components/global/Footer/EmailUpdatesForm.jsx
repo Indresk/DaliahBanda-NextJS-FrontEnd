@@ -12,9 +12,8 @@ export default function EmailUpdatesForm() {
 		const email = formData.get('emailUpdates');
 		try {
 			const response = await createUser(email);
-			console.log(response);
 
-			if ((response.status = 'error')) throw new Error(response?.message);
+			if (response.status === 'error') throw new Error(response.message);
 
 			setStatus('success');
 			formRef.current?.reset();
@@ -28,6 +27,8 @@ export default function EmailUpdatesForm() {
 			alert(
 				`Hubo un error al registrar tu correo: ${error.message}. Intenta de nuevo.`,
 			);
+		} finally {
+			setStatus('idle');
 		}
 	}
 

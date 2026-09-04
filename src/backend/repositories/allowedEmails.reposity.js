@@ -1,6 +1,8 @@
 import 'server-only';
 
 import AllowedEmails from '../models/allowedEmails.model';
+import AppError from '../errors/app.error';
+import { ERROR_CODES } from '../../shared/errors/error.codes';
 
 class AllowedEmailsRepository {
 	static async findAll() {
@@ -19,7 +21,16 @@ class AllowedEmailsRepository {
 	}
 
 	static async create(email) {
-		return await AllowedEmails.create({ email });
+		try {
+			const allowedEmail = await AllowedEmails.create({ email });
+			return allowedEmail;
+		} catch (error) {
+			if (error.original.code === '23505') {
+				throw new AppError(ERROR_CODES.USER_ALREADY_EXISTS);
+			}
+
+			throw error;
+		}
 	}
 
 	static async delete(email) {
