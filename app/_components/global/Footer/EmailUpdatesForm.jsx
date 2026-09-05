@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 export default function EmailUpdatesForm() {
 	const [status, setStatus] = useState('idle');
 	const formRef = useRef(null);
+	const messageBoxRef = useRef(null);
 
 	async function handleEmailUpdates(formData) {
 		setStatus('loading');
@@ -17,18 +18,10 @@ export default function EmailUpdatesForm() {
 
 			setStatus('success');
 			formRef.current?.reset();
-
-			// cambiar alert por modal
-			alert('¡Correo registrado exitosamente!');
+			messageBoxRef.current.textContent = '¡Correo registrado exitosamente!';
 		} catch (error) {
-			console.log(error);
 			setStatus('error');
-			// cambiar alert por modal
-			alert(
-				`Hubo un error al registrar tu correo: ${error.message}. Intenta de nuevo.`,
-			);
-		} finally {
-			setStatus('idle');
+			messageBoxRef.current.textContent = `Hubo un error al registrar tu correo: ${error.message}. Intenta de nuevo.`;
 		}
 	}
 
@@ -42,8 +35,9 @@ export default function EmailUpdatesForm() {
 				className='inline-block font-headline text-primary font-bold uppercase tracking-widest mb-2'>
 				Mantente al tanto
 			</label>
-			<div className='flex'>
+			<div className='flex relative'>
 				<input
+					id='emailUpdates'
 					className='bg-darkgray border-0 text-white font-headline text-sm px-4 py-3 w-full md:w-64 disabled:bg-gray-500'
 					placeholder='TÚ CORREO'
 					type='email'
@@ -60,6 +54,9 @@ export default function EmailUpdatesForm() {
 						<span className='material-symbols-outlined'>send</span>
 					)}
 				</SubmitButton>
+				<span
+					ref={messageBoxRef}
+					className='absolute left-0 bottom-[-20] text-[10px] text-primary whitespace-nowrap'></span>
 			</div>
 		</form>
 	);
