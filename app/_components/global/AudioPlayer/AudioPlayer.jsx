@@ -1,148 +1,53 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { useRef, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { usePlayerStore } from '@/frontend/stores/playerStore';
-import { usePreferencesStore } from '@/frontend/stores/preferencesStore';
+import { useAudioSync } from '@/frontend/hooks/useAudioSync';
+import { useSeek } from '@/frontend/hooks/useSeek';
+import { useVolume } from '@/frontend/hooks/useVolume';
+import TrackInfo from './TrackInfo';
+import PlaybackControls from './PlaybackControls';
+import SeekBar from './SeekBar';
+import VolumeControl from './VolumeControl';
+import VisibilityToggle from './VisibilityToggle';
 import './player.css';
-import Button from '@/frontend/components/buttons/GeneralButton';
 
 const RESTART_THRESHOLD = 3;
 
-function formatTime(value) {
-	if (!Number.isFinite(value) || value < 0) return '0:00';
-	const minutes = Math.floor(value / 60);
-	const seconds = Math.floor(value % 60);
-	return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-}
-
 export default function AudioPlayer() {
 	const audioRef = useRef(null);
-	const seekRef = useRef(null);
-	const [muted, setMuted] = useState(false);
-	const [scrubTime, setScrubTime] = useState(null);
 	const [visible, setVisible] = useState(true);
 
 	const {
 		queue,
 		currentIndex,
 		isPlaying,
-		currentTime,
 		duration,
-		loadId,
 		togglePlay,
-		setIsPlaying,
 		next,
 		prev,
 		setCurrentTime,
-		setDuration,
 	} = usePlayerStore(
 		useShallow((state) => ({
 			queue: state.queue,
 			currentIndex: state.currentIndex,
 			isPlaying: state.isPlaying,
-			currentTime: state.currentTime,
 			duration: state.duration,
-			loadId: state.loadId,
 			togglePlay: state.togglePlay,
-			setIsPlaying: state.setIsPlaying,
 			next: state.next,
 			prev: state.prev,
 			setCurrentTime: state.setCurrentTime,
-			setDuration: state.setDuration,
 		})),
 	);
 
-	const volume = usePreferencesStore((state) => state.volume);
-	const setVolume = usePreferencesStore((state) => state.setVolume);
-	const shownVolume = muted ? 0 : volume;
-
 	const currentTrack = queue[currentIndex] ?? null;
-	const trackSrc = currentTrack?.src;
 	const hasTrack = Boolean(currentTrack);
 	const isLastTrack = currentIndex >= queue.length - 1;
 
-	useEffect(() => {
-		const audio = audioRef.current;
-		if (!audio || !trackSrc) return;
-
-		audio.src = trackSrc;
-		audio.load();
-	}, [loadId, trackSrc]);
-
-	useEffect(() => {
-		const audio = audioRef.current;
-		if (!audio || !trackSrc) return;
-
-		if (isPlaying && audio.paused) {
-			audio.play().catch((error) => {
-				if (error.name !== 'AbortError') setIsPlaying(false);
-			});
-		} else if (!isPlaying && !audio.paused) {
-			audio.pause();
-		}
-	}, [isPlaying, loadId, trackSrc, setIsPlaying]);
-
-	useEffect(() => {
-		const audio = audioRef.current;
-		if (!audio) return;
-		audio.volume = shownVolume;
-	}, [shownVolume]);
-
-	useEffect(() => {
-		const audio = audioRef.current;
-		if (!audio) return;
-
-		const syncTime = () => setCurrentTime(audio.currentTime);
-		const syncDuration = () =>
-			setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
-		const onEmptied = () => {
-			setCurrentTime(0);
-			setDuration(0);
-		};
-		const onPlay = () => setIsPlaying(true);
-		const onPause = () => setIsPlaying(false);
-		const onEnded = () => next();
-
-		audio.addEventListener('timeupdate', syncTime);
-		audio.addEventListener('seeked', syncTime);
-		audio.addEventListener('loadedmetadata', syncDuration);
-		audio.addEventListener('durationchange', syncDuration);
-		audio.addEventListener('emptied', onEmptied);
-		audio.addEventListener('play', onPlay);
-		audio.addEventListener('pause', onPause);
-		audio.addEventListener('ended', onEnded);
-
-		return () => {
-			audio.removeEventListener('timeupdate', syncTime);
-			audio.removeEventListener('seeked', syncTime);
-			audio.removeEventListener('loadedmetadata', syncDuration);
-			audio.removeEventListener('durationchange', syncDuration);
-			audio.removeEventListener('emptied', onEmptied);
-			audio.removeEventListener('play', onPlay);
-			audio.removeEventListener('pause', onPause);
-			audio.removeEventListener('ended', onEnded);
-		};
-	}, [next, setCurrentTime, setDuration, setIsPlaying]);
-
-	useEffect(() => {
-		const input = seekRef.current;
-		if (!input) return;
-
-		const commitSeek = () => {
-			const audio = audioRef.current;
-			const value = Number(input.value);
-			if (audio && Number.isFinite(value)) {
-				audio.currentTime = value;
-				setCurrentTime(value);
-			}
-			setScrubTime(null);
-		};
-
-		input.addEventListener('change', commitSeek);
-		return () => input.removeEventListener('change', commitSeek);
-	}, [hasTrack, setCurrentTime]);
+	const { volume, toggleMute, changeVolume } = useVolume();
+	useAudioSync(audioRef, currentTrack?.src, volume);
+	const { seekRef, shownTime, setScrubTime } = useSeek(audioRef, hasTrack);
 
 	function handlePrev() {
 		const audio = audioRef.current;
@@ -157,35 +62,6 @@ export default function AudioPlayer() {
 		prev();
 	}
 
-	function handleToggleMute() {
-		if (shownVolume > 0) {
-			setMuted(true);
-		} else {
-			setMuted(false);
-			if (volume === 0) setVolume(1);
-		}
-	}
-
-	function handleVolumeChange(e) {
-		setMuted(false);
-		setVolume(Number(e.target.value));
-	}
-
-	function handleVisible() {
-		setVisible((e) => !e);
-		console.log(visible);
-	}
-
-	const shownTime = scrubTime ?? currentTime;
-	const progress =
-		duration > 0 ? Math.min((shownTime / duration) * 100, 100) : 0;
-	const volumeIcon =
-		shownVolume === 0
-			? 'volume_off'
-			: shownVolume < 0.5
-				? 'volume_down'
-				: 'volume_up';
-
 	return (
 		<>
 			<audio ref={audioRef} preload='metadata' />
@@ -194,112 +70,34 @@ export default function AudioPlayer() {
 				<section
 					aria-label='Reproductor de audio'
 					className={`fixed bottom-0 z-40 w-full ${visible ? '' : 'translate-y-full'} border-t border-primary bg-darkgray/95 text-white backdrop-blur transition-transform ease-in-out duration-300`}>
-					<Button
-						size='noPadding'
-						variant={visible ? 'ghost' : 'primary'}
-						onClick={handleVisible}
-						className={`absolute ${visible ? 'top-0 ' : `-top-6`} right-0`}>
-						<span className='material-symbols-outlined'>
-							{visible ? 'close' : `arrow_upward`}
-						</span>
-					</Button>
+					<VisibilityToggle
+						visible={visible}
+						onToggle={() => setVisible((v) => !v)}
+					/>
 					<div className='mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 px-4 py-3 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)] md:px-6'>
-						<div className='flex min-w-0 items-center gap-3'>
-							{currentTrack.cover ? (
-								<Image
-									unoptimized
-									width={48}
-									height={48}
-									src={currentTrack.cover}
-									alt={`Portada de ${currentTrack.title}`}
-									className='size-12 shrink-0 object-cover'
-								/>
-							) : (
-								<div
-									className='size-12 shrink-0 bg-primary'
-									aria-hidden='true'
-								/>
-							)}
-							<div className='min-w-0'>
-								<p className='truncate font-headline text-sm font-bold uppercase tracking-tighter'>
-									{currentTrack.title}
-								</p>
-								<p className='truncate text-xs text-lightgray'>
-									{currentTrack.artist}
-								</p>
-							</div>
-						</div>
+						<TrackInfo track={currentTrack} />
 
 						<div className='contents md:flex md:flex-col md:items-center md:gap-1'>
-							<div className='col-start-2 row-start-1 flex items-center gap-2'>
-								<button
-									type='button'
-									onClick={handlePrev}
-									className='flex cursor-pointer items-center text-lightgray transition-colors hover:text-white'
-									aria-label='Anterior'>
-									<span className='material-symbols-outlined'>
-										skip_previous
-									</span>
-								</button>
-								<button
-									type='button'
-									onClick={togglePlay}
-									className='flex size-10 cursor-pointer items-center justify-center rounded-full bg-primary transition-transform hover:scale-105'
-									aria-label={isPlaying ? 'Pausar' : 'Reproducir'}>
-									<span className='material-symbols-outlined'>
-										{isPlaying ? 'pause' : 'play_arrow'}
-									</span>
-								</button>
-								<button
-									type='button'
-									onClick={next}
-									disabled={isLastTrack}
-									className='flex cursor-pointer items-center text-lightgray transition-colors hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-lightgray'
-									aria-label='Siguiente'>
-									<span className='material-symbols-outlined'>skip_next</span>
-								</button>
-							</div>
-
-							<div className='col-span-2 row-start-2 flex w-full items-center gap-3 text-xs tabular-nums text-lightgray'>
-								<span className='w-10 text-right'>{formatTime(shownTime)}</span>
-								<input
-									ref={seekRef}
-									type='range'
-									min={0}
-									max={duration || 0}
-									step={0.1}
-									value={Math.min(shownTime, duration || 0)}
-									disabled={!duration}
-									onChange={(e) => setScrubTime(Number(e.target.value))}
-									className='player-range'
-									style={{ '--progress': `${progress}%` }}
-									aria-label='Posición de la canción'
-									aria-valuetext={`${formatTime(shownTime)} de ${formatTime(duration)}`}
-								/>
-								<span className='w-10'>{formatTime(duration)}</span>
-							</div>
-						</div>
-
-						<div className='hidden items-center justify-end gap-2 md:flex'>
-							<button
-								type='button'
-								onClick={handleToggleMute}
-								className='flex cursor-pointer items-center text-lightgray transition-colors hover:text-white'
-								aria-label={shownVolume === 0 ? 'Activar sonido' : 'Silenciar'}>
-								<span className='material-symbols-outlined'>{volumeIcon}</span>
-							</button>
-							<input
-								type='range'
-								min={0}
-								max={1}
-								step={0.01}
-								value={shownVolume}
-								onChange={handleVolumeChange}
-								className='player-range max-w-28'
-								style={{ '--progress': `${shownVolume * 100}%` }}
-								aria-label='Volumen'
+							<PlaybackControls
+								isPlaying={isPlaying}
+								isLastTrack={isLastTrack}
+								onPrev={handlePrev}
+								onTogglePlay={togglePlay}
+								onNext={next}
+							/>
+							<SeekBar
+								seekRef={seekRef}
+								time={shownTime}
+								duration={duration}
+								onScrub={setScrubTime}
 							/>
 						</div>
+
+						<VolumeControl
+							volume={volume}
+							onToggleMute={toggleMute}
+							onChange={changeVolume}
+						/>
 					</div>
 				</section>
 			)}
