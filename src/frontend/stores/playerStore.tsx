@@ -5,7 +5,8 @@ import type { Track } from '@/shared/lib/tracks';
 
 // El elemento <audio> es la fuente de verdad del tiempo y la duración.
 // El store solo refleja esos valores (vía eventos del <audio>) y guarda
-// la cola, la pista actual, el estado de reproducción y el volumen.
+// la cola, la pista actual y el estado de reproducción.
+// El volumen vive (y se persiste) en preferencesStore.
 
 type PlayerState = {
 	queue: Track[];
@@ -13,7 +14,6 @@ type PlayerState = {
 	isPlaying: boolean;
 	currentTime: number;
 	duration: number;
-	volume: number;
 	// Se incrementa cada vez que se pide cargar una pista (aunque sea la misma)
 	// para que el reproductor sepa que debe cargarla y empezar desde 0.
 	loadId: number;
@@ -29,7 +29,6 @@ type PlayerState = {
 	prev: () => void;
 	setCurrentTime: (time: number) => void;
 	setDuration: (duration: number) => void;
-	setVolume: (volume: number) => void;
 };
 
 export const usePlayerStore = create<PlayerState>((set, get) => ({
@@ -38,7 +37,6 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
 	isPlaying: false,
 	currentTime: 0,
 	duration: 0,
-	volume: 1,
 	loadId: 0,
 
 	setQueue: (tracks, startIndex = 0) =>
@@ -109,5 +107,4 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
 
 	setCurrentTime: (time) => set({ currentTime: time }),
 	setDuration: (duration) => set({ duration }),
-	setVolume: (volume) => set({ volume: Math.min(Math.max(volume, 0), 1) }),
 }));

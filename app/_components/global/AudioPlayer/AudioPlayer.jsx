@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useShallow } from 'zustand/react/shallow';
 import { usePlayerStore } from '@/frontend/stores/playerStore';
+import { usePreferencesStore } from '@/frontend/stores/preferencesStore';
 import './player.css';
+import Button from '@/frontend/components/buttons/GeneralButton';
 
-// Si la pista lleva más de estos segundos, "anterior" la reinicia en vez de cambiar de pista
 const RESTART_THRESHOLD = 3;
 
 function formatTime(value) {
@@ -19,9 +20,9 @@ function formatTime(value) {
 export default function AudioPlayer() {
 	const audioRef = useRef(null);
 	const seekRef = useRef(null);
-	const lastVolumeRef = useRef(1);
-	// Valor de la barra mientras se arrastra (null = no se está arrastrando)
+	const [muted, setMuted] = useState(false);
 	const [scrubTime, setScrubTime] = useState(null);
+	const [visible, setVisible] = useState(true);
 
 	const {
 		queue,
@@ -29,7 +30,6 @@ export default function AudioPlayer() {
 		isPlaying,
 		currentTime,
 		duration,
-		volume,
 		loadId,
 		togglePlay,
 		setIsPlaying,
@@ -37,7 +37,6 @@ export default function AudioPlayer() {
 		prev,
 		setCurrentTime,
 		setDuration,
-		setVolume,
 	} = usePlayerStore(
 		useShallow((state) => ({
 			queue: state.queue,
@@ -45,7 +44,6 @@ export default function AudioPlayer() {
 			isPlaying: state.isPlaying,
 			currentTime: state.currentTime,
 			duration: state.duration,
-			volume: state.volume,
 			loadId: state.loadId,
 			togglePlay: state.togglePlay,
 			setIsPlaying: state.setIsPlaying,
@@ -53,16 +51,18 @@ export default function AudioPlayer() {
 			prev: state.prev,
 			setCurrentTime: state.setCurrentTime,
 			setDuration: state.setDuration,
-			setVolume: state.setVolume,
 		})),
 	);
+
+	const volume = usePreferencesStore((state) => state.volume);
+	const setVolume = usePreferencesStore((state) => state.setVolume);
+	const shownVolume = muted ? 0 : volume;
 
 	const currentTrack = queue[currentIndex] ?? null;
 	const trackSrc = currentTrack?.src;
 	const hasTrack = Boolean(currentTrack);
 	const isLastTrack = currentIndex >= queue.length - 1;
 
-	// Carga la pista cada vez que se pide una (loadId cambia aunque sea la misma canción)
 	useEffect(() => {
 		const audio = audioRef.current;
 		if (!audio || !trackSrc) return;
@@ -71,14 +71,12 @@ export default function AudioPlayer() {
 		audio.load();
 	}, [loadId, trackSrc]);
 
-	// Sincroniza play/pausa del store con el elemento <audio>
 	useEffect(() => {
 		const audio = audioRef.current;
 		if (!audio || !trackSrc) return;
 
 		if (isPlaying && audio.paused) {
 			audio.play().catch((error) => {
-				// AbortError ocurre cuando una carga nueva interrumpe el play anterior: es esperado
 				if (error.name !== 'AbortError') setIsPlaying(false);
 			});
 		} else if (!isPlaying && !audio.paused) {
@@ -89,10 +87,9 @@ export default function AudioPlayer() {
 	useEffect(() => {
 		const audio = audioRef.current;
 		if (!audio) return;
-		audio.volume = volume;
-	}, [volume]);
+		audio.volume = shownVolume;
+	}, [shownVolume]);
 
-	// El <audio> es la fuente de verdad: el store solo refleja sus eventos
 	useEffect(() => {
 		const audio = audioRef.current;
 		if (!audio) return;
@@ -129,8 +126,6 @@ export default function AudioPlayer() {
 		};
 	}, [next, setCurrentTime, setDuration, setIsPlaying]);
 
-	// El evento nativo "change" del range se dispara al soltar (o con cada paso del teclado):
-	// ahí se aplica el salto. Mientras se arrastra solo se actualiza la vista previa.
 	useEffect(() => {
 		const input = seekRef.current;
 		if (!input) return;
@@ -151,7 +146,10 @@ export default function AudioPlayer() {
 
 	function handlePrev() {
 		const audio = audioRef.current;
-		if (audio && (audio.currentTime > RESTART_THRESHOLD || currentIndex === 0)) {
+		if (
+			audio &&
+			(audio.currentTime > RESTART_THRESHOLD || currentIndex === 0)
+		) {
 			audio.currentTime = 0;
 			setCurrentTime(0);
 			return;
@@ -160,30 +158,52 @@ export default function AudioPlayer() {
 	}
 
 	function handleToggleMute() {
-		if (volume > 0) {
-			lastVolumeRef.current = volume;
-			setVolume(0);
+		if (shownVolume > 0) {
+			setMuted(true);
 		} else {
-			setVolume(lastVolumeRef.current || 1);
+			setMuted(false);
+			if (volume === 0) setVolume(1);
 		}
 	}
 
+	function handleVolumeChange(e) {
+		setMuted(false);
+		setVolume(Number(e.target.value));
+	}
+
+	function handleVisible() {
+		setVisible((e) => !e);
+		console.log(visible);
+	}
+
 	const shownTime = scrubTime ?? currentTime;
-	const progress = duration > 0 ? Math.min((shownTime / duration) * 100, 100) : 0;
+	const progress =
+		duration > 0 ? Math.min((shownTime / duration) * 100, 100) : 0;
 	const volumeIcon =
-		volume === 0 ? 'volume_off' : volume < 0.5 ? 'volume_down' : 'volume_up';
+		shownVolume === 0
+			? 'volume_off'
+			: shownVolume < 0.5
+				? 'volume_down'
+				: 'volume_up';
 
 	return (
 		<>
-			{/* Siempre montado para no perder el estado de reproducción entre renders */}
 			<audio ref={audioRef} preload='metadata' />
 
 			{hasTrack && (
 				<section
 					aria-label='Reproductor de audio'
-					className='sticky bottom-0 z-40 border-t border-primary bg-darkgray/95 text-white backdrop-blur'>
+					className={`fixed bottom-0 z-40 w-full ${visible ? '' : 'translate-y-full'} border-t border-primary bg-darkgray/95 text-white backdrop-blur transition-transform ease-in-out duration-300`}>
+					<Button
+						size='noPadding'
+						variant={visible ? 'ghost' : 'primary'}
+						onClick={handleVisible}
+						className={`absolute ${visible ? 'top-0 ' : `-top-6`} right-0`}>
+						<span className='material-symbols-outlined'>
+							{visible ? 'close' : `arrow_upward`}
+						</span>
+					</Button>
 					<div className='mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 px-4 py-3 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)] md:px-6'>
-						{/* Pista actual */}
 						<div className='flex min-w-0 items-center gap-3'>
 							{currentTrack.cover ? (
 								<Image
@@ -195,7 +215,10 @@ export default function AudioPlayer() {
 									className='size-12 shrink-0 object-cover'
 								/>
 							) : (
-								<div className='size-12 shrink-0 bg-primary' aria-hidden='true' />
+								<div
+									className='size-12 shrink-0 bg-primary'
+									aria-hidden='true'
+								/>
 							)}
 							<div className='min-w-0'>
 								<p className='truncate font-headline text-sm font-bold uppercase tracking-tighter'>
@@ -207,7 +230,6 @@ export default function AudioPlayer() {
 							</div>
 						</div>
 
-						{/* Controles + barra de progreso (en mobile se reparten en dos filas) */}
 						<div className='contents md:flex md:flex-col md:items-center md:gap-1'>
 							<div className='col-start-2 row-start-1 flex items-center gap-2'>
 								<button
@@ -215,7 +237,9 @@ export default function AudioPlayer() {
 									onClick={handlePrev}
 									className='flex cursor-pointer items-center text-lightgray transition-colors hover:text-white'
 									aria-label='Anterior'>
-									<span className='material-symbols-outlined'>skip_previous</span>
+									<span className='material-symbols-outlined'>
+										skip_previous
+									</span>
 								</button>
 								<button
 									type='button'
@@ -256,13 +280,12 @@ export default function AudioPlayer() {
 							</div>
 						</div>
 
-						{/* Volumen (solo desktop; en mobile se usa el del dispositivo) */}
 						<div className='hidden items-center justify-end gap-2 md:flex'>
 							<button
 								type='button'
 								onClick={handleToggleMute}
 								className='flex cursor-pointer items-center text-lightgray transition-colors hover:text-white'
-								aria-label={volume === 0 ? 'Activar sonido' : 'Silenciar'}>
+								aria-label={shownVolume === 0 ? 'Activar sonido' : 'Silenciar'}>
 								<span className='material-symbols-outlined'>{volumeIcon}</span>
 							</button>
 							<input
@@ -270,10 +293,10 @@ export default function AudioPlayer() {
 								min={0}
 								max={1}
 								step={0.01}
-								value={volume}
-								onChange={(e) => setVolume(Number(e.target.value))}
+								value={shownVolume}
+								onChange={handleVolumeChange}
 								className='player-range max-w-28'
-								style={{ '--progress': `${volume * 100}%` }}
+								style={{ '--progress': `${shownVolume * 100}%` }}
 								aria-label='Volumen'
 							/>
 						</div>

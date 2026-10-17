@@ -5,10 +5,9 @@
 	appearance: none;
 	width: 100%;
 	height: 4px;
-	border-radius: 9999px;
 	background: linear-gradient(
 		to right,
-		var(--color-primary-light) var(--progress),
+		var(--color-primary) var(--progress),
 		#4a4a4a var(--progress)
 	);
 	cursor: pointer;

@@ -1,5 +1,6 @@
 'use client';
 import { useFormStatus } from 'react-dom';
+import { twMerge } from 'tailwind-merge';
 
 const variants = {
 	primary: {
@@ -20,8 +21,8 @@ const variants = {
 		fill: 'bg-white',
 	},
 	ghost: {
-		button: 'bg-transparent text-primary hover:text-white',
-		fill: 'bg-primary',
+		button: 'bg-transparent text-lightgray hover:text-white',
+		fill: 'bg-transparent',
 	},
 	disabled: {
 		button: 'bg-zinc-400 text-zinc-700 ',
@@ -47,21 +48,18 @@ export default function Button({
 }) {
 	const current = variants[variant];
 
-	const classes = [
-		`group relative isolate flex items-center justify-center gap-4 font-headline font-bold uppercase transition-all duration-300 ${variant != 'disabled' ? 'cursor-pointer' : 'cursor-not-allowed'}`,
+	const classes = twMerge(
+		'group relative isolate flex items-center justify-center gap-4 font-headline font-bold uppercase transition-all duration-300',
+		variant !== 'disabled' ? 'cursor-pointer' : 'cursor-not-allowed',
+		variant !== 'textLink' && 'overflow-hidden',
 		sizes[size],
 		current.button,
-		fullWidth ? 'w-full' : '',
+		fullWidth && 'w-full',
 		className,
-	]
-		.filter(Boolean)
-		.join(' ');
+	);
 
 	return (
-		<button
-			className={`${classes} ${variant !== 'textLink' && 'overflow-hidden'}`}
-			disabled={variant === 'disabled'}
-			{...props}>
+		<button className={classes} disabled={variant === 'disabled'} {...props}>
 			<span
 				className={[
 					'absolute inset-y-0 left-[-1%] w-0 -z-10 transition-all duration-700 group-hover:w-[101%]',

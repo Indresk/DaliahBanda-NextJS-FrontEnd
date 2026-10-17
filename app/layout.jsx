@@ -4,6 +4,7 @@ import Header from './_components/global/Header/Header';
 import Footer from './_components/global/Footer/Footer';
 // import DaliahClicker from './_components/global/DaliahClicker/DaliahClicker';
 import AudioPlayer from './_components/global/AudioPlayer/AudioPlayer';
+import PreferencesHydrator from '../src/frontend/providers/PreferencesHydrator';
 
 export default function RootLayout({ children }) {
 	return (
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
 					<main className='w-screen'>{children}</main>
 					<Footer />
 				</div>
+				<PreferencesHydrator />
 				<AudioPlayer />
 				{/* <DaliahClicker /> */}
 			</body>

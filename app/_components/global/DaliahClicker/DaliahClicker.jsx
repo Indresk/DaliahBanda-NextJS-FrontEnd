@@ -1,23 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './styles.css';
 import Image from 'next/image';
+import { usePreferencesStore } from '@/frontend/stores/preferencesStore';
 
 function DaliahClicker() {
-	const [daliahCookieCount, setDaliahCookieCount] = useState(0);
+	const daliahCookieCount = usePreferencesStore((s) => s.daliahClicks);
+	const incrementClicks = usePreferencesStore((s) => s.incrementClicks);
 	const [cookieSideBar, setCookieSideBar] = useState(false);
-
-	useEffect(() => {
-		const stored = localStorage.getItem('daliahClicks');
-		if (stored) {
-			setDaliahCookieCount(Number(stored));
-		}
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem('daliahClicks', daliahCookieCount);
-	}, [daliahCookieCount]);
 
 	return (
 		<div
@@ -43,9 +34,7 @@ function DaliahClicker() {
 				<div className='full-clicker-window flex flex-col justify-center items-center gap-4'>
 					<button
 						className='cookie-button w-25 flex justify-center items-center'
-						onClick={() => {
-							setDaliahCookieCount(daliahCookieCount + 1);
-						}}>
+						onClick={incrementClicks}>
 						<Image
 							width={763.92}
 							height={763.92}

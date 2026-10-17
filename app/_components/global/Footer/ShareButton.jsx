@@ -23,7 +23,7 @@ export default function ShareButton() {
 	return (
 		<span
 			onClick={handleShare}
-			className='material-symbols-outlined cursor-pointer hover:scale-110 transition-transform h-[24px]'>
+			className='material-symbols-outlined cursor-pointer hover:scale-110 transition-transform h-6'>
 			share
 		</span>
 	);
