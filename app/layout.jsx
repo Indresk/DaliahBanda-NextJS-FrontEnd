@@ -8,7 +8,7 @@ import AudioPlayer from './_components/global/AudioPlayer/AudioPlayer';
 export default function RootLayout({ children }) {
 	return (
 		<html
-			lang='en'
+			lang='es'
 			className={`h-full antialiased ${materialSymbols.variable} ${manrope.variable} ${spaceGrotesk.variable}`}>
 			<head></head>
 			<body className='min-h-full flex flex-col'>

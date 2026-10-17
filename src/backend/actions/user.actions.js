@@ -4,10 +4,10 @@ import { USER_ROLES } from '../../shared/constants';
 import UserService from '../services/user.service';
 import { internalRequestWrapper } from '../utils/internalRequestWrapper';
 
-export async function createUser(email, role = USER_ROLES.USER) {
+export async function createUser(email) {
 	const responseData = await internalRequestWrapper(UserService.create, [
 		email,
-		role,
+		USER_ROLES.USER,
 	]);
 	return responseData;
 }

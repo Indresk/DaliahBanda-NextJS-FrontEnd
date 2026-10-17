@@ -12,6 +12,7 @@ import AllowedEmailsService from '../services/allowedEmails.service';
 
 export default function authMiddleware(middleware) {
 	return async (request, event) => {
+		const { pathname } = request.nextUrl;
 		if (!pathname.startsWith('/dashboard')) {
 			return NextResponse.next();
 		}

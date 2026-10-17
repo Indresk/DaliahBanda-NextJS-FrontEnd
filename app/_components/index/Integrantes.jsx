@@ -142,6 +142,7 @@ export default function Integrantes() {
 							key={p.id}
 							onClick={() => handleSelectedChange(p.id)}>
 							<Image
+								draggable='false'
 								className='aspect-video'
 								width={p.photo.width}
 								height={p.photo.height}

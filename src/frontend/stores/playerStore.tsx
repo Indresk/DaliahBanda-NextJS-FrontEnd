@@ -3,6 +3,10 @@
 import { create } from 'zustand';
 import type { Track } from '@/shared/lib/tracks';
 
+// El elemento <audio> es la fuente de verdad del tiempo y la duración.
+// El store solo refleja esos valores (vía eventos del <audio>) y guarda
+// la cola, la pista actual, el estado de reproducción y el volumen.
+
 type PlayerState = {
 	queue: Track[];
 	currentIndex: number;
@@ -10,11 +14,15 @@ type PlayerState = {
 	currentTime: number;
 	duration: number;
 	volume: number;
+	// Se incrementa cada vez que se pide cargar una pista (aunque sea la misma)
+	// para que el reproductor sepa que debe cargarla y empezar desde 0.
+	loadId: number;
 
 	setQueue: (tracks: Track[], startIndex?: number) => void;
 	playTrack: (track: Track, queue?: Track[]) => void;
 	playByIndex: (index: number) => void;
 	togglePlay: () => void;
+	setIsPlaying: (isPlaying: boolean) => void;
 	pause: () => void;
 	resume: () => void;
 	next: () => void;
@@ -31,79 +39,75 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
 	currentTime: 0,
 	duration: 0,
 	volume: 1,
+	loadId: 0,
 
 	setQueue: (tracks, startIndex = 0) =>
-		set({
+		set((state) => ({
 			queue: tracks,
 			currentIndex: tracks.length ? startIndex : -1,
 			isPlaying: tracks.length > 0,
 			currentTime: 0,
 			duration: 0,
-		}),
+			loadId: state.loadId + 1,
+		})),
 
 	playTrack: (track, queue) => {
 		const activeQueue = queue ?? get().queue;
 		const index = activeQueue.findIndex((t) => t.id === track.id);
 
-		if (index >= 0) {
-			set({
-				queue: activeQueue,
-				currentIndex: index,
-				isPlaying: true,
-				currentTime: 0,
-			});
-			return;
-		}
-
-		set({
-			queue: [track],
-			currentIndex: 0,
+		set((state) => ({
+			queue: index >= 0 ? activeQueue : [track],
+			currentIndex: index >= 0 ? index : 0,
 			isPlaying: true,
 			currentTime: 0,
-		});
+			duration: 0,
+			loadId: state.loadId + 1,
+		}));
 	},
 
 	playByIndex: (index) => {
 		const { queue } = get();
 		if (index < 0 || index >= queue.length) return;
-		set({ currentIndex: index, isPlaying: true, currentTime: 0 });
+		set((state) => ({
+			currentIndex: index,
+			isPlaying: true,
+			currentTime: 0,
+			duration: 0,
+			loadId: state.loadId + 1,
+		}));
 	},
 
 	togglePlay: () => set((state) => ({ isPlaying: !state.isPlaying })),
+	setIsPlaying: (isPlaying) => set({ isPlaying }),
 	pause: () => set({ isPlaying: false }),
 	resume: () => {
-		const { currentIndex, queue } = get();
+		const { currentIndex, queue, playByIndex } = get();
 		if (currentIndex === -1 && queue.length > 0) {
-			set({ currentIndex: 0, isPlaying: true });
+			playByIndex(0);
 			return;
 		}
 		set({ isPlaying: true });
 	},
 
 	next: () => {
-		const { currentIndex, queue } = get();
+		const { currentIndex, queue, playByIndex } = get();
 		if (!queue.length) return;
-		const nextIndex = currentIndex + 1;
-		if (nextIndex < queue.length) {
-			set({ currentIndex: nextIndex, isPlaying: true, currentTime: 0 });
+		if (currentIndex + 1 < queue.length) {
+			playByIndex(currentIndex + 1);
 		} else {
+			// Fin de la cola: se detiene
 			set({ isPlaying: false });
 		}
 	},
 
+	// El reinicio de la pista (si lleva más de 3s) lo resuelve el reproductor,
+	// porque necesita el tiempo real del <audio>.
 	prev: () => {
-		const { currentIndex, currentTime } = get();
-		if (currentTime > 3) {
-			set({ currentTime: 0 });
-			return;
-		}
-		const prevIndex = currentIndex - 1;
-		if (prevIndex >= 0) {
-			set({ currentIndex: prevIndex, isPlaying: true, currentTime: 0 });
-		}
+		const { currentIndex, playByIndex } = get();
+		playByIndex(Math.max(currentIndex - 1, 0));
 	},
 
 	setCurrentTime: (time) => set({ currentTime: time }),
 	setDuration: (duration) => set({ duration }),
-	setVolume: (volume) => set({ volume }),
+	setVolume: (volume) => set({ volume: Math.min(Math.max(volume, 0), 1) }),
 }));

@@ -17,6 +17,8 @@ export const ERROR_CODES = {
 	INVALID_AUTH_HEADER: 'invalid_auth_header',
 	FORBIDDEN: 'forbidden',
 	INSUFFICIENT_PERMISSIONS: 'insufficient_permissions',
+	SUBSCRIBER_NOT_FOUND: 'subscriber_not_found',
+	SUBSCRIBER_ALREADY_EXISTS: 'subscriber_already_exists',
 };
 
 Object.freeze(ERROR_CODES);

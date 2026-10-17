@@ -73,4 +73,12 @@ export const errorsDictionary = {
 		statusCode: 403,
 		message: 'No tienes permisos suficientes para realizar esta acción',
 	},
+	[ERROR_CODES.SUBSCRIBER_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró la suscripción solicitada',
+	},
+	[ERROR_CODES.SUBSCRIBER_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'El correo ya está suscrito',
+	},
 };

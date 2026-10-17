@@ -1,6 +1,6 @@
 'use client';
 import { SubmitButton } from '@/frontend/components/buttons/GeneralButton';
-import { createUser } from '@/back/actions/user.actions';
+import { subscribeEmail } from '@/back/actions/subscribeEmail.actions';
 import { useRef, useState } from 'react';
 
 export default function EmailUpdatesForm() {
@@ -12,13 +12,13 @@ export default function EmailUpdatesForm() {
 		setStatus('loading');
 		const email = formData.get('emailUpdates');
 		try {
-			const response = await createUser(email);
+			const response = await subscribeEmail(email);
 
 			if (response.status === 'error') throw new Error(response.message);
 
 			setStatus('success');
 			formRef.current?.reset();
-			messageBoxRef.current.textContent = '¡Correo registrado exitosamente!';
+			messageBoxRef.current.textContent = response.message;
 		} catch (error) {
 			setStatus('error');
 			messageBoxRef.current.textContent = `Hubo un error al registrar tu correo: ${error.message}. Intenta de nuevo.`;
