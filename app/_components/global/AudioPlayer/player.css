@@ -1,0 +1,50 @@
+/* Barras de progreso y volumen del reproductor.
+   --progress se actualiza desde AudioPlayer.jsx para pintar la parte recorrida. */
+.player-range {
+	--progress: 0%;
+	appearance: none;
+	width: 100%;
+	height: 4px;
+	border-radius: 9999px;
+	background: linear-gradient(
+		to right,
+		var(--color-primary-light) var(--progress),
+		#4a4a4a var(--progress)
+	);
+	cursor: pointer;
+}
+
+.player-range:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.player-range:focus-visible {
+	outline: 2px solid var(--color-primary-light);
+	outline-offset: 4px;
+}
+
+.player-range::-webkit-slider-thumb {
+	appearance: none;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #fff;
+	transition: transform 150ms ease;
+}
+
+.player-range:hover::-webkit-slider-thumb {
+	transform: scale(1.25);
+}
+
+.player-range::-moz-range-track {
+	background: transparent;
+}
+
+.player-range::-moz-range-thumb {
+	width: 12px;
+	height: 12px;
+	border: 0;
+	border-radius: 50%;
+	background: #fff;
+}
