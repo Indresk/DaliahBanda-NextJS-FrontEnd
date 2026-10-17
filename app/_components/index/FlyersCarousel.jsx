@@ -1,5 +1,9 @@
-import './carousel.css';
+'use client';
+
+import { useRef } from 'react';
 import Image from 'next/image';
+import { useInfiniteCarousel } from '@/frontend/hooks/useInfiniteCarousel';
+import './carousel.css';
 
 const flyers = [
 	{
@@ -73,15 +77,23 @@ const flyers = [
 ];
 
 export default function FlyersCarousel() {
+	const scrollerRef = useRef(null);
+	useInfiniteCarousel(scrollerRef);
+
 	return (
 		<section className='flex flex-col px-8 pb-14 md:px-14 gap-8 '>
 			<h2 className='tracking-tighter font-headline uppercase font-bold text-3xl md:text-5xl'>
 				Trayectoria y <span className='text-primary-light'>presentaciones</span>
 			</h2>
-			<div className='w-full relative no-scrollbar overflow-hidden '>
-				<div className='wrapper flex mask-[linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]'>
+			<div
+				ref={scrollerRef}
+				role='region'
+				aria-label='Flyers de presentaciones'
+				tabIndex={0}
+				className='flyers-mask no-scrollbar w-full cursor-grab select-none overflow-x-auto overscroll-x-contain active:cursor-grabbing'>
+				<div className='flex w-max'>
 					<FlyerGroup />
-					<FlyerGroup isHidden />
+					<FlyerGroup isCopy />
 				</div>
 			</div>
 			<div className='text-[12px]'>
@@ -101,22 +113,26 @@ export default function FlyersCarousel() {
 	);
 }
 
-function FlyerGroup({ isHidden = false }) {
+function FlyerGroup({ isCopy = false }) {
 	return (
-		<div aria-hidden={isHidden} className='flex min-h-20 gap-4 animation pr-4'>
-			{flyers.map((event, i) => (
-				<picture
-					key={i}
-					className='card flex grow-0 shrink-0 basis-[10em] lg:basis-[20em] relative aspect-square'>
+		<ul
+			aria-hidden={isCopy || undefined}
+			inert={isCopy}
+			className='flex shrink-0 gap-4 pr-4'>
+			{flyers.map((event) => (
+				<li
+					key={event.link}
+					className='relative aspect-square size-40 shrink-0 lg:size-80'>
 					<Image
 						fill
-						loading='lazy'
+						draggable={false}
 						src={event.link}
 						alt={event.alt}
-						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+						sizes='(min-width: 1024px) 320px, 160px'
+						className='object-cover'
 					/>
-				</picture>
+				</li>
 			))}
-		</div>
+		</ul>
 	);
 }

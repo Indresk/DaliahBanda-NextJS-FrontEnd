@@ -1,12 +1,18 @@
-@keyframes infiniteloop {
-	from {
-		translate: 0;
-	}
-	to {
-		translate: -100%;
-	}
-}
-
-.animation {
-	animation: infiniteloop 60s infinite linear;
+/* Difuminado en los bordes del carrusel. Tailwind solo genera `mask-image`,
+   y Safari 15 todavía requiere el prefijo -webkit-. */
+.flyers-mask {
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		black 10%,
+		black 90%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		black 10%,
+		black 90%,
+		transparent 100%
+	);
 }
