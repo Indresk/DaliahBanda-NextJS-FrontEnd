@@ -1,4 +1,5 @@
 import Button from '@/frontend/components/buttons/GeneralButton';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 
 export default function VisibilityToggle({ visible, onToggle }) {
 	return (
@@ -7,9 +8,7 @@ export default function VisibilityToggle({ visible, onToggle }) {
 			variant={visible ? 'ghost' : 'primary'}
 			onClick={onToggle}
 			className={`absolute ${visible ? 'top-0' : '-top-6'} right-0`}>
-			<span className='material-symbols-outlined'>
-				{visible ? 'close' : 'arrow_upward'}
-			</span>
+			<MSOIcon>{visible ? 'close' : 'arrow_upward'}</MSOIcon>
 		</Button>
 	);
 }

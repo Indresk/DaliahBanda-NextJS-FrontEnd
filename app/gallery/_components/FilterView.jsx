@@ -7,6 +7,8 @@ import {
 	getBackstageImages,
 } from '../../../services/firebase';
 import Image from 'next/image';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
+import Button from '@/frontend/components/buttons/GeneralButton';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 
 export default function FilterView() {
@@ -101,11 +103,14 @@ export default function FilterView() {
 							src={assetInfo.url}
 							alt={assetInfo.alt}
 						/>
-						<span
+						<Button
+							variant='ghost'
+							size='noPadding'
+							aria-label='Compartir'
 							onClick={() => handleShare(assetInfo.url)}
-							className='material-symbols-outlined mt-2 inline-block cursor-pointer transition-transform hover:scale-110 h-6'>
-							share
-						</span>{' '}
+							className='mt-2 h-6 hover:scale-110'>
+							<MSOIcon>share</MSOIcon>
+						</Button>
 					</div>
 				))}
 			</div>

@@ -1,6 +1,7 @@
 'use client';
 import { useFormStatus } from 'react-dom';
 import { twMerge } from 'tailwind-merge';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 
 const variants = {
 	primary: {
@@ -70,9 +71,9 @@ export default function Button({
 			<span className='relative z-10 flex items-center gap-4'>
 				{children}
 				{rigthArrow && (
-					<span className='material-symbols-outlined group-hover:translate-x-5'>
+					<MSOIcon className='group-hover:translate-x-5'>
 						arrow_right_alt
-					</span>
+					</MSOIcon>
 				)}
 			</span>
 		</button>

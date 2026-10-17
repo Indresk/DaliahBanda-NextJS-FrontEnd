@@ -1,6 +1,7 @@
 // PÁGINA TEMPORAL: solo para probar el reproductor de audio. Borrar la carpeta app/test-player cuando ya no se necesite.
 import PlayButton from '../_components/global/AudioPlayer/PlayButton';
 import { tracks } from '@/shared/lib/tracks';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 
 /** @type {import('next').Metadata} */
 export const metadata = {
@@ -33,7 +34,7 @@ export default function TestPlayerPage() {
 						</div>
 						<PlayButton track={track} queue={tracks}>
 							<span className='flex cursor-pointer items-center gap-1 bg-primary px-4 py-2 font-headline text-sm font-bold uppercase'>
-								<span className='material-symbols-outlined'>play_arrow</span>
+								<MSOIcon>play_arrow</MSOIcon>
 								Reproducir
 							</span>
 						</PlayButton>

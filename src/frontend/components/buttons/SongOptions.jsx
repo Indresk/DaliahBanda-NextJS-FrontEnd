@@ -1,3 +1,5 @@
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
+
 const variants = {
 	play: {
 		icon: 'play_arrow',
@@ -39,9 +41,9 @@ export default function SongOptions({
 
 	return (
 		<div className={classes} {...props}>
-			<span className='material-symbols-outlined cursor-pointer group-hover:scale-110 transition-transform h-[24px] text-primary'>
+			<MSOIcon className='cursor-pointer group-hover:scale-110 transition-transform h-[24px] text-primary'>
 				{current.icon}
-			</span>
+			</MSOIcon>
 			<p className='tracking-tighter font-headline uppercase text-[12px]'>
 				{current.copy}
 			</p>

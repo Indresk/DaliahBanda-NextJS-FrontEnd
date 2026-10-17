@@ -1,5 +1,8 @@
 'use client';
 
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
+import Button from '@/frontend/components/buttons/GeneralButton';
+
 export default function ShareButton() {
 	async function handleShare() {
 		try {
@@ -21,10 +24,13 @@ export default function ShareButton() {
 	}
 
 	return (
-		<span
+		<Button
+			variant='ghost'
+			size='noPadding'
+			aria-label='Compartir'
 			onClick={handleShare}
-			className='material-symbols-outlined cursor-pointer hover:scale-110 transition-transform h-6'>
-			share
-		</span>
+			className='h-6 text-primary hover:scale-110 hover:text-primary'>
+			<MSOIcon>share</MSOIcon>
+		</Button>
 	);
 }

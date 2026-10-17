@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 import EmailUpdatesForm from './EmailUpdatesForm'; // Componente de cliente
 import ShareButton from './ShareButton'; // Componente de cliente
 
@@ -48,9 +49,11 @@ export default function Footer() {
 				<div className='flex gap-4 text-primary flex-wrap items-center'>
 					<ShareButton />
 					<a href='mailto:daliahbanda@gmail.com' className='h-6'>
-						<span className='material-symbols-outlined cursor-pointer hover:scale-110 transition-transform'>
+						<MSOIcon
+							className='cursor-pointer hover:scale-110 transition-transform'
+							aria-label='Enviar correo'>
 							mail
-						</span>
+						</MSOIcon>
 					</a>
 					<a
 						href='https://www.instagram.com/daliah_banda/'

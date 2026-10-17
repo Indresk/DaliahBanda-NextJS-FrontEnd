@@ -1,5 +1,6 @@
 import RangeInput from '@/frontend/components/inputs/RangeInput';
 import Button from '@/frontend/components/buttons/GeneralButton';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 
 function getVolumeIcon(volume) {
 	if (volume === 0) return 'volume_off';
@@ -15,9 +16,7 @@ export default function VolumeControl({ volume, onToggleMute, onChange }) {
 				size='noPadding'
 				aria-label={volume === 0 ? 'Activar sonido' : 'Silenciar'}
 				onClick={onToggleMute}>
-				<span className='material-symbols-outlined'>
-					{getVolumeIcon(volume)}
-				</span>
+				<MSOIcon>{getVolumeIcon(volume)}</MSOIcon>
 			</Button>
 			<RangeInput
 				min={0}

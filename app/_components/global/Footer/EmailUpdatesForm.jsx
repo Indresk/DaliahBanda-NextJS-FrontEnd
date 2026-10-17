@@ -1,4 +1,5 @@
 'use client';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 import { SubmitButton } from '@/frontend/components/buttons/GeneralButton';
 import { subscribeEmail } from '@/back/actions/subscribeEmail.actions';
 import { useRef, useState } from 'react';
@@ -47,11 +48,9 @@ export default function EmailUpdatesForm() {
 				/>
 				<SubmitButton>
 					{status === 'loading' ? (
-						<span className='material-symbols-outlined animate-spin'>
-							progress_activity
-						</span>
+						<MSOIcon className='animate-spin'>progress_activity</MSOIcon>
 					) : (
-						<span className='material-symbols-outlined'>send</span>
+						<MSOIcon>send</MSOIcon>
 					)}
 				</SubmitButton>
 				<span
