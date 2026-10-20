@@ -13,15 +13,17 @@ import { homeMeta } from '@/frontend/seo/pages/home.meta';
 import { buildMusicGroupSchema } from '@/frontend/seo/schema/musicGroup';
 import { getActiveFlyers } from '@/back/services/flyers.cache';
 import { getActiveMembers } from '@/back/services/members.cache';
-import { getFeaturedSong, getRelatedWorks } from '@/back/services/music.cache';
+import { getAlbums, getFeaturedSong, getRelatedWorks, getSongs } from '@/back/services/music.cache';
 
 export const metadata = buildMetadata(homeMeta);
 
 export default async function Home() {
-	const [members, flyers, featuredSong] = await Promise.all([
+	const [members, flyers, featuredSong, albums, songs] = await Promise.all([
 		getActiveMembers(),
 		getActiveFlyers(),
 		getFeaturedSong(),
+		getAlbums(),
+		getSongs(),
 	]);
 	const related = featuredSong
 		? await getRelatedWorks(featuredSong.album.id, featuredSong.id)
@@ -29,7 +31,7 @@ export default async function Home() {
 
 	return (
 		<>
-			<JsonLd data={buildMusicGroupSchema(members)} />
+			<JsonLd data={buildMusicGroupSchema({ members, albums, songs })} />
 			<Hero />
 			<div className='flex flex-row'>
 				<div className='flex items-end basis-[20%] pl-8 pt-14 md:pl-14 shrink-0'>

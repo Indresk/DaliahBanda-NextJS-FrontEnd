@@ -1,4 +1,5 @@
 import { getGalleryEvents, getGalleryMembers } from '@/back/services/gallery.cache';
+import { getActiveMembers } from '@/back/services/members.cache';
 import { getAlbum, getAlbums } from '@/back/services/music.cache';
 import { SITE } from '@/frontend/seo/site';
 
@@ -38,9 +39,22 @@ export default async function sitemap() {
 		})),
 	]);
 
+	// Páginas de los miembros activos
+	const activeMembers = await getActiveMembers();
+	const aboutPages = [
+		{ url: `${SITE.url}/about-us`, changeFrequency: 'yearly', priority: 0.6 },
+		{ url: `${SITE.url}/about-us/members`, changeFrequency: 'monthly', priority: 0.6 },
+		...activeMembers.map((member) => ({
+			url: `${SITE.url}/about-us/members/${member.slug}`,
+			changeFrequency: 'yearly',
+			priority: 0.5,
+		})),
+	];
+
 	return [
 		...galleryPages,
 		...musicPages,
+		...aboutPages,
 		{
 			url: 'https://daliahbanda.com',
 			lastModified: new Date(),

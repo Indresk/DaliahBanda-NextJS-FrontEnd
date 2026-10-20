@@ -54,6 +54,10 @@ class MembersService {
 		return await MembersRepository.findAll({ onlyActive: true });
 	}
 
+	static async findPublicBySlug(slug) {
+		return await MembersRepository.findPublicBySlug(slug);
+	}
+
 	static async findByIdWithRelations(id) {
 		return await MembersRepository.findByIdWithRelations(id);
 	}

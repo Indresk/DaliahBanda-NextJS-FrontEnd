@@ -2,10 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-
-const memberAlt = (member) =>
-	member.featuredAlt ||
-	`${member.name} interpretando ${member.instrument.toLowerCase()} en una presentación en vivo de Daliah Banda.`;
+import { memberImageAlt as memberAlt } from '@/shared/utils/members';
 
 // Carrusel de miembros activos (vienen de la base de datos, ver getActiveMembers)
 export default function Integrantes({ members }) {

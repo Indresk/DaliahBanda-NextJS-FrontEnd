@@ -31,6 +31,13 @@ export const getSong = unstable_cache(
 	options,
 );
 
+// Canciones publicadas (título + álbum): datos estructurados del grupo
+export const getSongs = unstable_cache(
+	async () => SongsService.listPublic(),
+	['music-songs'],
+	options,
+);
+
 export const getFeaturedSong = unstable_cache(
 	async () => SongsService.findFeatured(),
 	['music-featured'],

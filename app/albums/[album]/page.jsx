@@ -2,6 +2,10 @@ import { notFound } from 'next/navigation';
 import { getAlbum, getRelatedWorks } from '@/back/services/music.cache';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { albumMeta } from '@/frontend/seo/pages/albums.meta';
+import JsonLd from '@/frontend/seo/JsonLd';
+import { buildBreadcrumbSchema } from '@/frontend/seo/schema/breadcrumb';
+import { buildMusicAlbumSchema } from '@/frontend/seo/schema/music';
+import { albumsCrumbs } from '../_lib/breadcrumbs';
 import BackLink from '../_components/BackLink';
 import RelatedWorks from '../_components/RelatedWorks';
 import StreamingLinks from '../_components/StreamingLinks';
@@ -24,6 +28,8 @@ export default async function AlbumPage({ params }) {
 
 	return (
 		<section className='albumContainer flex flex-col gap-8'>
+			<JsonLd data={buildMusicAlbumSchema(album)} />
+			<JsonLd data={buildBreadcrumbSchema(albumsCrumbs(album))} />
 			<div className='albumSongs flex flex-col gap-4'>
 				<div className='flex items-start justify-between gap-4 border-b border-white pb-2'>
 					<h1 className='text-2xl font-semibold md:text-3xl'>

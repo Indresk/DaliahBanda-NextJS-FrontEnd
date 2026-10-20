@@ -126,6 +126,18 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 - Export: `/dashboard/music/export` (álbumes con canciones, enlaces y recursos anidados, por slug) y
   `pnpm db:seed:music`.
 
+## Sobre nosotros, integrantes y migas
+
+- `/about-us` (info general), `/about-us/members` (miembros activos + línea del tiempo de la
+  formación) y `/about-us/members/[slug]` (página personal; 404 si no está activo). Lecturas
+  cacheadas en `members.cache.js` (`getActiveMembers`, `getMember`, `getLineupTimeline`).
+- La formación es la tabla `lineup-entries` (persona, rol, año de inicio y fin, `memberId`
+  opcional que enlaza a su página) editable en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`.
+- **Migas de pan** con rutas paralelas: `app/albums/@breadcrumb` y `app/about-us/@breadcrumb`
+  pintan `ui/Breadcrumb` en el servidor con los títulos reales. La lógica de las migas está en
+  `_lib/breadcrumbs.js` de cada sección y la reutiliza el JSON-LD (`BreadcrumbList`). Una ruta
+  nueva bajo esas secciones necesita su carpeta en `@breadcrumb` (si no, no muestra migas).
+
 ## Metadata y SEO
 
 Todo vive en `src/frontend/seo/` (es de frontend: el backend no la necesita).
@@ -134,7 +146,9 @@ Todo vive en `src/frontend/seo/` (es de frontend: el backend no la necesita).
 - `pages/*.meta.js`: el contenido de cada página (título, descripción, ruta, keywords).
 - `buildMetadata.js`: convierte ese contenido en el `metadata` de Next (canonical, robots,
   Open Graph y Twitter completos) y define `rootMetadata` (`metadataBase`, plantilla de título).
-- `schema/*.js` + `JsonLd.jsx`: datos estructurados (schema.org) como JSON-LD.
+- `schema/*.js` + `JsonLd.jsx`: datos estructurados (schema.org) como JSON-LD: `MusicGroup` (home, con
+  miembros, álbumes y canciones de la base), `MusicAlbum`, `MusicRecording`, `Person` y `BreadcrumbList`.
+  Se enlazan entre sí con `@id` (`schema/ids.js`).
 
 Reglas: una página pública **no** escribe `metadata` a mano; hace
 `export const metadata = buildMetadata(xxxMeta)` (o `generateMetadata` si depende de la ruta).

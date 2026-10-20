@@ -1,0 +1,111 @@
+{
+	"section": "lineup",
+	"version": 1,
+	"exportedAt": "2026-10-20T22:43:37.856Z",
+	"entries": [
+		{
+			"memberSlug": "silvia",
+			"personName": "Silvia Berrio",
+			"role": "Voz principal",
+			"startYear": 2018,
+			"endYear": null,
+			"note": null
+		},
+		{
+			"memberSlug": null,
+			"personName": "Sebas",
+			"role": "Guitarra melódica (fundador)",
+			"startYear": 2018,
+			"endYear": 2020,
+			"note": "Fundó la banda en 2018."
+		},
+		{
+			"memberSlug": "mike",
+			"personName": "Mike Villaizan",
+			"role": "Guitarra melódica",
+			"startYear": 2020,
+			"endYear": null,
+			"note": "Entró para ocupar el lugar de Sebas."
+		},
+		{
+			"memberSlug": "rafa",
+			"personName": "Rafael Salcedo",
+			"role": "Bajo",
+			"startYear": 2018,
+			"endYear": 2024,
+			"note": null
+		},
+		{
+			"memberSlug": "rafa",
+			"personName": "Rafael Salcedo",
+			"role": "Teclados",
+			"startYear": 2024,
+			"endYear": null,
+			"note": "Pasó a los teclados porque hasta entonces el proyecto no tenía teclado."
+		},
+		{
+			"memberSlug": null,
+			"personName": "Daniel",
+			"role": "Bajo",
+			"startYear": 2024,
+			"endYear": 2025,
+			"note": "Estuvo 6 meses."
+		},
+		{
+			"memberSlug": null,
+			"personName": "Caro",
+			"role": "Bajo",
+			"startYear": 2025,
+			"endYear": 2025,
+			"note": "Estuvo 4 meses."
+		},
+		{
+			"memberSlug": "chris",
+			"personName": "Christian Ramírez",
+			"role": "Bajo",
+			"startYear": 2025,
+			"endYear": null,
+			"note": "Desde entonces, hace más de un año."
+		},
+		{
+			"memberSlug": null,
+			"personName": "Angel",
+			"role": "Batería",
+			"startYear": 2018,
+			"endYear": 2025,
+			"note": null
+		},
+		{
+			"memberSlug": "nico",
+			"personName": "Nicolás Araújo",
+			"role": "Batería",
+			"startYear": 2025,
+			"endYear": null,
+			"note": "Reemplazó a Angel."
+		},
+		{
+			"memberSlug": null,
+			"personName": "Dan",
+			"role": "Guitarra rítmica",
+			"startYear": 2018,
+			"endYear": 2023,
+			"note": null
+		},
+		{
+			"memberSlug": "aya",
+			"personName": "Jesús \"AYA\" Ardiles",
+			"role": "Guitarra rítmica y coros",
+			"startYear": 2023,
+			"endYear": null,
+			"note": "Reemplazó a Dan."
+		},
+		{
+			"memberSlug": null,
+			"personName": "Sully",
+			"role": "Corista",
+			"startYear": 2026,
+			"endYear": 2026,
+			"note": "Estuvo 6 meses."
+		}
+	]
+}

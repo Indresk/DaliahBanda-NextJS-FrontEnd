@@ -40,6 +40,7 @@ export const ERROR_CODES = {
 	GALLERY_UNKNOWN_PEOPLE: 'gallery_unknown_people',
 	GALLERY_ALT_REQUIRED: 'gallery_alt_required',
 	GALLERY_PERSON_MEMBER_TAKEN: 'gallery_person_member_taken',
+	LINEUP_ENTRY_NOT_FOUND: 'lineup_entry_not_found',
 	ALBUM_NOT_FOUND: 'album_not_found',
 	ALBUM_ALREADY_EXISTS: 'album_already_exists',
 	ALBUM_IN_USE: 'album_in_use',

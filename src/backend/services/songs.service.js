@@ -56,6 +56,10 @@ class SongsService {
 		return await SongsRepository.findPublic(albumSlug, songSlug);
 	}
 
+	static async listPublic() {
+		return await SongsRepository.findAllPublic();
+	}
+
 	// Con enlaces de escucha: los suyos o, si no tiene, los de su álbum
 	static async findFeatured() {
 		const song = await SongsRepository.findFeatured();

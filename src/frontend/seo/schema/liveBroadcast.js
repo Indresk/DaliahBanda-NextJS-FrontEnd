@@ -1,5 +1,5 @@
 import { SITE } from '../site';
-import { MUSIC_GROUP_ID } from './musicGroup';
+import { MUSIC_GROUP_ID } from './ids';
 
 const NAME = 'Daliah Banda - Ensayo en vivo';
 const DESCRIPTION =

@@ -30,6 +30,32 @@ class MembersRepository {
 		return await Member.findByPk(id, { raw: true });
 	}
 
+	// Página personal: miembro activo con enlaces e imágenes de apoyo (3 consultas; las hijas
+	// van aparte para no multiplicar filas), cacheadas por members.cache.js
+	static async findPublicBySlug(slug) {
+		const member = await Member.findOne({
+			attributes: [...PUBLIC_ATTRIBUTES, 'longBio', 'joinedAt'],
+			where: { slug, active: true },
+			include: [
+				{
+					model: MemberLink,
+					as: 'links',
+					separate: true,
+					attributes: ['kind', 'label', 'url'],
+					order: ORDER,
+				},
+				{
+					model: MemberImage,
+					as: 'images',
+					separate: true,
+					attributes: ['id', 'url', 'alt', 'width', 'height'],
+					order: ORDER,
+				},
+			],
+		});
+		return member?.toJSON() ?? null;
+	}
+
 	// Miembro con sus enlaces e imágenes, en una sola consulta con JOIN
 	static async findByIdWithRelations(id) {
 		const member = await Member.findByPk(id, {

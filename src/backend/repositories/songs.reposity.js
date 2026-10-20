@@ -101,6 +101,17 @@ class SongsRepository {
 		return song?.toJSON() ?? null;
 	}
 
+	// Todas las canciones publicadas (título y ruta): datos estructurados del grupo
+	static async findAllPublic() {
+		const songs = await Song.findAll({
+			attributes: ['id', 'slug', 'title'],
+			where: { active: true },
+			include: [{ ...publicAlbumInclude, attributes: ['slug', 'title'] }],
+			order: NEWEST_FIRST,
+		});
+		return songs.map((song) => song.toJSON());
+	}
+
 	// Otras canciones para "Otros de nuestros trabajos"
 	static async findRelated({ excludeId, limit }) {
 		const songs = await Song.findAll({

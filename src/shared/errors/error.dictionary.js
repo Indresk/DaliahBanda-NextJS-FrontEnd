@@ -168,6 +168,10 @@ export const errorsDictionary = {
 		statusCode: 409,
 		message: 'Ese miembro ya está vinculado a otra etiqueta de la galería',
 	},
+	[ERROR_CODES.LINEUP_ENTRY_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró la entrada de la formación',
+	},
 	[ERROR_CODES.ALBUM_NOT_FOUND]: {
 		statusCode: 404,
 		message: 'No se encontró el álbum',

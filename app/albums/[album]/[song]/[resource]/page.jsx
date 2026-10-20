@@ -4,6 +4,9 @@ import { SONG_RESOURCE_ROUTES } from '@/shared/constants';
 import { songPath } from '@/shared/utils/music';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { songResourceMeta } from '@/frontend/seo/pages/albums.meta';
+import JsonLd from '@/frontend/seo/JsonLd';
+import { buildBreadcrumbSchema } from '@/frontend/seo/schema/breadcrumb';
+import { albumsCrumbs } from '../../../_lib/breadcrumbs';
 import BackLink from '../../../_components/BackLink';
 
 const SongResourcePage = async ({ params }) => {
@@ -24,6 +27,11 @@ const SongResourcePage = async ({ params }) => {
 
 	return (
 		<section className='flex flex-col gap-6'>
+			<JsonLd
+				data={buildBreadcrumbSchema(
+					albumsCrumbs(song.album, song, { route, label: config.label }),
+				)}
+			/>
 			<div className='flex items-start justify-between gap-4 border-b border-white pb-2'>
 				<h1 className='text-2xl font-semibold md:text-3xl'>
 					{config.label} de {song.title}

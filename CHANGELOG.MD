@@ -70,3 +70,6 @@
 
 - Música en base de datos: `albums` (los sencillos son álbumes de una canción), `songs`, enlaces de escucha y recursos (stems, partituras, letra, video). Dashboard en `/dashboard/music`, export JSON y `pnpm db:seed:music`.
 - Páginas públicas `/albums`, `/albums/[album]`, `/albums/[album]/[song]` y sus recursos leen de la base con caché por etiqueta; el home usa la canción destacada y las obras relacionadas. Se eliminaron `songs.js`, `tracks.js` y la página temporal `test-player`.
+- Migas de pan por rutas paralelas (`@breadcrumb`) con los títulos reales en `/albums` y `/about-us`; se eliminó el `BreadCrumb` de cliente basado en la URL.
+- Datos estructurados: `MusicAlbum`, `MusicRecording`, `Person` y `BreadcrumbList`; `MusicGroup` ahora usa miembros, álbumes y canciones de la base (se quitó la lista fija de canciones).
+- Sobre nosotros: `/about-us`, `/about-us/members` (activos + línea del tiempo) y `/about-us/members/[slug]`. Tabla `lineup-entries`, dashboard `/dashboard/lineup`, export y `pnpm db:seed:lineup`.

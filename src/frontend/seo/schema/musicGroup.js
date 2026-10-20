@@ -1,30 +1,10 @@
 import { SITE } from '../site';
+import { MUSIC_GROUP_ID } from './ids';
+import { buildAlbumRef, buildRecordingRef } from './music';
+import { buildPersonRef } from './person';
 
-export const MUSIC_GROUP_ID = `${SITE.url}/#musicgroup`;
-
-// Pendiente traerlas de la DB una vez estén
-const FEATURED_TRACKS = [
-	'El amor se acabó',
-	'Intento sobrevivir',
-	'Si podré',
-	'Rebelión',
-];
-
-function toPerson(fullName) {
-	const nickname = fullName.match(/"([^"]+)"/)?.[1];
-	const withoutNickname = fullName.replace(/\s*"[^"]+"\s*/g, ' ').trim();
-
-	if (nickname && withoutNickname.includes(' ')) {
-		return {
-			'@type': 'Person',
-			name: withoutNickname,
-			alternateName: nickname,
-		};
-	}
-	return { '@type': 'Person', name: fullName.replace(/"/g, '') };
-}
-
-export function buildMusicGroupSchema(members) {
+// La banda: miembros activos, álbumes y canciones publicados (todo viene de la base de datos)
+export function buildMusicGroupSchema({ members, albums, songs }) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'MusicGroup',
@@ -46,8 +26,9 @@ export function buildMusicGroupSchema(members) {
 		member: members.map((member) => ({
 			'@type': 'OrganizationRole',
 			roleName: member.instrument,
-			member: toPerson(member.name),
+			member: buildPersonRef(member),
 		})),
-		track: FEATURED_TRACKS.map((name) => ({ '@type': 'MusicRecording', name })),
+		album: albums.map(buildAlbumRef),
+		track: songs.map((song) => buildRecordingRef(song.album, song)),
 	};
 }

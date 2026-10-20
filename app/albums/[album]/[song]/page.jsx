@@ -4,6 +4,10 @@ import { getAlbum, getRelatedWorks, getSong } from '@/back/services/music.cache'
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { songMeta } from '@/frontend/seo/pages/albums.meta';
 import { toPlayerQueue, toPlayerTrack } from '@/frontend/utils/playerTrack';
+import JsonLd from '@/frontend/seo/JsonLd';
+import { buildBreadcrumbSchema } from '@/frontend/seo/schema/breadcrumb';
+import { buildMusicRecordingSchema } from '@/frontend/seo/schema/music';
+import { albumsCrumbs } from '../../_lib/breadcrumbs';
 import BackLink from '../../_components/BackLink';
 import RelatedWorks from '../../_components/RelatedWorks';
 import SongResources from '../../_components/SongResources';
@@ -35,6 +39,8 @@ export default async function SongPage({ params }) {
 
 	return (
 		<article className='flex flex-col gap-8'>
+			<JsonLd data={buildMusicRecordingSchema(song, links)} />
+			<JsonLd data={buildBreadcrumbSchema(albumsCrumbs(song.album, song))} />
 			<header className='flex flex-col gap-4'>
 				<div className='flex items-start justify-between gap-4'>
 					<h1 className='font-headline text-4xl font-semibold tracking-tight md:text-5xl'>
