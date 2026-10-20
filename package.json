@@ -12,6 +12,7 @@
 		"db:seed:undo": "sequelize-cli db:seed:undo:all",
 		"db:migrate:undo": "sequelize-cli db:migrate:undo",
 		"lint": "eslint",
+		"db": "npm run db:create ; npm run db:migrate ; npm run db:seed",
 		"dev:db": "npm run db:create ; npm run db:migrate ; npm run db:seed ; next dev",
 		"start:db": "npm run db:create ; npm run db:migrate && next start"
 	},
