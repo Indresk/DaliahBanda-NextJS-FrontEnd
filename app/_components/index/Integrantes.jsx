@@ -50,24 +50,25 @@ export default function Integrantes() {
 						</h5>
 						<p className='text-sm md:text-base'>{integrante.desc}</p>
 					</div>
-					<picture className='basis-[60%] order-1 md:order-2 relative'>
+					<div className='basis-[60%] order-1 md:order-2 relative'>
 						<Image
 							width={integrante.photo.width}
 							height={integrante.photo.height}
+							sizes='(min-width: 768px) 60vw, 100vw'
 							src={integrante.photo.img}
 							alt={`${integrante.name} interpretando ${integrante.inst.toLowerCase()} en una presentación en vivo de Daliah Banda.`}
 						/>
 						<span
 							key={current}
 							className='absolute bottom-0 left-0 w-full border-primary border-b-2 origin-left scale-x-100 starting:scale-x-0 transition-[scale] duration-7000 ease-linear'></span>
-					</picture>
+					</div>
 				</div>
 			))}
 
 			<div className='overflow-auto w-full'>
 				<div className='flex w-[230%] md:w-full gap-4 md:gap-8'>
 					{availables.map((p) => (
-						<picture
+						<div
 							className='w-full cursor-pointer hover:border-primary md:border-b-2 '
 							key={p.id}
 							onClick={() => handleSelectedChange(p.id)}>
@@ -76,10 +77,11 @@ export default function Integrantes() {
 								className='aspect-video'
 								width={p.photo.width}
 								height={p.photo.height}
+								sizes='(min-width: 768px) 30vw, 70vw'
 								src={p.photo.img}
 								alt={`${p.name} interpretando ${p.inst.toLowerCase()} en una presentación en vivo de Daliah Banda.`}
 							/>
-						</picture>
+						</div>
 					))}
 				</div>
 			</div>

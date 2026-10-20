@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import YmalItem from '../../albums/_components/YmalItem';
 import BigPlayButton from '@/frontend/assets/svg/BigPlayButton';
@@ -58,12 +57,12 @@ export default function RecommendedSong() {
 						<YmalItem song={ymal[1]} />
 					</div>
 				</div>
-				<picture className='song-image-container relative order-1 lg:order-2 flex items-center basis-[50%]'>
+				<div className='song-image-container relative order-1 lg:order-2 flex items-center basis-[50%]'>
 					<Image
 						width={song.cover.width}
 						height={song.cover.height}
+						sizes='(min-width: 1024px) 50vw, 100vw'
 						src={song.cover.img}
-						loading='lazy'
 						className='aspect-square'
 						alt={'Portada oficial de ' + song.name + '.'}
 					/>
@@ -73,7 +72,7 @@ export default function RecommendedSong() {
 							className='text-primary w-[20%] md:hidden cursor-pointer hover:scale-120 transition-transform'
 						/>
 					</div>
-				</picture>
+				</div>
 			</div>
 		</section>
 	);

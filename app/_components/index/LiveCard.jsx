@@ -10,10 +10,10 @@ export default function LiveCard({ className, ...props }) {
 					<Image
 						width={1440}
 						height={1440}
-						className='aspect-4/3'
+						sizes='(min-width: 768px) 45vw, 100vw'
+						className='aspect-4/3 w-full object-cover'
 						src='https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-portada2-v1.jpg'
 						alt='Daliah Banda transmitiendo ensayo en vivo de metalcore desde Bogotá'
-						loading='lazy'
 					/>
 				</figure>
 				<header className='flex flex-col gap-6 justify-between h-full'>

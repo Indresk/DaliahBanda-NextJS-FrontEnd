@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import './styles.css';
-import Image from 'next/image';
+import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
 import { usePreferencesStore } from '@/frontend/stores/preferencesStore';
 
 function DaliahClicker() {
@@ -17,13 +17,7 @@ function DaliahClicker() {
 				id='cookie-bookmark'
 				onClick={() => setCookieSideBar((prev) => !prev)}>
 				<div className='cookie-bookmark-container flex flex-col justify-center items-center'>
-					<Image
-						width={763.92}
-						height={763.92}
-						className='invert'
-						src='https://assets.daliahbanda.com/brand/logos/icon/logo-d-daliah-vector-v1.svg'
-						alt='Logo de Daliah Banda'
-					/>
+					<DaliahLogo />
 					<p className='text-[10px]'>{daliahCookieCount}</p>
 				</div>
 			</div>
@@ -35,13 +29,7 @@ function DaliahClicker() {
 					<button
 						className='cookie-button w-25 flex justify-center items-center'
 						onClick={incrementClicks}>
-						<Image
-							width={763.92}
-							height={763.92}
-							className='invert'
-							src='https://assets.daliahbanda.com/brand/logos/icon/logo-d-daliah-vector-v1.svg'
-							alt='Logo de Daliah Banda'
-						/>
+						<DaliahLogo />
 					</button>
 					<p className='text-lg'>{daliahCookieCount}</p>
 				</div>

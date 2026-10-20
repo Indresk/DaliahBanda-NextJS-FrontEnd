@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
 import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 import EmailUpdatesForm from './EmailUpdatesForm'; // Componente de cliente
 import ShareButton from './ShareButton'; // Componente de cliente
@@ -11,13 +11,7 @@ export default function Footer() {
 				<div className='max-w-sm'>
 					<div className='flex gap-4 items-center'>
 						<Link href='/' className='basis-40'>
-							<Image
-								width={763.92}
-								height={763.92}
-								className='invert'
-								src='https://assets.daliahbanda.com/brand/logos/icon/logo-d-daliah-vector-v1.svg'
-								alt='Logo de Daliah Banda'
-							/>
+							<DaliahLogo />
 						</Link>
 						<p className='font-body text-lightgray text-sm leading-relaxed'>
 							Sonido alternativo que fusiona punk rock, pop-punk y metal

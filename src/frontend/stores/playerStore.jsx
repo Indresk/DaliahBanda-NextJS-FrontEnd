@@ -1,37 +1,13 @@
 'use client';
 
 import { create } from 'zustand';
-import type { Track } from '@/shared/lib/tracks';
 
 // El elemento <audio> es la fuente de verdad del tiempo y la duración.
 // El store solo refleja esos valores (vía eventos del <audio>) y guarda
 // la cola, la pista actual y el estado de reproducción.
 // El volumen vive (y se persiste) en preferencesStore.
 
-type PlayerState = {
-	queue: Track[];
-	currentIndex: number;
-	isPlaying: boolean;
-	currentTime: number;
-	duration: number;
-	// Se incrementa cada vez que se pide cargar una pista (aunque sea la misma)
-	// para que el reproductor sepa que debe cargarla y empezar desde 0.
-	loadId: number;
-
-	setQueue: (tracks: Track[], startIndex?: number) => void;
-	playTrack: (track: Track, queue?: Track[]) => void;
-	playByIndex: (index: number) => void;
-	togglePlay: () => void;
-	setIsPlaying: (isPlaying: boolean) => void;
-	pause: () => void;
-	resume: () => void;
-	next: () => void;
-	prev: () => void;
-	setCurrentTime: (time: number) => void;
-	setDuration: (duration: number) => void;
-};
-
-export const usePlayerStore = create<PlayerState>((set, get) => ({
+export const usePlayerStore = create((set, get) => ({
 	queue: [],
 	currentIndex: -1,
 	isPlaying: false,
@@ -98,8 +74,6 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
 		}
 	},
 
-	// El reinicio de la pista (si lleva más de 3s) lo resuelve el reproductor,
-	// porque necesita el tiempo real del <audio>.
 	prev: () => {
 		const { currentIndex, playByIndex } = get();
 		playByIndex(Math.max(currentIndex - 1, 0));

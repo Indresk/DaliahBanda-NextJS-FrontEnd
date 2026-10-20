@@ -1,24 +1,24 @@
 // import { LiveContext } from "../context/LiveContext"
-import { useContext } from 'react';
-
-// import { Link } from
 
 import {
 	getStreamingStart,
 	getStreamingEnd,
 	DateToESString,
 } from '@/shared/utils/dates.js';
+import Link from 'next/link';
 
-const UTCDateStart = getStreamingStart();
-const UTCDateEnd = getStreamingEnd();
-const startDate = DateToESString(UTCDateStart, { day: true });
-const startHour = DateToESString(UTCDateStart, { hours: true });
-const endHour = DateToESString(UTCDateEnd, { hours: true });
+export const revalidate = 3600;
 
 export default function LiveView() {
 	// const {liveStatus} = useContext(LiveContext)
 
 	const liveStatus = false;
+
+	const UTCDateStart = getStreamingStart(Date.now());
+	const UTCDateEnd = getStreamingEnd(UTCDateStart);
+	const startDate = DateToESString(UTCDateStart, { day: true });
+	const startHour = DateToESString(UTCDateStart, { hours: true });
+	const endHour = DateToESString(UTCDateEnd, { hours: true });
 
 	return (
 		<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
@@ -120,18 +120,20 @@ export default function LiveView() {
 
 				<p>
 					Conoce más sobre Daliah banda en la{' '}
-					{/* <Link
-						to='/'
+					<Link
+						href={'/'}
 						className='underline text-pink-800'
-						title='Página principal de Daliah Banda'> */}
-					página principal
-					{/* </Link>{' '} */}o explora nuestra sección de{' '}
-					{/* <Link
-						to='/musica'
+						title='Página principal de Daliah Banda'>
+						página principal
+					</Link>{' '}
+					o explora nuestra sección de{' '}
+					<Link
+						href={'/musica'}
 						className='underline text-pink-800'
-						title='Música de Daliah Banda'> */}
-					música y lanzamientos
-					{/* </Link> */}.
+						title='Música de Daliah Banda'>
+						música y lanzamientos
+					</Link>
+					.
 				</p>
 			</section>
 

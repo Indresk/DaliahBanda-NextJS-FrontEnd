@@ -1,7 +1,7 @@
 import NavLink from '@/frontend/components/util/NavLink';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import Link from 'next/link';
-import Image from 'next/image';
+import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
 import MobileMenu from './MobileMenu';
 // import LiveBannerWrapper from './LiveBannerWrapper'; // El wrapper para el context
 import './header.css';
@@ -29,13 +29,7 @@ export default function Header() {
 				<nav className='flex gap-4 justify-between items-center relative'>
 					<div className='basis-40'>
 						<Link href='/' className='flex items-end w-10'>
-							<Image
-								width={763.92}
-								height={763.92}
-								className='invert'
-								src='https://assets.daliahbanda.com/brand/logos/icon/logo-d-daliah-vector-v1.svg'
-								alt='Logo de Daliah Banda'
-							/>
+							<DaliahLogo />
 							<span className='flex flex-col text-base/3 tracking-tighter font-headline'>
 								'aliah<small className='text-[10px] text-end'>banda</small>
 							</span>

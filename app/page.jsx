@@ -6,6 +6,7 @@ import RecommendedSong from './_components/index/RecommendedSong';
 import FlyersCarousel from './_components/index/FlyersCarousel';
 import Hero from './_components/index/Hero';
 import Image from 'next/image';
+import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
 
 /** @type {import('next').Metadata} */
 export const metadata = {
@@ -20,15 +21,16 @@ export default function Home() {
 		<>
 			<Hero />
 			<div className='flex flex-row'>
-				<picture className='flex items-end basis-[20%] pl-8 pt-14 md:pl-14 shrink-0'>
+				<div className='flex items-end basis-[20%] pl-8 pt-14 md:pl-14 shrink-0'>
 					<Image
 						width={576}
 						height={1280}
+						sizes='20vw'
 						className='block h-full w-auto max-w-full object-contain'
 						src='https://assets.daliahbanda.com/images/promo/promo-setlist-2025-v1.jpeg'
 						alt='Set list de Daliah Banda tocando en vivo en escenario de rock alternativo en Bogotá'
 					/>
-				</picture>
+				</div>
 				<section className='p-8 pt-14 pb-0 md:p-14 md:pb-0 flex-1 flex flex-col gap-6 justify-center '>
 					<h2 className='tracking-tighter font-headline uppercase font-bold text-3xl md:text-5xl'>
 						¿Quiénes somos?
@@ -68,10 +70,9 @@ export default function Home() {
 				</section>
 				<div className='w-full absolute bottom-0 left-0 z-[-2] aspect-4/3 md:aspect-5/2 mask-[linear-gradient(to_top,black,transparent)]'>
 					<Image
-						width={1622}
-						height={1080}
-						loading='eager'
-						className='w-full absolute bottom-0 left-0 z-[-2] aspect-4/3 md:aspect-5/2'
+						fill
+						sizes='100vw'
+						className='object-cover'
 						src='https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-34-v1.jpg'
 						alt='Guitarrista ritmico tocando en vivo su guitarra estilo stratocaster roja.'
 					/>
@@ -105,42 +106,38 @@ export default function Home() {
 						</p>
 					</div>
 					<div className='grid basis-[50%] grid-cols-[1fr_1fr] grid-rows-6 gap-x-8 md:gap-x-14 lg:gap-x-20 gap-y-6 lg:px-14'>
-						<picture className='col-start-1 row-start-2 row-span-2'>
-							<Image
-								width={1366}
-								height={615}
-								className='h-full w-full object-cover aspect-square'
-								src='https://assets.daliahbanda.com/images/backstage/backstage-usb2-v1.jpg'
-								alt='Daliah Banda posando en los camerinos de la Universidad San Buenaventura en Bogotá.'
-							/>
-						</picture>
-						<picture className='col-start-1 row-start-5 row-span-2'>
-							<Image
-								width={1080}
-								height={1350}
-								className='h-full w-full object-cover aspect-square'
-								src='https://assets.daliahbanda.com/images/backstage/recording-silvia-1-v1.webp'
-								alt='Silvia, cantante de Daliah Banda durante la sesión de grabación de voces.'
-							/>
-						</picture>
-						<picture className='col-start-2 row-start-1 row-span-2'>
-							<Image
-								width={829}
-								height={545}
-								className='h-full w-full object-cover aspect-square'
-								src='https://assets.daliahbanda.com/images/live/cambridge/cambridge-p2p-v1.jpg'
-								alt='Silvia y Mike de Daliah Banda durante presentación en vivo en el colegio Cambridge en bogotá.'
-							/>
-						</picture>
-						<picture className='col-start-2 row-start-4 row-span-2'>
-							<Image
-								width={901}
-								height={1600}
-								className='h-full w-full object-cover aspect-square'
-								src='https://assets.daliahbanda.com/images/live/kaiju/kaiju-show-v1.jpeg'
-								alt='Daliah Banda durante presentación en vivo en el bar Kaiju en Bogotá.'
-							/>
-						</picture>
+						<Image
+							width={1366}
+							height={615}
+							sizes='(min-width: 768px) 22vw, 42vw'
+							className='col-start-1 row-start-2 row-span-2 h-full w-full object-cover aspect-square'
+							src='https://assets.daliahbanda.com/images/backstage/backstage-usb2-v1.jpg'
+							alt='Daliah Banda posando en los camerinos de la Universidad San Buenaventura en Bogotá.'
+						/>
+						<Image
+							width={1080}
+							height={1350}
+							sizes='(min-width: 768px) 22vw, 42vw'
+							className='col-start-1 row-start-5 row-span-2 h-full w-full object-cover aspect-square'
+							src='https://assets.daliahbanda.com/images/backstage/recording-silvia-1-v1.webp'
+							alt='Silvia, cantante de Daliah Banda durante la sesión de grabación de voces.'
+						/>
+						<Image
+							width={829}
+							height={545}
+							sizes='(min-width: 768px) 22vw, 42vw'
+							className='col-start-2 row-start-1 row-span-2 h-full w-full object-cover aspect-square'
+							src='https://assets.daliahbanda.com/images/live/cambridge/cambridge-p2p-v1.jpg'
+							alt='Silvia y Mike de Daliah Banda durante presentación en vivo en el colegio Cambridge en bogotá.'
+						/>
+						<Image
+							width={901}
+							height={1600}
+							sizes='(min-width: 768px) 22vw, 42vw'
+							className='col-start-2 row-start-4 row-span-2 h-full w-full object-cover aspect-square'
+							src='https://assets.daliahbanda.com/images/live/kaiju/kaiju-show-v1.jpeg'
+							alt='Daliah Banda durante presentación en vivo en el bar Kaiju en Bogotá.'
+						/>
 					</div>
 				</section>
 
@@ -154,14 +151,9 @@ export default function Home() {
 								Formación actual
 							</h3>
 						</div>
-						<picture className='basis-30 rotate-12'>
-							<Image
-								width={763.92}
-								height={763.92}
-								src='https://assets.daliahbanda.com/brand/logos/icon/logo-d-daliah-vector-v1.svg'
-								alt='Logo de Daliah Banda sobre fondo blanco.'
-							/>
-						</picture>
+						<div className='basis-30 rotate-12'>
+							<DaliahLogo invert={false} />
+						</div>
 					</div>
 					<div className='py-15 md:py-23'></div>
 					<Integrantes />
