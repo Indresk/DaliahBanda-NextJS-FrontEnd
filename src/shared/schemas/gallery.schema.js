@@ -5,36 +5,23 @@ import {
 	GALLERY_MEMBER_MODES,
 } from '../constants';
 import { ERROR_CODES } from '../errors/error.codes';
+import {
+	dimensionSchema,
+	emptyToNull,
+	httpsUrlSchema,
+	idSchema,
+	optionalHttpsUrl,
+	optionalText,
+	slugSchema,
+} from './common.schema';
 
 // ---------- Piezas reutilizables ----------
-
-// Identificador legible para URL: minúsculas, números y guiones
-export const slugSchema = z
-	.string({ error: 'Identificador inválido.' })
-	.trim()
-	.toLowerCase()
-	.min(1, { error: 'Identificador inválido.' })
-	.max(80, { error: 'Identificador inválido.' })
-	.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
-		error: 'Identificador inválido (solo minúsculas, números y guiones).',
-	});
-
-const idSchema = z.coerce
-	.number({ error: 'Identificador inválido.' })
-	.int({ error: 'Identificador inválido.' })
-	.positive({ error: 'Identificador inválido.' });
 
 const categorySchema = z.enum(Object.values(GALLERY_CATEGORIES), {
 	error: 'Categoría inválida.',
 });
 
 const dateSchema = z.iso.date({ error: 'Fecha inválida (AAAA-MM-DD).' });
-
-const dimensionSchema = z.coerce
-	.number({ error: 'Dimensión inválida.' })
-	.int({ error: 'Dimensión inválida.' })
-	.min(1, { error: 'Dimensión inválida.' })
-	.max(GALLERY.MAX_DIMENSION, { error: 'Dimensión inválida.' });
 
 const altSchema = z
 	.string({ error: 'El texto alternativo no es válido.' })
@@ -48,24 +35,10 @@ const memberSlugsSchema = z
 	.max(GALLERY.MAX_MEMBERS_PER_IMAGE, { error: 'Demasiados integrantes.' })
 	.transform((slugs) => [...new Set(slugs)]);
 
-// Los formularios envían "" para un campo opcional vacío: se trata como ausente
-const emptyToNull = (schema) =>
-	z.preprocess((value) => (value === '' ? null : value), schema);
-
-const optionalText = (max) =>
-	z
-		.string()
-		.trim()
-		.max(max, { error: `Admite hasta ${max} caracteres.` })
-		.nullish()
-		.transform((value) => value || null);
-
 // ---------- Imágenes ----------
 
 const imageFieldsSchema = z.object({
-	url: z
-		.url({ protocol: /^https$/, error: 'La URL debe ser https.' })
-		.max(500, { error: 'La URL es demasiado larga.' }),
+	url: httpsUrlSchema,
 	alt: altSchema,
 	category: categorySchema,
 	eventId: idSchema,
@@ -183,12 +156,7 @@ export const galleryEventSchema = z.object({
 		.max(120, { error: 'El título admite hasta 120 caracteres.' }),
 	description: optionalText(1000),
 	eventDate: emptyToNull(dateSchema.nullish()).transform((value) => value ?? null),
-	coverUrl: emptyToNull(
-		z
-			.url({ protocol: /^https$/, error: 'La portada debe ser una URL https.' })
-			.max(500)
-			.nullish(),
-	).transform((value) => value ?? null),
+	coverUrl: optionalHttpsUrl,
 	isFeatured: z.boolean().default(false),
 });
 
@@ -204,6 +172,8 @@ export const galleryPersonSchema = z.object({
 		.max(80, { error: 'El nombre admite hasta 80 caracteres.' }),
 	// true = integrante actual (aparece en los filtros públicos)
 	isMember: z.boolean().default(false),
+	// Miembro de la banda al que corresponde esta etiqueta (opcional)
+	memberId: emptyToNull(idSchema.nullish()).transform((value) => value ?? null),
 });
 
 export const galleryPersonChangesSchema = galleryPersonSchema.omit({ slug: true });

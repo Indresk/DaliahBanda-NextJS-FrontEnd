@@ -164,4 +164,64 @@ export const errorsDictionary = {
 		statusCode: 400,
 		message: 'Una imagen activa necesita texto alternativo (alt)',
 	},
+	[ERROR_CODES.GALLERY_PERSON_MEMBER_TAKEN]: {
+		statusCode: 409,
+		message: 'Ese miembro ya está vinculado a otra etiqueta de la galería',
+	},
+	[ERROR_CODES.ALBUM_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el álbum',
+	},
+	[ERROR_CODES.ALBUM_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya existe un álbum con ese identificador',
+	},
+	[ERROR_CODES.ALBUM_IN_USE]: {
+		statusCode: 409,
+		message: 'El álbum tiene canciones. Elimínalas antes de eliminar el álbum',
+	},
+	[ERROR_CODES.SONG_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró la canción',
+	},
+	[ERROR_CODES.SONG_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya existe una canción con ese identificador en el álbum',
+	},
+	[ERROR_CODES.MUSIC_LINK_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el enlace',
+	},
+	[ERROR_CODES.MUSIC_LINK_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya hay un enlace para esa plataforma',
+	},
+	[ERROR_CODES.SONG_RESOURCE_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el recurso',
+	},
+	[ERROR_CODES.FLYER_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el flyer',
+	},
+	[ERROR_CODES.FLYER_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ese flyer ya existe',
+	},
+	[ERROR_CODES.MEMBER_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró al miembro',
+	},
+	[ERROR_CODES.MEMBER_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya existe un miembro con ese identificador',
+	},
+	[ERROR_CODES.MEMBER_LINK_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el enlace',
+	},
+	[ERROR_CODES.MEMBER_IMAGE_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró la imagen',
+	},
 };

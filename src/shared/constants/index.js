@@ -5,3 +5,5 @@ export * from './kick.js';
 export * from './assets.js';
 export * from './encryption.js';
 export * from './gallery.js';
+export * from './members.js';
+export * from './music.js';

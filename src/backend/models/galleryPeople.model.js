@@ -10,6 +10,7 @@ const GalleryPerson = sequelize.define(
 		slug: { type: DataTypes.STRING(80), unique: true, allowNull: false },
 		name: { type: DataTypes.STRING(80), allowNull: false },
 		isMember: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+		memberId: { type: DataTypes.INTEGER, allowNull: true, unique: true },
 	},
 	{ tableName: 'gallery-people' },
 );

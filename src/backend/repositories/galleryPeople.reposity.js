@@ -25,6 +25,10 @@ class GalleryPeopleRepository {
 		return await GalleryPerson.findOne({ where: { slug }, raw: true });
 	}
 
+	static async findByMemberId(memberId) {
+		return await GalleryPerson.findOne({ where: { memberId }, raw: true });
+	}
+
 	// Los slugs que existen de la lista dada (para validar integrantes de una imagen)
 	static async findExistingSlugs(slugs) {
 		const rows = await GalleryPerson.findAll({

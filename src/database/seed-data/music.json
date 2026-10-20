@@ -1,0 +1,41 @@
+{
+	"section": "music",
+	"version": 1,
+	"exportedAt": "2026-10-20T21:48:08.652Z",
+	"albums": [
+		{
+			"slug": "intento-sobrevivir",
+			"title": "Intento Sobrevivir",
+			"type": "single",
+			"tagline": null,
+			"description": null,
+			"coverUrl": "https://assets.daliahbanda.com/images/covers/intento-sobrevivir-v2.jpg",
+			"coverWidth": 768,
+			"coverHeight": 768,
+			"releasedAt": "2022-01-01",
+			"active": true,
+			"links": [],
+			"songs": [
+				{
+					"slug": "intento-sobrevivir",
+					"title": "Intento Sobrevivir",
+					"trackNumber": 1,
+					"releasedAt": null,
+					"shortDescription": "Una canción que retrata el conflicto interno de quien no logra expresar sus emociones. Letras honestas y una atmósfera intensa acompañan una narrativa profundamente humana.",
+					"longDescription": null,
+					"themes": [],
+					"story": null,
+					"acknowledgments": null,
+					"audioUrl": null,
+					"coverUrl": null,
+					"coverWidth": null,
+					"coverHeight": null,
+					"featured": true,
+					"active": true,
+					"links": [],
+					"resources": []
+				}
+			]
+		}
+	]
+}

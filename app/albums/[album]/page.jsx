@@ -1,143 +1,44 @@
 import { notFound } from 'next/navigation';
-import PlayButton from '../../_components/global/AudioPlayer/PlayButton';
-import { tracks } from '@/shared/lib/tracks';
-
+import { getAlbum, getRelatedWorks } from '@/back/services/music.cache';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { albumMeta } from '@/frontend/seo/pages/albums.meta';
+import BackLink from '../_components/BackLink';
+import RelatedWorks from '../_components/RelatedWorks';
+import StreamingLinks from '../_components/StreamingLinks';
+import TrackList from '../_components/TrackList';
 
 export async function generateMetadata({ params }) {
-	const { album } = await params;
-	return buildMetadata(albumMeta(album));
+	const { album: slug } = await params;
+	const album = await getAlbum(slug);
+
+	return album ? buildMetadata(albumMeta(album)) : {};
 }
 
-
-//especifico para vistas build rendered
-// Retirar dinamyc params en vistas dinamicas
-// export const dynamicParams = false;
-
-// async function getAlbum(id: string): Promise<AlbumResponse | null> {
-// 	const res = await fetch(`${process.env.BACK_URL}/albums/${id}`, {
-// 		cache: 'force-cache',
-// 		next: { revalidate: 3600 },
-// 	});
-
-// 	console.log(res);
-
-// 	if (!res.ok) return null;
-
-// 	return res.json();
-// }
-
-//especifico para vistas build rendered
-// async function getAlbumIds(): Promise<AlbumListItem[]> {
-// 	const res = await fetch(`${process.env.BACK_URL}/albums`, {
-// 		cache: 'force-cache',
-// 		next: { revalidate: 3600 },
-// 	});
-
-// 	if (!res.ok) return [];
-
-// 	return res.json();
-// }
-
-// especifico para vistas build rendered
-// export async function generateStaticParams() {
-// 	const albums = await getAlbumIds();
-
-// 	return albums.map((item) => ({
-// 		album: item.id,
-// 	}));
-// }
-
-// export async function generateMetadata({
-// 	params,
-// }: PageProps): Promise<Metadata> {
-// 	const { album } = await params;
-// 	const albumData = await getAlbum(album);
-
-// 	if (!albumData) {
-// 		return {
-// 			title: 'Álbum no encontrado',
-// 			robots: {
-// 				index: false,
-// 				follow: false,
-// 			},
-// 		};
-// 	}
-
-// 	const title = albumData.title;
-// 	const description =
-// 		albumData.description ??
-// 		`Explora el contenido del álbum ${albumData.title}.`;
-
-// 	return {
-// 		title,
-// 		description,
-// 		alternates: {
-// 			canonical: `/albums/${album}`,
-// 		},
-// 		openGraph: {
-// 			title,
-// 			description,
-// 			url: `/albums/${album}`,
-// 			type: 'article',
-// 			images: albumData.image ? [albumData.image] : undefined,
-// 		},
-// 		twitter: {
-// 			card: albumData.image ? 'summary_large_image' : 'summary',
-// 			title,
-// 			description,
-// 			images: albumData.image ? [albumData.image] : undefined,
-// 		},
-// 	};
-// }
-
-const albumPlaceholder = {
-	name: 'test01',
-};
-
 export default async function AlbumPage({ params }) {
-	const { album } = await params;
-	// const albumData = await getAlbum(album);
+	const { album: slug } = await params;
+	const album = await getAlbum(slug);
+	if (!album) notFound();
 
-	// if (!albumData) notFound();
+	// El álbum no tiene id de canción: se excluye solo el álbum de las sugerencias
+	const related = await getRelatedWorks(album.id, 0);
 
 	return (
-		<main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-			{/* <h1>{albumData.title}</h1>
-			<p>{albumData.description}</p> */}
-			<h1>{album}</h1>
-
-			<section>
-				<div className='albumContainer min-h-screen'>
-					<div className='albumSongs text-2xl font-semibold'>
-						Escucha el album aqui y donde prefieras
-						<hr className='my-6 ' />
-						<div className='songItem  bg-darkgray grid grid-cols-[1fr_10fr]  items-center  '>
-							{/* columna 1 */}
-							<div>
-								<div>
-									<span className='text-2xl font-bold '>#1</span>
-								</div>
-							</div>
-							{/* columna 2 */}
-							<div>
-								<small className='text-sm  font-light'>{'abril 4, 2026'}</small>
-								<h3 className='text-lg font-semibold'>
-									{albumPlaceholder.name}
-								</h3>
-							</div>
-							<hr className='my-6 border-lightgray w-full col-span-2 m-0' />
-						</div>
-					</div>
+		<section className='albumContainer flex flex-col gap-8'>
+			<div className='albumSongs flex flex-col gap-4'>
+				<div className='flex items-start justify-between gap-4 border-b border-white pb-2'>
+					<h1 className='text-2xl font-semibold md:text-3xl'>
+						Escucha el álbum aquí y donde prefieras
+					</h1>
+					<BackLink href='/albums' />
 				</div>
-				{/* {tracks.map((track) => (
-					<div key={track.id}>
-						<span>{track.title}</span>
-						<PlayButton track={track} queue={tracks} />
-					</div>
-				))} */}
-			</section>
-		</main>
+				<StreamingLinks links={album.links} />
+			</div>
+			{album.songs.length > 0 ? (
+				<TrackList album={album} />
+			) : (
+				<p className='text-lightgray'>Pronto habrá canciones disponibles.</p>
+			)}
+			<RelatedWorks related={related} />
+		</section>
 	);
 }

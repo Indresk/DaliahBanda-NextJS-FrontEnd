@@ -60,3 +60,13 @@
 - Correcciones: el cursor del listado del dashboard daba error por una columna ambigua con el JOIN; Postgres usa el código 23001 (no 23503) para `RESTRICT`; los formularios vaciaban lo escrito cuando el servidor rechazaba el envío.
 - Datos: en el JSON los nombres de archivo de los eventos `grange` y `garage` parecen estar intercambiados respecto a su alt y evento (se respetó el evento y el alt).
 
+### [0.0.1] - 2026-10-22
+
+- Galería: se eliminó el seeder de `gallery` y `galleryImages.json`; el estado de la galería se exporta desde el dashboard (JSON) y se siembra a mano con `pnpm db:seed:gallery`.
+- Flyers y miembros pasaron de `src/shared/lib` a la base de datos, con CRUD en el dashboard (`/dashboard/flyers`, `/dashboard/members`) y export JSON para seed. Migraciones nuevas: `flyers`, `members` (+ `member-links`, `member-images`) y `gallery-people.memberId`.
+- Se eliminaron `eventsFrames.js`, `flyers.js` e `intregantes.js` de `src/shared/lib`.
+- Home: `Integrantes`, `FlyersCarousel` y el JSON-LD de `MusicGroup` leen de la base de datos (con caché por etiqueta).
+- `AUTH_URL` (opcional) fija el dominio público de las redirecciones propias (`publicUrl`) y `trustHost` en Auth.js: detrás de Coolify `request.url` trae `localhost:3000`.
+
+- Música en base de datos: `albums` (los sencillos son álbumes de una canción), `songs`, enlaces de escucha y recursos (stems, partituras, letra, video). Dashboard en `/dashboard/music`, export JSON y `pnpm db:seed:music`.
+- Páginas públicas `/albums`, `/albums/[album]`, `/albums/[album]/[song]` y sus recursos leen de la base con caché por etiqueta; el home usa la canción destacada y las obras relacionadas. Se eliminaron `songs.js`, `tracks.js` y la página temporal `test-player`.

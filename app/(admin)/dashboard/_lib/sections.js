@@ -10,5 +10,8 @@ export const DASHBOARD_SECTIONS = [
 	{ href: '/dashboard/emails', label: 'Correos permitidos', icon: 'admin_panel_settings', roles: [ADMIN] },
 	{ href: '/dashboard/subscribers', label: 'Suscriptores', icon: 'mail', roles: [ADMIN] },
 	{ href: '/dashboard/assets', label: 'Assets', icon: 'folder', roles: [ADMIN] },
+	{ href: '/dashboard/music', label: 'Música', icon: 'album', roles: [ADMIN] },
+	{ href: '/dashboard/members', label: 'Miembros', icon: 'groups', roles: [ADMIN] },
+	{ href: '/dashboard/flyers', label: 'Flyers', icon: 'campaign', roles: [ADMIN] },
 	{ href: '/dashboard/gallery', label: 'Galería', icon: 'photo_library', roles: [ADMIN] },
 ];

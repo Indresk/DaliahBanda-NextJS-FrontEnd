@@ -1,4 +1,3 @@
-import { integrantes } from '@/shared/lib/intregantes';
 import { SITE } from '../site';
 
 export const MUSIC_GROUP_ID = `${SITE.url}/#musicgroup`;
@@ -25,7 +24,7 @@ function toPerson(fullName) {
 	return { '@type': 'Person', name: fullName.replace(/"/g, '') };
 }
 
-export function buildMusicGroupSchema() {
+export function buildMusicGroupSchema(members) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'MusicGroup',
@@ -44,9 +43,9 @@ export function buildMusicGroupSchema() {
 		},
 		email: SITE.email,
 		sameAs: Object.values(SITE.social),
-		member: integrantes.map((member) => ({
+		member: members.map((member) => ({
 			'@type': 'OrganizationRole',
-			roleName: member.inst,
+			roleName: member.instrument,
 			member: toPerson(member.name),
 		})),
 		track: FEATURED_TRACKS.map((name) => ({ '@type': 'MusicRecording', name })),

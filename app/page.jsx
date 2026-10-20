@@ -11,13 +11,25 @@ import JsonLd from '@/frontend/seo/JsonLd';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { homeMeta } from '@/frontend/seo/pages/home.meta';
 import { buildMusicGroupSchema } from '@/frontend/seo/schema/musicGroup';
+import { getActiveFlyers } from '@/back/services/flyers.cache';
+import { getActiveMembers } from '@/back/services/members.cache';
+import { getFeaturedSong, getRelatedWorks } from '@/back/services/music.cache';
 
 export const metadata = buildMetadata(homeMeta);
 
-export default function Home() {
+export default async function Home() {
+	const [members, flyers, featuredSong] = await Promise.all([
+		getActiveMembers(),
+		getActiveFlyers(),
+		getFeaturedSong(),
+	]);
+	const related = featuredSong
+		? await getRelatedWorks(featuredSong.album.id, featuredSong.id)
+		: null;
+
 	return (
 		<>
-			<JsonLd data={buildMusicGroupSchema()} />
+			<JsonLd data={buildMusicGroupSchema(members)} />
 			<Hero />
 			<div className='flex flex-row'>
 				<div className='flex items-end basis-[20%] pl-8 pt-14 md:pl-14 shrink-0'>
@@ -155,14 +167,16 @@ export default function Home() {
 						</div>
 					</div>
 					<div className='py-15 md:py-23'></div>
-					<Integrantes />
+					<Integrantes members={members} />
 				</section>
 			</div>
-			<div className='px-8 pb-14 md:px-14'>
-				<RecommendedSong />
-			</div>
+			{featuredSong && (
+				<div className='px-8 pb-14 md:px-14'>
+					<RecommendedSong song={featuredSong} related={related} />
+				</div>
+			)}
 
-			<FlyersCarousel />
+			{flyers.length > 0 && <FlyersCarousel flyers={flyers} />}
 		</>
 	);
 }

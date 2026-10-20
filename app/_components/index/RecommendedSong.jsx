@@ -1,20 +1,30 @@
 'use client';
 
 import Button from '@/frontend/components/buttons/GeneralButton';
+import { toRelatedItems } from '../../albums/_lib/relatedItems';
 import YmalItem from '../../albums/_components/YmalItem';
 import BigPlayButton from '@/frontend/assets/svg/BigPlayButton';
 import Image from 'next/image';
-import { songs } from '../../../src/shared/lib/songs';
+import { useRouter } from 'next/navigation';
+import { ALBUM_TYPE_LABELS, STREAMING_PLATFORMS } from '@/shared/constants';
+import { formatDateOnly } from '@/shared/utils/format';
+import { resolveSongCover, songPath, songReleaseDate } from '@/shared/utils/music';
+import { usePlayerStore } from '@/frontend/stores/playerStore';
+import { toPlayerTrack } from '@/frontend/utils/playerTrack';
 
-const { ymal, ...song } = songs[0];
+// Canción recomendada del inicio (la destacada más reciente) y obras relacionadas.
+// "Escuchar" reproduce la canción con el reproductor interno; sin audio lleva a su página.
+export default function RecommendedSong({ song, related }) {
+	const router = useRouter();
+	const playTrack = usePlayerStore((state) => state.playTrack);
+	const { album } = song;
+	const cover = resolveSongCover(song, album);
+	const { links } = song;
+	const relatedItems = toRelatedItems(related);
 
-export default function RecommendedSong() {
 	function handleRecommend() {
-		//temporal, ajustar para que inicie el player interno
-		window.open(
-			'https://open.spotify.com/artist/4Au3rSGOcVHXd0ufiEbmEZ',
-			'_blank',
-		);
+		if (song.audioUrl) playTrack(toPlayerTrack(song, album));
+		else router.push(songPath(album, song));
 	}
 
 	return (
@@ -33,38 +43,46 @@ export default function RecommendedSong() {
 						/>
 						<div className='basis-full md:basis-[80%] '>
 							<small className='tracking-tighter font-headline uppercase text-[12px] text-primary'>
-								{song.type + ' - ' + song.year}
+								{`${ALBUM_TYPE_LABELS[album.type]} - ${songReleaseDate(song, album).slice(0, 4)}`}
 							</small>
 							<h3 className='song-title tracking-tighter font-headline uppercase font-bold text-2xl'>
-								{song.name}
+								{song.title}
 							</h3>
 
-							<p className='song-description'> {song.description}</p>
+							<p className='song-description'> {song.shortDescription}</p>
 						</div>
 					</div>
-					<div className='streaming-platforms grid grid-cols-4 mt-7 '>
-						<span>Spotify</span>
-						<span>Apple Music</span>
-						<span>Youtube Music</span>
-						<span>Amazon Music</span>
-					</div>
-					<hr className='text-lightgray' />
-					<div className='flex justify-around items-center flex-wrap md:flex-nowrap w-full'>
-						<h3 className='tracking-tighter font-headline uppercase font-bold text-2xl hidden md:block'>
-							Podría interesarte
-						</h3>
-						<YmalItem song={ymal[0]} />
-						<YmalItem song={ymal[1]} />
-					</div>
+					{links.length > 0 && (
+						<div className='streaming-platforms grid grid-cols-2 sm:grid-cols-4 mt-7 '>
+							{links.map((link) => (
+								<a key={link.platform} href={link.url} target='_blank' rel='noopener noreferrer' className='hover:text-primary-light'>
+									{STREAMING_PLATFORMS[link.platform] ?? link.platform}
+								</a>
+							))}
+						</div>
+					)}
+					{relatedItems.length > 0 && (
+						<>
+							<hr className='text-lightgray' />
+							<div className='flex justify-around items-center flex-wrap md:flex-nowrap w-full'>
+								<h3 className='tracking-tighter font-headline uppercase font-bold text-2xl hidden md:block'>
+									Podría interesarte
+								</h3>
+								{relatedItems.map(({ key, ...item }) => (
+									<YmalItem key={key} item={item} />
+								))}
+							</div>
+						</>
+					)}
 				</div>
 				<div className='song-image-container relative order-1 lg:order-2 flex items-center basis-[50%]'>
 					<Image
-						width={song.cover.width}
-						height={song.cover.height}
+						width={cover.width}
+						height={cover.height}
 						sizes='(min-width: 1024px) 50vw, 100vw'
-						src={song.cover.img}
+						src={cover.url}
 						className='aspect-square'
-						alt={'Portada oficial de ' + song.name + '.'}
+						alt={`Portada oficial de ${song.title}.`}
 					/>
 					<div className='w-full absolute bottom-4 left-4'>
 						<BigPlayButton

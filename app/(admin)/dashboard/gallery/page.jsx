@@ -33,10 +33,18 @@ export default async function GalleryAdminPage({ searchParams }) {
 
 	return (
 		<>
-			<p className='mb-4 text-sm text-lightgray'>
-				{total} imágenes en total ·{' '}
-				{Object.entries(facets.categories).map(([category, count]) => `${category}: ${count}`).join(' · ')}
-			</p>
+			<div className='mb-4 flex flex-wrap items-center justify-between gap-2 text-sm text-lightgray'>
+				<p>
+					{total} imágenes en total ·{' '}
+					{Object.entries(facets.categories).map(([category, count]) => `${category}: ${count}`).join(' · ')}
+				</p>
+				<a
+					href='/dashboard/gallery/export'
+					download
+					className='font-headline uppercase underline'>
+					Exportar JSON (para seed)
+				</a>
+			</div>
 
 			<GalleryFilters query={query} events={events} people={people} />
 

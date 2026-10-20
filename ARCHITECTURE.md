@@ -88,6 +88,44 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 - **Formularios**: `useFormAction` en vez de la prop `action` del `<form>`, porque React 19
   vacía los campos tras cada acción, incluso si falló.
 
+- **Export y seed**: Dashboard > Galería > "Exportar JSON" (`galleryExport.service.js`, formato
+  vía `jsonDownloadResponse`) referencia por slug, no por id. Se guarda en
+  `src/database/seed-data/` y `pnpm db:seed:gallery` lo siembra con el seeder de
+  `src/database/seeders-manual/` (idempotente y fuera de `db:seed:all`/`db:build`, para no
+  reinsertar lo que se borre en producción).
+
+## Miembros y flyers
+
+- **Miembros** (`members`, `member-links`, `member-images`): una página personal por miembro. Son la
+  entidad principal; `gallery-people` sigue siendo solo una etiqueta con estado para organizar fotos y
+  se vincula con `gallery-people.memberId` (opcional, único, `ON DELETE SET NULL`).
+- **Flyers** (`flyers`): url, alt, orden y activo (el carrusel usa `fill`, no guarda dimensiones).
+- Lectura pública cacheada con `members.cache.js` / `flyers.cache.js` (etiquetas `members` y `flyers`);
+  toda acción que los modifique invalida su etiqueta.
+- Enlaces e imágenes de apoyo comparten operaciones (`childOperations` en el servicio,
+  `childRepository` en el repositorio, `childActions` en las acciones).
+- Todas las secciones exportables usan `createExportRoute(sección, build)` y los seeders de
+  `seeders-manual/` comparten `seed-helpers.js`. La carga inicial de flyers y miembros es un seeder normal
+  (se ejecuta una vez) que reutiliza el manual.
+
+## Música
+
+- Tablas: `albums` (incluye sencillos: `type` = album | ep | single; un sencillo es un álbum de una
+  canción), `songs` (`albumId` obligatorio, `RESTRICT`), `album-links` / `song-links` (plataforma + URL,
+  una por plataforma) y `song-resources` (stem | score | lyrics | video, con instrumento para los stems).
+- Rutas públicas: `/albums` (álbumes y sencillos), `/albums/[album]` (pistas), `/albums/[album]/[song]`
+  y `/albums/[album]/[song]/(stems|partituras|letra-y-acordes)`. Una canción es pública solo si ella y
+  su álbum están activos.
+- Consultas: el álbum se lee con 3 consultas (álbum + pistas + enlaces; las hijas con `separate`, sin
+  producto cartesiano) y cada pista trae `resourceKinds` con una subconsulta (sin consultas por pista).
+  Todas se cachean en `music.cache.js` (etiqueta `music`) y el layout y la página del álbum comparten
+  la misma entrada. "Otros de nuestros trabajos" son 1 álbum + 2 canciones más recientes, automático.
+- La canción recomendada del inicio es la `featured` más reciente. El reproductor recibe pistas con
+  `toPlayerTrack` (`audioUrl`); `song.coverUrl` es opcional y si falta se usa la del álbum.
+- Enlaces, imágenes y recursos usan `childRepository` / `childOperations` / `childActions`.
+- Export: `/dashboard/music/export` (álbumes con canciones, enlaces y recursos anidados, por slug) y
+  `pnpm db:seed:music`.
+
 ## Metadata y SEO
 
 Todo vive en `src/frontend/seo/` (es de frontend: el backend no la necesita).
@@ -106,6 +144,6 @@ datos ya calculados (fechas, estado en vivo) y no leen nada del servidor.
 
 ## Migraciones
 
-Mientras el proyecto no esté en producción se editan las migraciones existentes en vez de
-añadir nuevas (hay una por tabla). Para aplicar un cambio en desarrollo hay que recrear la
-base: borrarla y correr `pnpm dev:db` (crea, migra, siembra y arranca).
+El proyecto ya está en producción: **no se editan migraciones existentes**, cada cambio de esquema
+es una migración nueva. En desarrollo se aplican con `pnpm db:migrate` (o se recrea la base con
+`pnpm dev:db`: crea, migra, siembra y arranca).

@@ -1,19 +1,20 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Link from 'next/link';
 import SongOptions from '@/frontend/components/buttons/SongOptions';
+import PlayButton from '../../_components/global/AudioPlayer/PlayButton';
 
-export default function YmalItem({ song }) {
-	const navigate = useRouter();
+// Obra relacionada ("Otros de nuestros trabajos"):
+//  item  { kind: 'album' | 'song', title, href, track? }
+// "Escuchar" reproduce la canción si tiene audio; si no, lleva a su página.
+export default function YmalItem({ item }) {
+	const [copied, setCopied] = useState(false);
 
-	function handlePlay() {
-		// apertura a link temporal
-		window.open(song.link, '_blank');
-	}
-
-	function handleCopy() {
-		//implementar apertura de alert que avise que se copio
-		navigator.clipboard.writeText(song.link);
+	async function handleCopy() {
+		await navigator.clipboard.writeText(`${window.location.origin}${item.href}`);
+		setCopied(true);
+		setTimeout(() => setCopied(false), 2000);
 	}
 
 	return (
@@ -26,7 +27,7 @@ export default function YmalItem({ song }) {
 					viewBox='0 0 72 72'
 					fill='currentColor'
 					xmlns='http://www.w3.org/2000/svg'>
-					{song.type == 'album' ? (
+					{item.kind === 'album' ? (
 						<>
 							<g filter='url(#filter0_d_38_383)'>
 								<g clipPath='url(#clip0_38_383)'>
@@ -89,16 +90,31 @@ export default function YmalItem({ song }) {
 				</svg>
 				<div className='flex flex-col'>
 					<small className='tracking-tighter font-headline uppercase text-[12px] text-primary'>
-						{song.type}
+						{item.kind === 'album' ? 'Álbum' : 'Canción'}
 					</small>
 					<h4 className='tracking-tighter font-headline uppercase text-1xl font-bold'>
-						{song.name}
+						<Link href={item.href} className='hover:underline'>
+							{item.title}
+						</Link>
 					</h4>
 				</div>
 			</div>
 			<div className='flex justify-center'>
-				<SongOptions onClick={handlePlay} />
+				{item.track ? (
+					<PlayButton track={item.track}>
+						<SongOptions />
+					</PlayButton>
+				) : (
+					<Link href={item.href}>
+						<SongOptions />
+					</Link>
+				)}
 				<SongOptions onClick={handleCopy} lastChild variant='link' />
+				{copied && (
+					<span role='status' className='ml-2 text-xs text-primary-light'>
+						Enlace copiado
+					</span>
+				)}
 			</div>
 		</article>
 	);

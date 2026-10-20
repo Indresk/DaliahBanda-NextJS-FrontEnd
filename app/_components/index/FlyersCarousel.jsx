@@ -4,9 +4,8 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { useInfiniteCarousel } from '@/frontend/hooks/useInfiniteCarousel';
 import './carousel.css';
-import { flyers } from '../../../src/shared/lib/flyers';
 
-export default function FlyersCarousel() {
+export default function FlyersCarousel({ flyers }) {
 	const scrollerRef = useRef(null);
 	useInfiniteCarousel(scrollerRef);
 
@@ -22,8 +21,8 @@ export default function FlyersCarousel() {
 				tabIndex={0}
 				className='flyers-mask no-scrollbar w-full cursor-grab select-none overflow-x-auto overscroll-x-contain active:cursor-grabbing'>
 				<div className='flex w-max'>
-					<FlyerGroup />
-					<FlyerGroup isCopy />
+					<FlyerGroup flyers={flyers} />
+					<FlyerGroup flyers={flyers} isCopy />
 				</div>
 			</div>
 			<div className='text-[12px]'>
@@ -43,21 +42,21 @@ export default function FlyersCarousel() {
 	);
 }
 
-function FlyerGroup({ isCopy = false }) {
+function FlyerGroup({ flyers, isCopy = false }) {
 	return (
 		<ul
 			aria-hidden={isCopy || undefined}
 			inert={isCopy}
 			className='flex shrink-0 gap-4 pr-4'>
-			{flyers.map((event) => (
+			{flyers.map((flyer) => (
 				<li
-					key={event.link}
+					key={flyer.id}
 					className='relative aspect-square size-40 shrink-0 lg:size-80'>
 					<Image
 						fill
 						draggable={false}
-						src={event.link}
-						alt={event.alt}
+						src={flyer.url}
+						alt={flyer.alt}
 						sizes='(min-width: 1024px) 320px, 160px'
 						className='object-cover'
 					/>

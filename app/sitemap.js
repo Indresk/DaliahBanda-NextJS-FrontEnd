@@ -1,4 +1,5 @@
 import { getGalleryEvents, getGalleryMembers } from '@/back/services/gallery.cache';
+import { getAlbum, getAlbums } from '@/back/services/music.cache';
 import { SITE } from '@/frontend/seo/site';
 
 export default async function sitemap() {
@@ -19,8 +20,27 @@ export default async function sitemap() {
 		{ url: `${SITE.url}/gallery/backstage`, changeFrequency: 'monthly', priority: 0.5 },
 	];
 
+	// Álbumes y canciones publicados
+	const albums = await getAlbums();
+	const albumDetails = await Promise.all(albums.map((album) => getAlbum(album.slug)));
+	const musicPages = albumDetails.flatMap((album) => [
+		{
+			url: `${SITE.url}/albums/${album.slug}`,
+			lastModified: album.releasedAt,
+			changeFrequency: 'yearly',
+			priority: 0.6,
+		},
+		...album.songs.map((song) => ({
+			url: `${SITE.url}/albums/${album.slug}/${song.slug}`,
+			lastModified: song.releasedAt ?? album.releasedAt,
+			changeFrequency: 'yearly',
+			priority: 0.5,
+		})),
+	]);
+
 	return [
 		...galleryPages,
+		...musicPages,
 		{
 			url: 'https://daliahbanda.com',
 			lastModified: new Date(),

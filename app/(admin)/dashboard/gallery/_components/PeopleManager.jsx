@@ -13,7 +13,21 @@ import {
 	updateGalleryPerson,
 } from '@/back/actions/galleryPeople.actions';
 
-function CreatePersonForm() {
+// Miembro de la banda al que corresponde la etiqueta (opcional)
+function MemberSelect({ members, defaultValue, id }) {
+	return (
+		<Field label='Miembro de la banda (opcional)' htmlFor={id}>
+			<select id={id} name='memberId' defaultValue={defaultValue ?? ''} className={controlClass}>
+				<option value=''>Sin vincular</option>
+				{members.map((member) => (
+					<option key={member.id} value={member.id}>{member.name}</option>
+				))}
+			</select>
+		</Field>
+	);
+}
+
+function CreatePersonForm({ members }) {
 	const { state, pending, handleSubmit } = useFormAction(createGalleryPerson, { resetOnSuccess: true });
 
 	return (
@@ -24,6 +38,7 @@ function CreatePersonForm() {
 			<Field label='Nombre' htmlFor='p-name'>
 				<input id='p-name' name='name' required maxLength={80} className={controlClass} />
 			</Field>
+			<MemberSelect members={members} id='p-member' />
 			<label className='flex items-end gap-2 pb-2 text-sm'>
 				<input type='checkbox' name='isMember' />
 				Integrante actual (aparece en los filtros públicos)
@@ -36,7 +51,7 @@ function CreatePersonForm() {
 	);
 }
 
-function PersonRow({ person }) {
+function PersonRow({ person, members }) {
 	const [editing, setEditing] = useState(false);
 	const { state, pending: saving, handleSubmit } = useFormAction(updateGalleryPerson);
 	const [deleteResult, setDeleteResult] = useState(null);
@@ -52,6 +67,7 @@ function PersonRow({ person }) {
 			<div className='flex flex-wrap items-center gap-3'>
 				<strong>{person.name}</strong>
 				<Badge tone={person.isMember ? 'ok' : 'neutral'}>{person.isMember ? 'Integrante actual' : 'Anterior / invitado'}</Badge>
+				{person.memberId && <Badge tone='warn'>Vinculado a miembro</Badge>}
 				<span className='text-xs text-lightgray'>/{person.slug}</span>
 				<span className='ml-auto flex gap-4 text-xs'>
 					<button type='button' onClick={() => setEditing((value) => !value)} className='cursor-pointer underline'>
@@ -69,6 +85,7 @@ function PersonRow({ person }) {
 					<Field label='Nombre' htmlFor={`pn-${person.id}`}>
 						<input id={`pn-${person.id}`} name='name' required maxLength={80} defaultValue={person.name} className={controlClass} />
 					</Field>
+					<MemberSelect members={members} id={`pm-${person.id}`} defaultValue={person.memberId} />
 					<label className='flex items-center gap-2 pb-2 text-sm'>
 						<input type='checkbox' name='isMember' defaultChecked={person.isMember} />
 						Integrante actual
@@ -81,16 +98,16 @@ function PersonRow({ person }) {
 	);
 }
 
-export default function PeopleManager({ people }) {
+export default function PeopleManager({ people, members }) {
 	return (
 		<div className='flex flex-col gap-6'>
 			<Card title='Nuevo integrante o invitado'>
-				<CreatePersonForm />
+				<CreatePersonForm members={members} />
 			</Card>
 			<Card title={`Personas (${people.length})`}>
 				<ul>
 					{people.map((person) => (
-						<PersonRow key={person.id} person={person} />
+						<PersonRow key={person.id} person={person} members={members} />
 					))}
 				</ul>
 			</Card>

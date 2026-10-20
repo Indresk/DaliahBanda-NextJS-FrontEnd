@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import Field, { controlClass } from '@/frontend/components/ui/Field';
+import ImageUrlFields from '@/frontend/components/ui/ImageUrlFields';
 import FeedbackMessage from '@/frontend/components/ui/FeedbackMessage';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import { useFormAction } from '@/frontend/hooks/useFormAction';
@@ -17,57 +16,21 @@ import MemberCheckboxes from './MemberCheckboxes';
 const today = () => new Date().toISOString().slice(0, 10);
 
 // Alta y edición de una imagen. En edición la URL no cambia (identifica la imagen).
-// Al cargar la vista previa se leen las dimensiones reales de la imagen.
 export default function GalleryImageForm({ image, initialUrl = '', events, people }) {
 	const isEdit = Boolean(image);
 	const { state, pending, handleSubmit } = useFormAction(isEdit ? updateGalleryImage : createGalleryImage);
-	const [url, setUrl] = useState(image?.url ?? initialUrl);
-	const [size, setSize] = useState({ width: image?.width ?? '', height: image?.height ?? '' });
-
-	const canPreview = /^https:\/\//.test(url);
 
 	return (
 		<form onSubmit={handleSubmit} className='grid gap-6 lg:grid-cols-2'>
 			{isEdit && <input type='hidden' name='id' value={image.id} />}
 
 			<div className='flex flex-col gap-4'>
-				<Field label='URL de la imagen' htmlFor='g-url' hint={isEdit ? 'No se puede cambiar.' : 'Pega una URL https o llega aquí desde Assets.'}>
-					<input
-						id='g-url'
-						name='url'
-						type='url'
-						required
-						readOnly={isEdit}
-						value={url}
-						onChange={(e) => setUrl(e.target.value)}
-						className={controlClass}
-					/>
-				</Field>
-				<div className='relative aspect-video w-full overflow-hidden bg-darkgray'>
-					{canPreview ? (
-						<Image
-							src={url}
-							alt='Vista previa'
-							fill
-							unoptimized
-							sizes='(min-width: 1024px) 50vw, 100vw'
-							className='object-contain'
-							onLoad={(e) =>
-								setSize({ width: e.currentTarget.naturalWidth, height: e.currentTarget.naturalHeight })
-							}
-						/>
-					) : (
-						<p className='p-4 text-sm text-lightgray'>La vista previa aparece al indicar una URL https.</p>
-					)}
-				</div>
-				<div className='grid grid-cols-2 gap-4'>
-					<Field label='Ancho (px)' htmlFor='g-width' hint='Se detecta al cargar la imagen.'>
-						<input id='g-width' name='width' type='number' min={1} required value={size.width} onChange={(e) => setSize((s) => ({ ...s, width: e.target.value }))} className={controlClass} />
-					</Field>
-					<Field label='Alto (px)' htmlFor='g-height'>
-						<input id='g-height' name='height' type='number' min={1} required value={size.height} onChange={(e) => setSize((s) => ({ ...s, height: e.target.value }))} className={controlClass} />
-					</Field>
-				</div>
+				<ImageUrlFields
+					idPrefix='g'
+					initial={{ url: image?.url ?? initialUrl, width: image?.width, height: image?.height }}
+					readOnly={isEdit}
+					urlHint={isEdit ? 'No se puede cambiar.' : 'Pega una URL https o llega aquí desde Assets.'}
+				/>
 			</div>
 
 			<div className='flex flex-col gap-4'>

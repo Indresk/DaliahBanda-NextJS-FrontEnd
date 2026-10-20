@@ -1,37 +1,36 @@
-import { humanizeSlug } from '../buildMetadata';
+import { ALBUM_TYPE_LABELS } from '@/shared/constants';
 
 export const albumsMeta = {
 	title: 'Discografía',
 	description:
 		'Discografía de Daliah Banda: álbumes y canciones de metalcore y pop emo punk desde Bogotá.',
 	path: '/albums',
-	indexable: false,
+};
+
+// Primera frase útil para la descripción de una página (máx. 160 caracteres)
+const summarize = (text, fallback) => {
+	const value = (text || fallback).replace(/\s+/g, ' ').trim();
+	return value.length > 160 ? `${value.slice(0, 157)}...` : value;
 };
 
 export const albumMeta = (album) => ({
-	title: `Álbum ${humanizeSlug(album)}`,
-	description: `Escucha el álbum ${humanizeSlug(album)} de Daliah Banda.`,
-	path: `/albums/${album}`,
-	indexable: false,
+	title: `${album.title} (${ALBUM_TYPE_LABELS[album.type]})`,
+	description: summarize(
+		album.tagline || album.description,
+		`Escucha ${album.title} de Daliah Banda.`,
+	),
+	path: `/albums/${album.slug}`,
 });
 
 export const songMeta = (album, song) => ({
-	title: `${humanizeSlug(song)} - ${humanizeSlug(album)}`,
-	description: `${humanizeSlug(song)}, canción del álbum ${humanizeSlug(album)} de Daliah Banda.`,
-	path: `/albums/${album}/${song}`,
-	indexable: false,
+	title: `${song.title} - ${album.title}`,
+	description: summarize(song.shortDescription, `${song.title}, canción de Daliah Banda.`),
+	path: `/albums/${album.slug}/${song.slug}`,
 });
 
-const songResource = (label, resource) => (album, song) => ({
-	title: `${label} de ${humanizeSlug(song)}`,
-	description: `${label} de ${humanizeSlug(song)}, canción de Daliah Banda.`,
-	path: `/albums/${album}/${song}/${resource}`,
-	indexable: false,
+// Recursos de una canción (stems, partituras, letra y acordes)
+export const songResourceMeta = (album, song, route, label) => ({
+	title: `${label} de ${song.title}`,
+	description: `${label} de ${song.title}, canción de Daliah Banda.`,
+	path: `/albums/${album.slug}/${song.slug}/${route}`,
 });
-
-export const songLyricsMeta = songResource(
-	'Letra y acordes',
-	'letra-y-acordes',
-);
-export const songScoresMeta = songResource('Partituras', 'partituras');
-export const songStemsMeta = songResource('Stems', 'stems');

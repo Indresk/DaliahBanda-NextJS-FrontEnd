@@ -39,6 +39,21 @@ export const ERROR_CODES = {
 	GALLERY_PERSON_IN_USE: 'gallery_person_in_use',
 	GALLERY_UNKNOWN_PEOPLE: 'gallery_unknown_people',
 	GALLERY_ALT_REQUIRED: 'gallery_alt_required',
+	GALLERY_PERSON_MEMBER_TAKEN: 'gallery_person_member_taken',
+	ALBUM_NOT_FOUND: 'album_not_found',
+	ALBUM_ALREADY_EXISTS: 'album_already_exists',
+	ALBUM_IN_USE: 'album_in_use',
+	SONG_NOT_FOUND: 'song_not_found',
+	SONG_ALREADY_EXISTS: 'song_already_exists',
+	MUSIC_LINK_NOT_FOUND: 'music_link_not_found',
+	MUSIC_LINK_ALREADY_EXISTS: 'music_link_already_exists',
+	SONG_RESOURCE_NOT_FOUND: 'song_resource_not_found',
+	FLYER_NOT_FOUND: 'flyer_not_found',
+	FLYER_ALREADY_EXISTS: 'flyer_already_exists',
+	MEMBER_NOT_FOUND: 'member_not_found',
+	MEMBER_ALREADY_EXISTS: 'member_already_exists',
+	MEMBER_LINK_NOT_FOUND: 'member_link_not_found',
+	MEMBER_IMAGE_NOT_FOUND: 'member_image_not_found',
 };
 
 Object.freeze(ERROR_CODES);

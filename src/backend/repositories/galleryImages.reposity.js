@@ -84,6 +84,21 @@ class GalleryImagesRepository {
 		});
 	}
 
+	// Todas las imágenes (activas e inactivas), para exportar la galería
+	static async findAllForExport() {
+		return await GalleryImage.findAll({
+			attributes: [
+				'url', 'alt', 'category', 'eventId', 'memberSlugs',
+				'width', 'height', 'takenAt', 'active',
+			],
+			order: [
+				['takenAt', 'DESC'],
+				['id', 'DESC'],
+			],
+			raw: true,
+		});
+	}
+
 	static async findById(id) {
 		return await GalleryImage.findByPk(id, { raw: true });
 	}
