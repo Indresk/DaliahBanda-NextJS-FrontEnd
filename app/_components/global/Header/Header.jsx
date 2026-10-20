@@ -2,7 +2,6 @@ import NavLink from '@/frontend/components/util/NavLink';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import Link from 'next/link';
 import Image from 'next/image';
-import NavLinkHeader from './NavLinkHeader';
 import MobileMenu from './MobileMenu';
 // import LiveBannerWrapper from './LiveBannerWrapper'; // El wrapper para el context
 import './header.css';
@@ -47,7 +46,12 @@ export default function Header() {
 					<ul className='gap-4 hidden md:flex items-center'>
 						{navigationLinks.map((item) => (
 							<li key={item.link}>
-								<NavLinkHeader href={item.link}>{item.title}</NavLinkHeader>
+								<NavLink
+									href={item.link}
+									className='w-full inline-block tracking-tighter font-headline transition-colors duration-300'
+									activeClassName='text-pink-500 border-b-2'>
+									{item.title}
+								</NavLink>
 							</li>
 						))}
 					</ul>

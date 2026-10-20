@@ -5,42 +5,9 @@ import Button from '@/frontend/components/buttons/GeneralButton';
 import YmalItem from '../../albums/_components/YmalItem';
 import BigPlayButton from '@/frontend/assets/svg/BigPlayButton';
 import Image from 'next/image';
+import { songs } from '../../../src/shared/lib/songs';
 
-const fetch = {
-	name: 'Intento Sobrevivir',
-	description:
-		'Una canción que retrata el conflicto interno de quien no logra expresar sus emociones. Letras honestas y una atmósfera intensa acompañan una narrativa profundamente humana.',
-	cover: {
-		img: 'https://assets.daliahbanda.com/images/covers/intento-sobrevivir-v2.jpg',
-		width: 768,
-		height: 768,
-	},
-	type: 'canción',
-	year: '2022',
-	externalLinks: { spotify: '', youtube: '', apple: '', amazon: '' },
-	ymal: [
-		{
-			name: 'Si podré',
-			description:
-				'Una canción que retrata lire.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel facilis fugiat facere nobis, ex accusamus ipsum reprehenderit laboriosam illo blanditiis consectetur cupiditate omnis officiis! Ipsum voluptas eum ad cupiditate tempore?',
-			cover:
-				'https://assets.daliahbanda.com/images/covers/intento-sobrevivir-v2.jpg',
-			type: 'canción',
-			link: 'https://open.spotify.com/artist/4Au3rSGOcVHXd0ufiEbmEZ',
-		},
-		{
-			name: 'Daliah',
-			description:
-				'Una canción Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel facilis fugiat facere nobis, ex accusamus ipsum reprehenderit laboriosam illo blanditiis consectetur cupiditate omnis officiis! Ipsum voluptas eum ad cupiditate tempore?',
-			cover:
-				'https://assets.daliahbanda.com/images/covers/intento-sobrevivir-v2.jpg',
-			type: 'album',
-			link: 'https://open.spotify.com/artist/4Au3rSGOcVHXd0ufiEbmEZ',
-		},
-	],
-};
-
-const { ymal, ...song } = fetch;
+const { ymal, ...song } = songs[0];
 
 export default function RecommendedSong() {
 	function handleRecommend() {
@@ -65,7 +32,7 @@ export default function RecommendedSong() {
 							onClick={handleRecommend}
 							className='text-primary w-full hidden md:flex basis-20 shrink-0 cursor-pointer hover:scale-120 transition-transform'
 						/>
-						<div className='basis-[100%] md:basis-[80%] '>
+						<div className='basis-full md:basis-[80%] '>
 							<small className='tracking-tighter font-headline uppercase text-[12px] text-primary'>
 								{song.type + ' - ' + song.year}
 							</small>

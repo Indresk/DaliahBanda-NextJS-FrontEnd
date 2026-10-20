@@ -81,12 +81,6 @@ export function useInfiniteCarousel(ref, { duration = 60 } = {}) {
 			if (drag) lastInteraction = performance.now();
 			drag = null;
 		};
-		const onEnter = (e) => {
-			if (e.pointerType === 'mouse') hovering = true;
-		};
-		const onLeave = (e) => {
-			if (e.pointerType === 'mouse') hovering = false;
-		};
 
 		const resizeObserver = new ResizeObserver(() => {
 			const prevLoop = loop;
@@ -111,8 +105,6 @@ export function useInfiniteCarousel(ref, { duration = 60 } = {}) {
 		el.addEventListener('pointermove', onPointerMove);
 		el.addEventListener('pointerup', endDrag);
 		el.addEventListener('pointercancel', endDrag);
-		el.addEventListener('pointerenter', onEnter);
-		el.addEventListener('pointerleave', onLeave);
 		frame = requestAnimationFrame((now) => {
 			lastFrame = now;
 			frame = requestAnimationFrame(tick);
@@ -127,8 +119,6 @@ export function useInfiniteCarousel(ref, { duration = 60 } = {}) {
 			el.removeEventListener('pointermove', onPointerMove);
 			el.removeEventListener('pointerup', endDrag);
 			el.removeEventListener('pointercancel', endDrag);
-			el.removeEventListener('pointerenter', onEnter);
-			el.removeEventListener('pointerleave', onLeave);
 		};
 	}, [ref, duration]);
 }

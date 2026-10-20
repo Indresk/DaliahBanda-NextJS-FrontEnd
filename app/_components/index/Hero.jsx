@@ -2,12 +2,14 @@ import Image, { getImageProps } from 'next/image';
 
 export default function Hero() {
 	const common = {
-		alt: 'Banda Daliah posando en vivo, metalcore y pop emo punk desde Bogotá',
-		priority: true,
+		alt: 'Daliah Banda tocando en vivo en escenario de rock alternativo en Bogotá',
+		sizes: '100vw',
+		preload: true,
+		fetchPriority: 'high',
 	};
 
 	const {
-		props: { srcSet: desktop },
+		props: { srcSet: desktop, sizes: desktopSizes },
 	} = getImageProps({
 		...common,
 		width: 2700,
@@ -16,7 +18,7 @@ export default function Hero() {
 	});
 
 	const {
-		props: { srcSet: mobile, ...rest },
+		props: { srcSet: mobile, alt, ...rest },
 	} = getImageProps({
 		...common,
 		width: 1280,
@@ -31,7 +33,7 @@ export default function Hero() {
 						<Image
 							width={1200}
 							height={619}
-							unoptimized
+							sizes='(min-width: 768px) 240px, 160px'
 							className='invert w-40 md:w-60 h-auto [grid-area:1/1]'
 							src='https://assets.daliahbanda.com/brand/logos/full/logo-daliah-vector-black-v1.webp'
 							alt='Logo principal de Daliah Banda en blanco con fondo transparente'
@@ -44,12 +46,16 @@ export default function Hero() {
 					</div>
 				</div>
 				<picture className='[grid-area:1/1]'>
-					<source media='(min-width: 768px)' srcSet={desktop} />
+					<source
+						media='(min-width: 768px)'
+						srcSet={desktop}
+						sizes={desktopSizes}
+					/>
 					<img
 						{...rest}
 						srcSet={mobile}
+						alt={alt}
 						style={{ width: '100%', height: 'auto' }}
-						alt='Daliah Banda tocando en vivo en escenario de rock alternativo en Bogotá'
 					/>
 				</picture>
 			</div>

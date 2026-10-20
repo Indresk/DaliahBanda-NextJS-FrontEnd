@@ -78,9 +78,8 @@ export default function MobileMenu() {
 									<li key={item.link}>
 										<NavLink
 											href={item.link}
-											className={({ isActive }) =>
-												`w-full inline-block tracking-tighter font-headline transition-colors duration-300 ${isActive ? 'text-pink-500 border-b-2' : ''}`
-											}>
+											className='w-full inline-block tracking-tighter font-headline transition-colors duration-300'
+											activeClassName='text-pink-500 border-b-2'>
 											{item.title}
 										</NavLink>
 									</li>
