@@ -6,9 +6,10 @@ import {
 	readKickOAuthCookie,
 } from '@/back/utils/kickOAuthCookie';
 import { redirectUnlessRole } from '@/back/utils/routeGuard';
+import { publicUrl } from '@/back/utils/publicUrl';
 
 function redirectToStream(request, result) {
-	const url = new URL('/dashboard/stream', request.url);
+	const url = publicUrl('/dashboard/stream', request);
 	url.searchParams.set('kick', result);
 
 	const response = NextResponse.redirect(url);

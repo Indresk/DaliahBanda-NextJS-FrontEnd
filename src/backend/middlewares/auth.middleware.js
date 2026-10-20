@@ -10,6 +10,7 @@ import {
 } from '../../shared/constants';
 import { internalRequestWrapper } from '../utils/internalRequestWrapper';
 import AllowedEmailsService from '../services/allowedEmails.service';
+import { publicUrl } from '../utils/publicUrl';
 
 export default function authMiddleware(middleware) {
 	return async (request, event) => {
@@ -20,11 +21,11 @@ export default function authMiddleware(middleware) {
 
 		const session = request.auth;
 		if (!session?.user) {
-			return NextResponse.redirect(new URL('/login', request.url));
+			return NextResponse.redirect(publicUrl('/login', request));
 		}
 
 		if (!DASHBOARD_ROLES.includes(session.user.role)) {
-			return NextResponse.redirect(new URL('/', request.url));
+			return NextResponse.redirect(publicUrl('/', request));
 		}
 
 		return middleware(request, event);

@@ -33,8 +33,10 @@ for (const envVar of Object.values(requiredEnvs)) {
 	}
 }
 
+const optionalEnvs = ['AUTH_URL'];
+
 const config = Object.fromEntries(
-	requiredEnvs.map((key) => [key, process.env[key]]),
+	[...requiredEnvs, ...optionalEnvs].map((key) => [key, process.env[key]]),
 );
 
 Object.freeze(config);
