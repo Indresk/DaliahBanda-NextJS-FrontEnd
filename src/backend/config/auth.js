@@ -12,6 +12,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			clientSecret: config.AUTH_GOOGLE_SECRET,
 		}),
 	],
+	trustHost: true,
 	pages: { error: '/login' },
 	callbacks: {
 		signIn: callbacks.signIn,
