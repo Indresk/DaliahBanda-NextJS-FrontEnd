@@ -19,13 +19,12 @@ async function send(command) {
 	try {
 		return await r2Client.send(command);
 	} catch (error) {
-		throw new AppError(ERROR_CODES.STORAGE_ERROR, null, { message: error.message });
+		throw new AppError(ERROR_CODES.STORAGE_ERROR, null, {
+			message: error.message,
+		});
 	}
 }
-
-// Acceso al bucket de assets (Cloudflare R2). No aplica reglas de negocio.
 class AssetsRepository {
-	// Un nivel de carpeta: subcarpetas (prefijos) y objetos
 	static async list(prefix, continuationToken) {
 		const response = await send(
 			new ListObjectsV2Command({
@@ -48,19 +47,24 @@ class AssetsRepository {
 		};
 	}
 
-	// Metadatos del objeto, o null si no existe
 	static async head(key) {
 		try {
-			return await r2Client.send(new HeadObjectCommand({ Bucket: BUCKET, Key: key }));
+			return await r2Client.send(
+				new HeadObjectCommand({ Bucket: BUCKET, Key: key }),
+			);
 		} catch (error) {
-			if (error.$metadata?.httpStatusCode === 404 || error.name === 'NotFound') {
+			if (
+				error.$metadata?.httpStatusCode === 404 ||
+				error.name === 'NotFound'
+			) {
 				return null;
 			}
-			throw new AppError(ERROR_CODES.STORAGE_ERROR, null, { message: error.message });
+			throw new AppError(ERROR_CODES.STORAGE_ERROR, null, {
+				message: error.message,
+			});
 		}
 	}
 
-	// Primeros bytes del objeto (petición con Range, no descarga el archivo)
 	static async readStart(key, byteCount) {
 		const object = await send(
 			new GetObjectCommand({
@@ -76,20 +80,24 @@ class AssetsRepository {
 		await send(new DeleteObjectCommand({ Bucket: BUCKET, Key: key }));
 	}
 
-	// URL temporal para que el navegador suba el archivo directo a R2. Firma el Content-Type:
-	// la URL solo sirve para subir ese tipo. (El SDK no firma Cache-Control ni Content-Length.)
 	static async createPutUrl(key, contentType) {
 		try {
 			return await getSignedUrl(
 				r2Client,
-				new PutObjectCommand({ Bucket: BUCKET, Key: key, ContentType: contentType }),
+				new PutObjectCommand({
+					Bucket: BUCKET,
+					Key: key,
+					ContentType: contentType,
+				}),
 				{
 					expiresIn: ASSET_UPLOAD.URL_EXPIRES_SECONDS,
 					signableHeaders: new Set(['content-type']),
 				},
 			);
 		} catch (error) {
-			throw new AppError(ERROR_CODES.STORAGE_ERROR, null, { message: error.message });
+			throw new AppError(ERROR_CODES.STORAGE_ERROR, null, {
+				message: error.message,
+			});
 		}
 	}
 }

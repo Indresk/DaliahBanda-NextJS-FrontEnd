@@ -23,8 +23,6 @@ export default function authMiddleware(middleware) {
 			return NextResponse.redirect(new URL('/login', request.url));
 		}
 
-		// Filtro rápido con el rol del token. Cada página y acción del dashboard vuelve a
-		// comprobar el rol contra la base de datos (sessionGuard.js): el del token puede estar desactualizado.
 		if (!DASHBOARD_ROLES.includes(session.user.role)) {
 			return NextResponse.redirect(new URL('/', request.url));
 		}

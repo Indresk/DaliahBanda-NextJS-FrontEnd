@@ -14,8 +14,6 @@ class KickCredentialsRepository {
 		await KickCredentials.upsert({ id: ROW_ID, ...fields }, options);
 	}
 
-	// Ejecuta `work` con la fila bloqueada: dos peticiones no pueden renovar el token a la
-	// vez (Kick rota el refresh token y el segundo intento usaría uno ya invalidado).
 	static async withLock(work) {
 		return await sequelize.transaction(async (transaction) => {
 			const row = await KickCredentials.findByPk(ROW_ID, {

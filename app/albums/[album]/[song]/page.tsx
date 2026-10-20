@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PlayButton from '../../../_components/global/AudioPlayer/PlayButton';
 import { tracks } from '@/shared/lib/tracks';
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { songMeta } from '@/frontend/seo/pages/albums.meta';
 
 type RouteParams = {
+	album: string;
 	song: string;
 };
 
@@ -103,6 +106,11 @@ type PageProps = {
 // 		},
 // 	};
 // }
+
+export async function generateMetadata({ params }: PageProps) {
+	const { album, song } = await params;
+	return buildMetadata(songMeta(album, song));
+}
 
 export default async function SongPage({ params }: PageProps) {
 	const { song } = await params;

@@ -7,7 +7,7 @@ import { KICK } from '../../shared/constants';
 
 const REQUEST_TIMEOUT_MS = 10_000;
 
-// ---------- OAuth 2.1 (Authorization Code + PKCE) ----------
+//  OAuth 2.1 (Authorization Code + PKCE)
 
 export function buildAuthorizationUrl({ state, codeChallenge }) {
 	const params = new URLSearchParams({
@@ -63,7 +63,7 @@ export function refreshAccessToken(refreshToken) {
 	});
 }
 
-// ---------- API pública ----------
+//  API pública
 
 async function apiRequest(path, accessToken, options = {}) {
 	const response = await fetch(`${KICK.API_URL}${path}`, {
@@ -120,7 +120,7 @@ export async function deleteSubscriptions(accessToken, ids) {
 	});
 }
 
-// ---------- Llave pública para verificar webhooks ----------
+// Llave pública para verificar webhooks
 
 export async function fetchWebhookPublicKey() {
 	const response = await fetch(`${KICK.API_URL}/public-key`, {
@@ -137,7 +137,10 @@ export async function fetchWebhookPublicKey() {
 
 	const result = await response.json();
 	const publicKey = result?.data?.public_key;
-	if (typeof publicKey !== 'string' || !publicKey.includes('BEGIN PUBLIC KEY')) {
+	if (
+		typeof publicKey !== 'string' ||
+		!publicKey.includes('BEGIN PUBLIC KEY')
+	) {
 		throw new AppError(ERROR_CODES.KICK_API_ERROR, null, {
 			path: '/public-key',
 			reason: 'formato inesperado',

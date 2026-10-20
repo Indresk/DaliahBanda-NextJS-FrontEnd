@@ -1,16 +1,27 @@
 import {
 	getStreamingStart,
 	getStreamingEnd,
+	getPreviousStreaming,
 	DateToESString,
 } from '@/shared/utils/dates.js';
 import { getLiveStatus } from '@/back/services/liveStatus.cache';
+import JsonLd from '@/frontend/seo/JsonLd';
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { liveMeta } from '@/frontend/seo/pages/live.meta';
+import { buildLiveVideoSchema } from '@/frontend/seo/schema/liveBroadcast';
 import Link from 'next/link';
 
 export const revalidate = 3600;
 
+export const metadata = buildMetadata(liveMeta);
+
 export default async function LiveView() {
 	// El estado llega del webhook de Kick (BD) y se invalida con la etiqueta 'live-status'
-	const { isLive: liveStatus, title: liveTitle } = await getLiveStatus();
+	const {
+		isLive: liveStatus,
+		title: liveTitle,
+		startedAt: liveStartedAt,
+	} = await getLiveStatus();
 
 	const UTCDateStart = getStreamingStart(Date.now());
 	const UTCDateEnd = getStreamingEnd(UTCDateStart);
@@ -20,6 +31,15 @@ export default async function LiveView() {
 
 	return (
 		<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+			<JsonLd
+				data={buildLiveVideoSchema({
+					isLive: liveStatus,
+					scheduledStart: UTCDateStart,
+					scheduledEnd: UTCDateEnd,
+					previousEnd: getPreviousStreaming(UTCDateEnd),
+					liveStartedAt,
+				})}
+			/>
 			<section>
 				<h1>Daliah Banda en vivo | Ensayo oficial vía Kick desde Bogotá</h1>
 				<p>

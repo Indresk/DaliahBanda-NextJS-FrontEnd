@@ -14,8 +14,6 @@ class AllowedEmailsRepository {
 		});
 	}
 
-	// Sin distinguir mayúsculas: los correos de Google llegan en minúsculas, pero los
-	// que se cargaron a mano (seeder) podrían no estarlo.
 	static async findByEmail(userEmail) {
 		return await AllowedEmails.findOne({
 			where: where(fn('lower', col('email')), String(userEmail).toLowerCase()),

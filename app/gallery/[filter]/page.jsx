@@ -1,4 +1,13 @@
 import { Metadata } from 'next';
+
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { galleryFilterMeta } from '@/frontend/seo/pages/gallery.meta';
+
+export async function generateMetadata({ params }) {
+	const { filter } = await params;
+	return buildMetadata(galleryFilterMeta(filter));
+}
+
 // import { notFound } from 'next/navigation';
 
 // type RouteParams = {

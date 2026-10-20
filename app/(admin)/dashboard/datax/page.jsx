@@ -1,3 +1,5 @@
+export const metadata = { title: 'Datax' };
+
 export default function Datax() {
 	return (
 		<>

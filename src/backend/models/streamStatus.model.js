@@ -3,7 +3,6 @@ import 'server-only';
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db';
 
-// Tabla de una sola fila (id = 1). tableName explícito: Sequelize pluralizaría "status"
 const StreamStatus = sequelize.define(
 	'stream-status',
 	{

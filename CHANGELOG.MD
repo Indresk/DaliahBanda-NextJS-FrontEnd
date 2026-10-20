@@ -44,3 +44,10 @@
   ```
 - Ejecutar `pnpm db:migrate`. Después, entrar como admin a `/dashboard/stream` y pulsar "Conectar con Kick".
 
+### [0.0.1] - 2026-10-21
+
+- Metadata y SEO (`src/frontend/seo/`, ver `ARCHITECTURE.md`): `metadataBase`, plantilla de título (`%s | Daliah Banda`), canonical, robots, Open Graph y Twitter en todas las páginas públicas, tomando como base el `meta/` del proyecto viejo. Las páginas sin contenido real (about-us, discografía, canciones, galería por filtro y evento, backstage) salen con `noindex` hasta publicarlas; las privadas solo llevan título.
+- JSON-LD: `MusicGroup` en el inicio (miembros tomados de `shared/lib/intregantes.js`, redes sociales completas) y `VideoObject` en `/live` calculado al renderizar con el horario real y el estado en vivo del webhook (antes se congelaba al compilar).
+- Cambios respecto al meta viejo: `og:type` `website` (`music.group` no existe) y `video.other` en `/live`; se descartan las etiquetas `music:*` (no son estándar); `og:video` apunta al reproductor de Kick.
+- Pendiente: la imagen social sigue siendo el `.webp` de 1281×675 (conviene un JPG/PNG de 1200×630 en `site.js`) y `/albums` está en `sitemap.js` aunque ahora es `noindex`.
+

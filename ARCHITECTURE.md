@@ -27,6 +27,7 @@ src/
 ├── frontend/             Solo navegador/UI
 │   ├── components/       `ui/` (Card, Badge...), `buttons/`, `util/`
 │   ├── hooks/            Hooks (estado y flujos de cliente)
+│   ├── seo/              Metadata y datos estructurados (ver "Metadata y SEO")
 │   ├── stores/           Zustand
 │   └── utils/            Utilidades de navegador (XHR con progreso...)
 ├── shared/               Importable desde servidor y navegador
@@ -64,6 +65,22 @@ src/
 - **Constantes**: en `shared/constants/<dominio>.js` y re-exportadas en `index.js`.
 - **Nombres**: `x.service.js`, `x.reposity.js`, `x.actions.js`, `x.middleware.js`, `x.client.js`,
   `x.schema.js`.
+
+## Metadata y SEO
+
+Todo vive en `src/frontend/seo/` (es de frontend: el backend no la necesita).
+
+- `site.js`: datos del sitio (URL, nombre, @usuario, redes, imagen por defecto). Se escriben una vez.
+- `pages/*.meta.js`: el contenido de cada página (título, descripción, ruta, keywords).
+- `buildMetadata.js`: convierte ese contenido en el `metadata` de Next (canonical, robots,
+  Open Graph y Twitter completos) y define `rootMetadata` (`metadataBase`, plantilla de título).
+- `schema/*.js` + `JsonLd.jsx`: datos estructurados (schema.org) como JSON-LD.
+
+Reglas: una página pública **no** escribe `metadata` a mano; hace
+`export const metadata = buildMetadata(xxxMeta)` (o `generateMetadata` si depende de la ruta).
+Una página sin contenido real lleva `indexable: false` hasta publicarla. Las páginas privadas
+solo declaran `export const metadata = { title }`. Los constructores de JSON-LD reciben los
+datos ya calculados (fechas, estado en vivo) y no leen nada del servidor.
 
 ## Migraciones
 

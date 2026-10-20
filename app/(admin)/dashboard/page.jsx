@@ -7,6 +7,8 @@ import Badge from '@/frontend/components/ui/Badge';
 import Card from '@/frontend/components/ui/Card';
 import PageTitle from '@/frontend/components/ui/PageTitle';
 
+export const metadata = { title: 'Resumen' };
+
 export default async function Dashboard() {
 	const user = await requirePageRole(DASHBOARD_ROLES);
 	const { stream, kick, community } = await DashboardService.getOverview(user.role);

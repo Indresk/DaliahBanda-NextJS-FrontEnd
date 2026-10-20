@@ -2,6 +2,15 @@ import { notFound } from 'next/navigation';
 import PlayButton from '../../_components/global/AudioPlayer/PlayButton';
 import { tracks } from '@/shared/lib/tracks';
 
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { albumMeta } from '@/frontend/seo/pages/albums.meta';
+
+export async function generateMetadata({ params }) {
+	const { album } = await params;
+	return buildMetadata(albumMeta(album));
+}
+
+
 //especifico para vistas build rendered
 // Retirar dinamyc params en vistas dinamicas
 // export const dynamicParams = false;

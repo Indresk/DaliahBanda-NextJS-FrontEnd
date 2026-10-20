@@ -10,8 +10,6 @@ class StreamStatusRepository {
 		return await StreamStatus.findByPk(ROW_ID, { raw: true });
 	}
 
-	// Aplica un evento de Kick solo si no es un duplicado ni es más viejo que el último
-	// aplicado. Kick entrega "al menos una vez" y puede reintentar fuera de orden.
 	static async applyEvent({ eventId, eventAt, ...status }) {
 		return await sequelize.transaction(async (transaction) => {
 			const current = await StreamStatus.findByPk(ROW_ID, {

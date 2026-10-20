@@ -6,6 +6,9 @@ import Footer from './_components/global/Footer/Footer';
 import AudioPlayer from './_components/global/AudioPlayer/AudioPlayer';
 import LiveStatusRefresher from './_components/global/LiveStatusRefresher';
 import PreferencesHydrator from '../src/frontend/providers/PreferencesHydrator';
+import { rootMetadata } from '@/frontend/seo/buildMetadata';
+
+export const metadata = rootMetadata;
 
 export default function RootLayout({ children }) {
 	return (

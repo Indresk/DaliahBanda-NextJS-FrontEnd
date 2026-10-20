@@ -1,5 +1,14 @@
 import { notFound } from 'next/navigation';
 
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { galleryEventMeta } from '@/frontend/seo/pages/gallery.meta';
+
+export async function generateMetadata({ params }) {
+	const { filter } = await params;
+	return buildMetadata(galleryEventMeta(filter));
+}
+
+
 // async function getImages(id: string): Promise<ImagesResponse | null> {
 // 	//definir posteriormente URL exacta del fetcheo
 // 	const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/gallery/${id}`, {

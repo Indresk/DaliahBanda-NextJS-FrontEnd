@@ -24,10 +24,7 @@ import { parseOrThrow } from '../utils/validate';
 const PURPOSE = ENCRYPTION_PURPOSES.ASSET_UPLOAD;
 const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;
 
-// Reglas de los assets del sitio (bucket de R2): explorador, subida directa y borrado.
-// Los archivos no pasan por el servidor: se suben con una URL firmada y luego se verifican.
 class AssetsService {
-	// Contenido de una carpeta (un nivel, como un explorador de archivos)
 	static async list(rawPrefix, continuationToken) {
 		const prefix = parseOrThrow(assetPrefixSchema, rawPrefix);
 		const { folders, objects, nextToken } = await AssetsRepository.list(
@@ -42,7 +39,6 @@ class AssetsService {
 				name: folder.slice(prefix.length, -1),
 			})),
 			files: objects
-				// Se omite el marcador de la propia carpeta (objeto vacío)
 				.filter((object) => object.key !== prefix && object.size > 0)
 				.map((object) => ({
 					...object,
@@ -54,7 +50,6 @@ class AssetsService {
 		};
 	}
 
-	// Paso 1: valida lo que declara el navegador y devuelve la URL firmada para subir
 	static async createUpload(upload) {
 		const { prefix, name, type } = parseOrThrow(assetUploadSchema, upload);
 
@@ -63,8 +58,6 @@ class AssetsService {
 			throw new AppError(ERROR_CODES.ASSET_ALREADY_EXISTS);
 		}
 
-		// El token enlaza la confirmación con esta subida: sin él, confirmUpload podría
-		// usarse para borrar archivos que ya existen en el bucket.
 		const token = encrypt(
 			JSON.stringify({
 				key,
@@ -88,8 +81,6 @@ class AssetsService {
 		);
 	}
 
-	// Paso 2: R2 no puede imponer tamaño ni tipo al recibir (no soporta POST con política),
-	// así que se comprueba lo que realmente quedó guardado y se borra si no cumple.
 	static async confirmUpload(token) {
 		const upload = AssetsService.#readUploadToken(token);
 		const head = await AssetsRepository.head(upload.key);
@@ -139,7 +130,10 @@ class AssetsService {
 		}
 
 		if (Date.now() > upload.expiresAt) {
-			throw new AppError(ERROR_CODES.BAD_REQUEST, 'La subida expiró. Inténtalo de nuevo.');
+			throw new AppError(
+				ERROR_CODES.BAD_REQUEST,
+				'La subida expiró. Inténtalo de nuevo.',
+			);
 		}
 
 		return { ...upload, key: parseOrThrow(assetKeySchema, upload.key) };

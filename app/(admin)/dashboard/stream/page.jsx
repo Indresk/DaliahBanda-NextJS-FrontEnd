@@ -8,6 +8,8 @@ import Card from '@/frontend/components/ui/Card';
 import PageTitle from '@/frontend/components/ui/PageTitle';
 import KickActions from '../_components/KickActions';
 
+export const metadata = { title: 'Transmisión' };
+
 const OAUTH_MESSAGES = {
 	connected: { tone: 'text-emerald-400', text: 'Kick conectado y suscripción creada.' },
 	error: {

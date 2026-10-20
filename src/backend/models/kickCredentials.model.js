@@ -3,7 +3,6 @@ import 'server-only';
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/db';
 
-// Tabla de una sola fila (id = 1). Los tokens se guardan ya cifrados por el servicio
 const KickCredentials = sequelize.define(
 	'kick-credentials',
 	{

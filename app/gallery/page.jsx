@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { eventsFrames } from '@/shared/lib/eventsFrames';
 import Image from 'next/image';
 
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { galleryMeta } from '@/frontend/seo/pages/gallery.meta';
+
+export const metadata = buildMetadata(galleryMeta);
+
+
 const highlights = [];
 const rows = [];
 

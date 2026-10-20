@@ -7,18 +7,17 @@ import FlyersCarousel from './_components/index/FlyersCarousel';
 import Hero from './_components/index/Hero';
 import Image from 'next/image';
 import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
+import JsonLd from '@/frontend/seo/JsonLd';
+import { buildMetadata } from '@/frontend/seo/buildMetadata';
+import { homeMeta } from '@/frontend/seo/pages/home.meta';
+import { buildMusicGroupSchema } from '@/frontend/seo/schema/musicGroup';
 
-/** @type {import('next').Metadata} */
-export const metadata = {
-	title: 'Daliah Banda | Metalcore · Pop Emo Punk desde Bogotá',
-	description:
-		'Daliah es una banda de metalcore y pop emo punk formada en Bogotá. Su sonido mezcla punk rock, pop-punk y metal progresivo con letras sociales, emocionales y políticas.',
-};
+export const metadata = buildMetadata(homeMeta);
 
 export default function Home() {
-	//
 	return (
 		<>
+			<JsonLd data={buildMusicGroupSchema()} />
 			<Hero />
 			<div className='flex flex-row'>
 				<div className='flex items-end basis-[20%] pl-8 pt-14 md:pl-14 shrink-0'>

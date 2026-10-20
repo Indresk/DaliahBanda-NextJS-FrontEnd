@@ -4,6 +4,8 @@ import {
 	SignOutButton,
 } from '@/front/components/buttons/AuthButtons';
 
+export const metadata = { title: 'Iniciar sesión' };
+
 export default async function Login() {
 	const session = await auth();
 
