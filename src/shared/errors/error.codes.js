@@ -29,6 +29,16 @@ export const ERROR_CODES = {
 	ASSET_ALREADY_EXISTS: 'asset_already_exists',
 	ASSET_NOT_FOUND: 'asset_not_found',
 	STORAGE_ERROR: 'storage_error',
+	GALLERY_IMAGE_NOT_FOUND: 'gallery_image_not_found',
+	GALLERY_IMAGE_ALREADY_EXISTS: 'gallery_image_already_exists',
+	GALLERY_EVENT_NOT_FOUND: 'gallery_event_not_found',
+	GALLERY_EVENT_ALREADY_EXISTS: 'gallery_event_already_exists',
+	GALLERY_EVENT_IN_USE: 'gallery_event_in_use',
+	GALLERY_PERSON_NOT_FOUND: 'gallery_person_not_found',
+	GALLERY_PERSON_ALREADY_EXISTS: 'gallery_person_already_exists',
+	GALLERY_PERSON_IN_USE: 'gallery_person_in_use',
+	GALLERY_UNKNOWN_PEOPLE: 'gallery_unknown_people',
+	GALLERY_ALT_REQUIRED: 'gallery_alt_required',
 };
 
 Object.freeze(ERROR_CODES);

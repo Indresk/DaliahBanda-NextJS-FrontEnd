@@ -109,6 +109,14 @@ export default async function AssetsPage({ searchParams }) {
 												url={file.url}
 												name={file.name}
 											/>
+											{file.isImage && (
+												<Link
+													href={`/dashboard/gallery/new?url=${encodeURIComponent(file.url)}`}
+													className='flex items-center gap-1 text-xs text-lightgray transition-colors hover:text-white'>
+													<MSOIcon className='text-base'>add_photo_alternate</MSOIcon>
+													Añadir a galería
+												</Link>
+											)}
 										</li>
 									))}
 								</ul>

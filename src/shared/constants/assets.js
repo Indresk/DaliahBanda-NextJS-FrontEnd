@@ -21,3 +21,8 @@ export const ASSET_UPLOAD = Object.freeze({
 	// Bytes iniciales que se leen de R2 para comprobar la firma del archivo
 	SIGNATURE_BYTES: 32,
 });
+
+// Dominios cuyas imágenes optimiza next/image. Mantener igual que images.remotePatterns de
+// next.config.ts: con cualquier otro dominio next/image lanza un error, así que esas
+// imágenes se sirven sin optimizar (ver shared/utils/images.js).
+export const OPTIMIZED_IMAGE_HOSTS = Object.freeze(['assets.daliahbanda.com']);

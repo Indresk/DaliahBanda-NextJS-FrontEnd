@@ -13,7 +13,7 @@ import {
 	assetUploadSchema,
 } from '../../shared/schemas';
 import AppError from '../errors/app.error';
-import { getPublicUrl } from '../integrations/r2.client';
+import { getKeyFromPublicUrl, getPublicUrl } from '../integrations/r2.client';
 import AssetsRepository from '../repositories/assets.reposity';
 import { buildAssetKey } from '../utils/assetKeys';
 import { decrypt, encrypt } from '../utils/encryption';
@@ -119,6 +119,16 @@ class AssetsService {
 
 		await AssetsRepository.remove(key);
 		return successResponseWrapper({ key }, 'Archivo eliminado');
+	}
+
+	// Borra el archivo de una URL pública del bucket. Devuelve false si la URL no es del bucket
+	// o el archivo ya no existe (no es un error: se usa al limpiar registros de otras tablas).
+	static async removeByPublicUrl(url) {
+		const key = getKeyFromPublicUrl(url);
+		if (!key || !(await AssetsRepository.head(key))) return false;
+
+		await AssetsRepository.remove(key);
+		return true;
 	}
 
 	static #readUploadToken(token) {

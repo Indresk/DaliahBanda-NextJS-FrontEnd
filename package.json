@@ -13,7 +13,7 @@
 		"db:migrate:undo": "sequelize-cli db:migrate:undo",
 		"lint": "eslint",
 		"dev:db": "npm run db:create ; npm run db:migrate ; npm run db:seed ; next dev",
-		"start:db": "npm run db:create ; npm run db:migrate ; npm run db:seed ;  next start"
+		"start:db": "npm run db:create ; npm run db:migrate && next start"
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.1152.0",

@@ -122,4 +122,46 @@ export const errorsDictionary = {
 		statusCode: 502,
 		message: 'Ocurrió un error con el almacenamiento de archivos',
 	},
+	[ERROR_CODES.GALLERY_IMAGE_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró la imagen de la galería',
+	},
+	[ERROR_CODES.GALLERY_IMAGE_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Esa imagen ya está en la galería',
+	},
+	[ERROR_CODES.GALLERY_EVENT_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el evento',
+	},
+	[ERROR_CODES.GALLERY_EVENT_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya existe un evento con ese identificador',
+	},
+	[ERROR_CODES.GALLERY_EVENT_IN_USE]: {
+		statusCode: 409,
+		message:
+			'El evento tiene imágenes. Muévelas a otro evento antes de eliminarlo',
+	},
+	[ERROR_CODES.GALLERY_PERSON_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró al integrante',
+	},
+	[ERROR_CODES.GALLERY_PERSON_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya existe un integrante con ese identificador',
+	},
+	[ERROR_CODES.GALLERY_PERSON_IN_USE]: {
+		statusCode: 409,
+		message:
+			'El integrante aparece en imágenes. Quítalo de ellas antes de eliminarlo',
+	},
+	[ERROR_CODES.GALLERY_UNKNOWN_PEOPLE]: {
+		statusCode: 400,
+		message: 'Hay integrantes que no existen',
+	},
+	[ERROR_CODES.GALLERY_ALT_REQUIRED]: {
+		statusCode: 400,
+		message: 'Una imagen activa necesita texto alternativo (alt)',
+	},
 };

@@ -1,6 +1,7 @@
-import { eventsFrames } from '@/shared/lib/eventsFrames';
 import { humanizeSlug } from '../buildMetadata';
 
+// Las páginas de la galería leen de la base de datos: reciben el evento o la persona ya
+// cargados. Si el contenido no existe, la página responde 404 antes de llegar aquí.
 export const galleryMeta = {
 	title: 'Galería',
 	description:
@@ -11,28 +12,28 @@ export const galleryMeta = {
 export const galleryBackstageMeta = {
 	title: 'Backstage',
 	description:
-		'Fotos del backstage de Daliah Banda: ensayos, camerinos y bastidores de los shows.',
+		'Fotos del backstage de Daliah Banda: ensayos, grabaciones, camerinos y bastidores de los shows.',
 	path: '/gallery/backstage',
-	indexable: false,
 };
 
-export const galleryFilterMeta = (filter) => ({
-	title: `Galería: ${humanizeSlug(filter)}`,
-	description: `Fotos de ${humanizeSlug(filter)} en los shows de Daliah Banda.`,
-	path: `/gallery/${filter}`,
-	indexable: false,
+export const galleryFilterMeta = (person) => ({
+	title: `Fotos de ${person.name}`,
+	description: `Fotos de ${person.name} con Daliah Banda: shows, ensayos y backstage.`,
+	path: `/gallery/${person.slug}`,
 });
 
-export const galleryEventMeta = (slug) => {
-	const event = eventsFrames.find(
-		(item) => item.pageLink === `/gallery/events/${slug}`,
-	);
-	const name = event?.title ?? humanizeSlug(slug);
+export const galleryEventMeta = (event) => ({
+	title: `${event.title} - Fotos`,
+	description:
+		event.description ||
+		`Fotos del evento ${event.title}, presentación en vivo de Daliah Banda.`,
+	path: `/gallery/events/${event.slug}`,
+});
 
-	return {
-		title: `${name} - Fotos`,
-		description: `Fotos del evento ${name}, presentación en vivo de Daliah Banda.`,
-		path: `/gallery/events/${slug}`,
-		indexable: false,
-	};
-};
+// Título provisional si la página aún no pudo cargar el contenido
+export const galleryFallbackMeta = (slug) => ({
+	title: `Galería: ${humanizeSlug(slug)}`,
+	description: 'Fotos de Daliah Banda.',
+	path: '/gallery',
+	indexable: false,
+});

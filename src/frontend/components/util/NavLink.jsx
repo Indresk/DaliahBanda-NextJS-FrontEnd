@@ -8,9 +8,13 @@ export default function NavLink({
 	children,
 	className = '',
 	activeClassName = '',
+	// exact=false: también activo en las subrutas (/dashboard/gallery/new activa /dashboard/gallery)
+	exact = true,
 }) {
 	const pathname = usePathname();
-	const isActive = pathname === href;
+	const isActive = exact
+		? pathname === href
+		: pathname === href || pathname.startsWith(`${href}/`);
 
 	const baseClassName =
 		typeof className === 'function' ? className({ isActive }) : className;

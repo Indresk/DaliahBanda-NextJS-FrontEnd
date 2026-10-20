@@ -66,6 +66,28 @@ src/
 - **Nombres**: `x.service.js`, `x.reposity.js`, `x.actions.js`, `x.middleware.js`, `x.client.js`,
   `x.schema.js`.
 
+## Galería
+
+Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
+
+- **Integrantes como arreglo** (`memberSlugs TEXT[]` con índice GIN) y evento como clave
+  foránea. Una sola tabla para filtrar y editar en lote; no hay clave foránea hacia
+  `gallery-people`, así que el servicio valida los slugs (`assertPeopleExist`) y bloquea
+  borrar una persona en uso.
+- **Fecha de la foto** en `takenAt` (DATEONLY). El `createdAt` de Sequelize es la fecha de la fila.
+- **Paginación por cursor** `(takenAt, id)` con comparación de filas: nunca `OFFSET`. Las
+  columnas del cursor llevan el nombre de la tabla (el listado del dashboard hace JOIN).
+- **Cada filtro nuevo** debe poder servirse por un índice: antes de añadirlo, revisar con
+  `EXPLAIN` que no hay `Seq Scan` ni `Sort` (los índices están en la migración de imágenes).
+- **Cambios masivos** en una sola sentencia (`WHERE id = ANY($1)`); publicar solo afecta a las
+  imágenes con `alt`.
+- **Lectura pública cacheada**: `gallery.cache.js` (`getGalleryPage`, `getGalleryEvents`...) con
+  la etiqueta `gallery`; toda acción que modifique la galería llama a `invalidateGallery()`.
+- **URLs de cualquier dominio https**: `isOptimizedImageUrl` decide si `next/image` optimiza o
+  sirve sin optimizar (con un dominio no configurado `next/image` rompe la página).
+- **Formularios**: `useFormAction` en vez de la prop `action` del `<form>`, porque React 19
+  vacía los campos tras cada acción, incluso si falló.
+
 ## Metadata y SEO
 
 Todo vive en `src/frontend/seo/` (es de frontend: el backend no la necesita).

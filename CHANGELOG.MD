@@ -51,3 +51,12 @@
 - Cambios respecto al meta viejo: `og:type` `website` (`music.group` no existe) y `video.other` en `/live`; se descartan las etiquetas `music:*` (no son estándar); `og:video` apunta al reproductor de Kick.
 - Pendiente: la imagen social sigue siendo el `.webp` de 1281×675 (conviene un JPG/PNG de 1200×630 en `site.js`) y `/albums` está en `sitemap.js` aunque ahora es `noindex`.
 
+### [0.0.1] - 2026-10-22
+
+- Galería en base de datos: tablas `gallery-images`, `gallery-events` y `gallery-people` (una migración cada una) y seeder idempotente con las 271 imágenes de `src/shared/lib/galleryImages.json` (17 eventos, 12 personas). Los títulos de los eventos pequeños se infirieron del texto alt de sus fotos (revisarlos en Galería > Eventos).
+- Lecturas eficientes: paginación por cursor, 5 índices (incluido GIN para integrantes), contadores por filtro y cambios masivos en una sola sentencia. Con 61.000 filas sintéticas los listados públicos tardan menos de 0,1 ms y usan índice sin ordenar en memoria.
+- Dashboard > Galería: listado con filtros (categoría, evento, integrantes todos/alguno, estado, fechas, texto, sin alt) y paginación; añadir, editar y eliminar (con opción de borrar también el archivo del bucket); activar, desactivar, eliminar y editar evento, categoría, fecha o integrantes en lote; subida en lote al bucket registrando las imágenes; gestión de eventos e integrantes. Botón "Añadir a galería" en Assets. Una imagen solo se puede publicar con texto alternativo.
+- Galería pública (`/gallery`, `/gallery/<integrante>`, `/gallery/events/<evento>`, `/gallery/backstage`) lee de la base de datos con caché invalidada desde el dashboard, "Ver más" por cursor, 404 para slugs inexistentes y entradas en el sitemap. Se eliminó `FilterView.jsx` (usaba Firebase). `src/shared/lib/eventsFrames.js` ya no se usa.
+- Correcciones: el cursor del listado del dashboard daba error por una columna ambigua con el JOIN; Postgres usa el código 23001 (no 23503) para `RESTRICT`; los formularios vaciaban lo escrito cuando el servidor rechazaba el envío.
+- Datos: en el JSON los nombres de archivo de los eventos `grange` y `garage` parecen estar intercambiados respecto a su alt y evento (se respetó el evento y el alt).
+

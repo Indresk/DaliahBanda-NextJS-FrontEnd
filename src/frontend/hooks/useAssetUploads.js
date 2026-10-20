@@ -22,8 +22,12 @@ export function useAssetUploads(prefix) {
 		);
 	}
 
+	// Devuelve { file, ok, url } (url pública del archivo ya verificado)
 	async function uploadFile(file, index) {
-		const fail = (message) => updateItem(index, { status: 'error', message });
+		const fail = (message) => {
+			updateItem(index, { status: 'error', message });
+			return { file, ok: false, url: null };
+		};
 
 		if (!Object.hasOwn(ASSET_TYPES, file.type)) {
 			return fail('Tipo de archivo no permitido.');
@@ -51,16 +55,16 @@ export function useAssetUploads(prefix) {
 
 			updateItem(index, { progress: 100, message: 'Verificando…' });
 			const confirmed = await confirmAssetUpload(token);
-			updateItem(index, {
-				status: confirmed.status === 'success' ? 'ok' : 'error',
-				message: confirmed.message,
-			});
+			const ok = confirmed.status === 'success';
+			updateItem(index, { status: ok ? 'ok' : 'error', message: confirmed.message });
+			return { file, ok, url: ok ? confirmed.payload.url : null };
 		} catch (error) {
-			fail(error.message || 'No se pudo subir el archivo.');
+			return fail(error.message || 'No se pudo subir el archivo.');
 		}
 	}
 
-	// Sube los archivos de uno en uno (uno solo ya usa todo el ancho de banda de subida)
+	// Sube los archivos de uno en uno (uno solo ya usa todo el ancho de banda de subida).
+	// Al terminar llama a onFinish con el resultado de cada archivo.
 	function upload(files, onFinish) {
 		setItems(
 			files.map((file) => ({
@@ -72,10 +76,11 @@ export function useAssetUploads(prefix) {
 		);
 
 		startTransition(async () => {
+			const results = [];
 			for (const [index, file] of files.entries()) {
-				await uploadFile(file, index);
+				results.push(await uploadFile(file, index));
 			}
-			onFinish?.();
+			onFinish?.(results);
 		});
 	}
 

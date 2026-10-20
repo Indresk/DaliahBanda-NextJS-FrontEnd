@@ -1,80 +1,35 @@
 import { notFound } from 'next/navigation';
-
+import { getGalleryEvent, getGalleryPage } from '@/back/services/gallery.cache';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
-import { galleryEventMeta } from '@/frontend/seo/pages/gallery.meta';
+import {
+	galleryEventMeta,
+	galleryFallbackMeta,
+} from '@/frontend/seo/pages/gallery.meta';
+import GalleryGrid from '../../_components/GalleryGrid';
 
 export async function generateMetadata({ params }) {
 	const { filter } = await params;
-	return buildMetadata(galleryEventMeta(filter));
+	const event = await getGalleryEvent(filter);
+
+	return buildMetadata(event ? galleryEventMeta(event) : galleryFallbackMeta(filter));
 }
 
-
-// async function getImages(id: string): Promise<ImagesResponse | null> {
-// 	//definir posteriormente URL exacta del fetcheo
-// 	const res = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/gallery/${id}`, {
-// 		// Revisar opciones de cacheo ya que esto no es indispensable y podemos poner un cache:'force-cache'
-// 		next: { revalidate: 3600 },
-// 	});
-
-// 	if (!res.ok) return null;
-
-// 	return res.json();
-// }
-
-// export async function generateMetadata({
-// 	params,
-// }: PageProps): Promise<Metadata> {
-// 	const { filter } = await params;
-// 	const galleryData = await getImages(filter);
-
-// 	if (!galleryData) {
-// 		return {
-// 			title: 'Gallery no encontrado',
-// 			robots: {
-// 				index: false,
-// 				follow: false,
-// 			},
-// 		};
-// 	}
-
-// 	const title = galleryData.title;
-// 	const description =
-// 		galleryData.description ??
-// 		`Explora el contenido del gallery ${galleryData.title}.`;
-
-// 	return {
-// 		title,
-// 		description,
-// 		alternates: {
-// 			canonical: `/gallery/${filter}`,
-// 		},
-// 		openGraph: {
-// 			title,
-// 			description,
-// 			url: `/gallery/${filter}`,
-// 			type: 'article',
-// 			images: galleryData.image ? [galleryData.image] : undefined,
-// 		},
-// 		twitter: {
-// 			card: galleryData.image ? 'summary_large_image' : 'summary',
-// 			title,
-// 			description,
-// 			images: galleryData.image ? [galleryData.image] : undefined,
-// 		},
-// 	};
-// }
-
-export default async function EventPage({ params }) {
+// Fotos de un evento (/gallery/events/<slug>)
+export default async function GalleryByEvent({ params }) {
 	const { filter } = await params;
-	// const albumData  = await getImages(album);
+	const event = await getGalleryEvent(filter);
+	if (!event) notFound();
 
-	// if (!albumData ) notFound();
+	const filters = { eventId: event.id };
+	const { items, nextCursor } = await getGalleryPage(filters);
 
 	return (
-		<main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-			{/* <h1>{albumData.title}</h1>
-			<p>{albumData.description}</p> */}
-			<h1>{filter}</h1>
+		<main>
+			<div className='px-8 pb-6 md:px-14'>
+				<h2 className='text-2xl uppercase'>{event.title}</h2>
+				{event.description && <p className='mt-2 max-w-3xl'>{event.description}</p>}
+			</div>
+			<GalleryGrid initialItems={items} initialCursor={nextCursor} filters={filters} />
 		</main>
 	);
 }

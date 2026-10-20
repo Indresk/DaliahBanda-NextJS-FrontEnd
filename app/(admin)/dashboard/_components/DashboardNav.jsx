@@ -11,6 +11,7 @@ export default function DashboardNav({ sections }) {
 					<li key={section.href}>
 						<NavLink
 							href={section.href}
+							exact={section.href === '/dashboard'}
 							className='flex items-center gap-3 px-3 py-2 font-headline text-sm uppercase tracking-tight text-lightgray transition-colors hover:text-white'
 							activeClassName='bg-darkgray !text-white'>
 							<MSOIcon className='text-xl'>{section.icon}</MSOIcon>

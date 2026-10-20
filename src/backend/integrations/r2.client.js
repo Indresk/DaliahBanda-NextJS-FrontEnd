@@ -19,4 +19,9 @@ const PUBLIC_URL = config.CLOUDFLARE_R2_PUBLIC_URL.replace(/\/+$/, '');
 
 export const getPublicUrl = (key) => `${PUBLIC_URL}/${key}`;
 
+// Clave del objeto si la URL es del bucket público; null si es de otro sitio
+export function getKeyFromPublicUrl(url) {
+	return url.startsWith(`${PUBLIC_URL}/`) ? url.slice(PUBLIC_URL.length + 1) : null;
+}
+
 export default r2Client;
