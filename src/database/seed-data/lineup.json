@@ -1,111 +1,137 @@
 {
 	"section": "lineup",
 	"version": 1,
-	"exportedAt": "2026-10-20T22:43:37.856Z",
+	"exportedAt": "2026-10-20T23:16:49.992Z",
 	"entries": [
 		{
 			"memberSlug": "silvia",
 			"personName": "Silvia Berrio",
-			"role": "Voz principal",
+			"role": "vocals",
 			"startYear": 2018,
+			"startMonth": 3,
 			"endYear": null,
+			"endMonth": null,
 			"note": null
 		},
 		{
 			"memberSlug": null,
 			"personName": "Sebas",
-			"role": "Guitarra melódica (fundador)",
+			"role": "lead_guitar",
 			"startYear": 2018,
+			"startMonth": 3,
 			"endYear": 2020,
-			"note": "Fundó la banda en 2018."
+			"endMonth": 6,
+			"note": "Fundador de la banda."
 		},
 		{
 			"memberSlug": "mike",
 			"personName": "Mike Villaizan",
-			"role": "Guitarra melódica",
+			"role": "lead_guitar",
 			"startYear": 2020,
+			"startMonth": 7,
 			"endYear": null,
-			"note": "Entró para ocupar el lugar de Sebas."
-		},
-		{
-			"memberSlug": "rafa",
-			"personName": "Rafael Salcedo",
-			"role": "Bajo",
-			"startYear": 2018,
-			"endYear": 2024,
+			"endMonth": null,
 			"note": null
 		},
 		{
 			"memberSlug": "rafa",
 			"personName": "Rafael Salcedo",
-			"role": "Teclados",
+			"role": "bass",
+			"startYear": 2018,
+			"startMonth": 3,
+			"endYear": 2024,
+			"endMonth": 8,
+			"note": null
+		},
+		{
+			"memberSlug": "rafa",
+			"personName": "Rafael Salcedo",
+			"role": "keys",
 			"startYear": 2024,
+			"startMonth": 9,
 			"endYear": null,
-			"note": "Pasó a los teclados porque hasta entonces el proyecto no tenía teclado."
+			"endMonth": null,
+			"note": "Pasó de bajo a los teclados."
 		},
 		{
 			"memberSlug": null,
 			"personName": "Daniel",
-			"role": "Bajo",
+			"role": "bass",
 			"startYear": 2024,
+			"startMonth": 9,
 			"endYear": 2025,
-			"note": "Estuvo 6 meses."
+			"endMonth": 2,
+			"note": null
 		},
 		{
 			"memberSlug": null,
 			"personName": "Caro",
-			"role": "Bajo",
+			"role": "bass",
 			"startYear": 2025,
+			"startMonth": 3,
 			"endYear": 2025,
-			"note": "Estuvo 4 meses."
+			"endMonth": 6,
+			"note": null
 		},
 		{
 			"memberSlug": "chris",
 			"personName": "Christian Ramírez",
-			"role": "Bajo",
+			"role": "bass",
 			"startYear": 2025,
+			"startMonth": 7,
 			"endYear": null,
-			"note": "Desde entonces, hace más de un año."
+			"endMonth": null,
+			"note": null
 		},
 		{
 			"memberSlug": null,
 			"personName": "Angel",
-			"role": "Batería",
+			"role": "drums",
 			"startYear": 2018,
+			"startMonth": 3,
 			"endYear": 2025,
+			"endMonth": 5,
 			"note": null
 		},
 		{
 			"memberSlug": "nico",
 			"personName": "Nicolás Araújo",
-			"role": "Batería",
+			"role": "drums",
 			"startYear": 2025,
+			"startMonth": 6,
 			"endYear": null,
-			"note": "Reemplazó a Angel."
+			"endMonth": null,
+			"note": null
 		},
 		{
 			"memberSlug": null,
 			"personName": "Dan",
-			"role": "Guitarra rítmica",
+			"role": "rhythm_guitar",
 			"startYear": 2018,
+			"startMonth": 3,
 			"endYear": 2023,
+			"endMonth": 6,
 			"note": null
 		},
 		{
 			"memberSlug": "aya",
 			"personName": "Jesús \"AYA\" Ardiles",
-			"role": "Guitarra rítmica y coros",
+			"role": "rhythm_guitar",
 			"startYear": 2023,
+			"startMonth": 7,
 			"endYear": null,
-			"note": "Reemplazó a Dan."
+			"endMonth": null,
+			"note": "También coros."
 		},
 		{
 			"memberSlug": null,
 			"personName": "Sully",
-			"role": "Corista",
+			"role": "backing_vocals",
 			"startYear": 2026,
+			"startMonth": 1,
 			"endYear": 2026,
-			"note": "Estuvo 6 meses."
+			"endMonth": 6,
+			"note": null
 		}
 	]
 }

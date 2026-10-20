@@ -63,14 +63,18 @@ class LineupService {
 		const slugs = new Map(members.map((member) => [member.id, member.slug]));
 
 		return {
-			entries: entries.map(({ memberId, personName, role, startYear, endYear, note }) => ({
-				memberSlug: slugs.get(memberId) ?? null,
-				personName,
-				role,
-				startYear,
-				endYear,
-				note,
-			})),
+			entries: entries.map(
+				({ memberId, personName, role, startYear, startMonth, endYear, endMonth, note }) => ({
+					memberSlug: slugs.get(memberId) ?? null,
+					personName,
+					role,
+					startYear,
+					startMonth,
+					endYear,
+					endMonth,
+					note,
+				}),
+			),
 		};
 	}
 }

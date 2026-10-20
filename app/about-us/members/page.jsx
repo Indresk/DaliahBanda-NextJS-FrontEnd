@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { getActiveMembers, getLineupTimeline } from '@/back/services/members.cache';
+import { getAlbums } from '@/back/services/music.cache';
+import Tabs from '@/frontend/components/ui/Tabs';
 import JsonLd from '@/frontend/seo/JsonLd';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { membersMeta } from '@/frontend/seo/pages/about.meta';
 import { buildBreadcrumbSchema } from '@/frontend/seo/schema/breadcrumb';
 import { aboutCrumbs } from '../_lib/breadcrumbs';
-import LineupTimeline from '../_components/LineupTimeline';
+import LineupChart from '../_components/LineupChart';
+import LineupList from '../_components/LineupList';
 import MemberCard from '../_components/MemberCard';
 
 export async function generateMetadata() {
@@ -13,7 +16,11 @@ export async function generateMetadata() {
 }
 
 export default async function Members() {
-	const [members, timeline] = await Promise.all([getActiveMembers(), getLineupTimeline()]);
+	const [members, timeline, albums] = await Promise.all([
+		getActiveMembers(),
+		getLineupTimeline(),
+		getAlbums(),
+	]);
 
 	return (
 		<div className='flex flex-col gap-14 px-8 py-14 md:px-14'>
@@ -51,7 +58,13 @@ export default async function Members() {
 							Quienes han pasado por Daliah desde 2018, actuales y anteriores.
 						</p>
 					</div>
-					<LineupTimeline entries={timeline} />
+					<Tabs
+						label='Vista de la formación'
+						tabs={[
+							{ id: 'chart', label: 'Gráfico', content: <LineupChart entries={timeline} albums={albums} /> },
+							{ id: 'list', label: 'Lista', content: <LineupList entries={timeline} /> },
+						]}
+					/>
 				</section>
 			)}
 

@@ -131,8 +131,11 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 - `/about-us` (info general), `/about-us/members` (miembros activos + línea del tiempo de la
   formación) y `/about-us/members/[slug]` (página personal; 404 si no está activo). Lecturas
   cacheadas en `members.cache.js` (`getActiveMembers`, `getMember`, `getLineupTimeline`).
-- La formación es la tabla `lineup-entries` (persona, rol, año de inicio y fin, `memberId`
-  opcional que enlaza a su página) editable en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`.
+- La formación es la tabla `lineup-entries` (persona, `role` de una lista fija —`LINEUP_ROLES`—, año y
+  mes de inicio y de fin opcionales, nota libre y `memberId` opcional que enlaza a su página) editable
+  en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`. En `/about-us/members` se ve como gráfico
+  (`LineupChart`: una fila por persona, barras por rol, líneas de lanzamientos; los cálculos están en
+  `app/about-us/_lib/timeline.js`) y como lista, en pestañas (`ui/Tabs`, ambos paneles en el HTML).
 - **Migas de pan** con rutas paralelas: `app/albums/@breadcrumb` y `app/about-us/@breadcrumb`
   pintan `ui/Breadcrumb` en el servidor con los títulos reales. La lógica de las migas está en
   `_lib/breadcrumbs.js` de cada sección y la reutiliza el JSON-LD (`BreadcrumbList`). Una ruta

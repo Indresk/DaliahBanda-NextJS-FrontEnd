@@ -7,11 +7,29 @@ import Field, { controlClass } from '@/frontend/components/ui/Field';
 import FeedbackMessage from '@/frontend/components/ui/FeedbackMessage';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import { useFormAction } from '@/frontend/hooks/useFormAction';
+import { LINEUP_ROLES, MONTH_NAMES } from '@/shared/constants';
 import {
 	createLineupEntry,
 	deleteLineupEntry,
 	updateLineupEntry,
 } from '@/back/actions/lineup.actions';
+
+// Año + mes (opcional): sin mes se asume enero al inicio y diciembre al fin
+function DateFields({ idPrefix, label, yearName, monthName, year, month, requiredYear = false }) {
+	return (
+		<Field label={label} htmlFor={`${idPrefix}-year`}>
+			<div className='flex gap-2'>
+				<input id={`${idPrefix}-year`} name={yearName} type='number' min={1990} max={2100} required={requiredYear} placeholder='Año' defaultValue={year ?? ''} className={controlClass} />
+				<select aria-label={`${label}: mes`} name={monthName} defaultValue={month ?? ''} className={controlClass}>
+					<option value=''>Mes</option>
+					{MONTH_NAMES.map((name, index) => (
+						<option key={name} value={index + 1}>{name}</option>
+					))}
+				</select>
+			</div>
+		</Field>
+	);
+}
 
 // Campos comunes de crear y editar una entrada
 function EntryFields({ entry, members, idPrefix }) {
@@ -28,16 +46,17 @@ function EntryFields({ entry, members, idPrefix }) {
 			<Field label='Nombre' htmlFor={`${idPrefix}-name`}>
 				<input id={`${idPrefix}-name`} name='personName' maxLength={120} defaultValue={entry?.personName ?? ''} className={controlClass} />
 			</Field>
-			<Field label='Rol / instrumento' htmlFor={`${idPrefix}-role`}>
-				<input id={`${idPrefix}-role`} name='role' required maxLength={120} defaultValue={entry?.role ?? ''} className={controlClass} />
+			<Field label='Rol' htmlFor={`${idPrefix}-role`} hint='Define el color en el gráfico.'>
+				<select id={`${idPrefix}-role`} name='role' required defaultValue={entry?.role ?? ''} className={controlClass}>
+					<option value='' disabled>Elegir…</option>
+					{Object.entries(LINEUP_ROLES).map(([value, label]) => (
+						<option key={value} value={value}>{label}</option>
+					))}
+				</select>
 			</Field>
-			<Field label='Desde (año)' htmlFor={`${idPrefix}-start`}>
-				<input id={`${idPrefix}-start`} name='startYear' type='number' min={1990} max={2100} required defaultValue={entry?.startYear ?? ''} className={controlClass} />
-			</Field>
-			<Field label='Hasta (año, vacío = sigue)' htmlFor={`${idPrefix}-end`}>
-				<input id={`${idPrefix}-end`} name='endYear' type='number' min={1990} max={2100} defaultValue={entry?.endYear ?? ''} className={controlClass} />
-			</Field>
-			<Field label='Nota (opcional)' htmlFor={`${idPrefix}-note`}>
+			<DateFields idPrefix={`${idPrefix}-start`} label='Desde' yearName='startYear' monthName='startMonth' year={entry?.startYear} month={entry?.startMonth} requiredYear />
+			<DateFields idPrefix={`${idPrefix}-end`} label='Hasta (vacío = sigue)' yearName='endYear' monthName='endMonth' year={entry?.endYear} month={entry?.endMonth} />
+			<Field label='Nota (opcional)' htmlFor={`${idPrefix}-note`} hint='Detalle libre: "fundador", "también coros"...'>
 				<input id={`${idPrefix}-note`} name='note' maxLength={300} defaultValue={entry?.note ?? ''} className={controlClass} />
 			</Field>
 		</div>
@@ -65,7 +84,7 @@ function EntryRow({ entry, members }) {
 	const [pending, startTransition] = useTransition();
 
 	function handleDelete() {
-		if (!window.confirm(`¿Eliminar a "${entry.personName}" (${entry.role})?`)) return;
+		if (!window.confirm(`¿Eliminar a "${entry.personName}" (${LINEUP_ROLES[entry.role]})?`)) return;
 		startTransition(async () => setDeleteResult(await deleteLineupEntry(entry.id)));
 	}
 
@@ -76,7 +95,7 @@ function EntryRow({ entry, members }) {
 					{entry.startYear}{entry.endYear === null ? ' – hoy' : entry.endYear === entry.startYear ? '' : ` – ${entry.endYear}`}
 				</span>
 				<strong>{entry.personName}</strong>
-				<span className='text-sm text-lightgray'>{entry.role}</span>
+				<span className='text-sm text-lightgray'>{LINEUP_ROLES[entry.role]}</span>
 				{entry.memberId && <Badge tone='warn'>Con página</Badge>}
 				<span className='ml-auto flex gap-4 text-xs'>
 					<button type='button' onClick={() => setEditing((value) => !value)} className='cursor-pointer underline'>

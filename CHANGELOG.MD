@@ -73,3 +73,4 @@
 - Migas de pan por rutas paralelas (`@breadcrumb`) con los títulos reales en `/albums` y `/about-us`; se eliminó el `BreadCrumb` de cliente basado en la URL.
 - Datos estructurados: `MusicAlbum`, `MusicRecording`, `Person` y `BreadcrumbList`; `MusicGroup` ahora usa miembros, álbumes y canciones de la base (se quitó la lista fija de canciones).
 - Sobre nosotros: `/about-us`, `/about-us/members` (activos + línea del tiempo) y `/about-us/members/[slug]`. Tabla `lineup-entries`, dashboard `/dashboard/lineup`, export y `pnpm db:seed:lineup`.
+- Formación: el rol es una lista fija (voz, coros, guitarra melódica, guitarra rítmica, bajo, teclados, batería; el detalle va en la nota) y las entradas tienen mes de inicio y fin. `/about-us/members` muestra un gráfico mensual por persona con los lanzamientos, y la lista simplificada, en pestañas.
