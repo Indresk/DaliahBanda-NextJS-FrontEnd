@@ -19,6 +19,16 @@ export const ERROR_CODES = {
 	INSUFFICIENT_PERMISSIONS: 'insufficient_permissions',
 	SUBSCRIBER_NOT_FOUND: 'subscriber_not_found',
 	SUBSCRIBER_ALREADY_EXISTS: 'subscriber_already_exists',
+	INVALID_WEBHOOK_SIGNATURE: 'invalid_webhook_signature',
+	KICK_NOT_CONNECTED: 'kick_not_connected',
+	KICK_OAUTH_ERROR: 'kick_oauth_error',
+	KICK_API_ERROR: 'kick_api_error',
+	ALLOWED_EMAIL_NOT_FOUND: 'allowed_email_not_found',
+	ALLOWED_EMAIL_ALREADY_EXISTS: 'allowed_email_already_exists',
+	CANNOT_REMOVE_OWN_EMAIL: 'cannot_remove_own_email',
+	ASSET_ALREADY_EXISTS: 'asset_already_exists',
+	ASSET_NOT_FOUND: 'asset_not_found',
+	STORAGE_ERROR: 'storage_error',
 };
 
 Object.freeze(ERROR_CODES);

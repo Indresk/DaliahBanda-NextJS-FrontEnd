@@ -3,27 +3,17 @@ import Button from '@/frontend/components/buttons/GeneralButton';
 import Link from 'next/link';
 import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
 import MobileMenu from './MobileMenu';
-// import LiveBannerWrapper from './LiveBannerWrapper'; // El wrapper para el context
+import LiveBanner from './LiveBanner';
+import { navigationLinks } from './navigationLinks';
+import { getLiveStatus } from '@/back/services/liveStatus.cache';
 import './header.css';
 
-export const navigationLinks = [
-	{ title: 'Discografía', link: '/albums' },
-	{ title: 'Galería', link: '/gallery' },
-	{ title: 'Integrantes', link: '/about-us/members' },
-];
+export default async function Header() {
+	const { isLive } = await getLiveStatus();
 
-async function getLiveStatus() {
-	const res = await fetch('https://back.daliahbanda.com/status', {
-		next: { revalidate: 60 },
-	}); // Revalida cada minuto
-	return res.json();
-}
-
-export default function Header() {
 	return (
 		<header className='main-header bg-black z-30'>
-			{/* El banner interactivo aislado */}
-			{/* <LiveBannerWrapper /> */}
+			{isLive && <LiveBanner />}
 
 			<section className='px-4 sm:px-6 lg:px-10 relative py-6'>
 				<nav className='flex gap-4 justify-between items-center relative'>

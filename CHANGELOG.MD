@@ -12,3 +12,35 @@
 - Se implementó la funcionalidad de autenticación oAuth con Google, permitiendo a los usuarios iniciar sesión utilizando sus cuentas de Google.
 - Se configuró la base de datos para almacenar información de usuarios autenticados y se establecieron relaciones básicas entre las tablas.
 - Se configuro el bloqueo de logeo con base en la lista de correos permitidos desde .env, para restringir el acceso a usuarios no autorizados.
+
+### [0.0.1] - 2026-10-20
+
+- Dashboard protegido (`/dashboard`) para roles `admin` y `member`. El proxy filtra por rol del token y cada página y acción del servidor vuelve a comprobar el rol en la base de datos (`sessionGuard.js`).
+- Estado en vivo desde Kick: webhook `POST /api/v1/webhooks/kick` con verificación de firma (RSA SHA-256, llave pública pedida a Kick en tiempo de ejecución y refrescada si Kick la rota), idempotencia por id de mensaje y descarte de eventos desordenados. Guarda el estado en la tabla `stream-status`.
+- Conexión con Kick por OAuth 2.1 + PKCE (`/api/v1/kick/oauth/login` y `/callback`, solo admin). Los tokens se guardan cifrados (AES-256-GCM) en `kick-credentials` y el access token se renueva solo cuando está por vencer, con bloqueo de fila para no rotar el refresh token dos veces.
+- Banner "en vivo" (Header) y `/live` leen el estado desde una caché de Next con etiqueta `live-status`: el webhook la invalida y las páginas estáticas se regeneran con el valor nuevo. `LiveStatusRefresher` vuelve a pedir la ruta al volver a la pestaña (máx. 1 vez cada 30 s). Respaldo: la caché caduca a los 15 min y un "en vivo" sin evento de cierre se ignora pasadas 12 h.
+- Páginas públicas con `Cache-Control: public, max-age=0, must-revalidate` (en `next.config.ts`): sin esto el navegador servía una vez la versión anterior (stale-while-revalidate de ISR) y el banner llegaba con un ciclo de retraso.
+- Dashboard: gestión de correos permitidos, suscriptores del footer (con descarga CSV de activos) y assets en Cloudflare R2 (explorador por carpetas, sin sobrescribir). Los archivos se suben **directo del navegador a R2** con una URL firmada de 5 min (no pasan por el servidor): `createAssetUpload` valida y firma, y `confirmAssetUpload` comprueba después el tamaño (máx. 50 MB) y la firma real del archivo, y borra el objeto si no cumple (R2 no soporta POST con política para imponerlo al recibir).
+- Migraciones nuevas: `stream-status` y `kick-credentials`. La de `allowed-emails` ahora crea `createdAt/updatedAt` (sin ellas no se podía añadir un correo). Mientras no haya producción se editan las migraciones existentes: para aplicar el cambio hay que recrear la base de desarrollo.
+- `apiAuth.middleware.js` ya no deja pasar sin autenticación las rutas que contienen "webhook".
+- Reorganización para mantenibilidad (ver `ARCHITECTURE.md`): schemas de zod en `src/shared/schemas/` (se eliminó `utils/zodSchemas.js`), constantes divididas por dominio, `kick.service.js` separado en servicios de credenciales, suscripción, OAuth y webhook, repositorio propio para R2, utilidades de cifrado/firma/CSV/validación, componentes `ui` genéricos y hook `useAssetUploads`.
+- `navigationLinks` pasó a su propio archivo (lo usan Header, de servidor, y MobileMenu, de cliente).
+
+#### Configuración necesaria para desplegar
+
+- Variables nuevas obligatorias (también en **build** en Coolify): `KICK_CLIENT_ID`, `KICK_CLIENT_SECRET`, `KICK_BROADCASTER_ID`, `KICK_REDIRECT_URI`, `ENCRYPTION_KEY` (`openssl rand -base64 32`; cada uso deriva su propia clave a partir de ella), `CLOUDFLARE_ACCESS_KEY_ID`, `CLOUDFLARE_SECRET_ACCESS_KEY`, `CLOUDFLARE_R2_ENDPOINT`, `CLOUDFLARE_R2_BUCKET_NAME`, `CLOUDFLARE_R2_PUBLIC_URL`.
+- En el portal de desarrolladores de Kick: Redirect URL = `https://<dominio>/api/v1/kick/oauth/callback` (debe coincidir con `KICK_REDIRECT_URI`) y Webhook URL = `https://<dominio>/api/v1/webhooks/kick`.
+- Configurar **CORS en el bucket de R2** (Cloudflare → R2 → bucket → Settings → CORS policy), necesario para la subida directa desde el navegador:
+  ```json
+  [
+    {
+      "AllowedOrigins": ["https://daliahbanda.com", "http://localhost:3000"],
+      "AllowedMethods": ["PUT"],
+      "AllowedHeaders": ["content-type", "cache-control"],
+      "ExposeHeaders": ["ETag"],
+      "MaxAgeSeconds": 3600
+    }
+  ]
+  ```
+- Ejecutar `pnpm db:migrate`. Después, entrar como admin a `/dashboard/stream` y pulsar "Conectar con Kick".
+

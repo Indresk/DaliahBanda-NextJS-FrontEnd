@@ -5,6 +5,14 @@ import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 
 class SubscribeEmailsRepository {
+	static async findAll() {
+		return await SubscribeEmail.findAll({
+			attributes: ['id', 'email', 'isActive', 'createdAt', 'unsubscribedAt'],
+			order: [['createdAt', 'DESC']],
+			raw: true,
+		});
+	}
+
 	static async findAllActive() {
 		return await SubscribeEmail.findAll({
 			where: { isActive: true },

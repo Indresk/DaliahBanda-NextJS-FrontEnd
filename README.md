@@ -57,47 +57,8 @@ We combine the melodic complexity of progressive metal with the raw energy of 90
 
 ## Project Structure
 
-```
-daliahbanda-next/
-├── app/                          # Next.js 13+ App Router
-│   ├── layout.tsx               # Root layout
-│   ├── page.tsx                 # Homepage
-│   ├── _components/             # Page-specific components
-│   │   ├── Hero.jsx
-│   │   ├── Integrantes.jsx      # Band members showcase
-│   │   ├── FlyersCarousel.jsx   # Event flyers carousel
-│   │   ├── LiveCard.jsx          # Live streaming card
-│   │   └── RecommendedSong.jsx  # Music recommendations
-│   ├── albums/                  # Album listing & details
-│   │   ├── page.tsx
-│   │   ├── [album]/            # Dynamic album routes
-│   │   └── _components/        # Album-specific components
-│   ├── gallery/                 # Photo gallery
-│   │   ├── page.tsx
-│   │   ├── [filter]/           # Gallery filtering
-│   │   └── events/             # Event photo galleries
-│   └── live/                    # Live streaming page
-│
-├── src/
-│   ├── components/             # Reusable components
-│   │   ├── buttons/            # Button components
-│   │   ├── DaliahClicker/      # Interactive clicker game
-│   │   ├── Footer/             # Footer with email signup
-│   │   ├── Header/             # Navigation header
-│   │   └── util/               # Utility components
-│   ├── hooks/                  # Custom React hooks
-│   │   └── useBlockScroll.js
-│   ├── svg/                    # SVG components
-│   ├── utils/                  # Utility functions
-│   │   └── dates.js
-│   └── styles/                 # Global styles
-│
-├── public/                     # Static assets
-├── next.config.ts             # Next.js configuration
-├── tsconfig.json              # TypeScript configuration
-├── postcss.config.mjs          # PostCSS configuration
-└── eslint.config.mjs           # ESLint configuration
-```
+La estructura de carpetas, las capas del backend y las reglas para añadir código están en
+[ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Pages & Routes
 

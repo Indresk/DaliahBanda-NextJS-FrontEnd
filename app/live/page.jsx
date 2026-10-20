@@ -1,18 +1,16 @@
-// import { LiveContext } from "../context/LiveContext"
-
 import {
 	getStreamingStart,
 	getStreamingEnd,
 	DateToESString,
 } from '@/shared/utils/dates.js';
+import { getLiveStatus } from '@/back/services/liveStatus.cache';
 import Link from 'next/link';
 
 export const revalidate = 3600;
 
-export default function LiveView() {
-	// const {liveStatus} = useContext(LiveContext)
-
-	const liveStatus = false;
+export default async function LiveView() {
+	// El estado llega del webhook de Kick (BD) y se invalida con la etiqueta 'live-status'
+	const { isLive: liveStatus, title: liveTitle } = await getLiveStatus();
 
 	const UTCDateStart = getStreamingStart(Date.now());
 	const UTCDateEnd = getStreamingEnd(UTCDateStart);
@@ -33,6 +31,7 @@ export default function LiveView() {
 			</section>
 			<section aria-labelledby='stream-player'>
 				<h2 id='stream-player'>Ensayo en vivo</h2>
+				{liveStatus && liveTitle && <p>{liveTitle}</p>}
 				<div className='video-container'>
 					{liveStatus ? (
 						<iframe

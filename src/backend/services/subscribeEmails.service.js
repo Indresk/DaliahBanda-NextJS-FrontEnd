@@ -6,26 +6,21 @@ import AppError from '../errors/app.error';
 import SubscribeEmailsRepository from '../repositories/subscribeEmails.reposity';
 import UserRepository from '../repositories/user.reposity';
 import successResponseWrapper from '@/back/utils/successResponseWrapper';
-import { emailSchema } from '@/shared/utils/zodSchemas';
-
-function normalizeEmail(email) {
-	if (typeof email !== 'string') throw new AppError(ERROR_CODES.BAD_REQUEST);
-
-	const emailValidated = emailSchema.safeParse(email);
-	if (!emailValidated.success) {
-		throw new AppError(ERROR_CODES.BAD_REQUEST, 'El correo no es válido.');
-	}
-
-	return emailValidated.data;
-}
+import { parseOrThrow } from '@/back/utils/validate';
+import { emailSchema, uuidSchema } from '@/shared/schemas';
 
 class SubscribeEmailsService {
+	// Todos los suscriptores (activos y dados de baja), para el dashboard
+	static async findAll() {
+		return await SubscribeEmailsRepository.findAll();
+	}
+
 	static async findAllActive() {
 		return await SubscribeEmailsRepository.findAllActive();
 	}
 
 	static async subscribe(rawEmail) {
-		const email = normalizeEmail(rawEmail);
+		const email = parseOrThrow(emailSchema, rawEmail);
 
 		const existing = await SubscribeEmailsRepository.findByEmail(email);
 
@@ -57,9 +52,9 @@ class SubscribeEmailsService {
 	}
 
 	static async unsubscribe(unsubscribeToken) {
-		if (!z.uuid().safeParse(unsubscribeToken).success) {
-			throw new AppError(ERROR_CODES.SUBSCRIBER_NOT_FOUND);
-		}
+		parseOrThrow(uuidSchema, unsubscribeToken, {
+			code: ERROR_CODES.SUBSCRIBER_NOT_FOUND,
+		});
 
 		const subscriber =
 			await SubscribeEmailsRepository.findByToken(unsubscribeToken);
@@ -81,7 +76,7 @@ class SubscribeEmailsService {
 	static async linkUser(rawEmail, userId) {
 		if (!rawEmail || !userId) throw new AppError(ERROR_CODES.BAD_REQUEST);
 
-		const email = normalizeEmail(rawEmail);
+		const email = parseOrThrow(emailSchema, rawEmail);
 		return await SubscribeEmailsRepository.linkUserByEmail(email, userId);
 	}
 }

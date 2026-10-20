@@ -4,6 +4,7 @@ import Header from './_components/global/Header/Header';
 import Footer from './_components/global/Footer/Footer';
 // import DaliahClicker from './_components/global/DaliahClicker/DaliahClicker';
 import AudioPlayer from './_components/global/AudioPlayer/AudioPlayer';
+import LiveStatusRefresher from './_components/global/LiveStatusRefresher';
 import PreferencesHydrator from '../src/frontend/providers/PreferencesHydrator';
 
 export default function RootLayout({ children }) {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
 					<Footer />
 				</div>
 				<PreferencesHydrator />
+				<LiveStatusRefresher />
 				<AudioPlayer />
 				{/* <DaliahClicker /> */}
 			</body>

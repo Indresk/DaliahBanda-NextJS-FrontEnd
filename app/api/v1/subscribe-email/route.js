@@ -4,7 +4,7 @@ import { apiWrapper } from '../../../../src/backend/utils/apiWrapper';
 
 async function putHandler(request) {
 	const { email } = await request.json();
-	const subscriberData = SubscribeEmailsService.subscribe(email);
+	const subscriberData = await SubscribeEmailsService.subscribe(email);
 
 	return NextResponse.json(subscriberData, { status: 200 });
 }
@@ -13,7 +13,7 @@ async function deleteHandler(request) {
 	const searchParams = request.nextUrl.searchParams;
 	const token = searchParams.get('token');
 
-	const subscriberData = SubscribeEmailsService.unsubscribe(token);
+	const subscriberData = await SubscribeEmailsService.unsubscribe(token);
 	return NextResponse.json(subscriberData, { status: 201 });
 }
 

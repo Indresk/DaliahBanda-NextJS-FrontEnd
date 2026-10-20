@@ -81,4 +81,45 @@ export const errorsDictionary = {
 		statusCode: 409,
 		message: 'El correo ya está suscrito',
 	},
+	[ERROR_CODES.INVALID_WEBHOOK_SIGNATURE]: {
+		statusCode: 401,
+		message: 'La firma del webhook no es válida',
+	},
+	[ERROR_CODES.KICK_NOT_CONNECTED]: {
+		statusCode: 409,
+		message: 'Kick no está conectado. Vuelve a conectar la cuenta',
+	},
+	[ERROR_CODES.KICK_OAUTH_ERROR]: {
+		statusCode: 400,
+		message: 'No se pudo completar la conexión con Kick',
+	},
+	[ERROR_CODES.KICK_API_ERROR]: {
+		statusCode: 502,
+		message: 'La API de Kick respondió con un error',
+	},
+	[ERROR_CODES.ALLOWED_EMAIL_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'El correo no está en la lista de acceso',
+	},
+	[ERROR_CODES.ALLOWED_EMAIL_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'El correo ya está en la lista de acceso',
+	},
+	[ERROR_CODES.CANNOT_REMOVE_OWN_EMAIL]: {
+		statusCode: 409,
+		message: 'No puedes quitar tu propio correo de la lista de acceso',
+	},
+	[ERROR_CODES.ASSET_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message:
+			'Ya existe un archivo con ese nombre. Cambia el nombre o la versión (-v2)',
+	},
+	[ERROR_CODES.ASSET_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el archivo solicitado',
+	},
+	[ERROR_CODES.STORAGE_ERROR]: {
+		statusCode: 502,
+		message: 'Ocurrió un error con el almacenamiento de archivos',
+	},
 };

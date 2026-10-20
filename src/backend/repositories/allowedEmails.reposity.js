@@ -1,5 +1,6 @@
 import 'server-only';
 
+import { fn, col, where } from 'sequelize';
 import AllowedEmails from '../models/allowedEmails.model';
 import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
@@ -7,14 +8,17 @@ import { ERROR_CODES } from '../../shared/errors/error.codes';
 class AllowedEmailsRepository {
 	static async findAll() {
 		return await AllowedEmails.findAll({
-			attributes: ['email'],
+			attributes: ['id', 'email', 'createdAt'],
+			order: [['email', 'ASC']],
 			raw: true,
 		});
 	}
 
+	// Sin distinguir mayúsculas: los correos de Google llegan en minúsculas, pero los
+	// que se cargaron a mano (seeder) podrían no estarlo.
 	static async findByEmail(userEmail) {
 		return await AllowedEmails.findOne({
-			where: { email: userEmail },
+			where: where(fn('lower', col('email')), String(userEmail).toLowerCase()),
 			attributes: ['email'],
 			raw: true,
 		});
@@ -23,10 +27,10 @@ class AllowedEmailsRepository {
 	static async create(email) {
 		try {
 			const allowedEmail = await AllowedEmails.create({ email });
-			return allowedEmail;
+			return allowedEmail.toJSON();
 		} catch (error) {
-			if (error.original.code === '23505') {
-				throw new AppError(ERROR_CODES.USER_ALREADY_EXISTS);
+			if (error.original?.code === '23505') {
+				throw new AppError(ERROR_CODES.ALLOWED_EMAIL_ALREADY_EXISTS);
 			}
 
 			throw error;
@@ -34,7 +38,9 @@ class AllowedEmailsRepository {
 	}
 
 	static async delete(email) {
-		return await AllowedEmails.destroy({ where: { email } });
+		return await AllowedEmails.destroy({
+			where: where(fn('lower', col('email')), String(email).toLowerCase()),
+		});
 	}
 }
 

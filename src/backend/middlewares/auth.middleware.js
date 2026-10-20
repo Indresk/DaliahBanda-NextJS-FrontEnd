@@ -3,6 +3,7 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import UserService from '../services/user.service';
 import {
+	DASHBOARD_ROLES,
 	USER_QUERY_FIELDS,
 	USER_ROLES,
 	USER_UPDATABLE_FIELDS,
@@ -22,8 +23,11 @@ export default function authMiddleware(middleware) {
 			return NextResponse.redirect(new URL('/login', request.url));
 		}
 
-		// duplicar redirect para session.user.role ||
-		// Podemos usar pathname.startsWith para verificar acceso a rutas concretas dentro de las rutas que declaramos en config
+		// Filtro rápido con el rol del token. Cada página y acción del dashboard vuelve a
+		// comprobar el rol contra la base de datos (sessionGuard.js): el del token puede estar desactualizado.
+		if (!DASHBOARD_ROLES.includes(session.user.role)) {
+			return NextResponse.redirect(new URL('/', request.url));
+		}
 
 		return middleware(request, event);
 	};

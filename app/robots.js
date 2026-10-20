@@ -3,7 +3,7 @@ export default function robots() {
 		rules: {
 			userAgent: '*',
 			allow: '/',
-			disallow: ['/private/', '/*?preview=', '/*?token='],
+			disallow: ['/private/', '/dashboard', '/login', '/api/', '/*?preview=', '/*?token='],
 		},
 		sitemap: 'https://daliahbanda.com/sitemap.xml',
 	};

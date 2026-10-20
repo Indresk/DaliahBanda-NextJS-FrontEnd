@@ -5,7 +5,7 @@ import NavLink from '@/frontend/components/util/NavLink';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import { useBlockScroll } from '@/frontend/hooks/useBlockScroll.js';
 import './header.css';
-import { navigationLinks } from './Header'; // Importamos los links estáticos
+import { navigationLinks } from './navigationLinks';
 
 export default function MobileMenu() {
 	const [dropdown, setDropdown] = useState(false);
