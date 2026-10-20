@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import { loadMoreGalleryImages } from '@/back/actions/galleryPublic.actions';
 import { isOptimizedImageUrl } from '@/shared/utils/images';
+import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 
 // Las primeras imágenes cargan de inmediato; el resto, al acercarse
 const EAGER_COUNT = 4;
@@ -16,6 +17,7 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 	const [cursor, setCursor] = useState(initialCursor);
 	const [error, setError] = useState(null);
 	const [pending, startTransition] = useTransition();
+	const [copiedIds, setCopiedIds] = useState({});
 
 	function loadMore() {
 		setError(null);
@@ -28,6 +30,19 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 		});
 	}
 
+	async function handleCopy(imageId, url) {
+		try {
+			await navigator.clipboard.writeText(url);
+			setCopiedIds((prev) => ({ ...prev, [imageId]: true }));
+
+			setTimeout(() => {
+				setCopiedIds((prev) => ({ ...prev, [imageId]: false }));
+			}, 2000);
+		} catch (error) {
+			console.error('Error al copiar al portapapeles:', error);
+		}
+	}
+
 	if (items.length === 0) {
 		return <p className='px-8 pb-14 md:px-14'>Todavía no hay fotos aquí.</p>;
 	}
@@ -36,7 +51,9 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 		<section className='px-8 pb-14 md:px-14'>
 			<div className='columns-2 gap-4 md:columns-3 lg:columns-4'>
 				{items.map((image, index) => (
-					<figure key={image.id} className='mb-4 break-inside-avoid overflow-hidden bg-darkgray'>
+					<figure
+						key={image.id}
+						className='mb-4 break-inside-avoid overflow-hidden bg-darkgray'>
 						<Image
 							src={image.url}
 							alt={image.alt}
@@ -47,6 +64,14 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 							sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
 							className='h-auto w-full'
 						/>
+						<div className='flex items-center gap-4'>
+							<Button
+								variant={copiedIds[image.id] ? 'disabled' : 'primary'}
+								onClick={() => handleCopy(image.id, image.url)}>
+								<MSOIcon>share</MSOIcon>
+							</Button>
+							{copiedIds[image.id] && <span className='text-sm'>Copiado</span>}
+						</div>
 					</figure>
 				))}
 			</div>
@@ -59,7 +84,11 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 						variant={pending ? 'disabled' : 'secondary'}>
 						{pending ? 'Cargando…' : 'Ver más'}
 					</Button>
-					{error && <p role='alert' className='text-sm text-red-400'>{error}</p>}
+					{error && (
+						<p role='alert' className='text-sm text-red-400'>
+							{error}
+						</p>
+					)}
 				</div>
 			)}
 		</section>
