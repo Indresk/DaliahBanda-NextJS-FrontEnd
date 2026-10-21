@@ -2,11 +2,12 @@ import 'server-only';
 
 import { Op, QueryTypes, literal } from 'sequelize';
 import sequelize from '../config/db';
-import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import { GALLERY_MEMBER_MODES } from '../../shared/constants';
 import GalleryImage from '../models/galleryImages.model';
 import GalleryEvent from '../models/galleryEvents.model';
+import { translatePgError } from '../utils/pgErrors';
+import { baseRepository } from './baseRepository';
 
 // Solo lo que pinta la galería pública (sin ids internos ni estado)
 const PUBLIC_ATTRIBUTES = ['id', 'url', 'alt', 'width', 'height', 'takenAt'];
@@ -22,16 +23,14 @@ const ADMIN_ATTRIBUTES = [
 
 const escapeLike = (text) => text.replace(/[\\%_]/g, '\\$&');
 
-// Traduce los errores de Postgres a errores de la aplicación
-function mapDatabaseError(error) {
-	const code = error.original?.code;
-	if (code === '23505') return new AppError(ERROR_CODES.GALLERY_IMAGE_ALREADY_EXISTS);
-	if (code === '23503') return new AppError(ERROR_CODES.GALLERY_EVENT_NOT_FOUND);
-	return error;
-}
+// La URL ya existe (única) o el evento no existe (clave foránea)
+const errorRules = {
+	unique: ERROR_CODES.GALLERY_IMAGE_ALREADY_EXISTS,
+	foreignKey: ERROR_CODES.GALLERY_EVENT_NOT_FOUND,
+};
 
 // Acceso a datos de gallery-images. Recibe filtros ya validados (ver galleryFiltersSchema).
-class GalleryImagesRepository {
+class GalleryImagesRepository extends baseRepository(GalleryImage, errorRules) {
 	static buildWhere(filters, cursor) {
 		const conditions = [];
 
@@ -99,9 +98,6 @@ class GalleryImagesRepository {
 		});
 	}
 
-	static async findById(id) {
-		return await GalleryImage.findByPk(id, { raw: true });
-	}
 
 	static async findByUrl(url) {
 		return await GalleryImage.findOne({ where: { url }, raw: true });
@@ -149,58 +145,37 @@ class GalleryImagesRepository {
 		return await GalleryImage.count({ where: { memberSlugs: { [Op.contains]: [slug] } } });
 	}
 
-	static async create(fields) {
-		try {
-			const image = await GalleryImage.create(fields);
-			return image.toJSON();
-		} catch (error) {
-			throw mapDatabaseError(error);
-		}
-	}
-
 	static async createMany(rows) {
 		try {
 			const created = await GalleryImage.bulkCreate(rows, { returning: ['id', 'url'] });
 			return created.map((image) => image.toJSON());
 		} catch (error) {
-			throw mapDatabaseError(error);
-		}
-	}
-
-	static async update(id, fields) {
-		try {
-			const [count, rows] = await GalleryImage.update(fields, {
-				where: { id },
-				returning: true,
-			});
-			return count ? rows[0].toJSON() : null;
-		} catch (error) {
-			throw mapDatabaseError(error);
+			throw translatePgError(error, errorRules);
 		}
 	}
 
 	// Un solo UPDATE para todos los ids. Devuelve cuántas filas cambió.
-	static async updateMany(ids, fields) {
+	static async updateMany(ids, fields, options) {
 		try {
-			const [count] = await GalleryImage.update(fields, { where: { id: ids } });
+			const [count] = await GalleryImage.update(fields, { ...options, where: { id: ids } });
 			return count;
 		} catch (error) {
-			throw mapDatabaseError(error);
+			throw translatePgError(error, errorRules);
 		}
 	}
 
 	// Publicar solo las que tienen alt (regla de accesibilidad); devuelve cuántas se publicaron
-	static async activateWithAlt(ids) {
+	static async activateWithAlt(ids, options) {
 		const [, count] = await sequelize.query(
 			`UPDATE "gallery-images" SET active = true, "updatedAt" = NOW()
 			  WHERE id = ANY($1::int[]) AND alt <> ''`,
-			{ bind: [ids], type: QueryTypes.UPDATE },
+			{ ...options, bind: [ids], type: QueryTypes.UPDATE },
 		);
 		return count;
 	}
 
 	// Cambia los integrantes de varias imágenes en una sentencia (add | remove | set)
-	static async updateMembers(ids, mode, slugs) {
+	static async updateMembers(ids, mode, slugs, options) {
 		const expressions = {
 			[GALLERY_MEMBER_MODES.SET]: '$2::text[]',
 			// Conserva el orden actual y agrega solo los que faltan
@@ -213,7 +188,7 @@ class GalleryImagesRepository {
 		const [, count] = await sequelize.query(
 			`UPDATE "gallery-images" SET "memberSlugs" = ${expressions[mode]}, "updatedAt" = NOW()
 			  WHERE id = ANY($1::int[])`,
-			{ bind: [ids, slugs], type: QueryTypes.UPDATE },
+			{ ...options, bind: [ids, slugs], type: QueryTypes.UPDATE },
 		);
 		return count;
 	}

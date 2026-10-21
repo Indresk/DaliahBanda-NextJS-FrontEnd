@@ -47,6 +47,7 @@ export default async function MemberPage({ params }) {
 						</h1>
 						<h2 className='font-headline text-sm uppercase tracking-tighter text-lightgray'>
 							{member.instrument}
+							{member.memberSince && ` · En la banda desde ${member.memberSince}`}
 						</h2>
 					</div>
 					<p className='whitespace-pre-line'>{member.longBio || member.shortBio}</p>

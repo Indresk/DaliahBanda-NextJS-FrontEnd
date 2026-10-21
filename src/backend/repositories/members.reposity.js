@@ -1,14 +1,10 @@
 import 'server-only';
 
-import AppError from '../errors/app.error';
+import { literal } from 'sequelize';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
-import { childRepository } from './childRepository';
 import { Member, MemberImage, MemberLink } from '../models/members.model';
-
-const ORDER = [
-	['displayOrder', 'ASC'],
-	['id', 'ASC'],
-];
+import { BY_DISPLAY_ORDER, baseRepository } from './baseRepository';
+import { childRepository } from './childRepository';
 
 // Lo que pinta el sitio público en el carrusel de integrantes (sin enlaces ni imágenes)
 const PUBLIC_ATTRIBUTES = [
@@ -16,98 +12,73 @@ const PUBLIC_ATTRIBUTES = [
 	'featuredUrl', 'featuredWidth', 'featuredHeight', 'featuredAlt',
 ];
 
-class MembersRepository {
+// Año de su entrada más antigua en la formación: "en la banda desde". La fecha de ingreso vive
+// solo en lineup-entries, no se repite en el miembro.
+const MEMBER_SINCE = [
+	literal(
+		'(SELECT MIN(l."startYear") FROM "lineup-entries" l WHERE l."memberId" = "members"."id")',
+	),
+	'memberSince',
+];
+
+// Enlaces e imágenes de apoyo van en consultas aparte (`separate`): un JOIN de ambos multiplicaría
+// las filas (enlaces × imágenes)
+const relations = (linkAttributes, imageAttributes) => [
+	{
+		model: MemberLink,
+		as: 'links',
+		separate: true,
+		attributes: linkAttributes,
+		order: BY_DISPLAY_ORDER,
+	},
+	{
+		model: MemberImage,
+		as: 'images',
+		separate: true,
+		attributes: imageAttributes,
+		order: BY_DISPLAY_ORDER,
+	},
+];
+
+class MembersRepository extends baseRepository(Member, {
+	unique: ERROR_CODES.MEMBER_ALREADY_EXISTS,
+}) {
 	static async findAll({ onlyActive = false } = {}) {
 		return await Member.findAll({
 			attributes: onlyActive ? PUBLIC_ATTRIBUTES : undefined,
 			where: onlyActive ? { active: true } : {},
-			order: ORDER,
+			order: BY_DISPLAY_ORDER,
 			raw: true,
 		});
 	}
 
-	static async findById(id) {
-		return await Member.findByPk(id, { raw: true });
-	}
-
-	// Página personal: miembro activo con enlaces e imágenes de apoyo (3 consultas; las hijas
-	// van aparte para no multiplicar filas), cacheadas por members.cache.js
+	// Página personal: miembro activo con enlaces e imágenes de apoyo (3 consultas), cacheadas
+	// por members.cache.js
 	static async findPublicBySlug(slug) {
 		const member = await Member.findOne({
-			attributes: [...PUBLIC_ATTRIBUTES, 'longBio', 'joinedAt'],
+			attributes: [...PUBLIC_ATTRIBUTES, 'longBio', MEMBER_SINCE],
 			where: { slug, active: true },
-			include: [
-				{
-					model: MemberLink,
-					as: 'links',
-					separate: true,
-					attributes: ['kind', 'label', 'url'],
-					order: ORDER,
-				},
-				{
-					model: MemberImage,
-					as: 'images',
-					separate: true,
-					attributes: ['id', 'url', 'alt', 'width', 'height'],
-					order: ORDER,
-				},
-			],
+			include: relations(
+				['kind', 'label', 'url'],
+				['id', 'url', 'alt', 'width', 'height'],
+			),
 		});
 		return member?.toJSON() ?? null;
 	}
 
-	// Miembro con sus enlaces e imágenes, en una sola consulta con JOIN
+	// Dashboard: miembro con todos sus enlaces e imágenes
 	static async findByIdWithRelations(id) {
-		const member = await Member.findByPk(id, {
-			include: [
-				{ model: MemberLink, as: 'links' },
-				{ model: MemberImage, as: 'images' },
-			],
-			order: [
-				[{ model: MemberLink, as: 'links' }, 'displayOrder', 'ASC'],
-				[{ model: MemberLink, as: 'links' }, 'id', 'ASC'],
-				[{ model: MemberImage, as: 'images' }, 'displayOrder', 'ASC'],
-				[{ model: MemberImage, as: 'images' }, 'id', 'ASC'],
-			],
-		});
+		const member = await Member.findByPk(id, { include: relations(undefined, undefined) });
 		return member?.toJSON() ?? null;
 	}
 
 	// Todos los miembros con relaciones, para exportar
 	static async findAllWithRelations() {
 		const members = await Member.findAll({
-			include: [
-				{ model: MemberLink, as: 'links' },
-				{ model: MemberImage, as: 'images' },
-			],
-			order: [
-				...ORDER,
-				[{ model: MemberLink, as: 'links' }, 'displayOrder', 'ASC'],
-				[{ model: MemberImage, as: 'images' }, 'displayOrder', 'ASC'],
-			],
+			include: relations(undefined, undefined),
+			order: BY_DISPLAY_ORDER,
 		});
 		return members.map((member) => member.toJSON());
-	}
-
-	static async create(fields) {
-		try {
-			const member = await Member.create(fields);
-			return member.toJSON();
-		} catch (error) {
-			if (error.original?.code === '23505') {
-				throw new AppError(ERROR_CODES.MEMBER_ALREADY_EXISTS);
-			}
-			throw error;
-		}
-	}
-
-	static async update(id, fields) {
-		const [count, rows] = await Member.update(fields, { where: { id }, returning: true });
-		return count ? rows[0].toJSON() : null;
-	}
-
-	static async delete(id) {
-		return await Member.destroy({ where: { id } });
 	}
 }
 

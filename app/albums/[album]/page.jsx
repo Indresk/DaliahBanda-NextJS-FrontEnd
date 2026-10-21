@@ -23,8 +23,8 @@ export default async function AlbumPage({ params }) {
 	const album = await getAlbum(slug);
 	if (!album) notFound();
 
-	// El álbum no tiene id de canción: se excluye solo el álbum de las sugerencias
-	const related = await getRelatedWorks(album.id, 0);
+	// Sin canción de referencia: se excluye solo el álbum de las sugerencias
+	const related = await getRelatedWorks(album.id, null);
 
 	return (
 		<section className='albumContainer flex flex-col gap-8'>

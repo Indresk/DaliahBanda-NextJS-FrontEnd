@@ -1,23 +1,17 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { USER_ROLES } from '../../shared/constants';
 import MembersService from '../services/members.service';
 import { invalidateMembers } from '../services/members.cache';
 import { childActions } from '../utils/childActions';
+import { refreshOnSuccess } from '../utils/refreshOnSuccess';
 import { formDataToObject } from '../utils/formData';
 import { guardedRequest } from '../utils/guardedRequestWrapper';
 
 const ADMIN_ONLY = [USER_ROLES.ADMIN];
 const FORM_FIELDS = { booleans: ['active'] };
 
-function refresh(result) {
-	if (result.status === 'success') {
-		invalidateMembers();
-		revalidatePath('/dashboard/members', 'layout');
-	}
-	return result;
-}
+const refresh = refreshOnSuccess(invalidateMembers, ['/dashboard/members', 'layout']);
 
 export async function createMember(_prevState, formData) {
 	return refresh(

@@ -20,7 +20,6 @@ export const Member = sequelize.define(
 		featuredWidth: { type: DataTypes.INTEGER, allowNull: false },
 		featuredHeight: { type: DataTypes.INTEGER, allowNull: false },
 		featuredAlt: { type: DataTypes.STRING(500), allowNull: true },
-		joinedAt: { type: DataTypes.DATEONLY, allowNull: true },
 		displayOrder,
 		active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
 	},

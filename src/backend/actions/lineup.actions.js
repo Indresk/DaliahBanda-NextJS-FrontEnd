@@ -1,21 +1,15 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { USER_ROLES } from '../../shared/constants';
 import LineupService from '../services/lineup.service';
 import { invalidateMembers } from '../services/members.cache';
+import { refreshOnSuccess } from '../utils/refreshOnSuccess';
 import { formDataToObject } from '../utils/formData';
 import { guardedRequest } from '../utils/guardedRequestWrapper';
 
 const ADMIN_ONLY = [USER_ROLES.ADMIN];
 
-function refresh(result) {
-	if (result.status === 'success') {
-		invalidateMembers();
-		revalidatePath('/dashboard/lineup');
-	}
-	return result;
-}
+const refresh = refreshOnSuccess(invalidateMembers, ['/dashboard/lineup']);
 
 export async function createLineupEntry(_prevState, formData) {
 	return refresh(

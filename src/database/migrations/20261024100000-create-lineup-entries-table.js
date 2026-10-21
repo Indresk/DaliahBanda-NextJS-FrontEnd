@@ -1,5 +1,7 @@
 'use strict';
 
+const ROLES = ['vocals', 'backing_vocals', 'lead_guitar', 'rhythm_guitar', 'bass', 'keys', 'drums'];
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
@@ -20,13 +22,29 @@ module.exports = {
 				onDelete: 'SET NULL',
 			},
 			personName: { type: Sequelize.STRING(120), allowNull: false },
-			role: { type: Sequelize.STRING(120), allowNull: false },
+			// Lista fija (define el color en el gráfico); el detalle libre va en `note`
+			role: { type: Sequelize.ENUM(...ROLES), allowNull: false },
 			startYear: { type: Sequelize.INTEGER, allowNull: false },
-			// null = sigue en la banda
+			// Sin mes se asume enero (inicio) o diciembre (fin) al dibujar el gráfico
+			startMonth: { type: Sequelize.INTEGER, allowNull: true },
+			// endYear null = sigue en la banda
 			endYear: { type: Sequelize.INTEGER, allowNull: true },
+			endMonth: { type: Sequelize.INTEGER, allowNull: true },
 			note: { type: Sequelize.STRING(300), allowNull: true },
 			createdAt: { allowNull: false, type: Sequelize.DATE },
 			updatedAt: { allowNull: false, type: Sequelize.DATE },
+		});
+
+		await queryInterface.addConstraint('lineup-entries', {
+			type: 'check',
+			name: 'lineup_entries_months_valid',
+			fields: ['startMonth'],
+			where: {
+				[Sequelize.Op.and]: [
+					{ [Sequelize.Op.or]: [{ startMonth: null }, { startMonth: { [Sequelize.Op.between]: [1, 12] } }] },
+					{ [Sequelize.Op.or]: [{ endMonth: null }, { endMonth: { [Sequelize.Op.between]: [1, 12] } }] },
+				],
+			},
 		});
 
 		await queryInterface.addIndex('lineup-entries', ['startYear', 'id'], {
@@ -40,5 +58,6 @@ module.exports = {
 
 	async down(queryInterface) {
 		await queryInterface.dropTable('lineup-entries');
+		await queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_lineup-entries_role"');
 	},
 };

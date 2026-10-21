@@ -1,23 +1,17 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { USER_ROLES } from '../../shared/constants';
 import AlbumsService from '../services/albums.service';
 import { invalidateMusic } from '../services/music.cache';
 import { childActions } from '../utils/childActions';
+import { refreshOnSuccess } from '../utils/refreshOnSuccess';
 import { formDataToObject } from '../utils/formData';
 import { guardedRequest } from '../utils/guardedRequestWrapper';
 
 const ADMIN_ONLY = [USER_ROLES.ADMIN];
 const FORM_FIELDS = { booleans: ['active'] };
 
-function refresh(result) {
-	if (result.status === 'success') {
-		invalidateMusic();
-		revalidatePath('/dashboard/music', 'layout');
-	}
-	return result;
-}
+const refresh = refreshOnSuccess(invalidateMusic, ['/dashboard/music', 'layout']);
 
 export async function createAlbum(_prevState, formData) {
 	return refresh(

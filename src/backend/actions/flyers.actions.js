@@ -1,22 +1,16 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { USER_ROLES } from '../../shared/constants';
 import FlyersService from '../services/flyers.service';
 import { invalidateFlyers } from '../services/flyers.cache';
+import { refreshOnSuccess } from '../utils/refreshOnSuccess';
 import { formDataToObject } from '../utils/formData';
 import { guardedRequest } from '../utils/guardedRequestWrapper';
 
 const ADMIN_ONLY = [USER_ROLES.ADMIN];
 const FORM_FIELDS = { booleans: ['active'] };
 
-function refresh(result) {
-	if (result.status === 'success') {
-		invalidateFlyers();
-		revalidatePath('/dashboard/flyers');
-	}
-	return result;
-}
+const refresh = refreshOnSuccess(invalidateFlyers, ['/dashboard/flyers']);
 
 export async function createFlyer(_prevState, formData) {
 	return refresh(

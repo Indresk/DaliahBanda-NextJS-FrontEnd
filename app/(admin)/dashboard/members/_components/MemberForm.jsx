@@ -45,9 +45,6 @@ export default function MemberForm({ member }) {
 							<input id='m-slug' name='slug' required maxLength={80} pattern='[a-z0-9]+(-[a-z0-9]+)*' className={controlClass} />
 						</Field>
 					)}
-					<Field label='Se unió (opcional)' htmlFor='m-joined'>
-						<input id='m-joined' name='joinedAt' type='date' defaultValue={member?.joinedAt ?? ''} className={controlClass} />
-					</Field>
 					<Field label='Orden' htmlFor='m-order' hint='Menor = primero.'>
 						<input id='m-order' name='displayOrder' type='number' min={0} defaultValue={member?.displayOrder ?? 0} className={controlClass} />
 					</Field>

@@ -1,6 +1,6 @@
 import { getGalleryEvents, getGalleryMembers } from '@/back/services/gallery.cache';
 import { getActiveMembers } from '@/back/services/members.cache';
-import { getAlbum, getAlbums } from '@/back/services/music.cache';
+import { getAlbums, getSongs } from '@/back/services/music.cache';
 import { SITE } from '@/frontend/seo/site';
 
 export default async function sitemap() {
@@ -21,23 +21,22 @@ export default async function sitemap() {
 		{ url: `${SITE.url}/gallery/backstage`, changeFrequency: 'monthly', priority: 0.5 },
 	];
 
-	// Álbumes y canciones publicados
-	const albums = await getAlbums();
-	const albumDetails = await Promise.all(albums.map((album) => getAlbum(album.slug)));
-	const musicPages = albumDetails.flatMap((album) => [
-		{
+	// Álbumes y canciones publicados (2 consultas en caché en total, no una por álbum)
+	const [albums, songs] = await Promise.all([getAlbums(), getSongs()]);
+	const musicPages = [
+		...albums.map((album) => ({
 			url: `${SITE.url}/albums/${album.slug}`,
 			lastModified: album.releasedAt,
 			changeFrequency: 'yearly',
 			priority: 0.6,
-		},
-		...album.songs.map((song) => ({
-			url: `${SITE.url}/albums/${album.slug}/${song.slug}`,
-			lastModified: song.releasedAt ?? album.releasedAt,
+		})),
+		...songs.map((song) => ({
+			url: `${SITE.url}/albums/${song.album.slug}/${song.slug}`,
+			lastModified: song.releasedAt ?? song.album.releasedAt,
 			changeFrequency: 'yearly',
 			priority: 0.5,
 		})),
-	]);
+	];
 
 	// Páginas de los miembros activos
 	const activeMembers = await getActiveMembers();

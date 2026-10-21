@@ -3,6 +3,7 @@ import 'server-only';
 import { fn, col, where } from 'sequelize';
 import AllowedEmails from '../models/allowedEmails.model';
 import AppError from '../errors/app.error';
+import { isUniqueViolation } from '../utils/pgErrors';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 
 class AllowedEmailsRepository {
@@ -27,7 +28,7 @@ class AllowedEmailsRepository {
 			const allowedEmail = await AllowedEmails.create({ email });
 			return allowedEmail.toJSON();
 		} catch (error) {
-			if (error.original?.code === '23505') {
+			if (isUniqueViolation(error)) {
 				throw new AppError(ERROR_CODES.ALLOWED_EMAIL_ALREADY_EXISTS);
 			}
 

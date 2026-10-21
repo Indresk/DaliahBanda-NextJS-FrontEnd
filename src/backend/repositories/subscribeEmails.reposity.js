@@ -2,6 +2,7 @@ import 'server-only';
 
 import SubscribeEmail from '../models/subscribeEmails.model';
 import AppError from '../errors/app.error';
+import { isUniqueViolation } from '../utils/pgErrors';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 
 class SubscribeEmailsRepository {
@@ -37,7 +38,7 @@ class SubscribeEmailsRepository {
 			const subscriber = await SubscribeEmail.create({ email, userId });
 			return subscriber.toJSON();
 		} catch (error) {
-			if (error.original?.code === '23505') {
+			if (isUniqueViolation(error)) {
 				throw new AppError(ERROR_CODES.SUBSCRIBER_ALREADY_EXISTS);
 			}
 

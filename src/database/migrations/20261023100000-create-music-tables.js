@@ -85,6 +85,18 @@ module.exports = {
 			fields: ['albumId', 'slug'],
 			name: 'songs_album_slug_unique',
 		});
+		// Una pista por número dentro de cada álbum
+		await queryInterface.addConstraint('songs', {
+			type: 'unique',
+			fields: ['albumId', 'trackNumber'],
+			name: 'songs_album_track_unique',
+		});
+		// Solo una canción puede ser la destacada del inicio
+		await queryInterface.addIndex('songs', ['featured'], {
+			name: 'songs_one_featured',
+			unique: true,
+			where: { featured: true },
+		});
 		// Pistas de un álbum en orden (también sirve a la FK)
 		await queryInterface.addIndex('songs', ['albumId', 'active', 'trackNumber', 'id'], {
 			name: 'songs_album_active_track',

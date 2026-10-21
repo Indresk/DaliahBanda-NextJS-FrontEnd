@@ -3,7 +3,6 @@ import { MEMBER_LINK_KINDS } from '../constants';
 import {
 	dimensionSchema,
 	displayOrderSchema,
-	emptyToNull,
 	httpsUrlSchema,
 	idSchema,
 	optionalText,
@@ -28,9 +27,6 @@ export const memberSchema = z.object({
 	featuredHeight: dimensionSchema,
 	// Si falta, el sitio genera uno con el nombre y el instrumento
 	featuredAlt: optionalText(500),
-	joinedAt: emptyToNull(z.iso.date({ error: 'Fecha inválida (AAAA-MM-DD).' }).nullish()).transform(
-		(value) => value ?? null,
-	),
 	displayOrder: displayOrderSchema,
 	active: z.boolean().default(false),
 });

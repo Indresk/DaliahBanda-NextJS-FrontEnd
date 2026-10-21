@@ -13,6 +13,7 @@ import MembersRepository, {
 	MemberImagesRepository,
 	MemberLinksRepository,
 } from '../repositories/members.reposity';
+import { toExportRow } from '../utils/exportRow';
 import { childOperations } from '../utils/childOperations';
 import successResponseWrapper from '../utils/successResponseWrapper';
 import { parseOrThrow } from '../utils/validate';
@@ -95,14 +96,13 @@ class MembersService {
 		const peopleByMember = new Map(
 			people.filter((person) => person.memberId).map((person) => [person.memberId, person.slug]),
 		);
-		const strip = ({ id, memberId, createdAt, updatedAt, ...rest }) => rest;
 
 		return {
 			members: members.map(({ links, images, ...member }) => ({
-				...strip(member),
+				...toExportRow(member),
 				galleryPersonSlug: peopleByMember.get(member.id) ?? null,
-				links: links.map(strip),
-				images: images.map(strip),
+				links: links.map(toExportRow),
+				images: images.map(toExportRow),
 			})),
 		};
 	}

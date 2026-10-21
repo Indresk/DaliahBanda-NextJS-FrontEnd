@@ -159,8 +159,31 @@ Una página sin contenido real lleva `indexable: false` hasta publicarla. Las p�
 solo declaran `export const metadata = { title }`. Los constructores de JSON-LD reciben los
 datos ya calculados (fechas, estado en vivo) y no leen nada del servidor.
 
+## Base de datos
+
+- **Conexión** (`config/db.js`): una sola instancia de Sequelize por proceso (`globalThis`) con el pool
+  acotado (`DB_POOL_MAX`, 10 por defecto). Solo funciona porque `next.config.ts` declara `sequelize`,
+  `pg` y `pg-hstore` en `serverExternalPackages`: empaquetados quedan copias por ruta, la instancia
+  compartida no reconoce el `literal()` de otra copia y `next build` falla.
+- **Repositorios**: extienden `baseRepository(Model, errorRules)` (`findById`, `create`, `update`,
+  `delete`) y añaden solo sus consultas; `childRepository` lo extiende para enlaces, imágenes y recursos.
+  Los errores de Postgres se traducen con `translatePgError` (`utils/pgErrors.js`): `unique`,
+  `uniqueByConstraint` (para distinguir restricciones por nombre) y `foreignKey`. No se escribe `23505`
+  a mano. Órdenes comunes en `baseRepository.js` (`BY_DISPLAY_ORDER`).
+- **Joins**: los `hasMany` que se leen juntos van con `separate: true` (un JOIN de dos relaciones
+  multiplica las filas). Datos derivados van en subconsultas del `SELECT` (`songCount`,
+  `resourceKinds`, `memberSince`), no en consultas por fila.
+- **Transacciones**: una operación de varias sentencias usa `withTransaction` y pasa `{ transaction }`
+  al repositorio (`galleryImages.bulkUpdate`, destacar una canción).
+- **Caché pública**: `createTaggedCache` (`utils/taggedCache.js`) es el único lugar que usa
+  `unstable_cache`. Migrarlo a `use cache` exige activar `cacheComponents` en todo el proyecto (cambia
+  cómo se renderiza cada ruta), así que es una tarea aparte. Las acciones usan `refreshOnSuccess`.
+- **Integridad**: un solo lugar para cada dato (la fecha de ingreso de un miembro sale de
+  `lineup-entries`; el nombre mostrado en la formación, del miembro vinculado). Una sola canción
+  destacada (índice único parcial) y un solo número de pista por álbum.
+
 ## Migraciones
 
-El proyecto ya está en producción: **no se editan migraciones existentes**, cada cambio de esquema
-es una migración nueva. En desarrollo se aplican con `pnpm db:migrate` (o se recrea la base con
-`pnpm dev:db`: crea, migra, siembra y arranca).
+Producción solo tiene las migraciones hasta `20261021100200` (galería). Las posteriores aún no se han
+desplegado y se pueden editar; **desde que se desplieguen no se editan** y cada cambio es una migración
+nueva. Para aplicar un cambio en desarrollo: `pnpm db:migrate`, o recrear la base con `pnpm dev:db`.

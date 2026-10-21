@@ -192,6 +192,10 @@ export const errorsDictionary = {
 		statusCode: 409,
 		message: 'Ya existe una canción con ese identificador en el álbum',
 	},
+	[ERROR_CODES.SONG_TRACK_TAKEN]: {
+		statusCode: 409,
+		message: 'Ya hay otra canción con ese número de pista en el álbum',
+	},
 	[ERROR_CODES.MUSIC_LINK_NOT_FOUND]: {
 		statusCode: 404,
 		message: 'No se encontró el enlace',

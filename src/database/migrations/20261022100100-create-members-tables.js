@@ -36,7 +36,6 @@ module.exports = {
 			featuredWidth: { type: Sequelize.INTEGER, allowNull: false },
 			featuredHeight: { type: Sequelize.INTEGER, allowNull: false },
 			featuredAlt: { type: Sequelize.STRING(500), allowNull: true },
-			joinedAt: { type: Sequelize.DATEONLY, allowNull: true },
 			displayOrder: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
 			// true = integrante actual publicado en el sitio
 			active: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false },

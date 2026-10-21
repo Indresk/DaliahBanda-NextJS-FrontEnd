@@ -33,7 +33,8 @@ for (const envVar of Object.values(requiredEnvs)) {
 	}
 }
 
-const optionalEnvs = ['AUTH_URL'];
+// AUTH_URL: dominio público de las redirecciones · DB_POOL_MAX: conexiones máximas por proceso (10)
+const optionalEnvs = ['AUTH_URL', 'DB_POOL_MAX'];
 
 const config = Object.fromEntries(
 	[...requiredEnvs, ...optionalEnvs].map((key) => [key, process.env[key]]),

@@ -15,6 +15,7 @@ import GalleryEventsRepository from '../repositories/galleryEvents.reposity';
 import GalleryImagesRepository from '../repositories/galleryImages.reposity';
 import GalleryPeopleRepository from '../repositories/galleryPeople.reposity';
 import { decodeCursor, encodeCursor } from '../utils/cursor';
+import { withTransaction } from '../utils/transaction';
 import successResponseWrapper from '../utils/successResponseWrapper';
 import { parseOrThrow } from '../utils/validate';
 import AssetsService from './assets.service';
@@ -145,18 +146,23 @@ class GalleryImagesService {
 
 		const summary = { selected: ids.length, published: 0, skippedWithoutAlt: 0 };
 
-		if (Object.keys(fields).length) {
-			await GalleryImagesRepository.updateMany(ids, fields);
-		}
-		if (members) {
-			await GalleryImagesRepository.updateMembers(ids, members.mode, members.slugs);
-		}
-		if (active === true) {
-			summary.published = await GalleryImagesRepository.activateWithAlt(ids);
-			summary.skippedWithoutAlt = ids.length - summary.published;
-		} else if (active === false) {
-			await GalleryImagesRepository.updateMany(ids, { active: false });
-		}
+		// Todos los cambios o ninguno: si una sentencia falla no queda la selección a medias
+		await withTransaction(async (transaction) => {
+			const options = { transaction };
+
+			if (Object.keys(fields).length) {
+				await GalleryImagesRepository.updateMany(ids, fields, options);
+			}
+			if (members) {
+				await GalleryImagesRepository.updateMembers(ids, members.mode, members.slugs, options);
+			}
+			if (active === true) {
+				summary.published = await GalleryImagesRepository.activateWithAlt(ids, options);
+				summary.skippedWithoutAlt = ids.length - summary.published;
+			} else if (active === false) {
+				await GalleryImagesRepository.updateMany(ids, { active: false }, options);
+			}
+		});
 
 		const message =
 			summary.skippedWithoutAlt > 0

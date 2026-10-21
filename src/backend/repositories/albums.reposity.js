@@ -1,18 +1,14 @@
 import 'server-only';
 
 import { Op, literal } from 'sequelize';
-import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import { Album, AlbumLink, Song, SongLink, SongResource } from '../models/music.model';
+import { BY_DISPLAY_ORDER, baseRepository } from './baseRepository';
 import { childRepository } from './childRepository';
 
 const NEWEST_FIRST = [
 	['releasedAt', 'DESC'],
 	['id', 'DESC'],
-];
-const BY_ORDER = [
-	['displayOrder', 'ASC'],
-	['id', 'ASC'],
 ];
 
 // Lo que pintan las tarjetas y la barra lateral del álbum en el sitio público
@@ -34,15 +30,11 @@ export const PUBLIC_TRACK_ATTRIBUTES = [
 	],
 ];
 
-function mapDatabaseError(error) {
-	const code = error.original?.code;
-	if (code === '23505') return new AppError(ERROR_CODES.ALBUM_ALREADY_EXISTS);
-	// RESTRICT en Postgres lanza 23001 (restrict_violation); 23503 es foreign_key_violation
-	if (code === '23001' || code === '23503') return new AppError(ERROR_CODES.ALBUM_IN_USE);
-	return error;
-}
-
-class AlbumsRepository {
+class AlbumsRepository extends baseRepository(Album, {
+	unique: ERROR_CODES.ALBUM_ALREADY_EXISTS,
+	// Un álbum con canciones no se elimina (ON DELETE RESTRICT)
+	foreignKey: ERROR_CODES.ALBUM_IN_USE,
+}) {
 	// Dashboard: todos los álbumes con su cantidad de canciones
 	static async findAllWithStats() {
 		return await Album.findAll({
@@ -59,13 +51,10 @@ class AlbumsRepository {
 		});
 	}
 
-	static async findById(id) {
-		return await Album.findByPk(id, { raw: true });
-	}
 
 	static async findByIdWithLinks(id) {
 		const album = await Album.findByPk(id, {
-			include: [{ model: AlbumLink, as: 'links', separate: true, order: BY_ORDER }],
+			include: [{ model: AlbumLink, as: 'links', separate: true, order: BY_DISPLAY_ORDER }],
 		});
 		return album?.toJSON() ?? null;
 	}
@@ -74,7 +63,7 @@ class AlbumsRepository {
 		return await AlbumLink.findAll({
 			attributes: ['platform', 'url'],
 			where: { albumId },
-			order: BY_ORDER,
+			order: BY_DISPLAY_ORDER,
 			raw: true,
 		});
 	}
@@ -120,7 +109,7 @@ class AlbumsRepository {
 					as: 'links',
 					separate: true,
 					attributes: ['platform', 'url'],
-					order: BY_ORDER,
+					order: BY_DISPLAY_ORDER,
 				},
 			],
 		});
@@ -131,62 +120,40 @@ class AlbumsRepository {
 	static async findRelated({ excludeId, limit }) {
 		return await Album.findAll({
 			attributes: PUBLIC_ALBUM_ATTRIBUTES,
-			where: { active: true, id: { [Op.ne]: excludeId } },
+			where: { active: true, ...(excludeId && { id: { [Op.ne]: excludeId } }) },
 			order: NEWEST_FIRST,
 			limit,
 			raw: true,
 		});
 	}
 
-	// Todo el catálogo con sus canciones, enlaces y recursos (para exportar)
+	// Todo el catálogo con sus canciones, enlaces y recursos (para exportar). Cada nivel va en una
+	// consulta aparte: un solo JOIN multiplicaría las filas (enlaces × canciones × recursos).
 	static async findAllForExport() {
 		const albums = await Album.findAll({
 			include: [
-				{ model: AlbumLink, as: 'links' },
+				{ model: AlbumLink, as: 'links', separate: true, order: BY_DISPLAY_ORDER },
 				{
 					model: Song,
 					as: 'songs',
+					separate: true,
+					order: [
+						['trackNumber', 'ASC'],
+						['id', 'ASC'],
+					],
 					include: [
-						{ model: SongLink, as: 'links' },
-						{ model: SongResource, as: 'resources' },
+						{ model: SongLink, as: 'links', separate: true, order: BY_DISPLAY_ORDER },
+						{ model: SongResource, as: 'resources', separate: true, order: BY_DISPLAY_ORDER },
 					],
 				},
 			],
-			order: [
-				...NEWEST_FIRST,
-				[{ model: AlbumLink, as: 'links' }, 'displayOrder', 'ASC'],
-				[{ model: Song, as: 'songs' }, 'trackNumber', 'ASC'],
-				[{ model: Song, as: 'songs' }, { model: SongLink, as: 'links' }, 'displayOrder', 'ASC'],
-				[{ model: Song, as: 'songs' }, { model: SongResource, as: 'resources' }, 'displayOrder', 'ASC'],
-			],
+			order: NEWEST_FIRST,
 		});
 		return albums.map((album) => album.toJSON());
-	}
-
-	static async create(fields) {
-		try {
-			const album = await Album.create(fields);
-			return album.toJSON();
-		} catch (error) {
-			throw mapDatabaseError(error);
-		}
-	}
-
-	static async update(id, fields) {
-		const [count, rows] = await Album.update(fields, { where: { id }, returning: true });
-		return count ? rows[0].toJSON() : null;
-	}
-
-	static async delete(id) {
-		try {
-			return await Album.destroy({ where: { id } });
-		} catch (error) {
-			throw mapDatabaseError(error);
-		}
 	}
 }
 
 export const AlbumLinksRepository = childRepository(AlbumLink, 'albumId', {
-	duplicateError: ERROR_CODES.MUSIC_LINK_ALREADY_EXISTS,
+	unique: ERROR_CODES.MUSIC_LINK_ALREADY_EXISTS,
 });
 export default AlbumsRepository;

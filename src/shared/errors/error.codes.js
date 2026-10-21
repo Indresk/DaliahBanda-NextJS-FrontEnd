@@ -46,6 +46,7 @@ export const ERROR_CODES = {
 	ALBUM_IN_USE: 'album_in_use',
 	SONG_NOT_FOUND: 'song_not_found',
 	SONG_ALREADY_EXISTS: 'song_already_exists',
+	SONG_TRACK_TAKEN: 'song_track_taken',
 	MUSIC_LINK_NOT_FOUND: 'music_link_not_found',
 	MUSIC_LINK_ALREADY_EXISTS: 'music_link_already_exists',
 	SONG_RESOURCE_NOT_FOUND: 'song_resource_not_found',

@@ -2,21 +2,15 @@ import 'server-only';
 
 import { QueryTypes } from 'sequelize';
 import sequelize from '../config/db';
-import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import GalleryEvent from '../models/galleryEvents.model';
+import { baseRepository } from './baseRepository';
 
-function mapDatabaseError(error) {
-	const code = error.original?.code;
-	if (code === '23505') return new AppError(ERROR_CODES.GALLERY_EVENT_ALREADY_EXISTS);
-	// RESTRICT en Postgres lanza 23001 (restrict_violation); 23503 es foreign_key_violation
-	if (code === '23001' || code === '23503') {
-		return new AppError(ERROR_CODES.GALLERY_EVENT_IN_USE);
-	}
-	return error;
-}
-
-class GalleryEventsRepository {
+class GalleryEventsRepository extends baseRepository(GalleryEvent, {
+	unique: ERROR_CODES.GALLERY_EVENT_ALREADY_EXISTS,
+	// Un evento con imágenes no se elimina (ON DELETE RESTRICT)
+	foreignKey: ERROR_CODES.GALLERY_EVENT_IN_USE,
+}) {
 	static async findAll() {
 		return await GalleryEvent.findAll({
 			order: [
@@ -27,9 +21,6 @@ class GalleryEventsRepository {
 		});
 	}
 
-	static async findById(id) {
-		return await GalleryEvent.findByPk(id, { raw: true });
-	}
 
 	static async findBySlug(slug) {
 		return await GalleryEvent.findOne({ where: { slug }, raw: true });
@@ -59,35 +50,8 @@ class GalleryEventsRepository {
 		);
 	}
 
-	static async create(fields) {
-		try {
-			const event = await GalleryEvent.create(fields);
-			return event.toJSON();
-		} catch (error) {
-			throw mapDatabaseError(error);
-		}
-	}
 
-	static async update(id, fields) {
-		try {
-			const [count, rows] = await GalleryEvent.update(fields, {
-				where: { id },
-				returning: true,
-			});
-			return count ? rows[0].toJSON() : null;
-		} catch (error) {
-			throw mapDatabaseError(error);
-		}
-	}
 
-	// La clave foránea es RESTRICT: si el evento tiene imágenes la base de datos lo impide
-	static async delete(id) {
-		try {
-			return await GalleryEvent.destroy({ where: { id } });
-		} catch (error) {
-			throw mapDatabaseError(error);
-		}
-	}
 }
 
 export default GalleryEventsRepository;

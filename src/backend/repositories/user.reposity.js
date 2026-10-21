@@ -2,6 +2,7 @@ import 'server-only';
 
 import User from '../models/users.model';
 import AppError from '../errors/app.error';
+import { isUniqueViolation } from '../utils/pgErrors';
 import { ERROR_CODES } from '@/shared/errors/error.codes';
 
 class UserRepository {
@@ -18,7 +19,7 @@ class UserRepository {
 			const user = await User.create({ email, role });
 			return user;
 		} catch (error) {
-			if (error.original.code === '23505') {
+			if (isUniqueViolation(error)) {
 				// const detail = error.detail || '';
 
 				// if (detail.includes('email')) {

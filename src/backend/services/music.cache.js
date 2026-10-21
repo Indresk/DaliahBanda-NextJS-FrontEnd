@@ -1,55 +1,46 @@
 import 'server-only';
 
-import { revalidateTag, unstable_cache } from 'next/cache';
 import { MUSIC } from '../../shared/constants';
+import { createTaggedCache } from '../utils/taggedCache';
 import AlbumsService from './albums.service';
 import MusicService from './music.service';
 import SongsService from './songs.service';
 
-// Lecturas públicas de la música (listado, álbum, canción, destacada y relacionadas). Cada
-// combinación de argumentos se guarda por separado. Las acciones del dashboard invalidan la
-// etiqueta con invalidateMusic(); `revalidate` es el respaldo.
-const options = { tags: [MUSIC.CACHE_TAG], revalidate: MUSIC.CACHE_FALLBACK_SECONDS };
+// Lecturas públicas de la música (listado, álbum, canción, destacada y relacionadas). Las acciones
+// del dashboard las invalidan con invalidateMusic().
+const cache = createTaggedCache({ tag: MUSIC.CACHE_TAG, revalidate: MUSIC.CACHE_FALLBACK_SECONDS });
 
-export const getAlbums = unstable_cache(
+export const getAlbums = cache.wrap(
 	async () => AlbumsService.listPublic(),
 	['music-albums'],
-	options,
 );
 
 // Álbum con sus pistas y enlaces (null si no existe o no está activo)
-export const getAlbum = unstable_cache(
+export const getAlbum = cache.wrap(
 	async (slug) => AlbumsService.findPublicBySlug(slug),
 	['music-album'],
-	options,
 );
 
 // Canción con su álbum, enlaces y recursos (null si ella o su álbum no están activos)
-export const getSong = unstable_cache(
+export const getSong = cache.wrap(
 	async (albumSlug, songSlug) => SongsService.findPublic(albumSlug, songSlug),
 	['music-song'],
-	options,
 );
 
 // Canciones publicadas (título + álbum): datos estructurados del grupo
-export const getSongs = unstable_cache(
+export const getSongs = cache.wrap(
 	async () => SongsService.listPublic(),
 	['music-songs'],
-	options,
 );
 
-export const getFeaturedSong = unstable_cache(
+export const getFeaturedSong = cache.wrap(
 	async () => SongsService.findFeatured(),
 	['music-featured'],
-	options,
 );
 
-export const getRelatedWorks = unstable_cache(
+export const getRelatedWorks = cache.wrap(
 	async (albumId, songId) => MusicService.findRelated({ albumId, songId }),
 	['music-related'],
-	options,
 );
 
-export function invalidateMusic() {
-	revalidateTag(MUSIC.CACHE_TAG, { expire: 0 });
-}
+export const invalidateMusic = cache.invalidate;

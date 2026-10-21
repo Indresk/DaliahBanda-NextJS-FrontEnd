@@ -1,23 +1,16 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { USER_ROLES } from '../../shared/constants';
 import GalleryImagesService from '../services/galleryImages.service';
 import { invalidateGallery } from '../services/gallery.cache';
+import { refreshOnSuccess } from '../utils/refreshOnSuccess';
 import { formDataToObject } from '../utils/formData';
 import { guardedRequest } from '../utils/guardedRequestWrapper';
 
 const ADMIN_ONLY = [USER_ROLES.ADMIN];
 const FORM_FIELDS = { lists: ['memberSlugs'], booleans: ['active'] };
 
-// Tras cualquier cambio: se invalida la caché pública y se refresca el dashboard
-function refresh(result) {
-	if (result.status === 'success') {
-		invalidateGallery();
-		revalidatePath('/dashboard/gallery', 'layout');
-	}
-	return result;
-}
+const refresh = refreshOnSuccess(invalidateGallery, ['/dashboard/gallery', 'layout']);
 
 export async function createGalleryImage(_prevState, formData) {
 	return refresh(
