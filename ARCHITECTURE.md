@@ -60,6 +60,9 @@ src/
   contra la base de datos (`requirePageRole` / `requireRole` / `guardedRequest`).
 - **Caché del estado en vivo**: se lee con `getLiveStatus()` y solo se invalida con
   `invalidateLiveStatus()` (ambos en `services/liveStatus.cache.js`).
+- **Imágenes públicas**: se usa `ui/FadeImage` (misma API que `next/image`) en vez de `next/image`: fondo oscuro mientras
+  descarga y aparición con fundido; las `priority` no se funden. El `Hero` (usa `getImageProps`) y el admin no lo usan.
+  No ocultar con `display: none` imágenes que deban estar listas: el navegador no las descarga hasta mostrarlas.
 - **Componentes**: lo genérico va a `src/frontend/components/ui`; lo de una sola sección
   se queda en su carpeta `_components`. La lógica de cliente reutilizable va en un hook.
 - **Constantes**: en `shared/constants/<dominio>.js` y re-exportadas en `index.js`.
@@ -131,6 +134,9 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 - `/about-us` (info general), `/about-us/members` (miembros activos + línea del tiempo de la
   formación) y `/about-us/members/[slug]` (página personal; 404 si no está activo). Lecturas
   cacheadas en `members.cache.js` (`getActiveMembers`, `getMember`, `getLineupTimeline`).
+- **Baja de un miembro** (`MembersService.deactivate`, botón «Dar de baja» en su ficha): en una transacción lo
+  despublica, cierra con la fecha de salida sus entradas abiertas de la formación y quita `isMember` de su
+  etiqueta de galería (las fotos conservan la etiqueta). No hay página de ex integrante.
 - La formación es la tabla `lineup-entries` (persona, `role` de una lista fija —`LINEUP_ROLES`—, año y
   mes de inicio y de fin opcionales, nota libre y `memberId` opcional que enlaza a su página) editable
   en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`. En `/about-us/members` se ve como gráfico
@@ -140,6 +146,19 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
   pintan `ui/Breadcrumb` en el servidor con los títulos reales. La lógica de las migas está en
   `_lib/breadcrumbs.js` de cada sección y la reutiliza el JSON-LD (`BreadcrumbList`). Una ruta
   nueva bajo esas secciones necesita su carpeta en `@breadcrumb` (si no, no muestra migas).
+
+## Fuentes
+
+Las tres fuentes están en `public/fonts` en woff2 y se generan con scripts de `src/scripts/` (se ejecutan en
+local, con red, y el resultado se commitea):
+
+- `pnpm fonts:icons` genera `mso-variable.woff2` solo con los iconos Material Symbols que usa el código (detecta
+  `<MSOIcon>` e `icon:`; guarda la lista en `src/scripts/mso-icons.json`). **Al añadir un icono hay que volver a
+  ejecutarlo**; `pnpm fonts:icons --check` comprueba que el archivo cubre los iconos usados. Un nombre de icono
+  armado dinámicamente no se detecta: escríbelo completo en alguna parte. La fuente completa pesaba 10,6 MB.
+- `pnpm fonts:text` genera Space Grotesk y Manrope en woff2 con el subconjunto latino de Google (~22 y ~24 KB).
+  Los caracteres fuera de ese rango (por ejemplo las flechas ← →) se dibujan con la fuente del sistema.
+- La fuente de iconos usa `display: 'block'` para que no se vea el nombre del icono como texto mientras carga.
 
 ## Metadata y SEO
 

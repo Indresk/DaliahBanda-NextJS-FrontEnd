@@ -4,7 +4,7 @@ import Button from '@/frontend/components/buttons/GeneralButton';
 import { toRelatedItems } from '../../albums/_lib/relatedItems';
 import YmalItem from '../../albums/_components/YmalItem';
 import BigPlayButton from '@/frontend/assets/svg/BigPlayButton';
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import { useRouter } from 'next/navigation';
 import { ALBUM_TYPE_LABELS, STREAMING_PLATFORMS } from '@/shared/constants';
 import { formatDateOnly } from '@/shared/utils/format';

@@ -32,19 +32,19 @@ export default function RootLayout({ children }) {
 }
 
 const materialSymbols = localFont({
-	src: '../public/fonts/mso-variable.ttf',
+	src: '../public/fonts/mso-variable.woff2',
 	variable: '--font-material-symbols',
-	display: 'swap',
+	display: 'block',
 });
 
 const spaceGrotesk = localFont({
-	src: '../public/fonts/sg-variable.ttf',
+	src: '../public/fonts/sg-variable.woff2',
 	variable: '--font-headline',
 	display: 'swap',
 });
 
 const manrope = localFont({
-	src: '../public/fonts/mr-variable.ttf',
+	src: '../public/fonts/mr-variable.woff2',
 	variable: '--font-body',
 	display: 'swap',
 });

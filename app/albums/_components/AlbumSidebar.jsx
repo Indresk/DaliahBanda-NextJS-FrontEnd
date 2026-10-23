@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 
 // Barra lateral del álbum (portada, título, frase y "Sobre el álbum"): la comparten el álbum y
 // cada una de sus canciones

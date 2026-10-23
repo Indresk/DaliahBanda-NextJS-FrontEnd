@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import Link from 'next/link';
 import { ALBUM_TYPE_LABELS } from '@/shared/constants';
 import { albumPath } from '@/shared/utils/music';

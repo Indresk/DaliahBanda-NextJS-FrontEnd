@@ -1,19 +1,22 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import Button from '@/frontend/components/buttons/GeneralButton';
 import { loadMoreGalleryImages } from '@/back/actions/galleryPublic.actions';
 import { isOptimizedImageUrl } from '@/shared/utils/images';
 import MSOIcon from '@/frontend/assets/icons/MSOIcon';
 
-// Las primeras imágenes cargan de inmediato; el resto, al acercarse
-const EAGER_COUNT = 4;
+const EAGER_COUNT = 12;
+
+// Marca cada imagen con su posición dentro de su lote
+const withBatchPosition = (items) =>
+	items.map((item, position) => ({ ...item, position }));
 
 // Rejilla de fotos con "Ver más". La primera página llega ya renderizada desde el servidor
 // (contenido indexable); las siguientes se piden con el cursor de la última imagen.
 export default function GalleryGrid({ initialItems, initialCursor, filters }) {
-	const [items, setItems] = useState(initialItems);
+	const [items, setItems] = useState(() => withBatchPosition(initialItems));
 	const [cursor, setCursor] = useState(initialCursor);
 	const [error, setError] = useState(null);
 	const [pending, startTransition] = useTransition();
@@ -25,7 +28,10 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 			const result = await loadMoreGalleryImages({ ...filters, cursor });
 			if (result.status === 'error') return setError(result.message);
 
-			setItems((previous) => [...previous, ...result.payload.items]);
+			setItems((previous) => [
+				...previous,
+				...withBatchPosition(result.payload.items),
+			]);
 			setCursor(result.payload.nextCursor);
 		});
 	}
@@ -50,7 +56,7 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 	return (
 		<section className='px-8 pb-14 md:px-14'>
 			<div className='columns-2 gap-4 md:columns-3 lg:columns-4'>
-				{items.map((image, index) => (
+				{items.map((image) => (
 					<figure
 						key={image.id}
 						className='mb-4 break-inside-avoid overflow-hidden bg-darkgray'>
@@ -60,7 +66,7 @@ export default function GalleryGrid({ initialItems, initialCursor, filters }) {
 							unoptimized={!isOptimizedImageUrl(image.url)}
 							width={image.width}
 							height={image.height}
-							loading={index < EAGER_COUNT ? 'eager' : 'lazy'}
+							loading={image.position < EAGER_COUNT ? 'eager' : 'lazy'}
 							sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
 							className='h-auto w-full'
 						/>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Button from '@/frontend/components/buttons/GeneralButton';
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 
 export default function LiveCard({ className, ...props }) {
 	return (

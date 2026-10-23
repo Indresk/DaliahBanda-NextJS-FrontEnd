@@ -1,21 +1,6 @@
 import { z } from 'zod';
 import { LINEUP_ROLES } from '../constants';
-import { emptyToNull, idSchema, optionalText } from './common.schema';
-
-const yearSchema = z.coerce
-	.number({ error: 'Año inválido.' })
-	.int({ error: 'Año inválido.' })
-	.min(1990, { error: 'Año inválido.' })
-	.max(2100, { error: 'Año inválido.' });
-
-const monthSchema = emptyToNull(
-	z.coerce
-		.number({ error: 'Mes inválido.' })
-		.int({ error: 'Mes inválido.' })
-		.min(1, { error: 'Mes inválido.' })
-		.max(12, { error: 'Mes inválido.' })
-		.nullish(),
-).transform((value) => value ?? null);
+import { emptyToNull, idSchema, monthSchema, optionalText, yearSchema } from './common.schema';
 
 // El nombre puede omitirse si la entrada es de un miembro: el servicio usa el del miembro
 export const lineupEntrySchema = z

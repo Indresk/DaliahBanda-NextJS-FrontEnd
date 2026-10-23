@@ -28,6 +28,20 @@ class LineupRepository extends baseRepository(LineupEntry) {
 		});
 	}
 
+	// Entradas de un miembro que siguen abiertas (sin fecha de fin)
+	static async findOpenByMember(memberId, options) {
+		return await LineupEntry.findAll({ ...options, where: { memberId, endYear: null }, raw: true });
+	}
+
+	// Cierra con la misma fecha todas las entradas abiertas del miembro; devuelve cuántas cerró
+	static async closeOpenByMember(memberId, { endYear, endMonth }, options) {
+		const [count] = await LineupEntry.update(
+			{ endYear, endMonth },
+			{ ...options, where: { memberId, endYear: null } },
+		);
+		return count;
+	}
+
 	static async findAll() {
 		return await LineupEntry.findAll({ order: CHRONOLOGICAL, raw: true });
 	}

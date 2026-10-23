@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import { getGalleryEvents } from '@/back/services/gallery.cache';
 import { isOptimizedImageUrl } from '@/shared/utils/images';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';

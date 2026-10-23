@@ -1,0 +1,3863 @@
+{
+	"section": "gallery",
+	"version": 1,
+	"exportedAt": "2026-10-21T00:27:46.921Z",
+	"people": [
+		{
+			"slug": "mike",
+			"name": "Mike",
+			"isMember": true
+		},
+		{
+			"slug": "dan",
+			"name": "Dan",
+			"isMember": false
+		},
+		{
+			"slug": "angel",
+			"name": "Angel",
+			"isMember": false
+		},
+		{
+			"slug": "silvia",
+			"name": "Silvia",
+			"isMember": true
+		},
+		{
+			"slug": "rafa",
+			"name": "Rafa",
+			"isMember": true
+		},
+		{
+			"slug": "nico",
+			"name": "Nico",
+			"isMember": true
+		},
+		{
+			"slug": "aya",
+			"name": "Aya",
+			"isMember": true
+		},
+		{
+			"slug": "sully",
+			"name": "Sully",
+			"isMember": false
+		},
+		{
+			"slug": "chris",
+			"name": "Chris",
+			"isMember": true
+		},
+		{
+			"slug": "sebas",
+			"name": "Sebas",
+			"isMember": false
+		},
+		{
+			"slug": "daniel",
+			"name": "Daniel",
+			"isMember": false
+		},
+		{
+			"slug": "caro",
+			"name": "Caro",
+			"isMember": false
+		}
+	],
+	"events": [
+		{
+			"slug": "misc",
+			"title": "Variado",
+			"description": null,
+			"eventDate": "2022-03-19",
+			"coverUrl": "https://assets.daliahbanda.com/images/backstage/backstage-lunch-2022-v1.jpg",
+			"isFeatured": false
+		},
+		{
+			"slug": "usb-2025",
+			"title": "Universidad San Buenaventura",
+			"description": null,
+			"eventDate": "2025-01-01",
+			"coverUrl": "https://assets.daliahbanda.com/images/backstage/backstage-usb2-v1.jpg",
+			"isFeatured": true
+		},
+		{
+			"slug": "recording",
+			"title": "Grabaciones",
+			"description": null,
+			"eventDate": "2023-07-25",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "cambridge",
+			"title": "Colegio Cambridge",
+			"description": null,
+			"eventDate": "2021-08-09",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "f-santa-isabel",
+			"title": "Fundación Santa Isabel",
+			"description": null,
+			"eventDate": "2018-02-02",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "kaiju",
+			"title": "Kaiju Asian Pub",
+			"description": null,
+			"eventDate": "2023-11-11",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "alfredo-iriarte",
+			"title": "Colegio Alfredo Iriarte",
+			"description": null,
+			"eventDate": "2018-09-15",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "garage",
+			"title": "Garage Salón de Eventos",
+			"description": null,
+			"eventDate": "2020-09-10",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "grange",
+			"title": "Grange Bar",
+			"description": null,
+			"eventDate": "2019-09-24",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "jackass",
+			"title": "Jackass Rock Bar",
+			"description": null,
+			"eventDate": "2023-10-16",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "spiral7",
+			"title": "Spiral 7",
+			"description": null,
+			"eventDate": "2021-06-05",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "tv-unal",
+			"title": "Sesión TV UNAL",
+			"description": null,
+			"eventDate": "2026-01-28",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "unal-carpa",
+			"title": "Carpa UNAL",
+			"description": null,
+			"eventDate": "2024-09-27",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "unal-show-exterior",
+			"title": "Show exterior UNAL",
+			"description": null,
+			"eventDate": "2023-05-07",
+			"coverUrl": null,
+			"isFeatured": false
+		},
+		{
+			"slug": "rock-and-blend-1",
+			"title": "Rock And Blend 1",
+			"description": null,
+			"eventDate": "2024-05-22",
+			"coverUrl": "https://assets.daliahbanda.com/images/live/unal/misc/unal-cris-v1.jpeg",
+			"isFeatured": false
+		},
+		{
+			"slug": "rock-and-blend-2",
+			"title": "Rock And Blend 2",
+			"description": null,
+			"eventDate": "2025-01-01",
+			"coverUrl": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-62-v1.jpg",
+			"isFeatured": true
+		},
+		{
+			"slug": "rock-and-blend-3",
+			"title": "Rock And Blend 3",
+			"description": null,
+			"eventDate": "2025-03-23",
+			"coverUrl": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-postentrevista-3-v1.jpg",
+			"isFeatured": true
+		}
+	],
+	"images": [
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-ensayo-2-2021-v1.jpg",
+			"alt": "Mike, Angel y Dan durante un ensayo",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"mike",
+				"dan",
+				"angel"
+			],
+			"width": 1280,
+			"height": 720,
+			"takenAt": "2022-05-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-ensayo-2021-v1.jpg",
+			"alt": "Toda la banda durante la composición de Si podré",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"mike",
+				"dan",
+				"silvia",
+				"angel",
+				"rafa"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2022-04-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-ensayo-2022-v1.jpg",
+			"alt": "Rafa, Silvia y Angel durante un ensayo",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"silvia",
+				"angel",
+				"rafa"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2022-06-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-ensayo-2023-v1.jpg",
+			"alt": "Mike, Rafa y Silvia durante un ensayo",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"mike",
+				"rafa",
+				"silvia"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2022-08-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-homesofa-2025-v1.jpg",
+			"alt": "Hombres de la banda conviviendo en un sofá",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"mike",
+				"rafa",
+				"nico",
+				"aya"
+			],
+			"width": 720,
+			"height": 1598,
+			"takenAt": "2022-04-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-lunch-2022-v1.jpg",
+			"alt": "Banda comiendo hamburgesas despues de ensayo",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"silvia",
+				"dan",
+				"mike",
+				"rafa",
+				"angel"
+			],
+			"width": 1280,
+			"height": 589,
+			"takenAt": "2022-03-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb1-v1.jpg",
+			"alt": "Silvia y sully cantando antes del evento en la Universidad San Buenaventura",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"silvia",
+				"sully"
+			],
+			"width": 899,
+			"height": 1599,
+			"takenAt": "2025-03-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb2-v1.jpg",
+			"alt": "Banda posando antes del evento en la Universidad San Buenaventura",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"chris",
+				"mike",
+				"rafa",
+				"silvia",
+				"aya",
+				"nico",
+				"sully"
+			],
+			"width": 1366,
+			"height": 615,
+			"takenAt": "2025-01-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb3-v1.jpeg",
+			"alt": "Chris y nico haciendo piruetas entre dos paredes",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"nico",
+				"chris"
+			],
+			"width": 720,
+			"height": 1599,
+			"takenAt": "2025-12-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb4-v1.jpeg",
+			"alt": "Aya, silvia y nico hablando despues del evento en la Universidad San Buenaventura",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"silvia",
+				"aya",
+				"nico"
+			],
+			"width": 1536,
+			"height": 864,
+			"takenAt": "2025-06-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb5-v1.jpeg",
+			"alt": "Rafa, Sully y Mike tomando jugo y comiendo papas despues del evento en la Universidad San Buenaventura",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"rafa",
+				"sully",
+				"mike"
+			],
+			"width": 1599,
+			"height": 720,
+			"takenAt": "2025-02-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb6-v1.jpeg",
+			"alt": "Silvia y Nico tomando jugo despues del evento en la Universidad San Buenaventura",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"nico",
+				"silvia"
+			],
+			"width": 1599,
+			"height": 720,
+			"takenAt": "2025-01-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/backstage-usb7-v1.jpeg",
+			"alt": "Aya posando durante la prueba de sonido en la Universidad san buenaventura",
+			"category": "backstage",
+			"eventSlug": "usb-2025",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 768,
+			"height": 1365,
+			"takenAt": "2025-12-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/recording-nico-1-v1.jpg",
+			"alt": "Nico grabando las baterias del primer album de la banda",
+			"category": "backstage",
+			"eventSlug": "recording",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1600,
+			"height": 1200,
+			"takenAt": "2023-07-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/backstage/recording-silvia-1-v1.webp",
+			"alt": "Silvia grabando voces del sencillo El amor se acabó",
+			"category": "backstage",
+			"eventSlug": "recording",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1080,
+			"height": 1350,
+			"takenAt": "2023-11-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/cambridge/cambridge-p2p-v1.jpg",
+			"alt": "Silvia y Mike interactuando mientras tocan en vivo en el colegio Cambridge en Bogotá",
+			"category": "live",
+			"eventSlug": "cambridge",
+			"memberSlugs": [
+				"silvia",
+				"mike"
+			],
+			"width": 829,
+			"height": 545,
+			"takenAt": "2021-08-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/cambridge/cambridge-scenario-v1.jpeg",
+			"alt": "Banda tocando en vivo en el colegio Cambridge en bogotá",
+			"category": "live",
+			"eventSlug": "cambridge",
+			"memberSlugs": [
+				"mike",
+				"dan",
+				"chris",
+				"silvia"
+			],
+			"width": 1506,
+			"height": 847,
+			"takenAt": "2021-09-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/f-santa-isabel/f-santa-isabel-show-v1.jpg",
+			"alt": "Banda tocando durante el evento en vivo en la fundación santa isabel",
+			"category": "live",
+			"eventSlug": "f-santa-isabel",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"sebas"
+			],
+			"width": 720,
+			"height": 480,
+			"takenAt": "2018-09-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/f-santa-isabel/f-santa-isabel-show-v2.jpg",
+			"alt": "Banda tocando durante el evento en vivo en la fundación santa isabel",
+			"category": "live",
+			"eventSlug": "f-santa-isabel",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"sebas"
+			],
+			"width": 800,
+			"height": 533,
+			"takenAt": "2018-08-16",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/f-santa-isabel/f-santa-isabel-showend-1-v1.jpg",
+			"alt": "Banda posando despues de tocar en la fundación santa isabel",
+			"category": "live",
+			"eventSlug": "f-santa-isabel",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"sebas"
+			],
+			"width": 800,
+			"height": 533,
+			"takenAt": "2018-02-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/f-santa-isabel/f-santa-isabel-showend-1-v2.jpg",
+			"alt": "Banda posando despues de tocar en la fundación santa isabel",
+			"category": "live",
+			"eventSlug": "f-santa-isabel",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"sebas"
+			],
+			"width": 800,
+			"height": 533,
+			"takenAt": "2018-02-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/kaiju/kaiju-show-v1.jpeg",
+			"alt": "Banda tocando en vivo en Kaiju Asian pub",
+			"category": "live",
+			"eventSlug": "kaiju",
+			"memberSlugs": [
+				"daniel",
+				"mike",
+				"angel",
+				"silvia",
+				"aya",
+				"rafa"
+			],
+			"width": 901,
+			"height": 1600,
+			"takenAt": "2023-11-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/kaiju/kaiju-showend-v1.jpeg",
+			"alt": "Banda despues de tocar en kaiju asian pub",
+			"category": "live",
+			"eventSlug": "kaiju",
+			"memberSlugs": [
+				"daniel",
+				"mike",
+				"angel",
+				"silvia",
+				"aya",
+				"rafa"
+			],
+			"width": 1600,
+			"height": 901,
+			"takenAt": "2023-11-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/misc/24-portada-v1.jpg",
+			"alt": "Banda despues de tocar en un escenario alternativo",
+			"category": "backstage",
+			"eventSlug": "misc",
+			"memberSlugs": [
+				"chris",
+				"mike",
+				"angel",
+				"silvia",
+				"aya",
+				"rafa"
+			],
+			"width": 4000,
+			"height": 3000,
+			"takenAt": "2022-07-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/misc/alfredo-iriarte-portada-v1.jpg",
+			"alt": "Banda antes de tocar en el Colegio Alfredo Iriarte",
+			"category": "live",
+			"eventSlug": "alfredo-iriarte",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"sebas"
+			],
+			"width": 4160,
+			"height": 3120,
+			"takenAt": "2018-09-15",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/misc/garage-portada-v1.jpg",
+			"alt": "Toda la banda tocando en vivo en Garage Bar",
+			"category": "live",
+			"eventSlug": "garage",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"sebas"
+			],
+			"width": 1080,
+			"height": 623,
+			"takenAt": "2020-09-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/misc/grange-portada-v1.webp",
+			"alt": "Toda la banda tocando en vivo en The Grange Salon De Eventos",
+			"category": "live",
+			"eventSlug": "grange",
+			"memberSlugs": [
+				"rafa",
+				"angel",
+				"silvia",
+				"dan",
+				"mike"
+			],
+			"width": 1080,
+			"height": 1080,
+			"takenAt": "2019-09-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/misc/jackass-portada-v1.jpg",
+			"alt": "Rafa, Silvia y daniel en el escenario bailando.",
+			"category": "live",
+			"eventSlug": "jackass",
+			"memberSlugs": [
+				"rafa",
+				"silvia",
+				"daniel"
+			],
+			"width": 540,
+			"height": 960,
+			"takenAt": "2023-10-16",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/misc/spiral7-portada-v1.jpg",
+			"alt": "Rafa y Angel tocando en vivo en Spiral 7",
+			"category": "live",
+			"eventSlug": "spiral7",
+			"memberSlugs": [
+				"angel",
+				"rafa"
+			],
+			"width": 612,
+			"height": 1089,
+			"takenAt": "2021-06-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/tv-unal/tv-unal-drumkit-v1.jpeg",
+			"alt": "Nico y su drumkit acustico",
+			"category": "live",
+			"eventSlug": "tv-unal",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2026-05-13",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/tv-unal/tv-unal-preshow-2-v1.jpeg",
+			"alt": "Aya durante la sesión de tv unal",
+			"category": "live",
+			"eventSlug": "tv-unal",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2026-06-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/tv-unal/tv-unal-preshow-v1.jpeg",
+			"alt": "Tocando a las afueras de el edificio NEA en la UNAL",
+			"category": "live",
+			"eventSlug": "tv-unal",
+			"memberSlugs": [
+				"nico",
+				"rafa",
+				"mike",
+				"aya"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2026-02-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/tv-unal/tv-unal-show-v1.jpeg",
+			"alt": "Toda la banda durante la sesión acustica de grabación de Hambre en la ciudad para TV UNAL",
+			"category": "live",
+			"eventSlug": "tv-unal",
+			"memberSlugs": [
+				"nico",
+				"rafa",
+				"mike",
+				"silvia",
+				"aya"
+			],
+			"width": 1365,
+			"height": 768,
+			"takenAt": "2026-01-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/misc/unal-carpa-v1.webp",
+			"alt": "Daniel, Aya y Angel tocando en vivo durante un evento en la UNAL",
+			"category": "live",
+			"eventSlug": "unal-carpa",
+			"memberSlugs": [
+				"daniel",
+				"aya",
+				"angel"
+			],
+			"width": 1200,
+			"height": 1500,
+			"takenAt": "2024-09-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/misc/unal-show-exterior-v1.jpeg",
+			"alt": "Silvia y Mike tocando durante un evento en la UNAL",
+			"category": "live",
+			"eventSlug": "unal-show-exterior",
+			"memberSlugs": [
+				"silvia",
+				"mike"
+			],
+			"width": 860,
+			"height": 808,
+			"takenAt": "2023-05-07",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/misc/unal-cris-v1.jpeg",
+			"alt": "Chris tocando durante la primera etapa del Rock And Blend en la UNAL",
+			"category": "live",
+			"eventSlug": "rock-and-blend-1",
+			"memberSlugs": [
+				"chris"
+			],
+			"width": 1280,
+			"height": 720,
+			"takenAt": "2024-06-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/misc/unal-cris-v2.jpeg",
+			"alt": "Chris tocando durante la primera etapa del Rock And Blend en la UNAL",
+			"category": "live",
+			"eventSlug": "rock-and-blend-1",
+			"memberSlugs": [
+				"chris"
+			],
+			"width": 1280,
+			"height": 852,
+			"takenAt": "2024-05-22",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-1-v1.jpeg",
+			"alt": "silvia, sully, Rafa interpretando en vivo con voz, voz invitada, teclados durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"sully",
+				"rafa"
+			],
+			"width": 1080,
+			"height": 1080,
+			"takenAt": "2025-01-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-10-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-100-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-101-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-102-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-103-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-104-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-105-v1.jpg",
+			"alt": "silvia, nico interpretando en vivo con voz, batería durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-106-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-107-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-108-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-13",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-109-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-11-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-110-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-111-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-112-v1.jpg",
+			"alt": "caro interpretando en vivo con bajo durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"caro"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-21",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-113-v1.jpg",
+			"alt": "caro interpretando en vivo con bajo durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"caro"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-23",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-114-v1.jpg",
+			"alt": "caro interpretando en vivo con bajo durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"caro"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-09",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-115-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-116-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-117-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-118-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-119-v1.jpg",
+			"alt": "Nico tocando la bateria oscuras",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-10",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-12-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-120-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-20",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-121-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-122-v1.jpg",
+			"alt": "Nico interpretando en vivo con  durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-20",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-123-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-07",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-124-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-125-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-126-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-127-v1.jpg",
+			"alt": "Nico con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-128-v1.jpg",
+			"alt": "Aya con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-129-v1.jpg",
+			"alt": "Aya con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-13-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-130-v1.jpg",
+			"alt": "Aya con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-131-v1.jpg",
+			"alt": "Aya con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-132-v1.jpg",
+			"alt": "Aya con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-133-v1.jpg",
+			"alt": "Aya con capucha tocando rebelión",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-134-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-135-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-16",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-136-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-137-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-138-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-139-v1.jpg",
+			"alt": "Nico con capucha",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-14-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-140-v1.jpg",
+			"alt": "Foto de nico con la bateria a oscuras",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-26",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-141-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-142-v1.jpg",
+			"alt": "silvia, nico interpretando en vivo con voz, batería durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-143-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-144-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-145-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-20",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-146-v1.jpg",
+			"alt": "Nico con capucha",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-147-v1.jpg",
+			"alt": "Nico con capucha",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-17",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-148-v1.jpg",
+			"alt": "Nico con capucha",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-149-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-15-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1920,
+			"height": 1080,
+			"takenAt": "2025-10-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-150-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-17",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-151-v1.jpg",
+			"alt": "Nico tocando la bateria con capucha como performance para la canción Rebelión en la segunda edición del rock and blend con un fondo rojo intenso",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-17",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-152-v1.jpg",
+			"alt": "Nico tocando la bateria con capucha como performance para la canción Rebelión en la segunda edición del rock and blend",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-153-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-13",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-154-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-155-v1.jpg",
+			"alt": "Nico tocando la bateria con un fondo rojo intenso durante la segunda edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-156-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-157-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-158-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-159-v1.jpg",
+			"alt": "silvia, nico interpretando en vivo con voz, batería durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-16-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-160-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-161-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-07",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-162-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-163-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-164-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-165-v1.jpg",
+			"alt": "silvia, sully, nico interpretando en vivo con voz, voz invitada, batería durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"sully",
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-166-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-167-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-168-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-17",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-169-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-17-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-170-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-16",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-171-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-172-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-07",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-173-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-174-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-175-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-176-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-177-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-178-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-179-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-18-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-180-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-181-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-182-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-15",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-183-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-184-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-185-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-186-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-187-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-188-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-189-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-19-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-20",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-190-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-191-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-16",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-192-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-193-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-194-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-195-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-196-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-15",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-197-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-198-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-199-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-2-v1.jpeg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1080,
+			"height": 1080,
+			"takenAt": "2025-11-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-20-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-200-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-201-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-202-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-203-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-204-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-205-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-206-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-207-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-208-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-209-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-21-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-15",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-210-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-211-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-212-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-213-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-214-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-215-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-216-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-217-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-13",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-218-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-219-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-22-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-220-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-20",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-221-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-222-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-23-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-24-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-25-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-26-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-27-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-28-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-29-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-3-v1.jpeg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1080,
+			"height": 1920,
+			"takenAt": "2025-02-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-30-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-31-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-32-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-33-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-34-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-35-v1.jpg",
+			"alt": "caro interpretando en vivo con bajo durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"caro"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-20",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-36-v1.jpg",
+			"alt": "caro interpretando en vivo con bajo durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"caro"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-01",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-37-v1.jpg",
+			"alt": "caro interpretando en vivo con bajo durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"caro"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-14",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-38-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-39-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-4-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-07",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-40-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-41-v1.jpg",
+			"alt": "Sully, Silvia interpretando en vivo con voz invitada, voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully",
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-42-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-43-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-44-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-45-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-46-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-47-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-48-v1.jpg",
+			"alt": "sully interpretando en vivo con voz invitada durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-49-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-5-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-50-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-51-v1.jpg",
+			"alt": "Silvia y Mike interactuando en el escenario en vivo durante la segunda edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-52-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-53-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-54-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-55-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-56-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-57-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-58-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-59-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-6-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-05",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-60-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-61-v1.jpg",
+			"alt": "silvia, sully interpretando en vivo con voz, voz invitada durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-62-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-63-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-64-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-65-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-66-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-67-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-68-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'El amor se acabó' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-69-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-08-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-7-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-70-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-14",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-71-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-72-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-03-07",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-73-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-74-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-75-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-76-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-77-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-02",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-78-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-79-v1.jpg",
+			"alt": "Aya interpretando en vivo con guitarra rítmica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-8-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-07-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-80-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-28",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-81-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-04",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-82-v1.jpg",
+			"alt": "Mike interpretando en vivo con guitarra melódica durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"mike"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-01",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-83-v1.jpg",
+			"alt": "silvia, sully interpretando en vivo con voz, voz invitada durante la canción 'Hasta la eternidad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"sully"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-24",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-84-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-85-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-09",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-86-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-87-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-06-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-88-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-27",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-89-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-10",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-9-v1.jpg",
+			"alt": "Rafa interpretando en vivo con teclados durante la canción 'Intento sobrevivir' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"rafa"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-26",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-90-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-15",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-91-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-01-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-92-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Flor migrante' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-05-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-93-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-03",
+			"active": false
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-94-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Incendios' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-12-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-95-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Rebelión' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-11-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-96-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Hambre en la ciudad' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-09-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-97-v1.jpg",
+			"alt": "Nico interpretando en vivo con batería durante la canción 'Mala praxis' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"nico"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-02-06",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-98-v1.jpg",
+			"alt": "Silvia interpretando en vivo con voz durante la canción 'Si podré' en el evento rock-and-blend-2",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-04-08",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb2/unal-show2-99-v1.jpg",
+			"alt": "Silvia cantando en vivo durante la segunda edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia"
+			],
+			"width": 1622,
+			"height": 1080,
+			"takenAt": "2025-10-16",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-portada1-v1.jpg",
+			"alt": "Toda la banda posando despues de la segunda edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-2",
+			"memberSlugs": [
+				"silvia",
+				"aya",
+				"rafa",
+				"mike",
+				"nico"
+			],
+			"width": 770,
+			"height": 963,
+			"takenAt": "2025-02-03",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-portada2-v1.jpg",
+			"alt": "Toda la banda posando despues de la tercera edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"chris",
+				"silvia",
+				"aya",
+				"mike",
+				"nico",
+				"rafa"
+			],
+			"width": 1440,
+			"height": 1440,
+			"takenAt": "2025-12-19",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-postentrevista-1-v1.jpg",
+			"alt": "Toda la banda posando durante la entrevista despues de la tercera edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"chris",
+				"silvia",
+				"aya",
+				"mike",
+				"nico",
+				"rafa"
+			],
+			"width": 768,
+			"height": 1024,
+			"takenAt": "2025-09-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-postentrevista-2-v1.jpg",
+			"alt": "Toda la banda posando durante la entrevista despues de la tercera edición del rock and blend en un angulo amplio.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"chris",
+				"silvia",
+				"aya",
+				"mike",
+				"nico",
+				"rafa"
+			],
+			"width": 768,
+			"height": 1024,
+			"takenAt": "2025-07-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-postentrevista-3-v1.jpg",
+			"alt": "Toda la banda posando durante la entrevista despues de la tercera edición del Rock and Blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"chris",
+				"silvia",
+				"aya",
+				"mike",
+				"nico",
+				"rafa"
+			],
+			"width": 1024,
+			"height": 768,
+			"takenAt": "2025-11-12",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-1-v1.jpg",
+			"alt": "Aya tocando en vivo y cantando durante la tercera edición del Rock and Blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1366,
+			"height": 614,
+			"takenAt": "2025-04-18",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-2-v1.jpeg",
+			"alt": "Toda la banda durante el performance de Mala Praxis en la tercera edición del Rock and Blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"mike",
+				"aya",
+				"silvia",
+				"nico",
+				"chris",
+				"rafa"
+			],
+			"width": 768,
+			"height": 1365,
+			"takenAt": "2025-03-23",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-3-v1.jpg",
+			"alt": "Aya tocando en vivo y cantando durante la tercera edición del Rock and Blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1366,
+			"height": 614,
+			"takenAt": "2025-05-22",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-4-v1.jpg",
+			"alt": "Silvia cantando en vivo durante la tercera edición del Rock and Blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"silvia",
+				"chris",
+				"nico"
+			],
+			"width": 1366,
+			"height": 614,
+			"takenAt": "2025-05-11",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-5-v1.jpg",
+			"alt": "Silvia y Chris en vivo durante la tercera edición del Rock and Blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"silvia",
+				"chris"
+			],
+			"width": 686,
+			"height": 1220,
+			"takenAt": "2025-09-21",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-6-v1.jpg",
+			"alt": "Foto de Aya cantando durante la tercera edición del rock and blend tomada desde el celular de un fan.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 1002,
+			"height": 1220,
+			"takenAt": "2025-12-25",
+			"active": true
+		},
+		{
+			"url": "https://assets.daliahbanda.com/images/live/unal/show-randb3/unal-show3-7-v1.jpg",
+			"alt": "Aya tocando su guitarra stratocaster roja durante la tercera edición del rock and blend.",
+			"category": "live",
+			"eventSlug": "rock-and-blend-3",
+			"memberSlugs": [
+				"aya"
+			],
+			"width": 2712,
+			"height": 1220,
+			"takenAt": "2025-04-19",
+			"active": true
+		}
+	]
+}

@@ -6,7 +6,9 @@ import {
 	httpsUrlSchema,
 	idSchema,
 	optionalText,
+	monthSchema,
 	slugSchema,
+	yearSchema,
 } from './common.schema';
 
 const requiredText = (label, max) =>
@@ -51,3 +53,6 @@ export const memberImageSchema = z.object({
 	displayOrder: displayOrderSchema,
 });
 
+
+// Fecha de salida de un miembro (sin mes se asume diciembre, como en la formación)
+export const memberDeparture = z.object({ endYear: yearSchema, endMonth: monthSchema });

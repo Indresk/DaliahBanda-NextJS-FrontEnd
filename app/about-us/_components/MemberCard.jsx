@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import Link from 'next/link';
 import { memberImageAlt } from '@/shared/utils/members';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import { useInfiniteCarousel } from '@/frontend/hooks/useInfiniteCarousel';
 import './carousel.css';
 

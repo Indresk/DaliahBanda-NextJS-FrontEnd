@@ -5,6 +5,7 @@ import { USER_ROLES } from '@/shared/constants';
 import Card from '@/frontend/components/ui/Card';
 import DeleteEntityButton from '@/frontend/components/ui/DeleteEntityButton';
 import { deleteMember } from '@/back/actions/members.actions';
+import DeactivateMemberForm from '../_components/DeactivateMemberForm';
 import MemberForm from '../_components/MemberForm';
 import MemberImagesManager from '../_components/MemberImagesManager';
 import MemberLinksManager from '../_components/MemberLinksManager';
@@ -28,6 +29,7 @@ export default async function EditMemberPage({ params }) {
 		<div className='flex flex-col gap-6'>
 			<Card title={member.name}>
 				<MemberForm member={editable} />
+				{member.active && <DeactivateMemberForm member={{ id: member.id, name: member.name }} />}
 				<DeleteEntityButton
 					id={member.id}
 					action={deleteMember}

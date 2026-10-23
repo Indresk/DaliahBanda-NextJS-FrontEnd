@@ -29,6 +29,16 @@ class GalleryPeopleRepository extends baseRepository(GalleryPerson, {
 		return await GalleryPerson.findOne({ where: { memberId }, raw: true });
 	}
 
+	// Quita la marca de integrante actual a la etiqueta del miembro (sigue en las fotos);
+	// devuelve cuántas etiquetas cambió
+	static async clearIsMemberByMemberId(memberId, options) {
+		const [count] = await GalleryPerson.update(
+			{ isMember: false },
+			{ ...options, where: { memberId, isMember: true } },
+		);
+		return count;
+	}
+
 	// Los slugs que existen de la lista dada (para validar integrantes de una imagen)
 	static async findExistingSlugs(slugs) {
 		const rows = await GalleryPerson.findAll({

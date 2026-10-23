@@ -5,7 +5,7 @@ import Integrantes from './_components/index/Integrantes';
 import RecommendedSong from './_components/index/RecommendedSong';
 import FlyersCarousel from './_components/index/FlyersCarousel';
 import Hero from './_components/index/Hero';
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import DaliahLogo from '@/frontend/assets/svg/DaliahLogo';
 import JsonLd from '@/frontend/seo/JsonLd';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';

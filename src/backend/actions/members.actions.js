@@ -2,6 +2,7 @@
 
 import { USER_ROLES } from '../../shared/constants';
 import MembersService from '../services/members.service';
+import { invalidateGallery } from '../services/gallery.cache';
 import { invalidateMembers } from '../services/members.cache';
 import { childActions } from '../utils/childActions';
 import { refreshOnSuccess } from '../utils/refreshOnSuccess';
@@ -26,6 +27,25 @@ export async function updateMember(_prevState, formData) {
 
 	return refresh(
 		await guardedRequest(ADMIN_ONLY, () => MembersService.update(Number(id), changes)),
+	);
+}
+
+// La baja toca tres dominios: miembros, formación y etiquetas de galería
+const refreshDeparture = refreshOnSuccess(
+	() => {
+		invalidateMembers();
+		invalidateGallery();
+	},
+	['/dashboard/members', 'layout'],
+	['/dashboard/lineup'],
+	['/dashboard/gallery', 'layout'],
+);
+
+export async function deactivateMember(_prevState, formData) {
+	const { id, ...departure } = formDataToObject(formData);
+
+	return refreshDeparture(
+		await guardedRequest(ADMIN_ONLY, () => MembersService.deactivate(Number(id), departure)),
 	);
 }
 

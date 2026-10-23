@@ -4,16 +4,19 @@ import AppError from '../errors/app.error';
 import { ERROR_CODES } from '../../shared/errors/error.codes';
 import {
 	memberChangesSchema,
+	memberDeparture,
 	memberImageSchema,
 	memberLinkSchema,
 	memberSchema,
 } from '../../shared/schemas';
 import GalleryPeopleRepository from '../repositories/galleryPeople.reposity';
+import LineupRepository from '../repositories/lineup.reposity';
 import MembersRepository, {
 	MemberImagesRepository,
 	MemberLinksRepository,
 } from '../repositories/members.reposity';
 import { toExportRow } from '../utils/exportRow';
+import { withTransaction } from '../utils/transaction';
 import { childOperations } from '../utils/childOperations';
 import successResponseWrapper from '../utils/successResponseWrapper';
 import { parseOrThrow } from '../utils/validate';
@@ -76,6 +79,37 @@ class MembersService {
 		if (!updated) throw new AppError(ERROR_CODES.MEMBER_NOT_FOUND);
 
 		return successResponseWrapper(updated, 'Miembro actualizado');
+	}
+
+	// Baja de un miembro en un solo paso: lo despublica, cierra con la fecha de salida sus entradas
+	// abiertas de la formación y quita la marca de integrante actual de su etiqueta de galería (las
+	// fotos conservan la etiqueta). Todo o nada.
+	static async deactivate(id, input) {
+		const { endYear, endMonth } = parseOrThrow(memberDeparture, input);
+		const departure = endYear * 12 + ((endMonth ?? 12) - 1);
+
+		return await withTransaction(async (transaction) => {
+			const options = { transaction };
+			const member = await MembersRepository.findById(id);
+			if (!member) throw new AppError(ERROR_CODES.MEMBER_NOT_FOUND);
+
+			const open = await LineupRepository.findOpenByMember(id, options);
+			if (open.some((entry) => departure < entry.startYear * 12 + ((entry.startMonth ?? 1) - 1))) {
+				throw new AppError(
+					ERROR_CODES.BAD_REQUEST,
+					'La fecha de salida es anterior al inicio de una de sus entradas en la formación.',
+				);
+			}
+
+			await MembersRepository.update(id, { active: false }, options);
+			const closedEntries = await LineupRepository.closeOpenByMember(id, { endYear, endMonth }, options);
+			const tagsUpdated = await GalleryPeopleRepository.clearIsMemberByMemberId(id, options);
+
+			return successResponseWrapper(
+				{ id, closedEntries, tagsUpdated },
+				`${member.name} dado de baja. Entradas de la formación cerradas: ${closedEntries}`,
+			);
+		});
 	}
 
 	// Sus enlaces e imágenes se borran en cascada y la etiqueta de galería queda sin vínculo

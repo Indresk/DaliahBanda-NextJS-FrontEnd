@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/frontend/components/ui/FadeImage';
 import Link from 'next/link';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { aboutMeta } from '@/frontend/seo/pages/about.meta';

@@ -60,3 +60,19 @@ export const displayOrderSchema = z.coerce
 	.min(0, { error: 'Orden inválido.' })
 	.max(9999, { error: 'Orden inválido.' })
 	.default(0);
+
+export const yearSchema = z.coerce
+	.number({ error: 'Año inválido.' })
+	.int({ error: 'Año inválido.' })
+	.min(1990, { error: 'Año inválido.' })
+	.max(2100, { error: 'Año inválido.' });
+
+// Mes opcional (1-12); un formulario vacío es null
+export const monthSchema = emptyToNull(
+	z.coerce
+		.number({ error: 'Mes inválido.' })
+		.int({ error: 'Mes inválido.' })
+		.min(1, { error: 'Mes inválido.' })
+		.max(12, { error: 'Mes inválido.' })
+		.nullish(),
+).transform((value) => value ?? null);
