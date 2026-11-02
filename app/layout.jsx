@@ -16,10 +16,10 @@ export default function RootLayout({ children }) {
 			lang='es'
 			className={`h-full antialiased ${materialSymbols.variable} ${manrope.variable} ${spaceGrotesk.variable}`}>
 			<head></head>
-			<body className='min-h-full flex flex-col'>
-				<div className='grid grid-rows-[auto_1fr_auto] min-h-screen overflow-x-hidden'>
+			<body className='min-h-dvh flex flex-col'>
+				<div className='grid grid-rows-[auto_1fr_auto] min-h-dvh overflow-x-clip'>
 					<Header />
-					<main className='w-screen'>{children}</main>
+					<main className='w-dvw'>{children}</main>
 					<Footer />
 				</div>
 				<PreferencesHydrator />

@@ -9,7 +9,9 @@ export const aboutMeta = {
 export const membersMeta = (members) => ({
 	title: 'Integrantes',
 	description: `Los integrantes de Daliah Banda${
-		members.length ? `: ${members.map((member) => member.name.replace(/"/g, '')).join(', ')}` : ''
+		members.length
+			? `: ${members.map((member) => member.name.replace(/"/g, '')).join(', ')}`
+			: ''
 	}, y la historia de su formación.`,
 	path: '/about-us/members',
 });
@@ -25,5 +27,13 @@ export const contactMeta = {
 	description:
 		'Contacta a Daliah Banda para presentaciones, prensa y colaboraciones.',
 	path: '/about-us/contact',
+	indexable: false,
+};
+
+export const comunityMeta = {
+	title: 'Nuestra Comunidad',
+	description:
+		'Conoce y vuelvete parte de nuestra comunidad Daliah interactua con nosotros, comparte y disfruta nuestra musica.',
+	path: '/about-us/comunity',
 	indexable: false,
 };

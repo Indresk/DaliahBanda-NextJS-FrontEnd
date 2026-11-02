@@ -14,7 +14,7 @@ export default function StreamingLinks({ links }) {
 						target='_blank'
 						rel='noopener noreferrer'
 						className='flex items-center gap-2 text-sm hover:text-primary-light'>
-						<MSOIcon className='text-primary'>headphones</MSOIcon>
+						<MSOIcon className='text-primary-light'>headphones</MSOIcon>
 						{STREAMING_PLATFORMS[link.platform] ?? link.platform}
 					</a>
 				</li>

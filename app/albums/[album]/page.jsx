@@ -30,8 +30,8 @@ export default async function AlbumPage({ params }) {
 		<section className='albumContainer flex flex-col gap-8'>
 			<JsonLd data={buildMusicAlbumSchema(album)} />
 			<JsonLd data={buildBreadcrumbSchema(albumsCrumbs(album))} />
-			<div className='albumSongs flex flex-col gap-4'>
-				<div className='flex items-start justify-between gap-4 border-b border-white pb-2'>
+			<div className='flex flex-col gap-4'>
+				<div className='flex justify-between items-center gap-4 border-b border-white pb-2'>
 					<h1 className='text-2xl font-semibold md:text-3xl'>
 						Escucha el álbum aquí y donde prefieras
 					</h1>

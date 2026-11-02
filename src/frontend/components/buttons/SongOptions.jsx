@@ -41,7 +41,7 @@ export default function SongOptions({
 
 	return (
 		<div className={classes} {...props}>
-			<MSOIcon className='cursor-pointer group-hover:scale-110 transition-transform h-[24px] text-primary'>
+			<MSOIcon className='cursor-pointer group-hover:scale-110 transition-transform h-6 text-primary-light'>
 				{current.icon}
 			</MSOIcon>
 			<p className='tracking-tighter font-headline uppercase text-[12px]'>

@@ -85,7 +85,7 @@ export default function MobileMenu() {
 									</li>
 								))}
 							</ul>
-							<NavLink href='/login'>
+							<NavLink href='/about-us/comunity'>
 								<Button fullWidth>Nuestra comunidad</Button>
 							</NavLink>
 						</div>

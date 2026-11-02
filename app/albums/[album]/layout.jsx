@@ -9,8 +9,10 @@ export default async function AlbumLayout({ children, params }) {
 
 	return (
 		<div className='flex flex-col md:flex-row w-full'>
-			<AlbumSidebar album={album} />
-			<div className='basis-full md:basis-2/3 p-6 grow'>{children}</div>
+			<AlbumSidebar album={album}></AlbumSidebar>
+			<div className='basis-full md:basis-2/3 p-6 grow bg-black'>
+				{children}
+			</div>
 		</div>
 	);
 }

@@ -12,7 +12,9 @@ export default function YmalItem({ item }) {
 	const [copied, setCopied] = useState(false);
 
 	async function handleCopy() {
-		await navigator.clipboard.writeText(`${window.location.origin}${item.href}`);
+		await navigator.clipboard.writeText(
+			`${window.location.origin}${item.href}`,
+		);
 		setCopied(true);
 		setTimeout(() => setCopied(false), 2000);
 	}
@@ -21,7 +23,7 @@ export default function YmalItem({ item }) {
 		<article className='flex flex-col border-lightgray border-b m-2 pb-2 gap-2 w-fit'>
 			<div className='flex gap-2 items-center justify-center'>
 				<svg
-					className='text-primary'
+					className='text-primary-light'
 					width='63'
 					height='63'
 					viewBox='0 0 72 72'
@@ -89,7 +91,7 @@ export default function YmalItem({ item }) {
 					)}
 				</svg>
 				<div className='flex flex-col'>
-					<small className='tracking-tighter font-headline uppercase text-[12px] text-primary'>
+					<small className='tracking-tighter font-headline uppercase text-[12px] text-primary-light'>
 						{item.kind === 'album' ? 'Álbum' : 'Canción'}
 					</small>
 					<h4 className='tracking-tighter font-headline uppercase text-1xl font-bold'>

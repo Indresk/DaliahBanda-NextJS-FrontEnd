@@ -42,15 +42,13 @@ export default function Integrantes({ members }) {
 
 	return (
 		<div className='flex flex-col p-14 px-8 md:px-14 md:pt-14 gap-4 md:gap-8'>
-			{/* Todas las diapositivas ocupan la misma celda y se funden entre sí: sin `display: none`
-			    el navegador precarga todas las fotos y el cambio no deja un hueco mientras descarga */}
 			<div className='grid'>
 				{members.map((member, index) => (
 					<div
 						key={member.id}
 						aria-hidden={current !== index}
 						inert={current !== index}
-						className={`[grid-area:1/1] flex flex-col md:flex-row gap-4 md:gap-8 transition-opacity duration-700 motion-reduce:transition-none ${current === index ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+						className={`[grid-area:1/1] flex flex-col md:flex-row gap-4 md:gap-8 transition-opacity duration-0 motion-reduce:transition-none ${current === index ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
 						<div className='flex flex-col basis-[40%] justify-center md:pt-30 order-2 md:order-1'>
 							<h4 className='tracking-tighter font-headline uppercase font-bold text-2xl'>
 								{member.name}
@@ -76,7 +74,7 @@ export default function Integrantes({ members }) {
 						</div>
 					</div>
 				))}
-				</div>
+			</div>
 
 			<div className='overflow-auto w-full'>
 				<div className='flex w-[230%] md:w-full gap-4 md:gap-8'>
