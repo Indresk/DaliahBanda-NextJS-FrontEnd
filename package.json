@@ -15,6 +15,7 @@
 		"db:seed:members": "sequelize-cli db:seed:undo --seed members.js --seeders-path src/database/seeders-manual ; sequelize-cli db:seed --seed members.js --seeders-path src/database/seeders-manual",
 		"db:seed:music": "sequelize-cli db:seed:undo --seed music.js --seeders-path src/database/seeders-manual ; sequelize-cli db:seed --seed music.js --seeders-path src/database/seeders-manual",
 		"db:seed:lineup": "sequelize-cli db:seed:undo --seed lineup.js --seeders-path src/database/seeders-manual ; sequelize-cli db:seed --seed lineup.js --seeders-path src/database/seeders-manual",
+		"db:seed:articles": "sequelize-cli db:seed:undo --seed articles.js --seeders-path src/database/seeders-manual ; sequelize-cli db:seed --seed articles.js --seeders-path src/database/seeders-manual",
 		"db:seed:undo": "sequelize-cli db:seed:undo:all",
 		"db:migrate:undo": "sequelize-cli db:migrate:undo",
 		"lint": "eslint",

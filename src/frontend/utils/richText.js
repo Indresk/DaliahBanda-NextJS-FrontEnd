@@ -26,23 +26,8 @@ export function isEmptyEditorHtml(html) {
 	return html.replace(/<[^>]*>|&nbsp;|\s/g, '') === '';
 }
 
-// HTML del editor → texto plano en una línea (descripciones para buscadores); `maxLength` recorta con "…"
-export function htmlToText(html, maxLength = 300) {
-	const text = (html ?? '')
-		.replace(/<(?:script|style|iframe)[\s\S]*?<\/(?:script|style|iframe)>/gi, ' ')
-		.replace(/<\/(?:p|div|li|h[1-6]|blockquote)>|<br\s*\/?>/gi, ' ')
-		.replace(/<[^>]*>/g, '')
-		.replace(/&nbsp;/g, ' ')
-		.replace(/&amp;/g, '&')
-		.replace(/&lt;/g, '<')
-		.replace(/&gt;/g, '>')
-		.replace(/&quot;/g, '"')
-		.replace(/&#39;/g, "'")
-		.replace(/\s+/g, ' ')
-		.trim();
-
-	return text.length > maxLength ? `${text.slice(0, maxLength - 1).trimEnd()}…` : text;
-}
+// Texto plano del HTML (vive en shared/utils/html.js: también lo usan los servicios del backend)
+export { htmlToText } from '@/shared/utils/html';
 
 // youtube.com/watch?v=ID · youtu.be/ID · /shorts/ID · /live/ID · /embed/ID (con o sin https, www o m)
 export const YOUTUBE_PATTERN =

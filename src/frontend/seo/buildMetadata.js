@@ -54,6 +54,8 @@ export const rootMetadata = {
  * @property {import('next').Metadata['robots']} [robots]  sustituye las reglas por defecto
  * @property {Record<string, unknown>} [openGraph]  sobrescribe campos (imageAlt cambia el alt de la imagen)
  * @property {Record<string, unknown>} [twitter]  sobrescribe campos
+ * @property {Record<string, unknown>} [alternates]  se suma al canonical (p. ej. `types` con el feed RSS)
+ * @property {{ previous?: string, next?: string }} [pagination]  páginas anterior y siguiente de un listado
  */
 
 /**
@@ -72,6 +74,8 @@ export function buildMetadata(page) {
 		robots,
 		openGraph = {},
 		twitter = {},
+		alternates,
+		pagination,
 	} = page;
 	const pageTitle = resolveTitle(title);
 	const { imageAlt, ...openGraphOverrides } = openGraph;
@@ -80,7 +84,8 @@ export function buildMetadata(page) {
 		title,
 		description,
 		keywords,
-		...(indexable && { alternates: { canonical: path } }),
+		...(indexable && { alternates: { canonical: path, ...alternates } }),
+		...(indexable && pagination && { pagination }),
 		robots: indexable ? (robots ?? INDEXABLE) : HIDDEN,
 		openGraph: {
 			type: 'website',

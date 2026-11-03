@@ -18,6 +18,7 @@ export default function ImageUrlFields({
 	urlHint,
 	required = true,
 	sizeRequired = required,
+	onUrlChange,
 }) {
 	const [url, setUrl] = useState(initial.url ?? '');
 	const [size, setSize] = useState({ width: initial.width ?? '', height: initial.height ?? '' });
@@ -34,7 +35,10 @@ export default function ImageUrlFields({
 					required={required}
 					readOnly={readOnly}
 					value={url}
-					onChange={(e) => setUrl(e.target.value)}
+					onChange={(e) => {
+						setUrl(e.target.value);
+						onUrlChange?.(e.target.value);
+					}}
 					className={controlClass}
 				/>
 			</Field>

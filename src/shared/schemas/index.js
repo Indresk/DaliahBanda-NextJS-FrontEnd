@@ -6,3 +6,4 @@ export * from './flyer.schema.js';
 export * from './member.schema.js';
 export * from './music.schema.js';
 export * from './lineup.schema.js';
+export * from './article.schema.js';

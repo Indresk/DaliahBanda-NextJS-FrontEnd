@@ -73,6 +73,7 @@ La estructura de carpetas, las capas del backend y las reglas para añadir códi
 - **`/galeria/backstage`** - Backstage photos
 - **`/galeria/eventos/[filter]`** - Event-specific photo galleries
 - **`/en-vivo`** - Live streaming information
+- **`/manifiestos`** - Articles (paginated), with `/manifiestos/[slug]`, `/manifiestos/etiqueta/[slug]`, `/manifiestos/pagina/[n]` and an RSS feed at `/manifiestos/feed.xml`
 - **`/sobre-nosotros`** - About the band, with `/integrantes`, `/integrantes/[slug]`, `/contacto` and `/comunidad`
 
 ## Installation & Setup

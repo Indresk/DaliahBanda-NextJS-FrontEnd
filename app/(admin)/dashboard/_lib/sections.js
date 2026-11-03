@@ -37,6 +37,12 @@ export const DASHBOARD_SECTIONS = [
 	},
 	{ href: '/dashboard/music', label: 'Música', icon: 'album', roles: [ADMIN] },
 	{
+		href: '/dashboard/articles',
+		label: 'Manifiestos',
+		icon: 'article',
+		roles: [ADMIN],
+	},
+	{
 		href: '/dashboard/members',
 		label: 'Miembros',
 		icon: 'groups',

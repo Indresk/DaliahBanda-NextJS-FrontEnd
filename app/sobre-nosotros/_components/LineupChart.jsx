@@ -34,7 +34,7 @@ export default function LineupChart({ entries, albums }) {
 				información en texto.
 			</figcaption>
 			<div className='overflow-x-auto' aria-hidden='true'>
-				<div className='flex min-w-[760px]'>
+				<div className='flex min-w-190'>
 					<ul className='sticky left-0 z-10 w-36 shrink-0 bg-black'>
 						{rows.map((row) => (
 							<li

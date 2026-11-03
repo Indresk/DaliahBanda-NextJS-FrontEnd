@@ -129,6 +129,36 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 - Export: `/dashboard/music/export` (álbumes con canciones, enlaces y recursos anidados, por slug) y
   `pnpm db:seed:music`.
 
+## Manifiestos (artículos)
+
+Sección pública `/manifiestos` (landing y listado paginado), `/manifiestos/pagina/[n]`, `/manifiestos/etiqueta/[slug]` (y su
+`/pagina/[n]`), `/manifiestos/[slug]` y `/manifiestos/feed.xml` (RSS). Se gestionan en `/dashboard/articles`.
+
+- Tablas: `articles` (imagen principal con alt, sinopsis, contenido HTML, `displayDate` editable, `status`
+  draft | published, `publishedAt`, `readingMinutes`), `article-tags` + `article-tag-links` (etiquetas con página
+  propia) y `article-authors` (un miembro con enlace a su página o un nombre escrito a mano, persona u
+  organización; sin autores = anónimo).
+- Dos fechas: **`displayDate`** es la que ve el público y se puede editar; **`publishedAt`** se fija la primera vez que
+  se publica y ordena el listado y los botones anterior/siguiente (pasar a borrador y volver a publicar conserva su lugar).
+- La imagen principal se recorta con `object-cover` en dos ratios fijos: masthead 3:1 (con el título encima) y miniatura
+  16:9 (con el título al lado). Para redes sociales se usa la imagen original sin recortar.
+- El slug no se edita y no puede ser `pagina`, `etiqueta`, `feed` ni `feed.xml` (`ARTICLES.RESERVED_SLUGS`).
+- Las etiquetas se crean al escribirlas en el artículo (deduplicadas por slug) y se borran solas cuando se quedan sin
+  artículos. Guardar un artículo con sus etiquetas y autores va en una transacción.
+- El listado usa `OFFSET` (excepción a la regla de no usar `OFFSET` de la galería): las páginas llevan número en la URL y la
+  tabla es pequeña; el índice `(status, publishedAt DESC, id DESC)` evita ordenar. Los listados traen etiquetas y autores
+  con 2 consultas (no una por artículo) y sin el contenido.
+- Los 3 recomendados son aleatorios entre los publicados pero fijos entre regeneraciones de la caché (máx. 15 min): la página
+  sigue siendo estática y los enlaces internos no cambian en cada visita. Si un miembro cambia de nombre, el autor lo
+  refleja en ese plazo.
+- SEO: `<title>` = título, `description` = sinopsis, `keywords` = etiquetas, canonical, Open Graph `article` y Twitter
+  `summary_large_image`, JSON-LD `Article` (con `author` Person/Organization, `datePublished` = la fecha visible) +
+  `CollectionPage` en los listados + `BreadcrumbList`, `rel` prev/next en las páginas del listado, enlace al RSS y sitemap
+  (landing, artículos y etiquetas; las páginas numeradas no). `/manifiestos/pagina/1` redirige (308) a `/manifiestos`.
+- Compartir: Facebook, X, WhatsApp y Reddit con su enlace de compartir; Instagram no tiene uno, así que usa la hoja nativa
+  del móvil (Web Share API) o copia el enlace; y «Copiar enlace».
+- Export y seed: `/dashboard/articles/export` y `pnpm db:seed:articles` (etiquetas por slug y autores miembros por slug).
+
 ## Sobre nosotros, integrantes y migas
 
 - `/sobre-nosotros` (info general), `/sobre-nosotros/integrantes` (miembros activos + línea del tiempo de la
@@ -179,7 +209,7 @@ local, con red, y el resultado se commitea):
 
 ## Metadata y SEO
 
-Todo vive en `src/frontend/seo/` (es de frontend: el backend no la necesita).
+Todo vive en `src/frontend/seo/`.
 
 - `site.js`: datos del sitio (URL, nombre, @usuario, redes, imagen por defecto). Se escriben una vez.
 - `pages/*.meta.js`: el contenido de cada página (título, descripción, ruta, keywords).

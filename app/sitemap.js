@@ -2,6 +2,7 @@ import {
 	getGalleryEvents,
 	getGalleryMembers,
 } from '@/back/services/gallery.cache';
+import { getArticleTags, getArticlesIndex } from '@/back/services/articles.cache';
 import { getActiveMembers } from '@/back/services/members.cache';
 import { getAlbums, getSongs } from '@/back/services/music.cache';
 import { SITE } from '@/frontend/seo/site';
@@ -48,6 +49,28 @@ export default async function sitemap() {
 		})),
 	];
 
+	// Artículos publicados, sus etiquetas y la landing (las páginas numeradas no van: no aportan URLs nuevas)
+	const [articles, articleTags] = await Promise.all([getArticlesIndex(), getArticleTags()]);
+	const articlePages = [
+		{
+			url: `${SITE.url}/manifiestos`,
+			lastModified: articles[0]?.updatedAt,
+			changeFrequency: 'weekly',
+			priority: 0.7,
+		},
+		...articles.map((article) => ({
+			url: `${SITE.url}/manifiestos/${article.slug}`,
+			lastModified: article.updatedAt,
+			changeFrequency: 'monthly',
+			priority: 0.6,
+		})),
+		...articleTags.map((tag) => ({
+			url: `${SITE.url}/manifiestos/etiqueta/${tag.slug}`,
+			changeFrequency: 'weekly',
+			priority: 0.4,
+		})),
+	];
+
 	// Páginas de los miembros activos
 	const activeMembers = await getActiveMembers();
 	const aboutPages = [
@@ -71,6 +94,7 @@ export default async function sitemap() {
 	return [
 		...galleryPages,
 		...musicPages,
+		...articlePages,
 		...aboutPages,
 		{
 			url: 'https://daliahbanda.com',

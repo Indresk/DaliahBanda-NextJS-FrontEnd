@@ -8,3 +8,4 @@ export const memberPersonId = (slug) =>
 export const albumSchemaId = (slug) => `${SITE.url}/discografia/${slug}#album`;
 export const songSchemaId = (albumSlug, songSlug) =>
 	`${SITE.url}/discografia/${albumSlug}/${songSlug}#recording`;
+export const articleSchemaId = (slug) => `${SITE.url}/manifiestos/${slug}#article`;

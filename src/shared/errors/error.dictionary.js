@@ -168,6 +168,18 @@ export const errorsDictionary = {
 		statusCode: 409,
 		message: 'Ese miembro ya está vinculado a otra etiqueta de la galería',
 	},
+	[ERROR_CODES.ARTICLE_NOT_FOUND]: {
+		statusCode: 404,
+		message: 'No se encontró el artículo',
+	},
+	[ERROR_CODES.ARTICLE_ALREADY_EXISTS]: {
+		statusCode: 409,
+		message: 'Ya existe un artículo con ese identificador',
+	},
+	[ERROR_CODES.ARTICLE_CONTENT_REQUIRED]: {
+		statusCode: 400,
+		message: 'Un artículo publicado necesita contenido',
+	},
 	[ERROR_CODES.LINEUP_ENTRY_NOT_FOUND]: {
 		statusCode: 404,
 		message: 'No se encontró la entrada de la formación',
