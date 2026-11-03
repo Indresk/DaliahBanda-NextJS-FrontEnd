@@ -13,7 +13,12 @@ import { homeMeta } from '@/frontend/seo/pages/home.meta';
 import { buildMusicGroupSchema } from '@/frontend/seo/schema/musicGroup';
 import { getActiveFlyers } from '@/back/services/flyers.cache';
 import { getActiveMembers } from '@/back/services/members.cache';
-import { getAlbums, getFeaturedSong, getRelatedWorks, getSongs } from '@/back/services/music.cache';
+import {
+	getAlbums,
+	getFeaturedSong,
+	getRelatedWorks,
+	getSongs,
+} from '@/back/services/music.cache';
 
 export const metadata = buildMetadata(homeMeta);
 

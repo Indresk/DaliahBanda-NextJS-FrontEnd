@@ -9,7 +9,10 @@ export const metadata = { title: 'Formación' };
 
 export default async function LineupPage() {
 	await requirePageRole([USER_ROLES.ADMIN]);
-	const [entries, members] = await Promise.all([LineupService.findAll(), MembersService.findAll()]);
+	const [entries, members] = await Promise.all([
+		LineupService.findAll(),
+		MembersService.findAll(),
+	]);
 
 	return (
 		<>

@@ -33,13 +33,13 @@
 - Configurar **CORS en el bucket de R2** (Cloudflare → R2 → bucket → Settings → CORS policy), necesario para la subida directa desde el navegador:
   ```json
   [
-    {
-      "AllowedOrigins": ["https://daliahbanda.com", "http://localhost:3000"],
-      "AllowedMethods": ["PUT"],
-      "AllowedHeaders": ["content-type", "cache-control"],
-      "ExposeHeaders": ["ETag"],
-      "MaxAgeSeconds": 3600
-    }
+  	{
+  		"AllowedOrigins": ["https://daliahbanda.com", "http://localhost:3000"],
+  		"AllowedMethods": ["PUT"],
+  		"AllowedHeaders": ["content-type", "cache-control"],
+  		"ExposeHeaders": ["ETag"],
+  		"MaxAgeSeconds": 3600
+  	}
   ]
   ```
 - Ejecutar `pnpm db:migrate`. Después, entrar como admin a `/dashboard/stream` y pulsar "Conectar con Kick".
@@ -63,19 +63,23 @@
 ### [0.0.1] - 2026-10-22
 
 - Galería: se eliminó el seeder de `gallery` y `galleryImages.json`; el estado de la galería se exporta desde el dashboard (JSON) y se siembra a mano con `pnpm db:seed:gallery`.
-- Flyers y miembros pasaron de `src/shared/lib` a la base de datos, con CRUD en el dashboard (`/dashboard/flyers`, `/dashboard/members`) y export JSON para seed. Migraciones nuevas: `flyers`, `members` (+ `member-links`, `member-images`) y `gallery-people.memberId`.
+- Flyers y miembros pasaron de `src/shared/lib` a la base de datos, con CRUD en el dashboard (`/dashboard/flyers`, `/dashboard/integrantes`) y export JSON para seed. Migraciones nuevas: `flyers`, `members` (+ `member-links`, `member-images`) y `gallery-people.memberId`.
 - Se eliminaron `eventsFrames.js`, `flyers.js` e `intregantes.js` de `src/shared/lib`.
 - Home: `Integrantes`, `FlyersCarousel` y el JSON-LD de `MusicGroup` leen de la base de datos (con caché por etiqueta).
 - `AUTH_URL` (opcional) fija el dominio público de las redirecciones propias (`publicUrl`) y `trustHost` en Auth.js: detrás de Coolify `request.url` trae `localhost:3000`.
 
 - Música en base de datos: `albums` (los sencillos son álbumes de una canción), `songs`, enlaces de escucha y recursos (stems, partituras, letra, video). Dashboard en `/dashboard/music`, export JSON y `pnpm db:seed:music`.
 - Páginas públicas `/albums`, `/albums/[album]`, `/albums/[album]/[song]` y sus recursos leen de la base con caché por etiqueta; el home usa la canción destacada y las obras relacionadas. Se eliminaron `songs.js`, `tracks.js` y la página temporal `test-player`.
-- Migas de pan por rutas paralelas (`@breadcrumb`) con los títulos reales en `/albums` y `/about-us`; se eliminó el `BreadCrumb` de cliente basado en la URL.
+- Migas de pan por rutas paralelas (`@breadcrumb`) con los títulos reales en `/albums` y `/sobre-nosotros`; se eliminó el `BreadCrumb` de cliente basado en la URL.
 - Datos estructurados: `MusicAlbum`, `MusicRecording`, `Person` y `BreadcrumbList`; `MusicGroup` ahora usa miembros, álbumes y canciones de la base (se quitó la lista fija de canciones).
-- Sobre nosotros: `/about-us`, `/about-us/members` (activos + línea del tiempo) y `/about-us/members/[slug]`. Tabla `lineup-entries`, dashboard `/dashboard/lineup`, export y `pnpm db:seed:lineup`.
-- Formación: el rol es una lista fija (voz, coros, guitarra melódica, guitarra rítmica, bajo, teclados, batería; el detalle va en la nota) y las entradas tienen mes de inicio y fin. `/about-us/members` muestra un gráfico mensual por persona con los lanzamientos, y la lista simplificada, en pestañas.
+- Sobre nosotros: `/sobre-nosotros`, `/sobre-nosotros/integrantes` (activos + línea del tiempo) y `/sobre-nosotros/integrantes/[slug]`. Tabla `lineup-entries`, dashboard `/dashboard/lineup`, export y `pnpm db:seed:lineup`.
+- Formación: el rol es una lista fija (voz, coros, guitarra melódica, guitarra rítmica, bajo, teclados, batería; el detalle va en la nota) y las entradas tienen mes de inicio y fin. `/sobre-nosotros/integrantes` muestra un gráfico mensual por persona con los lanzamientos, y la lista simplificada, en pestañas.
 - Revisión de la capa de datos: instancia y pool únicos de Sequelize (con `serverExternalPackages` para que `next build` funcione con consultas que usan `literal`), `baseRepository` y `translatePgError` para no repetir CRUD ni códigos de Postgres, `separate` en los includes, transacción en `galleryImages.bulkUpdate`, canción destacada única, un número de pista por álbum, `createTaggedCache` y `refreshOnSuccess`.
 - Se quitó `members.joinedAt` (la fecha de ingreso sale de la formación, "En la banda desde" en la página del miembro), la formación muestra el nombre del miembro vinculado, y las migraciones de miembros, música y formación se consolidaron (la de roles y meses se fusionó con la de la tabla). Nueva migración: índice único de `lower(email)` en `allowed-emails`.
 - Miembros: botón «Dar de baja» que despublica al miembro, cierra sus entradas abiertas de la formación y quita la marca de integrante actual de su etiqueta de galería, todo en una transacción.
 - Imágenes públicas: `FadeImage` (fondo y aparición con fundido), carrusel de integrantes con diapositivas apiladas que se funden (todas las fotos se precargan) y la galería carga de inmediato las primeras 12 de cada lote.
 - Fuentes: la de iconos pasa de 10,6 MB a ~9 KB (solo los iconos usados, `pnpm fonts:icons`) y las de texto de ~300 KB a ~47 KB (woff2 latino, `pnpm fonts:text`); las tres se precargaban en todas las páginas. La de iconos usa `display: block`.
+- Editor de texto enriquecido (SunEditor) en el campo «Contenido de la canción» (`story`): títulos H2/H3, negrita, cursiva, subrayado, listas, cita, enlaces, imágenes por URL con texto alternativo e iframes (YouTube o cualquier https). `story` admite hasta 200.000 caracteres. Página de prueba: `/dashboard/test-editor`.
+- Clase `.rich-text` en `globals.css` para mostrar el HTML del editor con los estilos del sitio (listas con viñetas y numeración anidada, títulos, cita, enlaces, imágenes e iframes 16:9); la vista previa de `/dashboard/test-editor` la usa en lugar de los estilos de SunEditor.
+- El editor de texto enriquecido también es el campo «Descripción larga» (`longBio`) del miembro; la página del miembro la muestra con `.rich-text` y el JSON-LD de `Person` usa su texto plano (`htmlToText`). El límite de ambos campos es `RICH_TEXT.MAX_LENGTH` (200.000).
+- Rutas públicas renombradas: `/about-us` → `/sobre-nosotros` y `/members` → `/integrantes` (`/sobre-nosotros/integrantes/[slug]`); el dashboard sigue en `/dashboard/members`. Las rutas antiguas responden 404 (sin redirecciones).

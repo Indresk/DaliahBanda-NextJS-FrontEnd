@@ -29,11 +29,15 @@ const GalleryImage = sequelize.define(
 	{ tableName: 'gallery-images' },
 );
 
+// Solo se declara este lado: la asociación se añade al modelo de la imagen, que es el que este archivo
+// crea. Declarar también `GalleryEvent.hasMany(GalleryImage, ...)` añadiría un alias a un modelo definido
+// en OTRO archivo: al recargar en caliente solo este archivo, el alias se duplicaba y fallaba con
+// "You have used the alias images in two separate associations". (Esa asociación nunca se usaba: los
+// eventos cuentan sus imágenes con SQL, ver GalleryEventsRepository.listWithStats.)
 GalleryImage.belongsTo(GalleryEvent, {
 	foreignKey: 'eventId',
 	as: 'event',
 	onDelete: 'RESTRICT',
 });
-GalleryEvent.hasMany(GalleryImage, { foreignKey: 'eventId', as: 'images' });
 
 export default GalleryImage;

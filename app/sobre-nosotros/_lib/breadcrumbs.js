@@ -6,15 +6,17 @@ export function aboutCrumbs({
 	contact = false,
 	comunity = false,
 } = {}) {
-	const crumbs = [{ label: 'Sobre nosotros', href: '/about-us' }];
+	const crumbs = [{ label: 'Sobre nosotros', href: '/sobre-nosotros' }];
 	if (members || member)
-		crumbs.push({ label: 'Integrantes', href: '/about-us/members' });
+		crumbs.push({ label: 'Integrantes', href: '/sobre-nosotros/integrantes' });
 	if (member)
 		crumbs.push({
 			label: member.name,
-			href: `/about-us/members/${member.slug}`,
+			href: `/sobre-nosotros/integrantes/${member.slug}`,
 		});
-	if (contact) crumbs.push({ label: 'Contacto', href: '/about-us/contact' });
-	if (comunity) crumbs.push({ label: 'Comunidad', href: '/about-us/comunity' });
+	if (contact)
+		crumbs.push({ label: 'Contacto', href: '/sobre-nosotros/contact' });
+	if (comunity)
+		crumbs.push({ label: 'Comunidad', href: '/sobre-nosotros/comunity' });
 	return crumbs;
 }

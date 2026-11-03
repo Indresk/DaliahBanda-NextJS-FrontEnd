@@ -42,7 +42,7 @@ export default function LineupChart({ entries, albums }) {
 								className={`${ROW} flex items-center justify-end pr-3 text-right text-sm`}>
 								{row.memberSlug ? (
 									<Link
-										href={`/about-us/members/${row.memberSlug}`}
+										href={`/sobre-nosotros/integrantes/${row.memberSlug}`}
 										className='truncate hover:text-primary-light hover:underline'>
 										{row.name.replace(/"/g, '')}
 									</Link>

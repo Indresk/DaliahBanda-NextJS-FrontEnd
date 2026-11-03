@@ -15,7 +15,14 @@ class LineupRepository extends baseRepository(LineupEntry) {
 	// devuelve si el miembro está activo (tiene página pública).
 	static async findAllWithMember() {
 		const rows = await LineupEntry.findAll({
-			include: [{ model: Member, as: 'member', attributes: ['slug', 'name', 'active'], required: false }],
+			include: [
+				{
+					model: Member,
+					as: 'member',
+					attributes: ['slug', 'name', 'active'],
+					required: false,
+				},
+			],
 			order: CHRONOLOGICAL,
 		});
 		return rows.map((row) => {
@@ -30,7 +37,11 @@ class LineupRepository extends baseRepository(LineupEntry) {
 
 	// Entradas de un miembro que siguen abiertas (sin fecha de fin)
 	static async findOpenByMember(memberId, options) {
-		return await LineupEntry.findAll({ ...options, where: { memberId, endYear: null }, raw: true });
+		return await LineupEntry.findAll({
+			...options,
+			where: { memberId, endYear: null },
+			raw: true,
+		});
 	}
 
 	// Cierra con la misma fecha todas las entradas abiertas del miembro; devuelve cuántas cerró

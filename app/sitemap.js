@@ -1,11 +1,17 @@
-import { getGalleryEvents, getGalleryMembers } from '@/back/services/gallery.cache';
+import {
+	getGalleryEvents,
+	getGalleryMembers,
+} from '@/back/services/gallery.cache';
 import { getActiveMembers } from '@/back/services/members.cache';
 import { getAlbums, getSongs } from '@/back/services/music.cache';
 import { SITE } from '@/frontend/seo/site';
 
 export default async function sitemap() {
 	// Páginas de la galería que salen de la base de datos (eventos con fotos y integrantes)
-	const [events, members] = await Promise.all([getGalleryEvents(), getGalleryMembers()]);
+	const [events, members] = await Promise.all([
+		getGalleryEvents(),
+		getGalleryMembers(),
+	]);
 	const galleryPages = [
 		...events.map((event) => ({
 			url: `${SITE.url}/gallery/events/${event.slug}`,
@@ -18,7 +24,11 @@ export default async function sitemap() {
 			changeFrequency: 'monthly',
 			priority: 0.5,
 		})),
-		{ url: `${SITE.url}/gallery/backstage`, changeFrequency: 'monthly', priority: 0.5 },
+		{
+			url: `${SITE.url}/gallery/backstage`,
+			changeFrequency: 'monthly',
+			priority: 0.5,
+		},
 	];
 
 	// Álbumes y canciones publicados (2 consultas en caché en total, no una por álbum)
@@ -41,10 +51,18 @@ export default async function sitemap() {
 	// Páginas de los miembros activos
 	const activeMembers = await getActiveMembers();
 	const aboutPages = [
-		{ url: `${SITE.url}/about-us`, changeFrequency: 'yearly', priority: 0.6 },
-		{ url: `${SITE.url}/about-us/members`, changeFrequency: 'monthly', priority: 0.6 },
+		{
+			url: `${SITE.url}/sobre-nosotros`,
+			changeFrequency: 'yearly',
+			priority: 0.6,
+		},
+		{
+			url: `${SITE.url}/sobre-nosotros/integrantes`,
+			changeFrequency: 'monthly',
+			priority: 0.6,
+		},
 		...activeMembers.map((member) => ({
-			url: `${SITE.url}/about-us/members/${member.slug}`,
+			url: `${SITE.url}/sobre-nosotros/integrantes/${member.slug}`,
 			changeFrequency: 'yearly',
 			priority: 0.5,
 		})),

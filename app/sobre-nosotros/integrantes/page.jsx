@@ -1,5 +1,8 @@
 import Link from 'next/link';
-import { getActiveMembers, getLineupTimeline } from '@/back/services/members.cache';
+import {
+	getActiveMembers,
+	getLineupTimeline,
+} from '@/back/services/members.cache';
 import { getAlbums } from '@/back/services/music.cache';
 import Tabs from '@/frontend/components/ui/Tabs';
 import JsonLd from '@/frontend/seo/JsonLd';
@@ -52,7 +55,8 @@ export default async function Members() {
 				<section className='flex flex-col gap-8'>
 					<div>
 						<h2 className='font-headline text-3xl font-bold uppercase tracking-tighter md:text-5xl'>
-							Historia de la <span className='text-primary-light'>formación</span>
+							Historia de la{' '}
+							<span className='text-primary-light'>formación</span>
 						</h2>
 						<p className='text-sm text-lightgray'>
 							Quienes han pasado por Daliah desde 2018, actuales y anteriores.
@@ -61,14 +65,24 @@ export default async function Members() {
 					<Tabs
 						label='Vista de la formación'
 						tabs={[
-							{ id: 'chart', label: 'Gráfico', content: <LineupChart entries={timeline} albums={albums} /> },
-							{ id: 'list', label: 'Lista', content: <LineupList entries={timeline} /> },
+							{
+								id: 'chart',
+								label: 'Gráfico',
+								content: <LineupChart entries={timeline} albums={albums} />,
+							},
+							{
+								id: 'list',
+								label: 'Lista',
+								content: <LineupList entries={timeline} />,
+							},
 						]}
 					/>
 				</section>
 			)}
 
-			<Link href='/about-us' className='text-sm text-primary-light hover:underline'>
+			<Link
+				href='/sobre-nosotros'
+				className='text-sm text-primary-light hover:underline'>
 				← Sobre nosotros
 			</Link>
 		</div>

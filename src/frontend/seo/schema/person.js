@@ -1,3 +1,4 @@
+import { htmlToText } from '@/frontend/utils/richText';
 import { SITE } from '../site';
 import { MUSIC_GROUP_ID, memberPersonId } from './ids';
 
@@ -17,7 +18,7 @@ export const buildPersonRef = (member) => ({
 	'@type': 'Person',
 	'@id': memberPersonId(member.slug),
 	...personNames(member.name),
-	url: `${SITE.url}/about-us/members/${member.slug}`,
+	url: `${SITE.url}/sobre-nosotros/integrantes/${member.slug}`,
 });
 
 // Página personal de un miembro
@@ -26,9 +27,11 @@ export function buildPersonSchema(member) {
 		'@context': 'https://schema.org',
 		...buildPersonRef(member),
 		jobTitle: member.instrument,
-		description: member.longBio || member.shortBio,
+		description: member.shortBio,
 		image: member.featuredUrl,
 		memberOf: { '@id': MUSIC_GROUP_ID },
-		...(member.links.length && { sameAs: member.links.map((link) => link.url) }),
+		...(member.links.length && {
+			sameAs: member.links.map((link) => link.url),
+		}),
 	};
 }

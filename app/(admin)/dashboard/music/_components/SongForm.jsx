@@ -5,6 +5,7 @@ import Field, { controlClass } from '@/frontend/components/ui/Field';
 import FeedbackMessage from '@/frontend/components/ui/FeedbackMessage';
 import ImageUrlFields from '@/frontend/components/ui/ImageUrlFields';
 import Button from '@/frontend/components/buttons/GeneralButton';
+import TextEditor from '@/frontend/components/inputs/TextEditor/TextEditorLoader';
 import { useFormAction } from '@/frontend/hooks/useFormAction';
 import { createSong, updateSong } from '@/back/actions/songs.actions';
 
@@ -52,8 +53,8 @@ export default function SongForm({ albumId, song, nextTrackNumber = 1 }) {
 				<Field label='Temas que trata (uno por línea)' htmlFor='s-themes'>
 					<textarea id='s-themes' name='themes' rows={4} defaultValue={(song?.themes ?? []).join('\n')} className={controlClass} />
 				</Field>
-				<Field label='Historia (opcional)' htmlFor='s-story'>
-					<textarea id='s-story' name='story' rows={5} maxLength={10000} defaultValue={song?.story ?? ''} className={controlClass} />
+				<Field label='Contenido de la canción (opcional)' hint='Texto enriquecido: títulos, listas, enlaces, imágenes (por URL, con su texto alternativo) y videos o iframes.'>
+					<TextEditor name='story' defaultValue={song?.story ?? ''} />
 				</Field>
 				<Field label='Agradecimientos (opcional)' htmlFor='s-thanks'>
 					<textarea id='s-thanks' name='acknowledgments' rows={4} maxLength={10000} defaultValue={song?.acknowledgments ?? ''} className={controlClass} />

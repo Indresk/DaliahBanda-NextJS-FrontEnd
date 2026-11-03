@@ -131,21 +131,38 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 
 ## Sobre nosotros, integrantes y migas
 
-- `/about-us` (info general), `/about-us/members` (miembros activos + línea del tiempo de la
-  formación) y `/about-us/members/[slug]` (página personal; 404 si no está activo). Lecturas
+- `/sobre-nosotros` (info general), `/sobre-nosotros/integrantes` (miembros activos + línea del tiempo de la
+  formación) y `/sobre-nosotros/integrantes/[slug]` (página personal; 404 si no está activo). Lecturas
   cacheadas en `members.cache.js` (`getActiveMembers`, `getMember`, `getLineupTimeline`).
 - **Baja de un miembro** (`MembersService.deactivate`, botón «Dar de baja» en su ficha): en una transacción lo
   despublica, cierra con la fecha de salida sus entradas abiertas de la formación y quita `isMember` de su
   etiqueta de galería (las fotos conservan la etiqueta). No hay página de ex integrante.
 - La formación es la tabla `lineup-entries` (persona, `role` de una lista fija —`LINEUP_ROLES`—, año y
   mes de inicio y de fin opcionales, nota libre y `memberId` opcional que enlaza a su página) editable
-  en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`. En `/about-us/members` se ve como gráfico
+  en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`. En `/sobre-nosotros/integrantes` se ve como gráfico
   (`LineupChart`: una fila por persona, barras por rol, líneas de lanzamientos; los cálculos están en
-  `app/about-us/_lib/timeline.js`) y como lista, en pestañas (`ui/Tabs`, ambos paneles en el HTML).
-- **Migas de pan** con rutas paralelas: `app/albums/@breadcrumb` y `app/about-us/@breadcrumb`
+  `app/sobre-nosotros/_lib/timeline.js`) y como lista, en pestañas (`ui/Tabs`, ambos paneles en el HTML).
+- **Migas de pan** con rutas paralelas: `app/albums/@breadcrumb` y `app/sobre-nosotros/@breadcrumb`
   pintan `ui/Breadcrumb` en el servidor con los títulos reales. La lógica de las migas está en
   `_lib/breadcrumbs.js` de cada sección y la reutiliza el JSON-LD (`BreadcrumbList`). Una ruta
   nueva bajo esas secciones necesita su carpeta en `@breadcrumb` (si no, no muestra migas).
+
+## Texto enriquecido
+
+`src/frontend/components/inputs/TextEditor/` (SunEditor): `TextEditorLoader` (carga diferida, solo en el navegador),
+`BaseTextEditor` (el editor dentro de un `<form>`: un `<input type="hidden" name="…">` con el HTML) y `editorConfig`
+(plugins y botones). Lo usan el campo `story` de la canción y `longBio` del miembro (límite común `RICH_TEXT.MAX_LENGTH`); la página `/dashboard/test-editor` sirve para probarlo.
+
+- Datos estructurados (`description`) y metadatos llevan texto plano: usa `htmlToText` sobre el HTML del editor.
+- Imágenes solo por URL (con texto alternativo); iframes: URL de YouTube o código `<iframe>` de cualquier origen https.
+- El campo se sincroniza con un `MutationObserver` y justo antes de enviar el formulario: `onChange` de SunEditor no
+  se dispara al insertar un iframe.
+- Al mostrar el contenido (página pública) hay que pasarlo por `toEditorHtml` (`frontend/utils/richText.js`): las
+  historias guardadas antes del editor son texto plano con saltos de línea. Se muestra dentro de un contenedor con la
+  clase `rich-text` (`globals.css`), que da estilo con los colores y la tipografía del sitio a listas, títulos H2/H3,
+  citas, enlaces e iframes (16:9); no usa los estilos de contenido de SunEditor. La alineación y las leyendas de las
+  imágenes del modal no tienen estilo. SunEditor limpia el HTML en el navegador; el servidor no lo sanea (solo
+  escriben admins).
 
 ## Fuentes
 

@@ -15,7 +15,9 @@ import ChildItem from '../../_components/ChildItem';
 
 // Alta de una imagen de apoyo (la URL y sus dimensiones no se editan: se elimina y se vuelve a añadir)
 function CreateImageForm({ memberId }) {
-	const { state, pending, handleSubmit } = useFormAction(createMemberImage, { resetOnSuccess: true });
+	const { state, pending, handleSubmit } = useFormAction(createMemberImage, {
+		resetOnSuccess: true,
+	});
 
 	return (
 		<form onSubmit={handleSubmit} className='grid gap-6 lg:grid-cols-2'>
@@ -25,13 +27,32 @@ function CreateImageForm({ memberId }) {
 			</div>
 			<div className='flex flex-col gap-4'>
 				<Field label='Texto alternativo' htmlFor='mi-alt'>
-					<textarea id='mi-alt' name='alt' rows={3} required maxLength={500} className={controlClass} />
+					<textarea
+						id='mi-alt'
+						name='alt'
+						rows={3}
+						required
+						maxLength={500}
+						className={controlClass}
+					/>
 				</Field>
 				<Field label='Orden' htmlFor='mi-order' hint='Menor = primero.'>
-					<input id='mi-order' name='displayOrder' type='number' min={0} defaultValue={0} className={controlClass} />
+					<input
+						id='mi-order'
+						name='displayOrder'
+						type='number'
+						min={0}
+						defaultValue={0}
+						className={controlClass}
+					/>
 				</Field>
 				<div className='flex items-center gap-4'>
-					<Button type='submit' size='sm' variant={pending ? 'disabled' : 'primary'}>Añadir imagen</Button>
+					<Button
+						type='submit'
+						size='sm'
+						variant={pending ? 'disabled' : 'primary'}>
+						Añadir imagen
+					</Button>
 					<FeedbackMessage result={state} />
 				</div>
 			</div>
@@ -49,13 +70,35 @@ function EditImageForm({ image }) {
 			<input type='hidden' name='url' value={image.url} />
 			<input type='hidden' name='width' value={image.width} />
 			<input type='hidden' name='height' value={image.height} />
-			<Field label='Texto alternativo' htmlFor={`mia-${image.id}`} className='min-w-72 flex-1'>
-				<input id={`mia-${image.id}`} name='alt' required maxLength={500} defaultValue={image.alt} className={controlClass} />
+			<Field
+				label='Texto alternativo'
+				htmlFor={`mia-${image.id}`}
+				className='min-w-72 flex-1'>
+				<input
+					id={`mia-${image.id}`}
+					name='alt'
+					required
+					maxLength={500}
+					defaultValue={image.alt}
+					className={controlClass}
+				/>
 			</Field>
 			<Field label='Orden' htmlFor={`mio-${image.id}`}>
-				<input id={`mio-${image.id}`} name='displayOrder' type='number' min={0} defaultValue={image.displayOrder} className={controlClass} />
+				<input
+					id={`mio-${image.id}`}
+					name='displayOrder'
+					type='number'
+					min={0}
+					defaultValue={image.displayOrder}
+					className={controlClass}
+				/>
 			</Field>
-			<Button type='submit' size='sm' variant={pending ? 'disabled' : 'primary'}>Guardar</Button>
+			<Button
+				type='submit'
+				size='sm'
+				variant={pending ? 'disabled' : 'primary'}>
+				Guardar
+			</Button>
 			<FeedbackMessage result={state} />
 		</form>
 	);
@@ -75,10 +118,19 @@ export default function MemberImagesManager({ memberId, images }) {
 						summary={
 							<>
 								<div className='relative size-16 shrink-0 bg-black'>
-									<Image src={image.url} alt={image.alt} fill unoptimized sizes='64px' className='object-cover' />
+									<Image
+										src={image.url}
+										alt={image.alt}
+										fill
+										unoptimized
+										sizes='64px'
+										className='object-cover'
+									/>
 								</div>
 								<span className='min-w-0 truncate text-sm'>{image.alt}</span>
-								<span className='text-xs text-lightgray'>Orden {image.displayOrder}</span>
+								<span className='text-xs text-lightgray'>
+									Orden {image.displayOrder}
+								</span>
 							</>
 						}
 						editForm={<EditImageForm image={image} />}

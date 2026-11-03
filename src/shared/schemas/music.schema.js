@@ -2,6 +2,7 @@ import { z } from 'zod';
 import {
 	ALBUM_TYPES,
 	MUSIC,
+	RICH_TEXT,
 	SONG_RESOURCE_KINDS,
 	STREAMING_PLATFORMS,
 } from '../constants';
@@ -78,7 +79,7 @@ const songFieldsSchema = z.object({
 	shortDescription: requiredText('La descripción corta', 300),
 	longDescription: optionalText(5000),
 	themes: themesSchema.default([]),
-	story: optionalText(10000),
+	story: optionalText(RICH_TEXT.MAX_LENGTH),
 	acknowledgments: optionalText(10000),
 	audioUrl: optionalHttpsUrl,
 	coverUrl: optionalHttpsUrl,

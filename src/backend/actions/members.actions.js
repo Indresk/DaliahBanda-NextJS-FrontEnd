@@ -12,7 +12,10 @@ import { guardedRequest } from '../utils/guardedRequestWrapper';
 const ADMIN_ONLY = [USER_ROLES.ADMIN];
 const FORM_FIELDS = { booleans: ['active'] };
 
-const refresh = refreshOnSuccess(invalidateMembers, ['/dashboard/members', 'layout']);
+const refresh = refreshOnSuccess(invalidateMembers, [
+	'/dashboard/members',
+	'layout',
+]);
 
 export async function createMember(_prevState, formData) {
 	return refresh(
@@ -26,7 +29,9 @@ export async function updateMember(_prevState, formData) {
 	const { id, ...changes } = formDataToObject(formData, FORM_FIELDS);
 
 	return refresh(
-		await guardedRequest(ADMIN_ONLY, () => MembersService.update(Number(id), changes)),
+		await guardedRequest(ADMIN_ONLY, () =>
+			MembersService.update(Number(id), changes),
+		),
 	);
 }
 
@@ -45,7 +50,9 @@ export async function deactivateMember(_prevState, formData) {
 	const { id, ...departure } = formDataToObject(formData);
 
 	return refreshDeparture(
-		await guardedRequest(ADMIN_ONLY, () => MembersService.deactivate(Number(id), departure)),
+		await guardedRequest(ADMIN_ONLY, () =>
+			MembersService.deactivate(Number(id), departure),
+		),
 	);
 }
 

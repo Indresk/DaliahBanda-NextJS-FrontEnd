@@ -94,7 +94,12 @@ class MembersService {
 			if (!member) throw new AppError(ERROR_CODES.MEMBER_NOT_FOUND);
 
 			const open = await LineupRepository.findOpenByMember(id, options);
-			if (open.some((entry) => departure < entry.startYear * 12 + ((entry.startMonth ?? 1) - 1))) {
+			if (
+				open.some(
+					(entry) =>
+						departure < entry.startYear * 12 + ((entry.startMonth ?? 1) - 1),
+				)
+			) {
 				throw new AppError(
 					ERROR_CODES.BAD_REQUEST,
 					'La fecha de salida es anterior al inicio de una de sus entradas en la formación.',
@@ -102,8 +107,15 @@ class MembersService {
 			}
 
 			await MembersRepository.update(id, { active: false }, options);
-			const closedEntries = await LineupRepository.closeOpenByMember(id, { endYear, endMonth }, options);
-			const tagsUpdated = await GalleryPeopleRepository.clearIsMemberByMemberId(id, options);
+			const closedEntries = await LineupRepository.closeOpenByMember(
+				id,
+				{ endYear, endMonth },
+				options,
+			);
+			const tagsUpdated = await GalleryPeopleRepository.clearIsMemberByMemberId(
+				id,
+				options,
+			);
 
 			return successResponseWrapper(
 				{ id, closedEntries, tagsUpdated },
@@ -128,7 +140,9 @@ class MembersService {
 			GalleryPeopleRepository.findAll(),
 		]);
 		const peopleByMember = new Map(
-			people.filter((person) => person.memberId).map((person) => [person.memberId, person.slug]),
+			people
+				.filter((person) => person.memberId)
+				.map((person) => [person.memberId, person.slug]),
 		);
 
 		return {

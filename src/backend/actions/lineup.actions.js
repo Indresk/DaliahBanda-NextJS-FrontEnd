@@ -13,7 +13,9 @@ const refresh = refreshOnSuccess(invalidateMembers, ['/dashboard/lineup']);
 
 export async function createLineupEntry(_prevState, formData) {
 	return refresh(
-		await guardedRequest(ADMIN_ONLY, () => LineupService.create(formDataToObject(formData))),
+		await guardedRequest(ADMIN_ONLY, () =>
+			LineupService.create(formDataToObject(formData)),
+		),
 	);
 }
 
@@ -21,7 +23,9 @@ export async function updateLineupEntry(_prevState, formData) {
 	const { id, ...fields } = formDataToObject(formData);
 
 	return refresh(
-		await guardedRequest(ADMIN_ONLY, () => LineupService.update(Number(id), fields)),
+		await guardedRequest(ADMIN_ONLY, () =>
+			LineupService.update(Number(id), fields),
+		),
 	);
 }
 

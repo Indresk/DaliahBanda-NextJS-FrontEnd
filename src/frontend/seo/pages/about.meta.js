@@ -2,7 +2,7 @@ export const aboutMeta = {
 	title: 'Sobre nosotros',
 	description:
 		'Conoce la historia de Daliah Banda, banda de metalcore y pop emo punk de Bogotá con más de ocho años en la escena alternativa colombiana.',
-	path: '/about-us',
+	path: '/sobre-nosotros',
 };
 
 // Los nombres salen de los miembros activos (base de datos)
@@ -13,20 +13,20 @@ export const membersMeta = (members) => ({
 			? `: ${members.map((member) => member.name.replace(/"/g, '')).join(', ')}`
 			: ''
 	}, y la historia de su formación.`,
-	path: '/about-us/members',
+	path: '/sobre-nosotros/integrantes',
 });
 
 export const memberMeta = (member) => ({
 	title: `${member.name.replace(/"/g, '')} - ${member.instrument}`,
 	description: member.shortBio,
-	path: `/about-us/members/${member.slug}`,
+	path: `/sobre-nosotros/integrantes/${member.slug}`,
 });
 
 export const contactMeta = {
 	title: 'Contacto',
 	description:
 		'Contacta a Daliah Banda para presentaciones, prensa y colaboraciones.',
-	path: '/about-us/contact',
+	path: '/sobre-nosotros/contact',
 	indexable: false,
 };
 
@@ -34,6 +34,6 @@ export const comunityMeta = {
 	title: 'Nuestra Comunidad',
 	description:
 		'Conoce y vuelvete parte de nuestra comunidad Daliah interactua con nosotros, comparte y disfruta nuestra musica.',
-	path: '/about-us/comunity',
+	path: '/sobre-nosotros/comunity',
 	indexable: false,
 };

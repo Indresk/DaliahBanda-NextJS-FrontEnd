@@ -29,7 +29,9 @@ export default async function EditMemberPage({ params }) {
 		<div className='flex flex-col gap-6'>
 			<Card title={member.name}>
 				<MemberForm member={editable} />
-				{member.active && <DeactivateMemberForm member={{ id: member.id, name: member.name }} />}
+				{member.active && (
+					<DeactivateMemberForm member={{ id: member.id, name: member.name }} />
+				)}
 				<DeleteEntityButton
 					id={member.id}
 					action={deleteMember}

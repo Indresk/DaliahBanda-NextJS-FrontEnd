@@ -3,5 +3,5 @@
 export const navigationLinks = [
 	{ title: 'Discografía', link: '/albums' },
 	{ title: 'Galería', link: '/gallery' },
-	{ title: 'Integrantes', link: '/about-us/members' },
+	{ title: 'Integrantes', link: '/sobre-nosotros/integrantes' },
 ];

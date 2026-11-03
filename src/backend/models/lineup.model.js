@@ -21,6 +21,10 @@ const LineupEntry = sequelize.define(
 	{ tableName: 'lineup-entries' },
 );
 
-LineupEntry.belongsTo(Member, { foreignKey: 'memberId', as: 'member', onDelete: 'SET NULL' });
+LineupEntry.belongsTo(Member, {
+	foreignKey: 'memberId',
+	as: 'member',
+	onDelete: 'SET NULL',
+});
 
 export default LineupEntry;

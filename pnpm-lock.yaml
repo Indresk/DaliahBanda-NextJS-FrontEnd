@@ -41,6 +41,9 @@ importers:
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
+      suneditor:
+        specifier: ^3.4.1
+        version: 3.4.1
       tailwind-merge:
         specifier: ^3.7.0
         version: 3.7.0
@@ -2352,6 +2355,10 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
+
+  suneditor@3.4.1:
+    resolution: {integrity: sha512-hXnIfszblk8UeZCiNmkEBMjS5anq+OTdry6Q2K+O8b0bnqlItdcR6bwZDeWeeW59iWOkbVogotOgfrJkzZfDew==}
+    engines: {node: '>=14.0.0'}
 
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
@@ -5047,6 +5054,8 @@ snapshots:
       react: 19.3.1
     optionalDependencies:
       '@babel/core': 7.29.7(supports-color@7.2.0)
+
+  suneditor@3.4.1: {}
 
   supports-color@7.2.0:
     dependencies:

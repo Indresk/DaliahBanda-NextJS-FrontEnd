@@ -44,7 +44,7 @@ export default async function Header() {
 						{/* SMALL */}
 						<MobileMenu />
 
-						<NavLink href='/about-us/comunity' className='hidden md:flex'>
+						<NavLink href='/sobre-nosotros/comunity' className='hidden md:flex'>
 							<Button size='sm'>Nuestra comunidad</Button>
 						</NavLink>
 					</div>

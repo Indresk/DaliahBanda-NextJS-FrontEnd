@@ -10,6 +10,7 @@
 	--color-lightgray: #737373;
 	--color-primary: oklch(45.9% 0.187 3.815);
 	--color-primary-light: oklch(59.9% 0.24 5.2);
+	--color-primary-ultra-light: oklch(0.656 0.24 354.316);
 }
 
 :root {
@@ -50,7 +51,7 @@ img {
 }
 
 strong {
-	color: var(--color-primary-light);
+	color: var(--color-primary-ultra-light);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -86,4 +87,94 @@ strong {
 	::-webkit-scrollbar-button {
 		display: none;
 	}
+}
+
+/* Contenido del editor de texto enriquecido (el HTML guardado) con los estilos del sitio. Va acotado
+   a .rich-text: Tailwind quita las viñetas, los márgenes y el tamaño de ul, ol y títulos, y un estilo
+   global sobre esas etiquetas afectaría a menús, footer y demás. */
+.rich-text > * + * {
+	margin-top: 1rem;
+}
+
+.rich-text h2,
+.rich-text h3 {
+	font-family: var(--font-headline);
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: -0.05em;
+	text-transform: uppercase;
+}
+
+.rich-text h2 {
+	margin-top: 2rem;
+	font-size: 1.875rem;
+}
+
+.rich-text h3 {
+	margin-top: 1.5rem;
+	font-size: 1.5rem;
+}
+
+.rich-text > :first-child {
+	margin-top: 0;
+}
+
+.rich-text ul,
+.rich-text ol {
+	padding-left: 1.5rem;
+}
+
+.rich-text ul {
+	list-style: disc;
+}
+
+.rich-text ol {
+	list-style: decimal;
+}
+
+/* Listas anidadas: cambia el símbolo en cada nivel */
+.rich-text ul ul {
+	list-style: circle;
+}
+
+.rich-text ul ul ul {
+	list-style: square;
+}
+
+.rich-text ol ol {
+	list-style: lower-alpha;
+}
+
+.rich-text li + li,
+.rich-text li > ul,
+.rich-text li > ol {
+	margin-top: 0.25rem;
+}
+
+.rich-text li::marker {
+	color: var(--color-primary-light);
+}
+
+.rich-text blockquote {
+	border-left: 4px solid var(--color-primary);
+	padding-left: 1rem;
+	font-style: italic;
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.rich-text a {
+	color: var(--color-primary-light);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.rich-text a:hover {
+	color: var(--color-primary-ultra-light);
+}
+
+/* El editor guarda los iframes con alto fijo (atributo height): aquí se adaptan al ancho en 16:9 */
+.rich-text iframe {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
 }

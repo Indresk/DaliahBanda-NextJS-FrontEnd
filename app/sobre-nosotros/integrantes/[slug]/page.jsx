@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getActiveMembers, getMember } from '@/back/services/members.cache';
 import { MEMBER_LINK_KINDS } from '@/shared/constants';
 import { memberImageAlt } from '@/shared/utils/members';
+import { toEditorHtml } from '@/frontend/utils/richText';
 import JsonLd from '@/frontend/seo/JsonLd';
 import { buildMetadata } from '@/frontend/seo/buildMetadata';
 import { memberMeta } from '@/frontend/seo/pages/about.meta';
@@ -69,9 +70,10 @@ export default async function MemberPage({ params }) {
 			</header>
 
 			{member.longBio && (
-				<section>
-					<p className='whitespace-pre-line'>{member.longBio}</p>
-				</section>
+				<section
+					className='rich-text'
+					dangerouslySetInnerHTML={{ __html: toEditorHtml(member.longBio) }}
+				/>
 			)}
 
 			<section>
@@ -126,7 +128,7 @@ export default async function MemberPage({ params }) {
 						{others.map((item) => (
 							<li key={item.id}>
 								<Link
-									href={`/about-us/members/${item.slug}`}
+									href={`/sobre-nosotros/integrantes/${item.slug}`}
 									className='hover:text-primary-light hover:underline'>
 									{item.name.replace(/"/g, '')}
 								</Link>
@@ -134,7 +136,7 @@ export default async function MemberPage({ params }) {
 						))}
 					</ul>
 					<Link
-						href='/about-us/members'
+						href='/sobre-nosotros/integrantes'
 						className='text-sm text-primary-light hover:underline'>
 						Ver la formación completa y su historia
 					</Link>

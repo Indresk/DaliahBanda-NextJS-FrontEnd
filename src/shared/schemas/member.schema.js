@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { MEMBER_LINK_KINDS } from '../constants';
+import { MEMBER_LINK_KINDS, RICH_TEXT } from '../constants';
 import {
 	dimensionSchema,
 	displayOrderSchema,
@@ -23,7 +23,7 @@ export const memberSchema = z.object({
 	name: requiredText('El nombre', 80),
 	instrument: requiredText('El instrumento', 80),
 	shortBio: requiredText('La descripción corta', 300),
-	longBio: optionalText(5000),
+	longBio: optionalText(RICH_TEXT.MAX_LENGTH),
 	featuredUrl: httpsUrlSchema,
 	featuredWidth: dimensionSchema,
 	featuredHeight: dimensionSchema,

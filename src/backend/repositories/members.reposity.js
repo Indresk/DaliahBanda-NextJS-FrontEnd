@@ -8,8 +8,15 @@ import { childRepository } from './childRepository';
 
 // Lo que pinta el sitio público en el carrusel de integrantes (sin enlaces ni imágenes)
 const PUBLIC_ATTRIBUTES = [
-	'id', 'slug', 'name', 'instrument', 'shortBio',
-	'featuredUrl', 'featuredWidth', 'featuredHeight', 'featuredAlt',
+	'id',
+	'slug',
+	'name',
+	'instrument',
+	'shortBio',
+	'featuredUrl',
+	'featuredWidth',
+	'featuredHeight',
+	'featuredAlt',
 ];
 
 // Año de su entrada más antigua en la formación: "en la banda desde". La fecha de ingreso vive
@@ -68,7 +75,9 @@ class MembersRepository extends baseRepository(Member, {
 
 	// Dashboard: miembro con todos sus enlaces e imágenes
 	static async findByIdWithRelations(id) {
-		const member = await Member.findByPk(id, { include: relations(undefined, undefined) });
+		const member = await Member.findByPk(id, {
+			include: relations(undefined, undefined),
+		});
 		return member?.toJSON() ?? null;
 	}
 

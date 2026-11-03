@@ -52,8 +52,7 @@ export default function AboutUs() {
 					Somos una agrupación musical <strong>colombiana</strong> con más de
 					ocho años de trayectoria en la escena alternativa. Nuestra propuesta
 					nace del punk rock y el pop punk clásico, integrando la complejidad
-					del metal progresivo para crear un sonido energético y
-					contemporáneo.
+					del metal progresivo para crear un sonido energético y contemporáneo.
 				</p>
 				<p>
 					En nuestras letras abordamos temáticas{' '}
@@ -65,7 +64,8 @@ export default function AboutUs() {
 			<section className='flex max-w-3xl flex-col gap-6'>
 				<div>
 					<h2 className={`${headline} text-3xl md:text-5xl`}>
-						Estilo musical e <span className='text-primary-light'>influencias</span>
+						Estilo musical e{' '}
+						<span className='text-primary-light'>influencias</span>
 					</h2>
 					<h3 className='font-headline text-sm uppercase tracking-tighter text-lightgray'>
 						Metalcore, Pop Emo Punk y Rock Alternativo
@@ -89,10 +89,12 @@ export default function AboutUs() {
 					Conoce a los <span className='text-primary-light'>integrantes</span>
 				</h2>
 				<p>
-					Conoce a quienes forman Daliah hoy y la historia de las personas que han
-					pasado por la banda desde 2018.
+					Conoce a quienes forman Daliah hoy y la historia de las personas que
+					han pasado por la banda desde 2018.
 				</p>
-				<Link href='/about-us/members' className='w-fit font-headline font-bold uppercase text-primary-light hover:underline'>
+				<Link
+					href='/sobre-nosotros/integrantes'
+					className='w-fit font-headline font-bold uppercase text-primary-light hover:underline'>
 					Ver integrantes →
 				</Link>
 			</section>

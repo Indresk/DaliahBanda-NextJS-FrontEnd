@@ -17,9 +17,13 @@ export default function LineupList({ entries }) {
 			{entries.map((entry) => (
 				<li key={entry.id} className='py-3'>
 					<p className='flex flex-wrap items-baseline gap-x-3'>
-						<span className='w-28 shrink-0 text-primary-light'>{yearRange(entry)}</span>
+						<span className='w-28 shrink-0 text-primary-light'>
+							{yearRange(entry)}
+						</span>
 						{entry.memberSlug ? (
-							<Link href={`/about-us/members/${entry.memberSlug}`} className='font-bold hover:underline'>
+							<Link
+								href={`/sobre-nosotros/integrantes/${entry.memberSlug}`}
+								className='font-bold hover:underline'>
 								{entry.personName}
 							</Link>
 						) : (
@@ -27,7 +31,9 @@ export default function LineupList({ entries }) {
 						)}
 						<span className='text-lightgray'>{LINEUP_ROLES[entry.role]}</span>
 					</p>
-					{entry.note && <p className='pl-31 text-sm text-lightgray'>{entry.note}</p>}
+					{entry.note && (
+						<p className='pl-31 text-sm text-lightgray'>{entry.note}</p>
+					)}
 				</li>
 			))}
 		</ul>

@@ -18,7 +18,8 @@ async function resolveEntry(input) {
 		if (!member) throw new AppError(ERROR_CODES.MEMBER_NOT_FOUND);
 		personName ??= member.name;
 	}
-	if (!personName) throw new AppError(ERROR_CODES.BAD_REQUEST, 'El nombre es obligatorio.');
+	if (!personName)
+		throw new AppError(ERROR_CODES.BAD_REQUEST, 'El nombre es obligatorio.');
 
 	return { ...entry, personName };
 }
@@ -41,7 +42,10 @@ class LineupService {
 	}
 
 	static async update(id, input) {
-		const updated = await LineupRepository.update(id, await resolveEntry(input));
+		const updated = await LineupRepository.update(
+			id,
+			await resolveEntry(input),
+		);
 		if (!updated) throw new AppError(ERROR_CODES.LINEUP_ENTRY_NOT_FOUND);
 
 		return successResponseWrapper(updated, 'Entrada actualizada');
@@ -64,7 +68,16 @@ class LineupService {
 
 		return {
 			entries: entries.map(
-				({ memberId, personName, role, startYear, startMonth, endYear, endMonth, note }) => ({
+				({
+					memberId,
+					personName,
+					role,
+					startYear,
+					startMonth,
+					endYear,
+					endMonth,
+					note,
+				}) => ({
 					memberSlug: slugs.get(memberId) ?? null,
 					personName,
 					role,
