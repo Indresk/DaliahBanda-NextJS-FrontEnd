@@ -5,6 +5,6 @@ import { SITE } from '../site';
 export const MUSIC_GROUP_ID = `${SITE.url}/#musicgroup`;
 export const memberPersonId = (slug) =>
 	`${SITE.url}/sobre-nosotros/integrantes/${slug}#person`;
-export const albumSchemaId = (slug) => `${SITE.url}/albums/${slug}#album`;
+export const albumSchemaId = (slug) => `${SITE.url}/discografia/${slug}#album`;
 export const songSchemaId = (albumSlug, songSlug) =>
-	`${SITE.url}/albums/${albumSlug}/${songSlug}#recording`;
+	`${SITE.url}/discografia/${albumSlug}/${songSlug}#recording`;

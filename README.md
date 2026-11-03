@@ -65,12 +65,15 @@ La estructura de carpetas, las capas del backend y las reglas para añadir códi
 ### Main Pages
 
 - **`/`** - Homepage with hero, band intro, and featured content
-- **`/albums`** - Music albums catalog
-- **`/albums/[album]`** - Individual album details
-- **`/gallery`** - Photo gallery with event filtering
-- **`/gallery/[filter]`** - Filtered gallery views
-- **`/gallery/events/[filter]`** - Event-specific photo galleries
-- **`/live`** - Live streaming information
+- **`/discografia`** - Music albums catalog
+- **`/discografia/[album]`** - Individual album details
+- **`/discografia/[album]/[song]`** - Song page (and its `stems`, `partituras` and `letra-y-acordes` resources)
+- **`/galeria`** - Photo gallery with event filtering
+- **`/galeria/[filter]`** - Gallery filtered by band member
+- **`/galeria/backstage`** - Backstage photos
+- **`/galeria/eventos/[filter]`** - Event-specific photo galleries
+- **`/en-vivo`** - Live streaming information
+- **`/sobre-nosotros`** - About the band, with `/integrantes`, `/integrantes/[slug]`, `/contacto` and `/comunidad`
 
 ## Installation & Setup
 
@@ -201,7 +204,7 @@ This site leverages Next.js SSR capabilities for:
 
 This project is under the MIT license, allowing for open-source contributions and usage. See the [LICENSE](LICENSE) file for details.
 
-For inquiries, contact: daliahbanda@gmail.com or visit [daliahbanda.com/contact](https://daliahbanda.com/contact)
+For inquiries, contact: daliahbanda@gmail.com or visit [daliahbanda.com/sobre-nosotros/contacto](https://daliahbanda.com/sobre-nosotros/contacto)
 
 ---
 

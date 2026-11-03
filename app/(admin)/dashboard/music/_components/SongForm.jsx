@@ -27,7 +27,7 @@ export default function SongForm({ albumId, song, nextTrackNumber = 1 }) {
 						<input id='s-title' name='title' required maxLength={120} defaultValue={song?.title ?? ''} className={controlClass} />
 					</Field>
 					{!isEdit && (
-						<Field label='Identificador (slug, no se puede cambiar)' htmlFor='s-slug' hint='Forma la URL: /albums/<álbum>/<slug>'>
+						<Field label='Identificador (slug, no se puede cambiar)' htmlFor='s-slug' hint='Forma la URL: /discografia/<álbum>/<slug>'>
 							<input id='s-slug' name='slug' required maxLength={80} pattern='[a-z0-9]+(-[a-z0-9]+)*' className={controlClass} />
 						</Field>
 					)}

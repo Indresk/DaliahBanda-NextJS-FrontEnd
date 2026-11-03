@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
 	return buildMetadata(event ? galleryEventMeta(event) : galleryFallbackMeta(filter));
 }
 
-// Fotos de un evento (/gallery/events/<slug>)
+// Fotos de un evento (/galeria/eventos/<slug>)
 export default async function GalleryByEvent({ params }) {
 	const { filter } = await params;
 	const event = await getGalleryEvent(filter);

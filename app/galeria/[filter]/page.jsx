@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
 	return buildMetadata(person ? galleryFilterMeta(person) : galleryFallbackMeta(filter));
 }
 
-// Fotos en las que aparece un integrante (/gallery/<slug>)
+// Fotos en las que aparece un integrante (/galeria/<slug>)
 export default async function GalleryByPerson({ params }) {
 	const { filter } = await params;
 	const person = await getGalleryPerson(filter);

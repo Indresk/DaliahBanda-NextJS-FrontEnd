@@ -18,7 +18,7 @@ export default function LiveBanner() {
 					</p>
 				</div>
 				<Link
-					href='/live'
+					href='/en-vivo'
 					title='Entrar al streaming en vivo de Daliah Banda'
 					className='live-banner-button underline'>
 					Ver transmisión ahora

@@ -26,7 +26,7 @@ export const SONG_RESOURCE_KINDS = Object.freeze({
 	VIDEO: 'video',
 });
 
-// Rutas públicas de los recursos de una canción: /albums/[album]/[song]/<ruta>
+// Rutas públicas de los recursos de una canción: /discografia/[album]/[song]/<ruta>
 export const SONG_RESOURCE_ROUTES = Object.freeze({
 	stems: { kind: SONG_RESOURCE_KINDS.STEM, label: 'Stems' },
 	partituras: { kind: SONG_RESOURCE_KINDS.SCORE, label: 'Partituras' },

@@ -5,8 +5,8 @@ export function resolveSongCover(song, album) {
 		: { url: album.coverUrl, width: album.coverWidth, height: album.coverHeight };
 }
 
-export const albumPath = (album) => `/albums/${album.slug}`;
-export const songPath = (album, song) => `/albums/${album.slug}/${song.slug}`;
+export const albumPath = (album) => `/discografia/${album.slug}`;
+export const songPath = (album, song) => `/discografia/${album.slug}/${song.slug}`;
 
 // Fecha de una canción: la suya o, si no tiene, la del álbum
 export const songReleaseDate = (song, album) => song.releasedAt ?? album.releasedAt;

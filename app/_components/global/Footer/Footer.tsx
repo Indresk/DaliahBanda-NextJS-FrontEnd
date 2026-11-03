@@ -23,7 +23,7 @@ export default function Footer() {
 				<div className='flex gap-4 text-lightgray flex-wrap'>
 					<Link
 						className='text-sm tracking-widest uppercase hover:text-white transition-all opacity-80 hover:opacity-100'
-						href='/sobre-nosotros/contact'>
+						href='/sobre-nosotros/contacto'>
 						Contacto
 					</Link>
 					<a

@@ -147,7 +147,7 @@ export default async function LiveView() {
 					</Link>{' '}
 					o explora nuestra sección de{' '}
 					<Link
-						href={'/musica'}
+						href={'/discografia'}
 						className='underline text-pink-800'
 						title='Música de Daliah Banda'>
 						música y lanzamientos

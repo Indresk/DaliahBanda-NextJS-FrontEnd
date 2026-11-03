@@ -12,7 +12,7 @@ export const liveMeta = {
 	},
 	description:
 		'Mira a Daliah Banda en vivo durante sus ensayos de metalcore y pop emo punk desde Bogotá. Streaming oficial vía Kick.',
-	path: '/live',
+	path: '/en-vivo',
 	keywords: [
 		'Daliah en vivo',
 		'Daliah streaming',

@@ -1,8 +1,8 @@
 'use client';
 
 import Button from '@/frontend/components/buttons/GeneralButton';
-import { toRelatedItems } from '../../albums/_lib/relatedItems';
-import YmalItem from '../../albums/_components/YmalItem';
+import { toRelatedItems } from '../../discografia/_lib/relatedItems';
+import YmalItem from '../../discografia/_components/YmalItem';
 import BigPlayButton from '@/frontend/assets/svg/BigPlayButton';
 import Image from '@/frontend/components/ui/FadeImage';
 import { useRouter } from 'next/navigation';
@@ -29,7 +29,7 @@ export default function RecommendedSong({ song, related }) {
 
 	return (
 		<section className='play-music-container bg-darkgray'>
-			{/* <Link to='/albums'> */}
+			{/* <Link to='/discografia'> */}
 			<Button onClick={handleRecommend} fullWidth size='lg' rigthArrow>
 				<h2>Nuestra música</h2>
 			</Button>

@@ -42,7 +42,7 @@ export default function AlbumForm({ album }) {
 						</select>
 					</Field>
 					{!isEdit && (
-						<Field label='Identificador (slug, no se puede cambiar)' htmlFor='al-slug' hint='Forma la URL: /albums/<slug>'>
+						<Field label='Identificador (slug, no se puede cambiar)' htmlFor='al-slug' hint='Forma la URL: /discografia/<slug>'>
 							<input id='al-slug' name='slug' required maxLength={80} pattern='[a-z0-9]+(-[a-z0-9]+)*' className={controlClass} />
 						</Field>
 					)}

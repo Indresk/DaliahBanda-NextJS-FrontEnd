@@ -15,8 +15,8 @@ export function aboutCrumbs({
 			href: `/sobre-nosotros/integrantes/${member.slug}`,
 		});
 	if (contact)
-		crumbs.push({ label: 'Contacto', href: '/sobre-nosotros/contact' });
+		crumbs.push({ label: 'Contacto', href: '/sobre-nosotros/contacto' });
 	if (comunity)
-		crumbs.push({ label: 'Comunidad', href: '/sobre-nosotros/comunity' });
+		crumbs.push({ label: 'Comunidad', href: '/sobre-nosotros/comunidad' });
 	return crumbs;
 }

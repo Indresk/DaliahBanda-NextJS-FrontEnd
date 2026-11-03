@@ -46,7 +46,7 @@ export default async function SongPage({ params }) {
 					<h1 className='font-headline text-4xl font-semibold tracking-tight md:text-5xl'>
 						#{song.trackNumber} {song.title}
 					</h1>
-					<BackLink href={`/albums/${albumSlug}`} />
+					<BackLink href={`/discografia/${albumSlug}`} />
 				</div>
 				<div className='flex items-start gap-4'>
 					{song.audioUrl && (

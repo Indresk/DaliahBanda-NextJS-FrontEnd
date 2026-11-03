@@ -33,7 +33,7 @@ export default async function StreamPage({ searchParams }) {
 		<>
 			<PageTitle
 				title='Transmisión'
-				description='Estado en vivo que alimenta el banner del sitio y la página /live.'
+				description='Estado en vivo que alimenta el banner del sitio y la página /en-vivo.'
 			/>
 
 			{oauthMessage && (

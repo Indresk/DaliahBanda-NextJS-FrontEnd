@@ -48,7 +48,7 @@ export const rootMetadata = {
  * @typedef {Object} PageMeta
  * @property {string | { absolute: string }} title  string usa la plantilla "%s | Daliah Banda"; { absolute } no
  * @property {string} description
- * @property {string} path  ruta de la página ("/live"); se resuelve contra metadataBase
+ * @property {string} path  ruta de la página ("/en-vivo"); se resuelve contra metadataBase
  * @property {string[]} [keywords]
  * @property {boolean} [indexable]  false → noindex (página sin contenido todavía) y sin canonical
  * @property {import('next').Metadata['robots']} [robots]  sustituye las reglas por defecto

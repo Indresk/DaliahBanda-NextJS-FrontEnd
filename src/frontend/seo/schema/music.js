@@ -7,7 +7,7 @@ const RELEASE_TYPES = {
 	single: 'SingleRelease',
 };
 
-const albumUrl = (album) => `${SITE.url}/albums/${album.slug}`;
+const albumUrl = (album) => `${SITE.url}/discografia/${album.slug}`;
 const songUrl = (album, song) => `${albumUrl(album)}/${song.slug}`;
 const sameAs = (links) => (links.length ? { sameAs: links.map((link) => link.url) } : {});
 

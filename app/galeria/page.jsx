@@ -57,7 +57,7 @@ export default async function GalleryIndex() {
 
 function EventCard({ event, className, sizes, eager = false }) {
 	return (
-		<Link href={`/gallery/events/${event.slug}`} className={className}>
+		<Link href={`/galeria/eventos/${event.slug}`} className={className}>
 			<div className='grid h-full overflow-hidden w-full relative'>
 				<Image
 					src={event.cover.url}

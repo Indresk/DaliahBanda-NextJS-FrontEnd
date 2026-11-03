@@ -4,7 +4,7 @@ import { STREAM } from '../../shared/constants';
 import { createTaggedCache } from '../utils/taggedCache';
 import StreamStatusService from './streamStatus.service';
 
-// Estado en vivo para el HTML estático (Header y /live). El webhook de Kick invalida la
+// Estado en vivo para el HTML estático (Header y /en-vivo). El webhook de Kick invalida la
 // etiqueta STREAM.STATUS_TAG y las páginas que la usan se regeneran con el valor nuevo.
 // `revalidate` es el respaldo por si un webhook se pierde.
 const cache = createTaggedCache({ tag: STREAM.STATUS_TAG, revalidate: STREAM.CACHE_FALLBACK_SECONDS });

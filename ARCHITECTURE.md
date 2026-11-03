@@ -116,8 +116,8 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
 - Tablas: `albums` (incluye sencillos: `type` = album | ep | single; un sencillo es un álbum de una
   canción), `songs` (`albumId` obligatorio, `RESTRICT`), `album-links` / `song-links` (plataforma + URL,
   una por plataforma) y `song-resources` (stem | score | lyrics | video, con instrumento para los stems).
-- Rutas públicas: `/albums` (álbumes y sencillos), `/albums/[album]` (pistas), `/albums/[album]/[song]`
-  y `/albums/[album]/[song]/(stems|partituras|letra-y-acordes)`. Una canción es pública solo si ella y
+- Rutas públicas: `/discografia` (álbumes y sencillos), `/discografia/[album]` (pistas), `/discografia/[album]/[song]`
+  y `/discografia/[album]/[song]/(stems|partituras|letra-y-acordes)`. Una canción es pública solo si ella y
   su álbum están activos.
 - Consultas: el álbum se lee con 3 consultas (álbum + pistas + enlaces; las hijas con `separate`, sin
   producto cartesiano) y cada pista trae `resourceKinds` con una subconsulta (sin consultas por pista).
@@ -142,7 +142,7 @@ Datos en tres tablas: `gallery-images`, `gallery-events` y `gallery-people`.
   en `/dashboard/lineup`, con export y `pnpm db:seed:lineup`. En `/sobre-nosotros/integrantes` se ve como gráfico
   (`LineupChart`: una fila por persona, barras por rol, líneas de lanzamientos; los cálculos están en
   `app/sobre-nosotros/_lib/timeline.js`) y como lista, en pestañas (`ui/Tabs`, ambos paneles en el HTML).
-- **Migas de pan** con rutas paralelas: `app/albums/@breadcrumb` y `app/sobre-nosotros/@breadcrumb`
+- **Migas de pan** con rutas paralelas: `app/discografia/@breadcrumb` y `app/sobre-nosotros/@breadcrumb`
   pintan `ui/Breadcrumb` en el servidor con los títulos reales. La lógica de las migas está en
   `_lib/breadcrumbs.js` de cada sección y la reutiliza el JSON-LD (`BreadcrumbList`). Una ruta
   nueva bajo esas secciones necesita su carpeta en `@breadcrumb` (si no, no muestra migas).

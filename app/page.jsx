@@ -79,7 +79,7 @@ export default async function Home() {
 						<h2 className='tracking-tighter font-headline uppercase font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>
 							¿Quieres vernos en el escenario?
 						</h2>
-						<Link href='/gallery'>
+						<Link href='/galeria'>
 							<Button variant='textLink' size='noPadding' rigthArrow>
 								Visita nuestra galeria de fotos
 							</Button>

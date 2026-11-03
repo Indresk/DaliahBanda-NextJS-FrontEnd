@@ -20,7 +20,7 @@ export function buildLiveVideoSchema({
 		name: NAME,
 		description: DESCRIPTION,
 		inLanguage: SITE.language,
-		mainEntityOfPage: `${SITE.url}/live`,
+		mainEntityOfPage: `${SITE.url}/en-vivo`,
 		thumbnailUrl: [SITE.image.url],
 		uploadDate: iso(previousEnd),
 		embedUrl: SITE.kickPlayerUrl,

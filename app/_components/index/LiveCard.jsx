@@ -33,7 +33,7 @@ export default function LiveCard({ className, ...props }) {
 							' y conoce nuestro proceso creativo, los arreglos en tiempo real y la energía de la banda durante nuestras sesiones de ensayo.'
 						}
 					</p>
-					<Link href='/live' title='Ver a Daliah Banda en vivo'>
+					<Link href='/en-vivo' title='Ver a Daliah Banda en vivo'>
 						<Button variant='invert' fullWidth>
 							Ver ensayo en vivo
 						</Button>

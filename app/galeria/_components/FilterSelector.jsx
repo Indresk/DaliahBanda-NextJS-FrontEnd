@@ -5,9 +5,9 @@ import NavLink from '@/frontend/components/util/NavLink';
 // `members`: integrantes actuales con fotos ({ slug, name }), vienen de la base de datos
 export default function FilterSelector({ members = [] }) {
 	const filters = [
-		{ name: 'todos', link: '/gallery' },
-		...members.map((member) => ({ name: member.name, link: `/gallery/${member.slug}` })),
-		{ name: 'backstage', link: '/gallery/backstage' },
+		{ name: 'todos', link: '/galeria' },
+		...members.map((member) => ({ name: member.name, link: `/galeria/${member.slug}` })),
+		{ name: 'backstage', link: '/galeria/backstage' },
 	];
 
 	return (

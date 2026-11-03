@@ -35,7 +35,7 @@ export default async function AlbumPage({ params }) {
 					<h1 className='text-2xl font-semibold md:text-3xl'>
 						Escucha el álbum aquí y donde prefieras
 					</h1>
-					<BackLink href='/albums' />
+					<BackLink href='/discografia' />
 				</div>
 				<StreamingLinks links={album.links} />
 			</div>

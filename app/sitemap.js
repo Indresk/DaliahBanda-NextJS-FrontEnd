@@ -14,18 +14,18 @@ export default async function sitemap() {
 	]);
 	const galleryPages = [
 		...events.map((event) => ({
-			url: `${SITE.url}/gallery/events/${event.slug}`,
+			url: `${SITE.url}/galeria/eventos/${event.slug}`,
 			lastModified: event.eventDate ?? undefined,
 			changeFrequency: 'yearly',
 			priority: 0.6,
 		})),
 		...members.map((member) => ({
-			url: `${SITE.url}/gallery/${member.slug}`,
+			url: `${SITE.url}/galeria/${member.slug}`,
 			changeFrequency: 'monthly',
 			priority: 0.5,
 		})),
 		{
-			url: `${SITE.url}/gallery/backstage`,
+			url: `${SITE.url}/galeria/backstage`,
 			changeFrequency: 'monthly',
 			priority: 0.5,
 		},
@@ -35,13 +35,13 @@ export default async function sitemap() {
 	const [albums, songs] = await Promise.all([getAlbums(), getSongs()]);
 	const musicPages = [
 		...albums.map((album) => ({
-			url: `${SITE.url}/albums/${album.slug}`,
+			url: `${SITE.url}/discografia/${album.slug}`,
 			lastModified: album.releasedAt,
 			changeFrequency: 'yearly',
 			priority: 0.6,
 		})),
 		...songs.map((song) => ({
-			url: `${SITE.url}/albums/${song.album.slug}/${song.slug}`,
+			url: `${SITE.url}/discografia/${song.album.slug}/${song.slug}`,
 			lastModified: song.releasedAt ?? song.album.releasedAt,
 			changeFrequency: 'yearly',
 			priority: 0.5,
@@ -79,19 +79,19 @@ export default async function sitemap() {
 			priority: 1,
 		},
 		{
-			url: 'https://daliahbanda.com/gallery',
+			url: 'https://daliahbanda.com/galeria',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
 			priority: 0.8,
 		},
 		{
-			url: 'https://daliahbanda.com/albums',
+			url: 'https://daliahbanda.com/discografia',
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 0.7,
 		},
 		{
-			url: 'https://daliahbanda.com/live',
+			url: 'https://daliahbanda.com/en-vivo',
 			lastModified: new Date(),
 			changeFrequency: 'weekly',
 			priority: 0.5,

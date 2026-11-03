@@ -6,20 +6,20 @@ export const galleryMeta = {
 	title: 'Galería',
 	description:
 		'Fotos de los shows y eventos en vivo de Daliah Banda: Rock And Blend, Universidad San Buenaventura y más escenarios de la escena rock bogotana.',
-	path: '/gallery',
+	path: '/galeria',
 };
 
 export const galleryBackstageMeta = {
 	title: 'Backstage',
 	description:
 		'Fotos del backstage de Daliah Banda: ensayos, grabaciones, camerinos y bastidores de los shows.',
-	path: '/gallery/backstage',
+	path: '/galeria/backstage',
 };
 
 export const galleryFilterMeta = (person) => ({
 	title: `Fotos de ${person.name}`,
 	description: `Fotos de ${person.name} con Daliah Banda: shows, ensayos y backstage.`,
-	path: `/gallery/${person.slug}`,
+	path: `/galeria/${person.slug}`,
 });
 
 export const galleryEventMeta = (event) => ({
@@ -27,13 +27,13 @@ export const galleryEventMeta = (event) => ({
 	description:
 		event.description ||
 		`Fotos del evento ${event.title}, presentación en vivo de Daliah Banda.`,
-	path: `/gallery/events/${event.slug}`,
+	path: `/galeria/eventos/${event.slug}`,
 });
 
 // Título provisional si la página aún no pudo cargar el contenido
 export const galleryFallbackMeta = (slug) => ({
 	title: `Galería: ${humanizeSlug(slug)}`,
 	description: 'Fotos de Daliah Banda.',
-	path: '/gallery',
+	path: '/galeria',
 	indexable: false,
 });

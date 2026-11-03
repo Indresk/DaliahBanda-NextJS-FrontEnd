@@ -26,7 +26,7 @@ export const contactMeta = {
 	title: 'Contacto',
 	description:
 		'Contacta a Daliah Banda para presentaciones, prensa y colaboraciones.',
-	path: '/sobre-nosotros/contact',
+	path: '/sobre-nosotros/contacto',
 	indexable: false,
 };
 
@@ -34,6 +34,6 @@ export const comunityMeta = {
 	title: 'Nuestra Comunidad',
 	description:
 		'Conoce y vuelvete parte de nuestra comunidad Daliah interactua con nosotros, comparte y disfruta nuestra musica.',
-	path: '/sobre-nosotros/comunity',
+	path: '/sobre-nosotros/comunidad',
 	indexable: false,
 };
